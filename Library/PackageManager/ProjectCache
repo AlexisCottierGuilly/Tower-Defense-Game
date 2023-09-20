@@ -1,14 +1,14 @@
 m_ProjectFiles:
   m_ManifestFileStatus:
-    m_FilePath: C:/Users/cottierguillya/Tower-Defense-Game/Packages/manifest.json
+    m_FilePath: C:/Users/jeff_/OneDrive/Documents/GitHub/Tower-Defense-Game/Packages/manifest.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638308338236509797
-    m_Hash: 4280341879
+      ticks: 638298121719469408
+    m_Hash: 3870291422
   m_LockFileStatus:
-    m_FilePath: C:/Users/cottierguillya/Tower-Defense-Game/Packages/packages-lock.json
+    m_FilePath: C:/Users/jeff_/OneDrive/Documents/GitHub/Tower-Defense-Game/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
