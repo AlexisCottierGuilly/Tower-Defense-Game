@@ -12,6 +12,9 @@ public class TerrainGenerator : MonoBehaviour
     [Header("3D Models")]
     public GameObject tilePrefab;
 
+    [Header("Parents")]
+    public GameObject terrainParent;
+
     private List<List<GameObject>> tiles = new List<List<GameObject>>();
 
     
@@ -40,13 +43,16 @@ public class TerrainGenerator : MonoBehaviour
                 );
 
                 GameObject new_tile = GameObject.Instantiate(tilePrefab, position, Quaternion.identity);
-                new_tile.transform.parent = gameObject.transform;
+                new_tile.transform.parent = terrainParent.transform;
 
+                float multiplier = 100f;
                 new_tile.transform.localScale = new Vector3(
-                    tileSize,
-                    tileSize,
-                    tileSize
+                    tileSize * multiplier,
+                    tileSize * multiplier,
+                    tileSize * multiplier / 15f
                 );
+
+                new_tile.transform.Rotate(new Vector3(-90f, 0f, 0f));
 
                 tiles[x].Add(new_tile);
             }

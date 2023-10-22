@@ -309,6 +309,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &904238664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 904238665}
+  m_Layer: 0
+  m_Name: Terrain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &904238665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904238664}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 60.761242, y: -18.778904, z: 38.256165}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1951690850
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +351,7 @@ GameObject:
   - component: {fileID: 1951690852}
   - component: {fileID: 1951690851}
   m_Layer: 0
-  m_Name: Terrain
+  m_Name: Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -341,7 +372,8 @@ MonoBehaviour:
   size: {x: 64, y: 64}
   seed: -1
   tileSize: 1
-  tilePrefab: {fileID: 8916802770306995884, guid: 54ff399e26b400b408961c240fdb4cfd, type: 3}
+  tilePrefab: {fileID: 919132149155446097, guid: 8943e83b8b531144b94f626aa35ed678, type: 3}
+  terrainParent: {fileID: 904238664}
 --- !u!4 &1951690852
 Transform:
   m_ObjectHideFlags: 0
@@ -364,3 +396,4 @@ SceneRoots:
   - {fileID: 549421228}
   - {fileID: 746308247}
   - {fileID: 1951690852}
+  - {fileID: 904238665}
