@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -369,9 +369,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7382547e0245a5340abd139e3a83adb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 64, y: 64}
-  seed: -1
-  tileSize: 1
+  size: {x: 48, y: 48}
+  scale: 1
+  seed: 69859
+  tileSize: 1.5
+  hillHeight: 1
+  hillWidth: 1
+  hillSmoothness: 1
   tilePrefab: {fileID: 919132149155446097, guid: 8943e83b8b531144b94f626aa35ed678, type: 3}
   terrainParent: {fileID: 904238664}
 --- !u!4 &1951690852
