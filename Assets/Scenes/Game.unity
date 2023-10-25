@@ -376,7 +376,8 @@ MonoBehaviour:
   hillHeight: 1
   hillWidth: 1
   hillSmoothness: 1
-  tilePrefab: {fileID: 919132149155446097, guid: 8943e83b8b531144b94f626aa35ed678, type: 3}
+  mountains: []
+  tilePrefab: {fileID: 5861721181273509266, guid: 288fcd3847bd9e440859b9f4ef16a098, type: 3}
   terrainParent: {fileID: 904238664}
 --- !u!4 &1951690852
 Transform:
