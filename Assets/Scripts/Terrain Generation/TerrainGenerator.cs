@@ -17,6 +17,7 @@ public class TerrainGenerator : MonoBehaviour
 
     [Header("3D Models")]
     public GameObject tilePrefab;
+    public GameObject fogPrefab;
 
     [Header("Parents")]
     public GameObject terrainParent;
@@ -52,6 +53,13 @@ public class TerrainGenerator : MonoBehaviour
                 GameObject new_tile = GameObject.Instantiate(tilePrefab, position, Quaternion.identity);
                 new_tile.name = $"Tile ({x}, {y})";
                 new_tile.transform.parent = terrainParent.transform;
+
+                if (x == 0 || x == size.x - 1 || y == 0 || y == size.y - 1)
+                {
+                    GameObject fog = GameObject.Instantiate(fogPrefab, position, Quaternion.identity);
+                    fog.name = $"Fog ({x}, {y})";
+                    fog.transform.parent = terrainParent.transform;
+                }
 
                 float multiplier = 100f;
                 new_tile.transform.localScale = new Vector3(
