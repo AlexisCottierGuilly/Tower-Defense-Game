@@ -14,13 +14,21 @@ public class TerrainGenerator : MonoBehaviour
     public float hillWidth = 1f;
     public float hillSmoothness = 1f;
     public List<Vector2> mountains = new List<Vector2>();
+    [Space]
+    public bool addFog = true;
 
     [Header("3D Models")]
-    public GameObject tilePrefab;
+    public GameObject grassTilePrefab;
+    public GameObject pathTilePrefab;
     public GameObject fogPrefab;
+    [Space]
+    public GameObject mainVillagePrefab;
+    public List<GameObject> villagePrefabs = new List<GameObject>();
+    public List<GameObject> towerPrefabs = new List<GameObject>();
 
     [Header("Parents")]
     public GameObject terrainParent;
+    public GameObject villageParent;
 
     private List<List<GameObject>> tiles = new List<List<GameObject>>();
 
@@ -33,10 +41,13 @@ public class TerrainGenerator : MonoBehaviour
             seed = Random.Range(0, 1000000);
         }
         GenerateMountains();
-        Generate();
+        GenerateTerrain();
+        GenerateVillage();
+
+        // TODO: Generate paths
     }
 
-    void Generate()
+    public void GenerateTerrain()
     {
         for (int x=0; x < size.x; x++)
         {
@@ -50,11 +61,11 @@ public class TerrainGenerator : MonoBehaviour
                     y * tileSize * 2
                 );
 
-                GameObject new_tile = GameObject.Instantiate(tilePrefab, position, Quaternion.identity);
+                GameObject new_tile = GameObject.Instantiate(grassTilePrefab, position, Quaternion.identity);
                 new_tile.name = $"Tile ({x}, {y})";
                 new_tile.transform.parent = terrainParent.transform;
 
-                if (x == 0 || x == size.x - 1 || y == 0 || y == size.y - 1)
+                if (addFog && (x == 0 || x == size.x - 1 || y == 0 || y == size.y - 1))
                 {
                     GameObject fog = GameObject.Instantiate(fogPrefab, position, Quaternion.identity);
                     fog.name = $"Fog ({x}, {y})";
@@ -75,7 +86,91 @@ public class TerrainGenerator : MonoBehaviour
         }
     }
 
-    void GenerateMountains()
+    public void GenerateVillage()
+    {
+        /*
+        loop in the 50% middle of the map
+        find the highest point and place the main village there
+        place 4 towers around the main village, randomly
+        */
+
+        int x = (int)size.x / 3;
+        int y = (int)size.y / 3;
+
+        int finalX = (int)size.x - x;
+        int finalY = (int)size.y - y;
+
+        float highestPoint = 0f;
+        Vector2 highestPointPosition = new Vector2();
+        GameObject highestPointTile = new GameObject();
+
+        for (int i=x; i < finalX; i++)
+        {
+            for (int j=y; j < finalY; j++)
+            {
+                float height = GetTileHeight(new Vector2(i, j));
+                if (height > highestPoint)
+                {
+                    highestPoint = height;
+                    highestPointPosition = new Vector2(i, j);
+                    highestPointTile = tiles[i][j];
+                }
+            }
+        }
+
+        Vector3 position = highestPointTile.GetComponent<TileBehaviour>().placement.transform.position;
+        GameObject mainVillage = GameObject.Instantiate(
+            mainVillagePrefab,
+            new Vector3(0f, 0f, 0f),
+            Quaternion.identity
+        );
+        mainVillage.transform.position = new Vector3(
+            position.x,
+            position.y + mainVillage.transform.localScale.y / 2f,
+            position.z
+        );
+
+        mainVillage.name = "Main Village";
+        mainVillage.transform.parent = villageParent.transform;
+
+        // place 4 towers around the main village, randomly
+        System.Random randomWithSeed = new System.Random((int)seed);
+        float maxDistanceFromCenter = Mathf.Round(size.x / 6f);
+        Vector2 center = new Vector2(size.x / 2f, size.y / 2f);
+        List<Vector2> villagePositions = new List<Vector2>();
+
+        for (int i=0; i < 4; i++)
+        {
+            Vector2 randomPosition = new Vector2();
+            while (villagePositions.Contains(randomPosition) || randomPosition == Vector2.zero)
+                randomPosition.x = randomWithSeed.Next(
+                    (int)center.x - (int)maxDistanceFromCenter,
+                    (int)center.x + (int)maxDistanceFromCenter
+                );
+                randomPosition.y = randomWithSeed.Next(
+                    (int)center.y - (int)maxDistanceFromCenter,
+                    (int)center.y + (int)maxDistanceFromCenter
+                );
+            villagePositions.Add(randomPosition);
+
+            GameObject villageStructurePrefab = villagePrefabs[randomWithSeed.Next(0, villagePrefabs.Count)];
+            position = tiles[(int)randomPosition.x][(int)randomPosition.y].GetComponent<TileBehaviour>().placement.transform.position;
+            GameObject villageStructure = GameObject.Instantiate(
+                villageStructurePrefab,
+                new Vector3(0f, 0f, 0f),
+                Quaternion.identity);
+            villageStructure.transform.position = new Vector3(
+                position.x,
+                position.y + villageStructure.transform.localScale.y / 2f,
+                position.z
+            );
+            
+            villageStructure.name = $"Village Structure {i}";
+            villageStructure.transform.parent = villageParent.transform;
+        }
+    }
+
+    public void GenerateMountains()
     {
         mountains = new List<Vector2>();
         System.Random randomWithSeed = new System.Random((int)seed);

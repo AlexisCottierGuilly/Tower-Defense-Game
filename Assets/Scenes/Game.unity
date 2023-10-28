@@ -334,7 +334,38 @@ Transform:
   m_GameObject: {fileID: 904238664}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 60.761242, y: -18.778904, z: 38.256165}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1777719527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1777719528}
+  m_Layer: 0
+  m_Name: Village
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1777719528
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777719527}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -369,17 +400,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7382547e0245a5340abd139e3a83adb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 48, y: 48}
+  size: {x: 32, y: 32}
   scale: 1
   seed: 69859
   tileSize: 1.5
-  hillHeight: 1.5
+  hillHeight: 1
   hillWidth: 1
   hillSmoothness: 1
   mountains: []
-  tilePrefab: {fileID: 5861721181273509266, guid: 288fcd3847bd9e440859b9f4ef16a098, type: 3}
+  addFog: 0
+  grassTilePrefab: {fileID: 5861721181273509266, guid: 288fcd3847bd9e440859b9f4ef16a098, type: 3}
+  pathTilePrefab: {fileID: 5861721181273509266, guid: 4feddbd6b1b00c442a2d0b1f5c0e747d, type: 3}
   fogPrefab: {fileID: 7120711633847923219, guid: 5b895d94bcf33384fb32a9c38b347181, type: 3}
+  mainVillagePrefab: {fileID: 1318826244757169631, guid: 81591eb5b4afac743aa13c8ecc3d7ec0, type: 3}
+  villagePrefabs:
+  - {fileID: 2107958595256771966, guid: 6b74584349e063049a67ba323ae53f42, type: 3}
+  towerPrefabs:
+  - {fileID: 8235465559784961698, guid: f1f73dab64543c34eabf7d1000252afd, type: 3}
   terrainParent: {fileID: 904238664}
+  villageParent: {fileID: 1777719527}
 --- !u!4 &1951690852
 Transform:
   m_ObjectHideFlags: 0
@@ -403,3 +442,4 @@ SceneRoots:
   - {fileID: 746308247}
   - {fileID: 1951690852}
   - {fileID: 904238665}
+  - {fileID: 1777719528}
