@@ -10,8 +10,6 @@ public class TowerBehaviour : StructureBehaviour
     public override void Start()
     {
         base.Start();
-
-        health = data.maxHealth;
     }
 
     // Update is called once per frame

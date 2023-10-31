@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\ScriptableObjects\VillageData.cs" />
+     <Compile Include="Assets\Scripts\ScriptableObjects\ProjectileData.cs" />
      <Compile Include="Assets\Scripts\Behaviours\Towers\TowerBehaviour.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\TowerData.cs" />
      <Compile Include="Assets\Scripts\Behaviours\TileBehaviour.cs" />
@@ -48,6 +49,7 @@
      <Compile Include="Assets\Scripts\ScriptableObjects\StructureData.cs" />
      <Compile Include="Assets\Scripts\Behaviours\Village\VillageBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviours\AccessStructureBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviours\Projectiles\ProjectileBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviours\StructureBehaviour.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity 2022.3.9f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>

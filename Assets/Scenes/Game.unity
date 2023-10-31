@@ -417,6 +417,8 @@ MonoBehaviour:
   - {fileID: 2107958595256771966, guid: 6b74584349e063049a67ba323ae53f42, type: 3}
   towerPrefabs:
   - {fileID: 8235465559784961698, guid: f1f73dab64543c34eabf7d1000252afd, type: 3}
+  - {fileID: 2952150505218308268, guid: e789858200b51b242a2135212af0b9f8, type: 3}
+  - {fileID: 5767136952099664468, guid: 961c03fbbaa2df8489e66e94a272ef41, type: 3}
   terrainParent: {fileID: 904238664}
   villageParent: {fileID: 1777719527}
 --- !u!4 &1951690852

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class StructureData : ScriptableObject
 {
-    public float maxHealth;
+    public int cost;
 }
