@@ -57,7 +57,7 @@ public class TerrainGenerator : MonoBehaviour
             {
                 Vector3 position = new Vector3(
                     x * tileSize * 2,
-                    Mathf.Round(GetTileHeight(new Vector2(x, y)) * 2f) / 2f * 2f,
+                    RoundTileHeight(GetTileHeight(new Vector2(x, y))) * 2f,
                     y * tileSize * 2
                 );
 
@@ -118,6 +118,8 @@ public class TerrainGenerator : MonoBehaviour
             }
         }
 
+        FlattenAround(highestPointPosition);
+
         Vector3 position = highestPointTile.GetComponent<TileBehaviour>().placement.transform.position;
         GameObject mainVillage = GameObject.Instantiate(
             mainVillagePrefab,
@@ -135,14 +137,17 @@ public class TerrainGenerator : MonoBehaviour
 
         // place 4 towers around the main village, randomly
         System.Random randomWithSeed = new System.Random((int)seed);
-        float maxDistanceFromCenter = Mathf.Round(size.x / 6f);
+        float maxDistanceFromCenter = Mathf.Round(size.x / 4f);
+        float minDistanceFromMainTower = Mathf.Round(size.x / 8f);
         Vector2 center = new Vector2(size.x / 2f, size.y / 2f);
         List<Vector2> villagePositions = new List<Vector2>();
 
         for (int i=0; i < 4; i++)
         {
             Vector2 randomPosition = new Vector2();
-            while (villagePositions.Contains(randomPosition) || randomPosition == Vector2.zero)
+            while (villagePositions.Contains(randomPosition) || randomPosition == Vector2.zero
+                || (randomPosition - highestPointPosition).magnitude < minDistanceFromMainTower)
+            {
                 randomPosition.x = randomWithSeed.Next(
                     (int)center.x - (int)maxDistanceFromCenter,
                     (int)center.x + (int)maxDistanceFromCenter
@@ -151,22 +156,60 @@ public class TerrainGenerator : MonoBehaviour
                     (int)center.y - (int)maxDistanceFromCenter,
                     (int)center.y + (int)maxDistanceFromCenter
                 );
+            }
+            FlattenAround(randomPosition, 1, false);
             villagePositions.Add(randomPosition);
 
             GameObject villageStructurePrefab = villagePrefabs[randomWithSeed.Next(0, villagePrefabs.Count)];
-            position = tiles[(int)randomPosition.x][(int)randomPosition.y].GetComponent<TileBehaviour>().placement.transform.position;
+            GameObject tile = tiles[(int)randomPosition.x][(int)randomPosition.y];
+            position = tile.GetComponent<TileBehaviour>().placement.transform.position;
             GameObject villageStructure = GameObject.Instantiate(
                 villageStructurePrefab,
                 new Vector3(0f, 0f, 0f),
                 Quaternion.identity);
             villageStructure.transform.position = new Vector3(
-                position.x,
+                position.x - tile.GetComponent<MeshRenderer>().bounds.size.x / 2f,
                 position.y + villageStructure.transform.localScale.y / 2f,
-                position.z
+                position.z - tile.GetComponent<MeshRenderer>().bounds.size.z / 2f
             );
             
             villageStructure.name = $"Village Structure {i}";
             villageStructure.transform.parent = villageParent.transform;
+        }
+    }
+
+    public void FlattenAround(Vector2 position, int radius=1, bool centered=true)
+    {
+        GameObject tile = tiles[(int)position.x][(int)position.y];
+        float tileHeight = tile.transform.position.y;
+        int finish = centered ? 1 : 0;
+        List<GameObject> flattenedTiles = new List<GameObject>();
+        List<float> heights = new List<float>();
+
+        flattenedTiles.Add(tile);
+        heights.Add(tileHeight);
+        for (int x=(int)position.x - radius; x < (int)position.x + radius + finish; x++)
+        {
+            for (int y=(int)position.y - radius; y < (int)position.y + radius + finish; y++)
+            {
+                if (x < 0 || x >= size.x || y < 0 || y >= size.y)
+                    continue;
+                
+                flattenedTiles.Add(tiles[x][y]);
+                heights.Add(tiles[x][y].transform.position.y);
+            }
+        }
+
+        tileHeight = System.Linq.Enumerable.Sum(heights) / heights.Count;
+        tileHeight = RoundTileHeight(tileHeight);
+
+        foreach (GameObject flattenedTile in flattenedTiles)
+        {
+            flattenedTile.transform.position = new Vector3(
+                flattenedTile.transform.position.x,
+                tileHeight,
+                flattenedTile.transform.position.z
+            );
         }
     }
 
@@ -203,6 +246,11 @@ public class TerrainGenerator : MonoBehaviour
         }
     }
 
+    float RoundTileHeight(float height)
+    {
+        return Mathf.Round(height * 2f) / 2f;
+    }
+    
     float GetTileHeight(Vector2 position)
     {
         float height1 = Mathf.PerlinNoise(
