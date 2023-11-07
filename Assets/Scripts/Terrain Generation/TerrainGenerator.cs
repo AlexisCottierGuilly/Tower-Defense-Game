@@ -61,7 +61,9 @@ public class TerrainGenerator : MonoBehaviour
                     y * tileSize * 2
                 );
 
-                GameObject new_tile = GameObject.Instantiate(grassTilePrefab, position, Quaternion.identity);
+                GameObject tilePrefab = grassTilePrefab;
+
+                GameObject new_tile = GameObject.Instantiate(tilePrefab, position, Quaternion.identity);
                 new_tile.name = $"Tile ({x}, {y})";
                 new_tile.transform.parent = terrainParent.transform;
 
@@ -94,8 +96,8 @@ public class TerrainGenerator : MonoBehaviour
         place 4 towers around the main village, randomly
         */
 
-        int x = (int)size.x / 3;
-        int y = (int)size.y / 3;
+        int x = (int)(size.x / 3.5f);
+        int y = (int)(size.y / 3.5f);
 
         int finalX = (int)size.x - x;
         int finalY = (int)size.y - y;
