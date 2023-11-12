@@ -17,4 +17,9 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         
     }
+
+    void Shoot(Vector3 target)
+    {
+        
+    }
 }

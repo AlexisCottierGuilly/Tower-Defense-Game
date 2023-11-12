@@ -7,5 +7,5 @@ public class TowerData : StructureData
 {
     public float maxRange;
     public float attackSpeed;
-    public GameObject projectile; // dans le futur, créer une classe pour les projectiles
+    public GameObject projectile;
 }

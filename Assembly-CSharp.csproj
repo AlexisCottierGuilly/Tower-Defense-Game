@@ -47,8 +47,10 @@
      <Compile Include="Assets\Scripts\Behaviours\TileBehaviour.cs" />
      <Compile Include="Assets\Scripts\Terrain Generation\TerrainGenerator.cs" />
      <Compile Include="Assets\Scripts\ScriptableObjects\StructureData.cs" />
+     <Compile Include="Assets\Scripts\ScriptableObjects\MonsterData.cs" />
      <Compile Include="Assets\Scripts\Behaviours\Village\VillageBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviours\AccessStructureBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Behaviours\Monsters\MonsterBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviours\Projectiles\ProjectileBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviours\StructureBehaviour.cs" />
     <Reference Include="UnityEngine">

@@ -17,3 +17,4 @@ MonoBehaviour:
   fireDuration: 2
   fireDamage: 25
   impactDamage: 50
+  shootingAngle: 60
