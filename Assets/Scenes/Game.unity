@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -402,12 +402,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: {x: 32, y: 32}
   scale: 1
-  seed: 69859
+  seed: -1
   tileSize: 1.5
   hillHeight: 1
   hillWidth: 1
   hillSmoothness: 1
   mountains: []
+  stepHeight: 1
   addFog: 0
   grassTilePrefab: {fileID: 5861721181273509266, guid: 288fcd3847bd9e440859b9f4ef16a098, type: 3}
   pathTilePrefab: {fileID: 5861721181273509266, guid: 4feddbd6b1b00c442a2d0b1f5c0e747d, type: 3}
@@ -421,6 +422,9 @@ MonoBehaviour:
   - {fileID: 5767136952099664468, guid: 961c03fbbaa2df8489e66e94a272ef41, type: 3}
   terrainParent: {fileID: 904238664}
   villageParent: {fileID: 1777719527}
+  mainVillage: {fileID: 0}
+  villageBuildings: []
+  towers: []
 --- !u!4 &1951690852
 Transform:
   m_ObjectHideFlags: 0

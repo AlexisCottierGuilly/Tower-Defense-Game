@@ -329,7 +329,7 @@ public class TerrainGenerator : MonoBehaviour
         {
             float distance = NormalizeDistance(CalculateDistanceBetweenPoints(position, mountain));
             float distanceFromSide = Mathf.Max(0.075f - NormalizeDistance(CalculateDistanceFromSide(position)), 0f);
-            distance = Mathf.Max(1f - distance, 0.5f) + distanceFromSide;
+            distance = Mathf.Max(1f - distance, 0.5f) + distanceFromSide / 1.5f;
             proximities.Add(distance);
         }
 
