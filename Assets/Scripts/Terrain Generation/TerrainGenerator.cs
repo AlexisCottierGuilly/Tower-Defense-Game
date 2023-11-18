@@ -53,6 +53,16 @@ public class TerrainGenerator : MonoBehaviour
         // TODO: Generate paths
     }
 
+    public Rect GetBounds()
+    {
+        return new Rect(
+            0,
+            0,
+            Mathf.Max(size.x - 3, 0) * tileSize * 2,
+            Mathf.Max(size.y - 3, 0) * tileSize * 2
+        );
+    }
+
     public void GenerateTerrain()
     {
         for (int x=0; x < size.x; x++)
