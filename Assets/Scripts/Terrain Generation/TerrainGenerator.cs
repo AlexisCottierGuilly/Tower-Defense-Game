@@ -455,12 +455,12 @@ public class TerrainGenerator : MonoBehaviour
             }
 
             usedTiles.Add(start);
-            float pathEfficiency = 0.75f;
+            float pathEfficiency = 0.5f;
             int count = 0;
 
             while (current != end)
             {
-                next = GetNextPathTile(current, end, usedTiles, pathEfficiency, villages);
+                next = GetNextPathTile(current, end, usedTiles, pathEfficiency, villages, path);
                 if (next.x != -1 && next.y != -1)
                 {
                     path.Add(next);
@@ -498,18 +498,56 @@ public class TerrainGenerator : MonoBehaviour
         return distance / (float)(villageBuildings.Count);
     }
     
-    Vector2 GetNextPathTile(Vector2 current, Vector2 end, List<Vector2> usedTiles, float efficiency, List<Vector2> villages)
+    float TileDirectionToVillage(Vector2 initialPosition, Vector2 projectedPosition)
+    {
+        /*
+        Description:
+            1 - Calculate the angle between the initial position and the projected position
+            2 - Calculate the angle between the initial position and the village position
+            3 - Calculate the difference between the two angles
+        */
+        
+        Vector2 villagePosition = mainVillage.GetComponent<VillageBehaviour>().position;
+        float initialToProjected = Mathf.Atan2(projectedPosition.y - initialPosition.y, projectedPosition.x - initialPosition.x) * Mathf.Rad2Deg;
+        float initialToVillage = Mathf.Atan2(villagePosition.y - initialPosition.y, villagePosition.x - initialPosition.x) * Mathf.Rad2Deg;
+
+        float angle = initialToVillage - initialToProjected;
+        return angle;
+    }
+    
+    Vector2 GetNextPathTile(Vector2 current, Vector2 end, List<Vector2> usedTiles,
+        float efficiency, List<Vector2> villages, List<Vector2> path)
     {
         List<Vector2> tilesAround = GetTilesAround(current);
         Vector2 bestMatch = new Vector2(-1, -1);
         Vector2 bestMatch2 = new Vector2(-1, -1);
         Vector2 bestMatch3 = new Vector2(-1, -1);
         Vector2 bestMatch4 = new Vector2(-1, -1);
+
         float bestDistance = -1f;
         GameObject currentTile = tiles[(int)current.x][(int)current.y];
 
         foreach (Vector2 tile in tilesAround)
         {
+            // float direction = TileDirectionToVillage(current, tile);
+            // if the tile is beside a tile in the path (that is not current), skip it
+            bool besidePath = false;
+            foreach (Vector2 pathTile in path)
+            {
+                if (pathTile == current || pathTile == tile)
+                    continue;
+                
+                int xDist = Mathf.Abs((int)tile.x - (int)pathTile.x);
+                int yDist = Mathf.Abs((int)tile.y - (int)pathTile.y);
+                if ((xDist == 1 && yDist == 0) || (xDist == 0 && yDist == 1))
+                {
+                    besidePath = true;
+                    break;
+                }
+            }
+            if (besidePath)
+                continue;
+            
             GameObject otherTile = tiles[(int)tile.x][(int)tile.y];
             float heightDistance = Mathf.Abs(otherTile.transform.position.y - currentTile.transform.position.y);
             if (heightDistance > stepHeight * 2f || usedTiles.Contains(tile) ||
@@ -520,6 +558,7 @@ public class TerrainGenerator : MonoBehaviour
             if (bestDistance == -1f || distance < bestDistance)
             {
                 bestDistance = distance;
+
                 bestMatch4 = bestMatch3;
                 bestMatch3 = bestMatch2;
                 bestMatch2 = bestMatch;
