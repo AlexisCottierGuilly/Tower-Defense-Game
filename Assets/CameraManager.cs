@@ -16,7 +16,7 @@ public class CameraManager : MonoBehaviour
         SetHeight(transform.position.y);
     }
 
-    void SetHeight(float height)
+    public void SetHeight(float height)
     {
         transform.position = new Vector3(transform.position.x, height, transform.position.z);
         initialHeight = height;

@@ -32,6 +32,9 @@ public class TerrainGenerator : MonoBehaviour
     public GameObject terrainParent;
     public GameObject villageParent;
 
+    [Header("Others")]
+    public Camera mainCamera;
+
     private List<List<GameObject>> tiles = new List<List<GameObject>>();
     [HideInInspector] public GameObject mainVillage;
     [HideInInspector] public List<GameObject> villageBuildings = new List<GameObject>();
@@ -173,6 +176,9 @@ public class TerrainGenerator : MonoBehaviour
         mainVillage.name = "Main Village";
         mainVillage.transform.parent = villageParent.transform;
         mainVillage.GetComponent<VillageBehaviour>().position = highestPointPosition;
+
+        float cameraHeight = mainVillage.transform.position.y + mainVillage.GetComponent<MeshRenderer>().bounds.size.y + stepHeight * 2f;
+        mainCamera.GetComponent<CameraManager>().SetHeight(cameraHeight);
 
         // place 4 towers around the main village, randomly
         float maxDistanceFromCenter = Mathf.Round(size.x / 4f);
@@ -455,7 +461,7 @@ public class TerrainGenerator : MonoBehaviour
             }
 
             usedTiles.Add(start);
-            float pathEfficiency = 0.5f;
+            float pathEfficiency = 0.75f; //0.5f;
             int count = 0;
 
             while (current != end)
@@ -472,13 +478,24 @@ public class TerrainGenerator : MonoBehaviour
                 {
                     path.Remove(current);
                     current = previous;
+                    if (path.Count > 1)
+                        previous = path[path.Count - 2];
+                    else
+                        previous = start;
                 }
 
                 if (current == start)
+                {
+                    Debug.Log("No possible path");
                     break;
+                }
+                
                 count++;
                 if (count > 1000)
+                {
+                    Debug.Log("Path generation error");
                     break;
+                }
             }
 
             if (current != start)
@@ -525,13 +542,14 @@ public class TerrainGenerator : MonoBehaviour
         Vector2 bestMatch4 = new Vector2(-1, -1);
 
         float bestDistance = -1f;
+        float bestStep = -1f;
         GameObject currentTile = tiles[(int)current.x][(int)current.y];
 
         foreach (Vector2 tile in tilesAround)
         {
             // float direction = TileDirectionToVillage(current, tile);
             // if the tile is beside a tile in the path (that is not current), skip it
-            bool besidePath = false;
+            /*bool besidePath = false;
             foreach (Vector2 pathTile in path)
             {
                 if (pathTile == current || pathTile == tile)
@@ -547,6 +565,7 @@ public class TerrainGenerator : MonoBehaviour
             }
             if (besidePath)
                 continue;
+            */
             
             GameObject otherTile = tiles[(int)tile.x][(int)tile.y];
             float heightDistance = Mathf.Abs(otherTile.transform.position.y - currentTile.transform.position.y);
@@ -555,9 +574,11 @@ public class TerrainGenerator : MonoBehaviour
                 continue;
             
             float distance = Vector2.Distance(tile, end); // / 1.25f + AverageDistanceFromVillage(tile);
-            if (bestDistance == -1f || distance < bestDistance)
+            if (bestDistance == -1f || distance < bestDistance || (distance <= bestDistance &&
+                heightDistance < bestStep && randomWithSeed.NextDouble() > 0.25f))
             {
                 bestDistance = distance;
+                bestStep = heightDistance;
 
                 bestMatch4 = bestMatch3;
                 bestMatch3 = bestMatch2;
