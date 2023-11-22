@@ -21,4 +21,10 @@ public class UI : MonoBehaviour
         Debug.Log("Changement de scène vers " + sceneName);
         SceneManager.LoadScene(sceneName);
     }
+
+    public void Leave()
+    {
+        Debug.Log("player left");
+        Application.Quit();
+    }
 }
