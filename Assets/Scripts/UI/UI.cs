@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
-    public Button button;
     /*
     Pour créer des fonts custom :
         1 - Télécharger un fichier .ttf
@@ -16,13 +16,9 @@ public class UI : MonoBehaviour
         6 - Cliquer sur "Save" et enregistrer le fichier dans le dossier Assets\CustomFonts
     */
     
-    void Awake()
+    public void ChangeScene(string sceneName)
     {
-        button.onClick.AddListener(OnClick);
-    }
-    
-    public void OnClick()
-    {
-        print("Start");
+        Debug.Log("Changement de scène vers " + sceneName);
+        SceneManager.LoadScene(sceneName);
     }
 }
