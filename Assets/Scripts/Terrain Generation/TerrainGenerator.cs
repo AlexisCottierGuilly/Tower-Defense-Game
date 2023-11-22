@@ -66,6 +66,34 @@ public class TerrainGenerator : MonoBehaviour
         );
     }
 
+    public bool CanPlace(Vector2 position)
+    {
+        bool canPlace = true;
+        List<Vector2> villageTiles = GetVillageTiles();
+        List<Vector2> mainVillageTiles = GetMainVillageTiles();
+        if (villageTiles.Contains(position) || mainVillageTiles.Contains(position))
+            canPlace = false;
+        
+        GameObject tile = tiles[(int)position.x][(int)position.y];
+        if (tile.GetComponent<TileBehaviour>().type != TileType.Grass)
+            canPlace = false;
+        
+        return canPlace;
+    }
+
+    public List<Vector2> GetMainVillageTiles()
+    {
+        List<Vector2> tiles = new List<Vector2>();
+        Vector2 position = mainVillage.GetComponent<VillageBehaviour>().position;
+        for (int x=-1; x < 2; x++)
+        {
+            for (int y=-1; y < 2; y++)
+                tiles.Add(position + new Vector2(x, y));
+        }
+        Debug.Log(tiles.Count);
+        return tiles;
+    }
+
     public void GenerateTerrain()
     {
         for (int x=0; x < size.x; x++)
@@ -84,6 +112,9 @@ public class TerrainGenerator : MonoBehaviour
 
                 GameObject new_tile = GameObject.Instantiate(tilePrefab, position, Quaternion.identity);
                 new_tile.name = $"Tile ({x}, {y})";
+                TileBehaviour behaviour = new_tile.GetComponent<TileBehaviour>();
+                behaviour.position = new Vector2(x, y);
+                behaviour.type = TileType.Grass;
                 new_tile.transform.parent = terrainParent.transform;
 
                 if (addFog && (x == 0 || x == size.x - 1 || y == 0 || y == size.y - 1))
@@ -121,6 +152,11 @@ public class TerrainGenerator : MonoBehaviour
                 new_tile.transform.parent = tile.transform.parent;
                 new_tile.transform.localScale = tile.transform.localScale;
                 new_tile.transform.rotation = tile.transform.rotation;
+
+                TileBehaviour behaviour = new_tile.GetComponent<TileBehaviour>();
+                behaviour.position = position;
+                behaviour.type = TileType.Path;
+
                 DestroyImmediate(tile);
                 tiles[(int)position.x][(int)position.y] = new_tile;
             }
@@ -436,6 +472,21 @@ public class TerrainGenerator : MonoBehaviour
         }
     }
 
+    List<Vector2> GetVillageTiles()
+    {
+        List<Vector2> tiles = new List<Vector2>();
+        foreach (GameObject building in villageBuildings)
+        {
+            Vector2 position = building.GetComponent<VillageBehaviour>().position;
+            
+            tiles.Add(position);
+            tiles.Add(position + new Vector2(-1f, 0f));
+            tiles.Add(position + new Vector2(0f, -1f));
+            tiles.Add(position + new Vector2(-1f, -1f));
+        }
+        return tiles;
+    }
+
     void GeneratePaths()
     {
         // the start is already in the paths list (first element is the start)
@@ -451,14 +502,7 @@ public class TerrainGenerator : MonoBehaviour
             Vector2 previous = start;
             Vector2 next = new Vector2();
             List<Vector2> usedTiles = new List<Vector2>();
-            List<Vector2> villages = new List<Vector2>();
-            foreach (GameObject building in villageBuildings)
-            {
-                villages.Add(building.GetComponent<VillageBehaviour>().position);
-                villages.Add(building.GetComponent<VillageBehaviour>().position + new Vector2(-1f, 0f));
-                villages.Add(building.GetComponent<VillageBehaviour>().position + new Vector2(0f, -1f));
-                villages.Add(building.GetComponent<VillageBehaviour>().position + new Vector2(-1f, -1f));
-            }
+            List<Vector2> villages = GetVillageTiles();
 
             usedTiles.Add(start);
             float pathEfficiency = 0.75f; //0.5f;
