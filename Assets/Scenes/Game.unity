@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 56236305}
   - component: {fileID: 56236304}
   m_Layer: 5
-  m_Name: Button
+  m_Name: leave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,7 +215,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: UITesting
+          m_StringArgument: Menu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &56236305
@@ -671,7 +671,7 @@ MonoBehaviour:
   mainCamera: {fileID: 549421227}
   placedObjectPrefab: {fileID: 8235465559784961698, guid: f1f73dab64543c34eabf7d1000252afd, type: 3}
   terrainGenerator: {fileID: 1951690851}
-  canPlace: 0
+  isPlaced: 0
   placedObject: {fileID: 0}
 --- !u!4 &710782629
 Transform:
@@ -977,7 +977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: {x: 32, y: 32}
   scale: 1
-  seed: 612216
+  seed: -1
   tileSize: 1.5
   hillHeight: 1
   hillWidth: 1
