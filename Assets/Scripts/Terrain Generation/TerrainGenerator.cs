@@ -31,6 +31,7 @@ public class TerrainGenerator : MonoBehaviour
     [Header("Parents")]
     public GameObject terrainParent;
     public GameObject villageParent;
+    public GameObject towerParent;
 
     [Header("Others")]
     public Camera mainCamera;
@@ -78,7 +79,32 @@ public class TerrainGenerator : MonoBehaviour
         if (tile.GetComponent<TileBehaviour>().type != TileType.Grass)
             canPlace = false;
         
+        foreach (GameObject tower in towers)
+        {
+            if (tower.GetComponent<TowerBehaviour>().position == position)
+                canPlace = false;
+        }
+        
         return canPlace;
+    }
+
+    public bool PlaceTower(Vector2 position, GameObject tower)
+    {
+        if (CanPlace(position))
+        {
+            GameObject tile = tiles[(int)position.x][(int)position.y];
+            tile.GetComponent<TileBehaviour>().structure = tower;
+            tower.transform.position = new Vector3(
+                position.x * tileSize * 2f,
+                tile.transform.position.y + tower.GetComponent<MeshRenderer>().bounds.size.y,
+                position.y * tileSize * 2f
+            );
+            tower.transform.parent = towerParent.transform;
+            tower.GetComponent<TowerBehaviour>().position = position;
+            towers.Add(tower);
+            return true;
+        }
+        return false;
     }
 
     public List<Vector2> GetMainVillageTiles()
@@ -90,7 +116,6 @@ public class TerrainGenerator : MonoBehaviour
             for (int y=-1; y < 2; y++)
                 tiles.Add(position + new Vector2(x, y));
         }
-        Debug.Log(tiles.Count);
         return tiles;
     }
 
@@ -212,6 +237,7 @@ public class TerrainGenerator : MonoBehaviour
         mainVillage.name = "Main Village";
         mainVillage.transform.parent = villageParent.transform;
         mainVillage.GetComponent<VillageBehaviour>().position = highestPointPosition;
+        highestPointTile.GetComponent<TileBehaviour>().structure = mainVillage;
 
         float cameraHeight = mainVillage.transform.position.y + mainVillage.GetComponent<MeshRenderer>().bounds.size.y + stepHeight * 2f;
         mainCamera.GetComponent<CameraManager>().SetHeight(cameraHeight);
@@ -283,7 +309,7 @@ public class TerrainGenerator : MonoBehaviour
         }
 
         tileHeight = System.Linq.Enumerable.Sum(heights) / heights.Count;
-        tileHeight = RoundTileHeight(tileHeight);
+        tileHeight = RoundTileHeight(tileHeight / 2f) * 2f;
 
         foreach (GameObject flattenedTile in flattenedTiles)
         {
@@ -422,6 +448,7 @@ public class TerrainGenerator : MonoBehaviour
         The paths start on the sides of the map, at the lowest spots.
         Store the start paths in the paths list (first element is the start)
         */
+        paths = new List<List<Vector2>>();
         int numberOfPaths = 4;
 
         for (int i=0; i < numberOfPaths; i++)

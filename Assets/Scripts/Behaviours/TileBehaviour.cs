@@ -13,6 +13,7 @@ public enum TileType
 public class TileBehaviour : MonoBehaviour
 {
     public GameObject placement;
+    public GameObject structure;
     public TileType type;
     public Vector2 position;
     public bool selected = false;

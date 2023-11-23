@@ -11,6 +11,7 @@ public class DetectSelection : MonoBehaviour
 
     [HideInInspector] public bool canPlace = false;
     [HideInInspector] public GameObject placedObject;
+    [HideInInspector] public Vector2 position = Vector2.zero;
     private Vector3 currentRotation = Vector3.zero;
 
     void SetStructure(GameObject structurePrefab)
@@ -27,6 +28,7 @@ public class DetectSelection : MonoBehaviour
         placedObjectPrefab = null;
         currentRotation = Vector3.zero;
         canPlace = false;
+        position = Vector2.zero;
     }
     
     void Start()
@@ -42,12 +44,16 @@ public class DetectSelection : MonoBehaviour
     void Update()
     {
         if (placedObjectPrefab != null)
-            UpdatePlacementPosition();
-        
             if (Input.GetMouseButtonDown(0) && canPlace)
             {
-                GameObject newObject = Instantiate(placedObjectPrefab, placedObject.transform.position, Quaternion.identity);
+                GameObject newObject = Instantiate(
+                    placedObjectPrefab,
+                    placedObject.transform.position,
+                    Quaternion.identity
+                );
                 newObject.transform.eulerAngles = currentRotation;
+                if (!terrainGenerator.PlaceTower(position, newObject))
+                    Destroy(newObject);
 
                 currentRotation = Vector3.zero;
                 placedObject.transform.eulerAngles = currentRotation;
@@ -58,6 +64,8 @@ public class DetectSelection : MonoBehaviour
                 currentRotation.y += 90;
                 placedObject.transform.eulerAngles = currentRotation;
             }
+
+            UpdatePlacementPosition();
     }
 
     void UpdatePlacementPosition()
@@ -75,22 +83,22 @@ public class DetectSelection : MonoBehaviour
 
         if (selectedTile != null)
         {
-            Vector3 position = selectedTile.transform.position;
-            Vector2 gridPosition = selectedTile.GetComponent<TileBehaviour>().position;
-            canPlace = terrainGenerator.CanPlace(gridPosition);
-            Color color = Color.green;
+            Vector3 worldPos = selectedTile.transform.position;
+            position = selectedTile.GetComponent<TileBehaviour>().position;
 
-            if (!canPlace)
-                color = Color.red;
-            
-            placedObject.GetComponent<Renderer>().material.SetColor("_Color", color);
-            foreach (Renderer child in placedObject.GetComponentsInChildren<Renderer>())
-                child.material.SetColor("_Color", color);
-
-            position.y += 1;
-            placedObject.transform.position = position;
+            worldPos.y += 1;
+            placedObject.transform.position = worldPos;
         }
 
+        canPlace = terrainGenerator.CanPlace(position);
+        Color color = Color.green;
+
+        if (!canPlace)
+            color = Color.red;
+        
+        placedObject.GetComponent<Renderer>().material.SetColor("_Color", color);
+        foreach (Renderer child in placedObject.GetComponentsInChildren<Renderer>())
+            child.material.SetColor("_Color", color);
         placedObject.transform.eulerAngles = currentRotation;
     }
 }
