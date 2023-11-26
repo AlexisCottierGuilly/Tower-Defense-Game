@@ -61,10 +61,10 @@ public class TerrainGenerator : MonoBehaviour
     public Rect GetBounds()
     {
         return new Rect(
-            0,
-            0,
-            Mathf.Max(size.x - 3, 0) * tileSize * 2,
-            Mathf.Max(size.y - 3, 0) * tileSize * 2
+            2 * tileSize * 2,
+            2 * tileSize * 2,
+            Mathf.Max(size.x - 3, 2) * tileSize * 2,
+            Mathf.Max(size.y - 3, 2) * tileSize * 2
         );
     }
 

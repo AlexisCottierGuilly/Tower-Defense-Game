@@ -25,6 +25,7 @@ public class UI : MonoBehaviour
     public void Leave()
     {
         Debug.Log("player left");
+        UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
 }
