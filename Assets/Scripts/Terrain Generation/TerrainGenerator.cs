@@ -13,6 +13,12 @@ public class MonsterPrefab
 
 public class TerrainGenerator : MonoBehaviour
 {
+    [Header("Game Settings")]
+    public int wave = 0;
+    public int gold = 0;
+    public List<WaveData> waves = new List<WaveData>();
+    public bool waveFinished = false;
+    
     [Header("Terrain Settings")]
     public Vector2 size = new Vector2(32, 32);
     public float scale = 1f;

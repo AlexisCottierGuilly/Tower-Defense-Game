@@ -1007,6 +1007,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7382547e0245a5340abd139e3a83adb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wave: 0
+  gold: 0
+  waves:
+  - {fileID: 11400000, guid: 7f9116e445769f14db028f20dbf7c74e, type: 2}
+  waveFinished: 0
   size: {x: 32, y: 32}
   scale: 1
   seed: 383283
