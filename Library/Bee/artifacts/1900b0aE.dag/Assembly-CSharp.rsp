@@ -356,6 +356,7 @@
 "Assets/Scripts/ScriptableObjects/StructureData.cs"
 "Assets/Scripts/ScriptableObjects/TowerData.cs"
 "Assets/Scripts/ScriptableObjects/VillageData.cs"
+"Assets/Scripts/ScriptableObjects/WaveData.cs"
 "Assets/Scripts/Terrain Generation/TerrainGenerator.cs"
 "Assets/Scripts/UI/UI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"

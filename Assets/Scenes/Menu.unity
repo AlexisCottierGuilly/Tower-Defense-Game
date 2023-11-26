@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSeed: 0
-  mapSize: {x: 0, y: 0}
+  mapSize: {x: 32, y: 32}
   gameState: 0
 --- !u!4 &268031490
 Transform:
@@ -913,7 +913,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Les guardiens\n                d'Eldoria"
+  m_text: "Les gardiens\n                d'Eldoria"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3fa422120955bf24bbc6e924f14e2e57, type: 2}
   m_sharedMaterial: {fileID: 6591264303070437294, guid: 3fa422120955bf24bbc6e924f14e2e57, type: 2}

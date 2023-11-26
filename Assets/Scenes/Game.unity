@@ -1027,6 +1027,11 @@ MonoBehaviour:
   - {fileID: 8235465559784961698, guid: f1f73dab64543c34eabf7d1000252afd, type: 3}
   - {fileID: 2952150505218308268, guid: e789858200b51b242a2135212af0b9f8, type: 3}
   - {fileID: 5767136952099664468, guid: 961c03fbbaa2df8489e66e94a272ef41, type: 3}
+  monsterPrefabs:
+  - monster: 0
+    prefab: {fileID: 2174301231130444358, guid: d935aa6ab836d5b42aaf93d33436982e, type: 3}
+  - monster: 1
+    prefab: {fileID: 4451012924925943445, guid: b1191def6a644d74a8c7a935380aeed7, type: 3}
   terrainParent: {fileID: 904238664}
   villageParent: {fileID: 1777719527}
   towerParent: {fileID: 1268763543}

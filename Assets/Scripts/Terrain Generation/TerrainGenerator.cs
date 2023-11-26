@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[System.Serializable]
+public class MonsterPrefab
+{
+    public Monster monster;
+    public GameObject prefab;
+}
+
+
 public class TerrainGenerator : MonoBehaviour
 {
     [Header("Terrain Settings")]
@@ -28,6 +36,7 @@ public class TerrainGenerator : MonoBehaviour
     public GameObject mainVillagePrefab;
     public List<GameObject> villagePrefabs = new List<GameObject>();
     public List<GameObject> towerPrefabs = new List<GameObject>();
+    public List<MonsterPrefab> monsterPrefabs = new List<MonsterPrefab>();
 
     [Header("Parents")]
     public GameObject terrainParent;
