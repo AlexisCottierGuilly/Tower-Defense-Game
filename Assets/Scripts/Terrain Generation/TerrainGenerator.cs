@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TerrainGenerator : MonoBehaviour
 {
     [Header("Terrain Settings")]
-    public Vector2 size = new Vector2(64, 64);
+    public Vector2 size = new Vector2(32, 32);
     public float scale = 1f;
     public long seed = -1;
     public float tileSize = 1f;
@@ -41,7 +42,6 @@ public class TerrainGenerator : MonoBehaviour
     [HideInInspector] public List<GameObject> villageBuildings = new List<GameObject>();
     [HideInInspector] public List<GameObject> towers = new List<GameObject>();
     private System.Random randomWithSeed;
-
     
     // Start is called before the first frame update
     void Start()
@@ -50,11 +50,12 @@ public class TerrainGenerator : MonoBehaviour
         {
             seed = Random.Range(0, 1000000);
         }
+        seed = GameManager.instance.gameSeed;
+        size = GameManager.instance.mapSize;
+
         randomWithSeed = new System.Random((int)seed);
         GenerateMountains();
         GenerateTerrain();
-
-        // TODO: Generate paths
     }
 
     public Rect GetBounds()
@@ -121,6 +122,7 @@ public class TerrainGenerator : MonoBehaviour
 
     public void GenerateTerrain()
     {
+        Debug.Log("Map size is " + size.x + "x" + size.y + " tiles.");
         for (int x=0; x < size.x; x++)
         {
             tiles.Add(new List<GameObject>());

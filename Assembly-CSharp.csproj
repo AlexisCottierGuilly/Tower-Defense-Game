@@ -79,6 +79,7 @@
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
      <Compile Include="Assets\Scripts\Behaviours\Village\VillageBehaviour.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
+     <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\Scripts\Behaviours\AccessStructureBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviours\Monsters\MonsterBehaviour.cs" />
      <Compile Include="Assets\Scripts\Behaviours\Projectiles\ProjectileBehaviour.cs" />
