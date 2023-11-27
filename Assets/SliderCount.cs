@@ -21,9 +21,9 @@ public class SliderCount : MonoBehaviour
     {
         textMeshPro = gameObject.GetComponent<TextMeshProUGUI>();
         if (sliderType is SliderType.UI)
-            slider.value = GameManager.instance.UISize;
+            slider.value = GameManager.instance.UISize * 100f;
         else
-            slider.value = GameManager.instance.TowerSize;
+            slider.value = GameManager.instance.TowerSize * 100f;
     }
 
     // Update is called once per frame
@@ -38,8 +38,8 @@ public class SliderCount : MonoBehaviour
         textMeshPro.text = $"{slider.value.ToString()}%";
 
         if (sliderType is SliderType.UI)
-            GameManager.instance.UISize = (int)slider.value;
+            GameManager.instance.UISize = slider.value / 100f;
         else
-            GameManager.instance.TowerSize = (int)slider.value;
+            GameManager.instance.TowerSize = slider.value / 100f;
     }
 }
