@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public int gameSeed;
     public Vector2 mapSize;
     public GameState gameState = GameState.Menu;
+    public int UISize = 100;
+    public int TowerSize = 100;
     
     void Awake()
     {
@@ -21,8 +23,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-       gameSeed = 0;
-       mapSize = new Vector2(32, 32);
+       
     }
 
     public void SwitchScene(string sceneName)
