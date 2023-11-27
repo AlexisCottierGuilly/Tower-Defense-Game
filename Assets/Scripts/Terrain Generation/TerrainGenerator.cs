@@ -109,10 +109,11 @@ public class TerrainGenerator : MonoBehaviour
         if (CanPlace(position))
         {
             GameObject tile = tiles[(int)position.x][(int)position.y];
+            GameObject placement = tile.GetComponent<TileBehaviour>().placement;
             tile.GetComponent<TileBehaviour>().structure = tower;
             tower.transform.position = new Vector3(
                 position.x * tileSize * 2f,
-                tile.transform.position.y + tower.GetComponent<MeshRenderer>().bounds.size.y,
+                placement.transform.position.y + tower.transform.localScale.y / 2f,
                 position.y * tileSize * 2f
             );
             tower.transform.parent = towerParent.transform;
@@ -137,7 +138,6 @@ public class TerrainGenerator : MonoBehaviour
 
     public void GenerateTerrain()
     {
-        Debug.Log("Map size is " + size.x + "x" + size.y + " tiles.");
         for (int x=0; x < size.x; x++)
         {
             tiles.Add(new List<GameObject>());
@@ -245,6 +245,7 @@ public class TerrainGenerator : MonoBehaviour
             new Vector3(0f, 0f, 0f),
             Quaternion.identity
         );
+        mainVillage.transform.localScale *= GameManager.instance.towerSize;
         mainVillage.transform.position = new Vector3(
             position.x,
             position.y + mainVillage.transform.localScale.y / 2f,
@@ -256,7 +257,8 @@ public class TerrainGenerator : MonoBehaviour
         mainVillage.GetComponent<VillageBehaviour>().position = highestPointPosition;
         highestPointTile.GetComponent<TileBehaviour>().structure = mainVillage;
 
-        float cameraHeight = mainVillage.transform.position.y + mainVillage.GetComponent<MeshRenderer>().bounds.size.y + stepHeight * 2f;
+        float cameraHeight = (mainVillage.transform.position.y + mainVillage.GetComponent<MeshRenderer>().bounds.size.y
+            / GameManager.instance.towerSize + stepHeight * 2f);
         mainCamera.GetComponent<CameraManager>().SetHeight(cameraHeight);
 
         // place 4 towers around the main village, randomly
@@ -289,13 +291,16 @@ public class TerrainGenerator : MonoBehaviour
             GameObject villageStructure = GameObject.Instantiate(
                 villageStructurePrefab,
                 new Vector3(0f, 0f, 0f),
-                Quaternion.identity);
+                Quaternion.identity
+            );
+            
+            villageStructure.transform.localScale *= GameManager.instance.towerSize;
             villageStructure.transform.position = new Vector3(
                 position.x - tile.GetComponent<MeshRenderer>().bounds.size.x / 2f,
                 position.y + villageStructure.transform.localScale.y / 2f,
                 position.z - tile.GetComponent<MeshRenderer>().bounds.size.z / 2f
             );
-            
+
             villageStructure.name = $"Village Structure {i}";
             villageStructure.transform.parent = villageParent.transform;
             villageStructure.GetComponent<VillageBehaviour>().position = randomPosition;

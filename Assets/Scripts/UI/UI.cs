@@ -18,7 +18,7 @@ public class UI : MonoBehaviour
     
     public void ChangeScene(string sceneName)
     {
-        Debug.Log("Changement de scène vers " + sceneName);
+        // Debug.Log("Changement de scène vers " + sceneName);
         GameManager.instance.SwitchScene(sceneName);
     }
 

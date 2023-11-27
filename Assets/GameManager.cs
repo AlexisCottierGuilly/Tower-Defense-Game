@@ -8,9 +8,10 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     public int gameSeed;
     public Vector2 mapSize;
+    public MapDifficultyTypes mapDifficulty = MapDifficultyTypes.Moyen;
     public GameState gameState = GameState.Menu;
     public float UISize = 1;
-    public float TowerSize = 1;
+    public float towerSize = 1;
     
     void Awake()
     {
