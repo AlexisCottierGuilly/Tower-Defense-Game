@@ -3,6 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum GameState
+{
+    Menu,
+    CreateGame,
+    Game,
+    Settings,
+    Credits,
+    PreviousScene
+}
+
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
@@ -10,6 +21,7 @@ public class GameManager : MonoBehaviour
     public Vector2 mapSize;
     public MapDifficultyTypes mapDifficulty = MapDifficultyTypes.Moyen;
     public GameState gameState = GameState.Menu;
+    public GameState previousScene;
     public float UISize = 1;
     public float towerSize = 1;
     
@@ -24,39 +36,23 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-       
+        previousScene = gameState;
     }
 
-    public void SwitchScene(string sceneName)
+    public void SwitchScene(GameState sceneName)
     {
-        SceneManager.LoadScene(sceneName);
-        switch (sceneName)
+        if (sceneName != GameState.PreviousScene)
         {
-            case "Menu":
-                gameState = GameState.Menu;
-                break;
-            case "CreateGame":
-                gameState = GameState.CreateGame;
-                break;
-            case "Game":
-                gameState = GameState.Game;
-                break;
-            case "Settings":
-                gameState = GameState.Settings;
-                break;
-            case "Credits":
-                gameState = GameState.Credits;
-                break;
+            previousScene = gameState;
+            gameState = sceneName;
         }
+        else
+        {
+            GameState temp = gameState;
+            gameState = previousScene;
+            previousScene = temp;
+        }
+
+        SceneManager.LoadScene(gameState.ToString());
     }
-}
-
-
-public enum GameState
-{
-    Menu,
-    CreateGame,
-    Game,
-    Settings,
-    Credits
 }

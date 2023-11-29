@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
-    string previous = "Menu";
     /*
     Pour créer des fonts custom :
         1 - Télécharger un fichier .ttf
@@ -19,17 +18,8 @@ public class UI : MonoBehaviour
     
     public void ChangeScene(string sceneName)
     {
-        // Debug.Log("Changement de scène vers " + sceneName);
-        if (sceneName == "previous")
-        {
-            GameManager.instance.SwitchScene(previous);
-            previous = SceneManager.GetActiveScene().name;
-        }
-        else
-        {
-            previous = SceneManager.GetActiveScene().name;
-            GameManager.instance.SwitchScene(sceneName);
-        }
+        GameState scene = (GameState)System.Enum.Parse(typeof(GameState), sceneName);
+        GameManager.instance.SwitchScene(scene);
     }
 
     public void Leave()

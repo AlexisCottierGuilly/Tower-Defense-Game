@@ -395,9 +395,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameSeed: 0
   mapSize: {x: 32, y: 32}
+  mapDifficulty: 1
   gameState: 0
+  previousScene: 0
   UISize: 1
-  TowerSize: 1
+  towerSize: 1
 --- !u!4 &268031490
 Transform:
   m_ObjectHideFlags: 0
