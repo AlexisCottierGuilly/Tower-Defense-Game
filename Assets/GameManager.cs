@@ -39,8 +39,14 @@ public class GameManager : MonoBehaviour
         previousScene = gameState;
     }
 
-    public void SwitchScene(GameState sceneName)
+    public void SwitchScene(GameState sceneName, bool additive = false, bool unloadCurrent = false)
     {
+        if (unloadCurrent)
+        {
+            SceneManager.UnloadSceneAsync(gameState.ToString());
+            EnableEventSystem(previousScene.ToString());
+        }
+        
         if (sceneName != GameState.PreviousScene)
         {
             previousScene = gameState;
@@ -53,6 +59,29 @@ public class GameManager : MonoBehaviour
             previousScene = temp;
         }
 
-        SceneManager.LoadScene(gameState.ToString());
+        if (!unloadCurrent)
+        {
+            if (additive)
+            {
+                GameObject.Find("EventSystem").SetActive(false);
+                Debug.Log("EventSystem deactivated");
+            }
+            
+            SceneManager.LoadScene(gameState.ToString(), additive ? LoadSceneMode.Additive : LoadSceneMode.Single);
+        }
+    }
+
+    void EnableEventSystem(string sceneName)
+    {
+        Scene s = SceneManager.GetSceneByName(sceneName);
+        GameObject[] rootObjs = s.GetRootGameObjects();
+        foreach (GameObject g in rootObjs)
+        {
+            if (g.name == "EventSystem")
+            {
+                g.SetActive(true);
+                break;
+            }
+        }
     }
 }

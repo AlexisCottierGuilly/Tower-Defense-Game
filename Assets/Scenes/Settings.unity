@@ -259,7 +259,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 115459585}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &115459587
 Camera:
   m_ObjectHideFlags: 0
@@ -950,7 +950,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: PreviousScene
+          m_StringArgument: PreviousScene/additive/unload
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &721762793

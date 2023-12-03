@@ -44,6 +44,9 @@ public class DetectSelection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.instance.gameState != GameState.Game)
+            return;
+        
         if (placedObjectPrefab != null)
             if (Input.GetMouseButtonDown(0) && canPlace)
             {
