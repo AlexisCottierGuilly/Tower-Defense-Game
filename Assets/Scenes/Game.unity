@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -610,7 +610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 200
   turnSpeed: 8
-  terrainGenerator: {fileID: 1951690851}
+  gameGenerator: {fileID: 1951690851}
   rb: {fileID: 549421230}
 --- !u!54 &549421230
 Rigidbody:
@@ -670,7 +670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 549421227}
   placedObjectPrefab: {fileID: 8235465559784961698, guid: f1f73dab64543c34eabf7d1000252afd, type: 3}
-  terrainGenerator: {fileID: 1951690851}
+  gameGenerator: {fileID: 1951690851}
   canPlace: 0
   placedObject: {fileID: 0}
   position: {x: 0, y: 0}
@@ -1291,6 +1291,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1463265243}
   m_CullTransparentMesh: 1
+--- !u!1 &1612934499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1612934500}
+  m_Layer: 0
+  m_Name: NavMeshSurfaces
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1612934500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612934499}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -135.76193, y: -331.957, z: -253.09349}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1777719527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,6 +1353,198 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1782145873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1782145874}
+  - component: {fileID: 1782145875}
+  m_Layer: 0
+  m_Name: TerrainGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1782145874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782145873}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1857188824}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1782145875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782145873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be6a81401f85eea48bd07b4e65be7a1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameGenerator: {fileID: 1951690851}
+  size: {x: 32, y: 32}
+  scale: 1
+  tileSize: 1.5
+  hillHeight: 1
+  hillWidth: 1
+  hillSmoothness: 1
+  mountains: []
+  stepHeight: 1
+  addFog: 0
+  grassTilePrefab: {fileID: 5861721181273509266, guid: 288fcd3847bd9e440859b9f4ef16a098, type: 3}
+  fogPrefab: {fileID: 7120711633847923219, guid: 5b895d94bcf33384fb32a9c38b347181, type: 3}
+  terrainParent: {fileID: 904238664}
+--- !u!1 &1857188823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1857188824}
+  m_Layer: 0
+  m_Name: Generators
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1857188824
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857188823}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -135.76193, y: -331.957, z: -253.09349}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1782145874}
+  - {fileID: 1926732113}
+  - {fileID: 1894735704}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1894735703
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1894735704}
+  - component: {fileID: 1894735705}
+  m_Layer: 0
+  m_Name: VillageGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1894735704
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894735703}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1857188824}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1894735705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894735703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 582cfa7777c405a48b15648d001493ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameGenerator: {fileID: 1951690851}
+  mainVillagePrefab: {fileID: 1318826244757169631, guid: 81591eb5b4afac743aa13c8ecc3d7ec0, type: 3}
+  villagePrefabs:
+  - {fileID: 2107958595256771966, guid: 6b74584349e063049a67ba323ae53f42, type: 3}
+  towerPrefabs:
+  - {fileID: 8235465559784961698, guid: f1f73dab64543c34eabf7d1000252afd, type: 3}
+  - {fileID: 2952150505218308268, guid: e789858200b51b242a2135212af0b9f8, type: 3}
+  - {fileID: 5767136952099664468, guid: 961c03fbbaa2df8489e66e94a272ef41, type: 3}
+  villageParent: {fileID: 1777719527}
+  mainVillage: {fileID: 0}
+  villageBuildings: []
+--- !u!1 &1926732111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1926732113}
+  - component: {fileID: 1926732112}
+  m_Layer: 0
+  m_Name: PathGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1926732112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926732111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d90d2ff9118c2544a3e069df7d3e0c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameGenerator: {fileID: 1951690851}
+  pathTilePrefab: {fileID: 5861721181273509266, guid: 4feddbd6b1b00c442a2d0b1f5c0e747d, type: 3}
+--- !u!4 &1926732113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926732111}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1857188824}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1951690850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,7 +1556,7 @@ GameObject:
   - component: {fileID: 1951690852}
   - component: {fileID: 1951690851}
   m_Layer: 0
-  m_Name: Generator
+  m_Name: GameGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1351,42 +1574,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7382547e0245a5340abd139e3a83adb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terrainGenerator: {fileID: 1782145875}
+  pathGenerator: {fileID: 1926732112}
+  villageGenerator: {fileID: 1894735705}
   wave: 0
   gold: 0
   waves:
   - {fileID: 11400000, guid: 7f9116e445769f14db028f20dbf7c74e, type: 2}
   waveFinished: 0
-  size: {x: 32, y: 32}
-  scale: 1
   seed: 383283
-  tileSize: 1.5
-  hillHeight: 1
-  hillWidth: 1
-  hillSmoothness: 1
-  mountains: []
-  stepHeight: 1
-  addFog: 0
-  grassTilePrefab: {fileID: 5861721181273509266, guid: 288fcd3847bd9e440859b9f4ef16a098, type: 3}
-  pathTilePrefab: {fileID: 5861721181273509266, guid: 4feddbd6b1b00c442a2d0b1f5c0e747d, type: 3}
-  fogPrefab: {fileID: 7120711633847923219, guid: 5b895d94bcf33384fb32a9c38b347181, type: 3}
-  mainVillagePrefab: {fileID: 1318826244757169631, guid: 81591eb5b4afac743aa13c8ecc3d7ec0, type: 3}
-  villagePrefabs:
-  - {fileID: 2107958595256771966, guid: 6b74584349e063049a67ba323ae53f42, type: 3}
-  towerPrefabs:
-  - {fileID: 8235465559784961698, guid: f1f73dab64543c34eabf7d1000252afd, type: 3}
-  - {fileID: 2952150505218308268, guid: e789858200b51b242a2135212af0b9f8, type: 3}
-  - {fileID: 5767136952099664468, guid: 961c03fbbaa2df8489e66e94a272ef41, type: 3}
   monsterPrefabs:
   - monster: 0
     prefab: {fileID: 2174301231130444358, guid: d935aa6ab836d5b42aaf93d33436982e, type: 3}
   - monster: 1
     prefab: {fileID: 4451012924925943445, guid: b1191def6a644d74a8c7a935380aeed7, type: 3}
-  terrainParent: {fileID: 904238664}
-  villageParent: {fileID: 1777719527}
   towerParent: {fileID: 1268763543}
   mainCamera: {fileID: 549421227}
-  mainVillage: {fileID: 0}
-  villageBuildings: []
   towers: []
 --- !u!4 &1951690852
 Transform:
@@ -1396,7 +1599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951690850}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1410,6 +1613,7 @@ SceneRoots:
   - {fileID: 549421228}
   - {fileID: 746308247}
   - {fileID: 1951690852}
+  - {fileID: 1857188824}
   - {fileID: 904238665}
   - {fileID: 1777719528}
   - {fileID: 1268763544}
@@ -1417,3 +1621,4 @@ SceneRoots:
   - {fileID: 949451721}
   - {fileID: 92116817}
   - {fileID: 95165628}
+  - {fileID: 1612934500}

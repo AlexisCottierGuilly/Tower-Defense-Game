@@ -7,7 +7,7 @@ public class DetectSelection : MonoBehaviour
 {
     public Camera mainCamera;
     public GameObject placedObjectPrefab;
-    public TerrainGenerator terrainGenerator;
+    public GameGenerator gameGenerator;
 
     [HideInInspector] public bool canPlace = false;
     [HideInInspector] public GameObject placedObject;
@@ -57,7 +57,7 @@ public class DetectSelection : MonoBehaviour
                 );
                 newObject.transform.localScale *= GameManager.instance.towerSize;
                 newObject.transform.eulerAngles = currentRotation;
-                if (!terrainGenerator.PlaceTower(position, newObject))
+                if (!gameGenerator.PlaceTower(position, newObject))
                     Destroy(newObject);
 
                 currentRotation = Vector3.zero;
@@ -94,7 +94,7 @@ public class DetectSelection : MonoBehaviour
             placedObject.transform.position = worldPos;
         }
 
-        canPlace = terrainGenerator.CanPlace(position);
+        canPlace = gameGenerator.CanPlace(position);
         Color color = Color.green;
 
         if (!canPlace)

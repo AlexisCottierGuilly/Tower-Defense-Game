@@ -342,6 +342,7 @@
 -analyzer:"C:/Program Files/Unity_2022_LTS/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity_2022_LTS/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/GameManager.cs"
+"Assets/PathGenerator.cs"
 "Assets/Scripts/Behaviours/AccessStructureBehaviour.cs"
 "Assets/Scripts/Behaviours/Monsters/MonsterBehaviour.cs"
 "Assets/Scripts/Behaviours/Projectiles/ProjectileBehaviour.cs"
@@ -355,13 +356,14 @@
 "Assets/Scripts/ScriptableObjects/TowerData.cs"
 "Assets/Scripts/ScriptableObjects/VillageData.cs"
 "Assets/Scripts/ScriptableObjects/WaveData.cs"
-"Assets/Scripts/Terrain Generation/TerrainGenerator.cs"
+"Assets/Scripts/Terrain Generation/GameGenerator.cs"
 "Assets/Scripts/UI/CameraManager.cs"
 "Assets/Scripts/UI/DetectSelection.cs"
 "Assets/Scripts/UI/MapDifficultyHandler.cs"
 "Assets/Scripts/UI/MapSizeHandler.cs"
 "Assets/Scripts/UI/SliderCount.cs"
 "Assets/Scripts/UI/UI.cs"
+"Assets/TerrainGenerator.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"
@@ -396,6 +398,7 @@
 "Assets/TextMesh Pro/Examples & Extras/Scripts/VertexShakeB.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/VertexZoom.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
+"Assets/VillageGenerator.cs"
 -langversion:9.0
 
 /deterministic

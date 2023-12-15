@@ -6,7 +6,7 @@ public class CameraManager : MonoBehaviour
 {
     public float moveSpeed = 200f;
     public float turnSpeed = 8f;
-    public TerrainGenerator terrainGenerator;
+    public GameGenerator gameGenerator;
     public Rigidbody rb;
 
     private float initialHeight;
@@ -66,7 +66,7 @@ public class CameraManager : MonoBehaviour
         );
 
         // check if camera is in bounds
-        Rect bounds = terrainGenerator.GetBounds();
+        Rect bounds = gameGenerator.GetBounds();
         if (transform.position.x < bounds.xMin)
             transform.position = new Vector3(bounds.xMin, transform.position.y, transform.position.z);
         if (transform.position.x > bounds.xMax)
