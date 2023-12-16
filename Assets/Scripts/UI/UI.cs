@@ -21,14 +21,14 @@ public class UI : MonoBehaviour
         string[] sceneNameSplit = sceneName.Split('/');
         sceneName = sceneNameSplit[0];
         bool additive = false;
-        bool unloadCurrent = false;
+        bool unload = false;
         if (sceneNameSplit.Length > 1 && sceneNameSplit[1] == "additive")
             additive = true;
         if (sceneNameSplit.Length > 2 && sceneNameSplit[2] == "unload")
-            unloadCurrent = true;
+            unload = true;
         
         GameState scene = (GameState)System.Enum.Parse(typeof(GameState), sceneName);
-        GameManager.instance.SwitchScene(scene, additive, unloadCurrent=unloadCurrent);
+        GameManager.instance.SwitchScene(scene, additive, unload);
     }
 
     public void Leave()

@@ -24,6 +24,9 @@ public class GameGenerator : MonoBehaviour
     public TerrainGenerator terrainGenerator;
     public PathGenerator pathGenerator;
     public VillageGenerator villageGenerator;
+
+    [Header("Managers")]
+    public WaveManager waveManager;
     
     [Header("Game Settings")]
     public int gold = 0;
@@ -31,6 +34,7 @@ public class GameGenerator : MonoBehaviour
     [Header("Generation Settings")]
     public long seed = -1;
 
+    [Header("Prefabs")]
     public List<MonsterPrefab> monsterPrefabs = new List<MonsterPrefab>();
 
     [Header("Parents")]
@@ -57,6 +61,7 @@ public class GameGenerator : MonoBehaviour
         terrainGenerator.Generate();
         villageGenerator.GenerateVillage();
         pathGenerator.Generate();
+        waveManager.InitializeSurfaces();
     }
 
     public Rect GetBounds()
@@ -120,6 +125,16 @@ public class GameGenerator : MonoBehaviour
                 tiles.Add(position + new Vector2(x, y));
         }
         return tiles;
+    }
+
+    public GameObject GetMonsterPrefab(Monster type)
+    {
+        foreach (MonsterPrefab monsterPrefab in monsterPrefabs)
+        {
+            if (monsterPrefab.monster == type)
+                return monsterPrefab.prefab;
+        }
+        return null;
     }
 
     public void FlattenAround(Vector2 position, int radius=1, bool centered=true)
