@@ -2,12 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Monster
-{
-    Goblin,
-    Troll
-}
-
 [CreateAssetMenu(fileName = "WaveData", menuName = "Waves/WaveData")]
 public class WaveData : ScriptableObject
 {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -651,7 +651,7 @@ GameObject:
   - component: {fileID: 710782628}
   - component: {fileID: 710782630}
   m_Layer: 0
-  m_Name: SelectionDetection
+  m_Name: SelectionManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -669,9 +669,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3f5976fc82d8f4fb737952d5802453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameGenerator: {fileID: 1951690851}
+  towerPrefabs: []
   mainCamera: {fileID: 549421227}
   placedObjectPrefab: {fileID: 8235465559784961698, guid: f1f73dab64543c34eabf7d1000252afd, type: 3}
-  gameGenerator: {fileID: 1951690851}
   canPlace: 0
   placedObject: {fileID: 0}
   position: {x: 0, y: 0}
@@ -1095,6 +1096,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1348605623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1348605625}
+  - component: {fileID: 1348605624}
+  m_Layer: 0
+  m_Name: WaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1348605624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348605623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b8a827fc62a47408554b6c5a67ad6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameGenerator: {fileID: 1951690851}
+  wave: 0
+  waves:
+  - {fileID: 11400000, guid: 7f9116e445769f14db028f20dbf7c74e, type: 2}
+  waveFinished: 0
+--- !u!4 &1348605625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1348605623}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1463265243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,10 +1492,6 @@ MonoBehaviour:
   mainVillagePrefab: {fileID: 1318826244757169631, guid: 81591eb5b4afac743aa13c8ecc3d7ec0, type: 3}
   villagePrefabs:
   - {fileID: 2107958595256771966, guid: 6b74584349e063049a67ba323ae53f42, type: 3}
-  towerPrefabs:
-  - {fileID: 8235465559784961698, guid: f1f73dab64543c34eabf7d1000252afd, type: 3}
-  - {fileID: 2952150505218308268, guid: e789858200b51b242a2135212af0b9f8, type: 3}
-  - {fileID: 5767136952099664468, guid: 961c03fbbaa2df8489e66e94a272ef41, type: 3}
   villageParent: {fileID: 1777719527}
   mainVillage: {fileID: 0}
   villageBuildings: []
@@ -1527,11 +1573,7 @@ MonoBehaviour:
   terrainGenerator: {fileID: 1782145875}
   pathGenerator: {fileID: 1926732112}
   villageGenerator: {fileID: 1894735705}
-  wave: 0
   gold: 0
-  waves:
-  - {fileID: 11400000, guid: 7f9116e445769f14db028f20dbf7c74e, type: 2}
-  waveFinished: 0
   seed: 383283
   monsterPrefabs:
   - monster: 0
@@ -1564,10 +1606,11 @@ SceneRoots:
   - {fileID: 746308247}
   - {fileID: 1951690852}
   - {fileID: 1857188824}
+  - {fileID: 1348605625}
+  - {fileID: 710782629}
   - {fileID: 904238665}
   - {fileID: 1777719528}
   - {fileID: 1268763544}
-  - {fileID: 710782629}
   - {fileID: 949451721}
   - {fileID: 92116817}
   - {fileID: 95165628}

@@ -10,6 +10,13 @@ public class MonsterPrefab
     public GameObject prefab;
 }
 
+[System.Serializable]
+public class TowerPrefab
+{
+    public Tower monster;
+    public GameObject prefab;
+}
+
 
 public class GameGenerator : MonoBehaviour
 {
@@ -19,10 +26,7 @@ public class GameGenerator : MonoBehaviour
     public VillageGenerator villageGenerator;
     
     [Header("Game Settings")]
-    public int wave = 0;
     public int gold = 0;
-    public List<WaveData> waves = new List<WaveData>();
-    public bool waveFinished = false;
     
     [Header("Generation Settings")]
     public long seed = -1;

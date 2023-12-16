@@ -3,11 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum Tower
+{
+    Basic,
+    Zone,
+    Ultimate
+}
+
 public class DetectSelection : MonoBehaviour
 {
+    public GameGenerator gameGenerator;
+    
+    [Header("Prefabs")]
+    public List<TowerPrefab> towerPrefabs = new List<TowerPrefab>();
+
+    [Header("Other")]
     public Camera mainCamera;
     public GameObject placedObjectPrefab;
-    public GameGenerator gameGenerator;
 
     [HideInInspector] public bool canPlace = false;
     [HideInInspector] public GameObject placedObject;

@@ -9,7 +9,6 @@ public class VillageGenerator : MonoBehaviour
     [Header("3D Models")]
     public GameObject mainVillagePrefab;
     public List<GameObject> villagePrefabs = new List<GameObject>();
-    public List<GameObject> towerPrefabs = new List<GameObject>();
 
     [Header("Parents")]
     public GameObject villageParent;
