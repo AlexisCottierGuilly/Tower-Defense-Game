@@ -7,7 +7,7 @@ public class safe : MonoBehaviour
 {
     void Start()
     {
-        if (0.1 >= Time.time)
+        if (0 >= Time.time)
         {
             SceneManager.LoadScene("Menu");
         }
