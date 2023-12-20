@@ -103,9 +103,9 @@ public class GameGenerator : MonoBehaviour
             GameObject placement = tile.GetComponent<TileBehaviour>().placement;
             tile.GetComponent<TileBehaviour>().structure = tower;
             tower.transform.position = new Vector3(
-                position.x * terrainGenerator.tileSize * 2f,
+                placement.transform.position.x,
                 placement.transform.position.y + tower.transform.localScale.y / 2f,
-                position.y * terrainGenerator.tileSize * 2f
+                placement.transform.position.z
             );
             tower.transform.parent = towerParent.transform;
             tower.GetComponent<TowerBehaviour>().position = position;

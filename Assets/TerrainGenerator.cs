@@ -29,16 +29,21 @@ public class TerrainGenerator : MonoBehaviour
     {
         GenerateMountains();
         
+        float x_pos = 0;
+        float y_pos = 0;
+        
         for (int x=0; x < size.x; x++)
         {
             gameGenerator.tiles.Add(new List<GameObject>());
 
             for (int y=0; y < size.y; y++)
             {
+                float offset = (x % 2 == 0 ? Mathf.Sqrt(0.75f) : 0f);
+
                 Vector3 position = new Vector3(
-                    x * tileSize * 2,
+                    (x_pos + offset) * tileSize,
                     RoundTileHeight(GetTileHeight(new Vector2(x, y))) * 2f,
-                    y * tileSize * 2
+                    y_pos * tileSize
                 );
 
                 GameObject tilePrefab = grassTilePrefab;
@@ -61,13 +66,16 @@ public class TerrainGenerator : MonoBehaviour
                 new_tile.transform.localScale = new Vector3(
                     multiplier * tileSize,
                     multiplier * tileSize,
-                    multiplier / 15f
+                    multiplier /// 15f
                 );
 
                 new_tile.transform.Rotate(new Vector3(-90f, 0f, 0f));
 
                 gameGenerator.tiles[x].Add(new_tile);
+                x_pos += Mathf.Sqrt(3f);
             }
+            y_pos += 0.75f * 2f;
+            x_pos = 0;
         }
     }
     
