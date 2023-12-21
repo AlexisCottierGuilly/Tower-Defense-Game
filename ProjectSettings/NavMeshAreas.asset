@@ -14,7 +14,7 @@ NavMeshProjectSettings:
   - name: Path
     cost: 1
   - name: Grass
-    cost: 3
+    cost: 5
   - name: 
     cost: 1
   - name: 
@@ -93,8 +93,8 @@ NavMeshProjectSettings:
     agentTypeID: -1372625422
     agentRadius: 1
     agentHeight: 4
-    agentSlope: 60
-    agentClimb: 2.75
+    agentSlope: 0
+    agentClimb: 4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -111,8 +111,8 @@ NavMeshProjectSettings:
     agentTypeID: -334000983
     agentRadius: 2
     agentHeight: 6
-    agentSlope: 60
-    agentClimb: 2.75
+    agentSlope: 0
+    agentClimb: 4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2

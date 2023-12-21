@@ -213,18 +213,6 @@ public class GameGenerator : MonoBehaviour
         }
         return tiles;
     }
-
-    public float AverageDistanceFromVillage(Vector2 position)
-    {
-        float distance = 0f;
-        foreach (GameObject building in villageGenerator.villageBuildings)
-        {
-            Vector2 buildingPosition = building.GetComponent<VillageBehaviour>().position;
-            distance += Vector2.Distance(position, buildingPosition);
-        }
-
-        return distance / (float)(villageGenerator.villageBuildings.Count);
-    }
     
     public float TileDirectionToVillage(Vector2 initialPosition, Vector2 projectedPosition)
     {

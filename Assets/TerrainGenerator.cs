@@ -123,19 +123,35 @@ public class TerrainGenerator : MonoBehaviour
             (position.x + gameGenerator.seed) / 20f / scale,
             (position.y + gameGenerator.seed) / 20f / scale
         );
-
         float height2 = Mathf.PerlinNoise(
-            (position.x + gameGenerator.seed) / 7f / scale,
-            (position.y + gameGenerator.seed) / 7f / scale
+            (position.x + gameGenerator.seed) / 10f / scale,
+            (position.y + gameGenerator.seed) / 10f / scale
         );
+        float final_height = height1 + height2;
 
         float hills1 = Mathf.PerlinNoise(
-            (position.x + gameGenerator.seed) / 7f / scale,
-            (position.y + gameGenerator.seed) / 7f / scale
+            (position.x + gameGenerator.seed) / 5f / scale,
+            (position.y + gameGenerator.seed) / 5f / scale
         );
         hills1 = Mathf.Max(hills1, 0f);
 
-        float final_height = (height1 + height2) * 5f;
+        float cliffValue = Mathf.PerlinNoise(
+            (position.x + gameGenerator.seed + 1024f) / 12f / scale,
+            (position.y + gameGenerator.seed + 1024f) / 12f / scale
+        );
+
+        if (cliffValue > 0.25f)
+        {
+            float cliffModifier = Mathf.PerlinNoise(
+                (position.x + gameGenerator.seed + 512f) / 8f / scale,
+                (position.y + gameGenerator.seed + 512f) / 8f / scale
+            );
+            cliffModifier /= 0.75f;
+            
+            final_height += cliffModifier;
+        }
+
+        final_height *= 5f;
         final_height = (final_height + Mathf.Sqrt(0.2f * Mathf.Pow(hills1 + 1f, 4f)) * 1.35f) / 2f;
 
         return AddMountains(position, AddCentralHill(position, final_height));

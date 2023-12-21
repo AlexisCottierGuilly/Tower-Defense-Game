@@ -8,6 +8,7 @@ public class PathGenerator : MonoBehaviour
     
     [Header("Settings")]
     public List<List<Vector2>> paths = new List<List<Vector2>>();
+    public float stepHeight = 2f;
 
     [Header("3D Models")]
     public GameObject pathTilePrefab;
@@ -156,6 +157,18 @@ public class PathGenerator : MonoBehaviour
         }
     }
 
+    public float AverageDistanceFromVillage(Vector2 position)
+    {
+        float distance = 0f;
+        foreach (GameObject building in gameGenerator.villageGenerator.villageBuildings)
+        {
+            Vector2 buildingPosition = building.GetComponent<VillageBehaviour>().position;
+            distance += Vector2.Distance(position, buildingPosition);
+        }
+
+        return distance / (float)(gameGenerator.villageGenerator.villageBuildings.Count);
+    }
+
     Vector2 GetNextPathTile(Vector2 current, Vector2 end, List<Vector2> usedTiles,
         float efficiency, List<Vector2> villages, List<Vector2> path)
     {
@@ -168,16 +181,31 @@ public class PathGenerator : MonoBehaviour
         float bestDistance = -1f;
         float bestStep = -1f;
         GameObject currentTile = gameGenerator.tiles[(int)current.x][(int)current.y];
+        float stepHeightValue = gameGenerator.terrainGenerator.stepHeight * stepHeight;
 
         foreach (Vector2 tile in tilesAround)
         {   
             GameObject otherTile = gameGenerator.tiles[(int)tile.x][(int)tile.y];
             float heightDistance = Mathf.Abs(otherTile.transform.position.y - currentTile.transform.position.y);
-            if (heightDistance > gameGenerator.terrainGenerator.stepHeight * 2f || usedTiles.Contains(tile) ||
+            if (heightDistance > stepHeightValue && heightDistance - stepHeightValue
+                <= gameGenerator.terrainGenerator.stepHeight)
+            {
+                float diff = gameGenerator.terrainGenerator.stepHeight;
+                //if (heightDistance - stepHeightValue > gameGenerator.terrainGenerator.stepHeight)
+                //    diff *= 2f;
+                otherTile.transform.position = new Vector3(
+                    otherTile.transform.position.x,
+                    otherTile.transform.position.y - diff,
+                    otherTile.transform.position.z
+                );
+            }
+            heightDistance = Mathf.Abs(otherTile.transform.position.y - currentTile.transform.position.y);
+
+            if (heightDistance > stepHeightValue || usedTiles.Contains(tile) ||
                 villages.Contains(tile))
                 continue;
             
-            float distance = Vector2.Distance(tile, end); // / 1.25f + AverageDistanceFromVillage(tile);
+            float distance = Vector2.Distance(tile, end); /// 1.25f + AverageDistanceFromVillage(tile);
             if (bestDistance == -1f || distance < bestDistance || (distance <= bestDistance &&
                 heightDistance < bestStep && gameGenerator.randomWithSeed.NextDouble() > 0.25f))
             {

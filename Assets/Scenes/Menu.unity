@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e734bf14f1f705148903e1bc5a00fc9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSeed: 0
+  gameSeed: 327
   mapSize: {x: 32, y: 32}
   mapDifficulty: 1
   gameState: 0
