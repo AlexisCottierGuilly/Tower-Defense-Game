@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
     public int gameSeed;
+    public int maxGameSeed = 9_999_999;
     public Vector2 mapSize;
     public MapDifficultyTypes mapDifficulty = MapDifficultyTypes.Moyen;
     public GameState gameState = GameState.Menu;

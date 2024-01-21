@@ -50,11 +50,10 @@ public class GameGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (seed == -1)
-        {
-            seed = Random.Range(0, 1000000);
-        }
         seed = GameManager.instance.gameSeed;
+        if (seed == -1)
+            seed = Random.Range(0, GameManager.instance.maxGameSeed);
+        
         terrainGenerator.size = GameManager.instance.mapSize;
 
         randomWithSeed = new System.Random((int)seed);

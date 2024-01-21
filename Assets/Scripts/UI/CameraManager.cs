@@ -36,7 +36,7 @@ public class CameraManager : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
             force += new Vector3(1, 0, 0);
         
-        rb.AddRelativeForce(force * moveSpeed);
+        rb.AddRelativeForce(force * moveSpeed * Time.deltaTime * 120f);
 
         // if QE or the mouse is moved while the right mouse button is held down, rotate the camera
         Vector3 newRotation = new Vector3(0, 0, 0);
@@ -45,7 +45,7 @@ public class CameraManager : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
             newRotation += new Vector3(0, 1, 0);
         
-        rb.AddTorque(newRotation * turnSpeed);
+        rb.AddTorque(newRotation * turnSpeed * Time.deltaTime * 120f);
         
         if (Input.GetMouseButton(1))
         {

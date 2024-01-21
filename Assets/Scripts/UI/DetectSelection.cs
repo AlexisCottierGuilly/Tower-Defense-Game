@@ -24,7 +24,7 @@ public class DetectSelection : MonoBehaviour
     [HideInInspector] public bool canPlace = false;
     [HideInInspector] public GameObject placedObject;
     [HideInInspector] public Vector2 position = Vector2.zero;
-    private Vector3 currentRotation = Vector3.zero;
+    private Vector3 currentRotation = new Vector3(0, 30, 0);
 
     void SetStructure(GameObject structurePrefab)
     {
@@ -78,7 +78,7 @@ public class DetectSelection : MonoBehaviour
             
             if (Input.GetKeyDown(KeyCode.R))
             {
-                currentRotation.y += 90;
+                currentRotation.y += 60;
                 placedObject.transform.eulerAngles = currentRotation;
             }
 
