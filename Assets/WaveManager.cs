@@ -23,7 +23,7 @@ public class WaveManager : MonoBehaviour
     public bool waveFinished = true;
     
     [HideInInspector] int currentPathIndex = 0;
-    [HideInInspector] List<GameObject> monsters = new List<GameObject>();
+    [HideInInspector] public List<GameObject> monsters = new List<GameObject>();
     
     public void InitializeSurfaces()
     {
@@ -69,6 +69,7 @@ public class WaveManager : MonoBehaviour
         GameObject placement = gameGenerator.tiles[(int)tilePosition.x][(int)tilePosition.y].GetComponent<TileBehaviour>().placement;
         MonsterBehaviour behaviour = monster.GetComponent<MonsterBehaviour>();
         
+        behaviour.gameGenerator = gameGenerator;
         monster.transform.position = new Vector3(
             placement.transform.position.x,
             placement.transform.position.y + monster.transform.localScale.y / 2f,
@@ -85,11 +86,6 @@ public class WaveManager : MonoBehaviour
         if (monsters.Count == 0)
             return true;
         return false;
-    }
-    
-    void Start()
-    {
-        
     }
 
     void Update()

@@ -61,6 +61,8 @@ public class GameGenerator : MonoBehaviour
         villageGenerator.GenerateVillage();
         pathGenerator.Generate();
         waveManager.InitializeSurfaces();
+
+        StartCoroutine(LogicUpdate());
     }
 
     public Rect GetBounds()
@@ -230,9 +232,17 @@ public class GameGenerator : MonoBehaviour
         return angle;
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator LogicUpdate()
     {
-        
+        while (true)
+        {
+            foreach (GameObject monster in waveManager.monsters)
+            {
+                MonsterBehaviour behaviour = monster.GetComponent<MonsterBehaviour>();
+                behaviour.UpdateObjective();
+                Debug.Log("Logic updated");
+            }
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }

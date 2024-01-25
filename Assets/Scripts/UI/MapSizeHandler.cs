@@ -19,13 +19,13 @@ public class MapSizeHandler : MonoBehaviour
     {
         switch (GameManager.instance.mapSize.x)
         {
-            case 24:
+            case 16:
                 mapSize = MapSizeTypes.Petit;
                 break;
-            case 32:
+            case 24:
                 mapSize = MapSizeTypes.Moyen;
                 break;
-            case 48:
+            case 32:
                 mapSize = MapSizeTypes.Grand;
                 break;
         }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f0eee410fb5d1d4ea6bb909b4bcf194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 200
+  moveSpeed: 100
   turnSpeed: 8
   gameGenerator: {fileID: 1951690851}
   rb: {fileID: 549421230}
@@ -764,7 +764,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 0.7830189, g: 0.7342649, b: 0.6012994, a: 1}
   m_Intensity: 0.75
   m_Range: 10
   m_SpotAngle: 30
@@ -1292,6 +1292,7 @@ MonoBehaviour:
   waves:
   - {fileID: 11400000, guid: 7f9116e445769f14db028f20dbf7c74e, type: 2}
   waveFinished: 0
+  monsters: []
 --- !u!4 &1348605625
 Transform:
   m_ObjectHideFlags: 0
@@ -1501,12 +1502,12 @@ MonoBehaviour:
   gameGenerator: {fileID: 1951690851}
   size: {x: 32, y: 32}
   scale: 1
-  tileSize: 2
+  tileSize: 4
   hillHeight: 1
   hillWidth: 1
   hillSmoothness: 1
   mountains: []
-  stepHeight: 1
+  stepHeight: 1.5
   addFog: 0
   grassTilePrefab: {fileID: 5861721181273509266, guid: 288fcd3847bd9e440859b9f4ef16a098, type: 3}
   fogPrefab: {fileID: 7120711633847923219, guid: 5b895d94bcf33384fb32a9c38b347181, type: 3}
