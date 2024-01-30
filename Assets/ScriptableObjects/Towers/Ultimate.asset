@@ -16,3 +16,4 @@ MonoBehaviour:
   maxRange: 20
   attackSpeed: 0.25
   projectile: {fileID: 6195515186249223512, guid: 18b7681244ce53b4dace7071ffaba149, type: 3}
+  prefab: {fileID: 5767136952099664468, guid: 961c03fbbaa2df8489e66e94a272ef41, type: 3}

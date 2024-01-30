@@ -8,4 +8,6 @@ public class TowerData : StructureData
     public float maxRange;
     public float attackSpeed;
     public GameObject projectile;
+    [Space]
+    public GameObject prefab;
 }

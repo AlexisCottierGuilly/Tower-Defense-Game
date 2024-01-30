@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -703,7 +703,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameGenerator: {fileID: 1951690851}
-  towerPrefabs: []
+  towerPrefabs:
+  - monster: 0
+    data: {fileID: 11400000, guid: f7c45916d1b18b0429b185642513e281, type: 2}
+  - monster: 1
+    data: {fileID: 11400000, guid: 25704c5c7d9a50c4b866362ace9d9d43, type: 2}
+  - monster: 2
+    data: {fileID: 11400000, guid: 223e05a536cd95d4ba0908dc8507c60b, type: 2}
   mainCamera: {fileID: 549421227}
   placedObjectPrefab: {fileID: 8235465559784961698, guid: f1f73dab64543c34eabf7d1000252afd, type: 3}
   canPlace: 0
@@ -1742,9 +1748,9 @@ MonoBehaviour:
   seed: -1
   monsterPrefabs:
   - monster: 0
-    prefab: {fileID: 4451012924925943445, guid: b512856d1673a524ca96b68426cd0637, type: 3}
+    data: {fileID: 11400000, guid: b8b472c757cf1f54283c13f6c4b1eb90, type: 2}
   - monster: 1
-    prefab: {fileID: 4451012924925943445, guid: b1191def6a644d74a8c7a935380aeed7, type: 3}
+    data: {fileID: 11400000, guid: 398ba89b5f0eb3b47acbb9f8052a6cbc, type: 2}
   towerParent: {fileID: 1268763543}
   mainCamera: {fileID: 549421227}
   towers: []

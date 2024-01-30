@@ -29,7 +29,7 @@ public class DetectSelection : MonoBehaviour
     void SetStructure(GameObject structurePrefab)
     {
         placedObjectPrefab = structurePrefab;
-        currentRotation = Vector3.zero;
+        currentRotation = new Vector3(0, 30, 0);
         canPlace = true;
 
         Start();
@@ -38,7 +38,7 @@ public class DetectSelection : MonoBehaviour
     void UnsetStructure()
     {
         placedObjectPrefab = null;
-        currentRotation = Vector3.zero;
+        currentRotation = new Vector3(0, 30, 0);
         canPlace = false;
         position = Vector2.zero;
     }
@@ -72,7 +72,7 @@ public class DetectSelection : MonoBehaviour
                 if (!gameGenerator.PlaceTower(position, newObject))
                     Destroy(newObject);
 
-                currentRotation = Vector3.zero;
+                currentRotation = new Vector3(0, 30, 0);
                 placedObject.transform.eulerAngles = currentRotation;
             }
             

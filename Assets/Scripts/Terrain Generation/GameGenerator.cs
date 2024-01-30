@@ -7,14 +7,14 @@ using UnityEngine.SceneManagement;
 public class MonsterPrefab
 {
     public Monster monster;
-    public GameObject prefab;
+    public MonsterData data;
 }
 
 [System.Serializable]
 public class TowerPrefab
 {
     public Tower monster;
-    public GameObject prefab;
+    public TowerData data;
 }
 
 
@@ -133,7 +133,7 @@ public class GameGenerator : MonoBehaviour
         foreach (MonsterPrefab monsterPrefab in monsterPrefabs)
         {
             if (monsterPrefab.monster == type)
-                return monsterPrefab.prefab;
+                return monsterPrefab.data.prefab;
         }
         return null;
     }

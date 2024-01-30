@@ -17,3 +17,4 @@ MonoBehaviour:
   attackSpeed: 0.5
   speed: 0.5
   gold: 25
+  prefab: {fileID: 4451012924925943445, guid: b1191def6a644d74a8c7a935380aeed7, type: 3}
