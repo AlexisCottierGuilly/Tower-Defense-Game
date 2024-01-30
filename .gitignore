@@ -75,3 +75,7 @@ Assets/Script/.idea/*
 
 /Assets/Textures/RocketEngine/cache_fluid_4b85f272/config*
 /Assets/Textures/RocketEngine/cache_fluid_4b85f272/data/*
+
+Library/
+
+Logs/
