@@ -9,6 +9,7 @@ public class PathGenerator : MonoBehaviour
     [Header("Settings")]
     public List<List<Vector2>> paths = new List<List<Vector2>>();
     public float stepHeight = 2f;
+    public int stepHeightModifier = 1;
 
     [Header("3D Models")]
     public GameObject pathTilePrefab;
@@ -186,13 +187,14 @@ public class PathGenerator : MonoBehaviour
         foreach (Vector2 tile in tilesAround)
         {   
             GameObject otherTile = gameGenerator.tiles[(int)tile.x][(int)tile.y];
-            float heightDistance = Mathf.Abs(otherTile.transform.position.y - currentTile.transform.position.y);
-            if (heightDistance > stepHeightValue && heightDistance - stepHeightValue
-                <= gameGenerator.terrainGenerator.stepHeight)
+            float heightDistance = currentTile.transform.position.y - otherTile.transform.position.y;
+            if (heightDistance > stepHeightValue && Mathf.Abs(heightDistance - stepHeightValue)
+                <= gameGenerator.terrainGenerator.stepHeight * stepHeightModifier)
             {
-                float diff = gameGenerator.terrainGenerator.stepHeight;
-                //if (heightDistance - stepHeightValue > gameGenerator.terrainGenerator.stepHeight)
-                //    diff *= 2f;
+                float diff;
+                if (heightDistance < 0) diff = heightDistance + gameGenerator.terrainGenerator.stepHeight * stepHeight;
+                else diff = heightDistance - gameGenerator.terrainGenerator.stepHeight * stepHeight;
+
                 otherTile.transform.position = new Vector3(
                     otherTile.transform.position.x,
                     otherTile.transform.position.y - diff,

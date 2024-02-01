@@ -589,13 +589,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549421225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.23911765, y: 0.3696438, z: -0.09904577, w: 0.89239913}
+  m_LocalRotation: {x: 0.2969713, y: 0.36237448, z: -0.123009525, w: 0.87484944}
   m_LocalPosition: {x: 13.93, y: 39.3, z: 13.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 37.5, y: 45, z: 0}
 --- !u!114 &549421229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f0eee410fb5d1d4ea6bb909b4bcf194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 100
+  moveSpeed: 150
   turnSpeed: 8
   gameGenerator: {fileID: 1951690851}
   rb: {fileID: 549421230}
@@ -1694,7 +1694,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameGenerator: {fileID: 1951690851}
-  stepHeight: 2
+  stepHeight: 1
+  stepHeightModifier: 1
   pathTilePrefab: {fileID: 5861721181273509266, guid: 4feddbd6b1b00c442a2d0b1f5c0e747d, type: 3}
 --- !u!4 &1926732113
 Transform:

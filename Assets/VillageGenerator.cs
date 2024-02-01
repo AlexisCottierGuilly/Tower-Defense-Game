@@ -69,7 +69,7 @@ public class VillageGenerator : MonoBehaviour
         highestPointTile.GetComponent<TileBehaviour>().structure = mainVillage;
 
         float cameraHeight = (mainVillage.transform.position.y + mainVillage.GetComponent<MeshRenderer>().bounds.size.y
-            / GameManager.instance.towerSize + gameGenerator.terrainGenerator.stepHeight * 2f);
+            / GameManager.instance.towerSize + gameGenerator.terrainGenerator.stepHeight * 10f); // *2f
         gameGenerator.mainCamera.GetComponent<CameraManager>().SetHeight(cameraHeight);
 
         // place 4 towers around the main village, randomly
@@ -93,7 +93,7 @@ public class VillageGenerator : MonoBehaviour
                     (int)center.y + (int)maxDistanceFromCenter
                 );
             }
-            gameGenerator.FlattenAround(randomPosition, 1, false);
+            // gameGenerator.FlattenAround(randomPosition, 1, false);
             villagePositions.Add(randomPosition);
 
             GameObject villageStructurePrefab = villagePrefabs[gameGenerator.randomWithSeed.Next(0, villagePrefabs.Count)];
@@ -107,9 +107,9 @@ public class VillageGenerator : MonoBehaviour
             
             villageStructure.transform.localScale *= GameManager.instance.towerSize;
             villageStructure.transform.position = new Vector3(
-                position.x - tile.GetComponent<MeshRenderer>().bounds.size.x / 2f,
+                position.x, // - tile.GetComponent<MeshRenderer>().bounds.size.x / 2f,
                 position.y + villageStructure.transform.localScale.y / 2f,
-                position.z - tile.GetComponent<MeshRenderer>().bounds.size.z / 2f
+                position.z // - tile.GetComponent<MeshRenderer>().bounds.size.z / 2f
             );
 
             villageStructure.name = $"Village Structure {i}";

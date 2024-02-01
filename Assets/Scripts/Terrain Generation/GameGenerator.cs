@@ -33,6 +33,7 @@ public class GameGenerator : MonoBehaviour
     
     [Header("Generation Settings")]
     public long seed = -1;
+    // good seed : 1821042
 
     [Header("Prefabs")]
     public List<MonsterPrefab> monsterPrefabs = new List<MonsterPrefab>();

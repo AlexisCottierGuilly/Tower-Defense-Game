@@ -19,4 +19,9 @@ public class VillageBehaviour : StructureBehaviour
     {
         base.Update();
     }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+    }
 }

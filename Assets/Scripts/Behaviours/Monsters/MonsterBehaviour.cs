@@ -12,6 +12,8 @@ public class MonsterBehaviour : MonoBehaviour
     [Header("Space")]
     public NavMeshAgent agent;
     public Vector3 finalScale = new Vector3(1f, 1f, 1f);
+
+    private float timeFromPreviousAttack = 0f;
     
     // Start is called before the first frame update
     void Start()
@@ -35,5 +37,22 @@ public class MonsterBehaviour : MonoBehaviour
         }
 
         agent.destination = objective;
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        float attackCoolDown = 1f / data.attackSpeed;
+        
+        if (timeFromPreviousAttack >= attackCoolDown && other.gameObject.CompareTag("Village Building")) {
+            VillageBehaviour villageBehaviour = other.gameObject.GetComponent<VillageBehaviour>();
+            villageBehaviour.TakeDamage(data.damage);
+            Debug.Log($"Tower took {data.damage} damage.", other.gameObject);
+            timeFromPreviousAttack = 0f;
+        }
+    }
+
+    void Update()
+    {
+        timeFromPreviousAttack += Time.deltaTime;
     }
 }
