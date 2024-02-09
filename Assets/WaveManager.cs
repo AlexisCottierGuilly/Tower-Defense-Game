@@ -21,6 +21,9 @@ public class WaveManager : MonoBehaviour
     public int wave = 0;
     public List<WaveData> waves = new List<WaveData>();
     public bool waveFinished = true;
+
+    [Header("Parents")]
+    public GameObject monsterParent;
     
     [HideInInspector] int currentPathIndex = 0;
     [HideInInspector] public List<GameObject> monsters = new List<GameObject>();
@@ -76,6 +79,7 @@ public class WaveManager : MonoBehaviour
             placement.transform.position.z
         );
         monster.transform.localScale = behaviour.finalScale;
+        monster.transform.parent = monsterParent.transform;
         behaviour.agent.destination = gameGenerator.villageGenerator.mainVillage.transform.position;
         
         monsters.Add(monster);

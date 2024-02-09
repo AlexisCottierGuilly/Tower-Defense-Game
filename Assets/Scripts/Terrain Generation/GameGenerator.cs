@@ -120,6 +120,10 @@ public class GameGenerator : MonoBehaviour
     public List<Vector2> GetMainVillageTiles()
     {
         List<Vector2> tiles = new List<Vector2>();
+
+        if (villageGenerator.mainVillage is null)
+            return tiles;
+        
         Vector2 position = villageGenerator.mainVillage.GetComponent<VillageBehaviour>().position;
         for (int x=-1; x < 2; x++)
         {

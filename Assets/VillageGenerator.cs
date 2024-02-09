@@ -66,6 +66,7 @@ public class VillageGenerator : MonoBehaviour
         mainVillage.name = "Main Village";
         mainVillage.transform.parent = villageParent.transform;
         mainVillage.GetComponent<VillageBehaviour>().position = highestPointPosition;
+        mainVillage.GetComponent<VillageBehaviour>().generator = this;
         highestPointTile.GetComponent<TileBehaviour>().structure = mainVillage;
 
         float cameraHeight = (mainVillage.transform.position.y + mainVillage.GetComponent<MeshRenderer>().bounds.size.y
@@ -115,7 +116,14 @@ public class VillageGenerator : MonoBehaviour
             villageStructure.name = $"Village Structure {i}";
             villageStructure.transform.parent = villageParent.transform;
             villageStructure.GetComponent<VillageBehaviour>().position = randomPosition;
+            villageStructure.GetComponent<VillageBehaviour>().generator = this;
             villageBuildings.Add(villageStructure);
         }
+    }
+
+    public void RemoveVillageStructure(GameObject structure)
+    {
+        villageBuildings.Remove(structure);
+        Destroy(structure);
     }
 }
