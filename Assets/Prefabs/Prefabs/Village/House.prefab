@@ -187,7 +187,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 3, y: 15, z: 3}
@@ -207,6 +207,7 @@ MonoBehaviour:
   health: 0
   position: {x: 0, y: 0}
   data: {fileID: 11400000, guid: b5b526f640c27974181033269ec292c8, type: 2}
+  generator: {fileID: 0}
 --- !u!1 &4768654534422494940
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class MonsterBehaviour : MonoBehaviour
     public Vector3 finalScale = new Vector3(1f, 1f, 1f);
 
     private float timeFromPreviousAttack = 0f;
+    private GameObject targetTower = null;
     
     // Start is called before the first frame update
     void Start()
@@ -23,36 +24,58 @@ public class MonsterBehaviour : MonoBehaviour
 
     public void UpdateObjective()
     {
-        Vector3 objective = gameGenerator.villageGenerator.mainVillage.transform.position;
-        float minDistance = Vector3.Distance(objective, transform.position) * 2f;
+        Vector3 objective = Vector3.zero;
+        GameObject objectiveObject = null;
+        float minDistance = -1f;
+        
+        if (gameGenerator.villageGenerator.mainVillage != null)
+        {
+            objective = gameGenerator.villageGenerator.mainVillage.transform.position;
+            objectiveObject = gameGenerator.villageGenerator.mainVillage;
+            minDistance = Vector3.Distance(objective, transform.position) * 2f;
+        }
 
         foreach (GameObject building in gameGenerator.villageGenerator.villageBuildings)
         {
             float dist = Vector3.Distance(building.transform.position, transform.position);
-            if (dist < minDistance)
+            if (minDistance == -1f || dist < minDistance)
             {
                 minDistance = dist;
+                objectiveObject = building;
                 objective = building.transform.position;
             }
         }
 
         agent.destination = objective;
+        targetTower = objectiveObject;
     }
 
-    public void OnTriggerStay(Collider other)
+    public void AttackStructure(GameObject structure)
     {
         float attackCoolDown = 1f / data.attackSpeed;
         
-        if (timeFromPreviousAttack >= attackCoolDown && other.gameObject.CompareTag("Village Building")) {
-            VillageBehaviour villageBehaviour = other.gameObject.GetComponent<VillageBehaviour>();
+        if (timeFromPreviousAttack >= attackCoolDown && structure.CompareTag("Village Building")) {
+            VillageBehaviour villageBehaviour = structure.GetComponent<VillageBehaviour>();
             villageBehaviour.TakeDamage(data.damage);
-            Debug.Log($"Tower took {data.damage} damage.", other.gameObject);
+            Debug.Log($"Tower took {data.damage} damage.", structure);
             timeFromPreviousAttack = 0f;
         }
+    }
+    
+    public void OnCollisionEnter(Collision other)
+    {
+        Debug.Log("Monster collided with object", other.gameObject);        
+        AttackStructure(other.gameObject);
     }
 
     void Update()
     {
         timeFromPreviousAttack += Time.deltaTime;
+
+        if (agent.pathStatus == NavMeshPathStatus.PathComplete && targetTower != null)
+        {
+            Debug.Log("Arrived to objective !", this.gameObject);
+            AttackStructure(targetTower);
+        }
     }
 }

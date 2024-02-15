@@ -121,7 +121,7 @@ public class GameGenerator : MonoBehaviour
     {
         List<Vector2> tiles = new List<Vector2>();
 
-        if (villageGenerator.mainVillage is null)
+        if (villageGenerator.mainVillage == null)
             return tiles;
         
         Vector2 position = villageGenerator.mainVillage.GetComponent<VillageBehaviour>().position;
