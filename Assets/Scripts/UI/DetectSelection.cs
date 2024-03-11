@@ -26,7 +26,7 @@ public class DetectSelection : MonoBehaviour
     [HideInInspector] public Vector2 position = Vector2.zero;
     private Vector3 currentRotation = new Vector3(0, 30, 0);
 
-    void SetStructure(GameObject structurePrefab)
+    public void SetStructure(GameObject structurePrefab)
     {
         placedObjectPrefab = structurePrefab;
         currentRotation = new Vector3(0, 30, 0);
@@ -35,7 +35,7 @@ public class DetectSelection : MonoBehaviour
         Start();
     }
 
-    void UnsetStructure()
+    public void UnsetStructure()
     {
         placedObjectPrefab = null;
         currentRotation = new Vector3(0, 30, 0);

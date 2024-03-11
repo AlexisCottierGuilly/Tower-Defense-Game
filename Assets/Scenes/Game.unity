@@ -1631,7 +1631,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c48cb4a0aabb87488e62aa1702c2262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
+  tower1: {fileID: 8235465559784961698, guid: f1f73dab64543c34eabf7d1000252afd, type: 3}
+  tower2: {fileID: 2952150505218308268, guid: e789858200b51b242a2135212af0b9f8, type: 3}
+  tower3: {fileID: 5767136952099664468, guid: 961c03fbbaa2df8489e66e94a272ef41, type: 3}
+  selectionManagerObject: {fileID: 710782627}
 --- !u!224 &1607406827
 RectTransform:
   m_ObjectHideFlags: 0
