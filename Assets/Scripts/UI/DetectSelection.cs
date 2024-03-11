@@ -38,6 +38,8 @@ public class DetectSelection : MonoBehaviour
     public void UnsetStructure()
     {
         placedObjectPrefab = null;
+        Destroy(placedObject);
+        placedObject = null;
         currentRotation = new Vector3(0, 30, 0);
         canPlace = false;
         position = Vector2.zero;
@@ -59,7 +61,7 @@ public class DetectSelection : MonoBehaviour
         if (GameManager.instance.gameState != GameState.Game)
             return;
         
-        if (placedObjectPrefab != null)
+        if (placedObjectPrefab != null && placedObject != null)
             if (Input.GetMouseButtonDown(0) && canPlace)
             {
                 GameObject newObject = Instantiate(
@@ -98,12 +100,15 @@ public class DetectSelection : MonoBehaviour
             }
         }
 
-        if (selectedTile != null)
+        if (selectedTile != null) //added by mic not effecient
         {
             Vector3 worldPos = selectedTile.GetComponent<TileBehaviour>().placement.transform.position;
             position = selectedTile.GetComponent<TileBehaviour>().position;
-            worldPos.y += placedObject.transform.localScale.y / 2f;
-            placedObject.transform.position = worldPos;
+            if (placedObject != null)
+            {
+                worldPos.y += placedObject.transform.localScale.y / 2f;
+                placedObject.transform.position = worldPos;
+            }
         }
 
         canPlace = gameGenerator.CanPlace(position);
@@ -111,10 +116,12 @@ public class DetectSelection : MonoBehaviour
 
         if (!canPlace)
             color = Color.red;
-        
-        placedObject.GetComponent<Renderer>().material.SetColor("_Color", color);
-        foreach (Renderer child in placedObject.GetComponentsInChildren<Renderer>())
+        if (placedObject != null) //added by mic not effecient
+        {
+            placedObject.GetComponent<Renderer>().material.SetColor("_Color", color);
+            foreach (Renderer child in placedObject.GetComponentsInChildren<Renderer>())
             child.material.SetColor("_Color", color);
-        placedObject.transform.eulerAngles = currentRotation;
+            placedObject.transform.eulerAngles = currentRotation;
+        }
     }
 }

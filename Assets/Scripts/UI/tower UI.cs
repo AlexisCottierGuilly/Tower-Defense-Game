@@ -50,6 +50,7 @@ public class TowerUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             type = TowerType.None;
+            selectionManager.UnsetStructure();
         }
     }
 }
