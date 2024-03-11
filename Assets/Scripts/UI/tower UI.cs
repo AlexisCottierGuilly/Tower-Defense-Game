@@ -52,5 +52,20 @@ public class TowerUI : MonoBehaviour
             type = TowerType.None;
             selectionManager.UnsetStructure();
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            type = TowerType.Normal;
+            selectionManager.SetStructure(tower1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            type = TowerType.Splash;
+            selectionManager.SetStructure(tower2);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            type = TowerType.Ultimate;
+            selectionManager.SetStructure(tower3);
+        }
     }
 }
