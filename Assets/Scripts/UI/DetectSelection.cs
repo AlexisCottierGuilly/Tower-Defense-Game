@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public enum Tower
 {
     Basic,
-    Zone,
+    Splash,
     Ultimate
 }
 

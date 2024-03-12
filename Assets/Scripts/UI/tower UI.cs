@@ -52,6 +52,7 @@ public class TowerUI : MonoBehaviour
             type = TowerType.None;
             selectionManager.UnsetStructure();
         }
+        /*
         else if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             type = TowerType.Normal;
@@ -67,5 +68,6 @@ public class TowerUI : MonoBehaviour
             type = TowerType.Ultimate;
             selectionManager.SetStructure(tower3);
         }
+        */
     }
 }
