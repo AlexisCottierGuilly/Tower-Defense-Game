@@ -64,6 +64,7 @@ public class GameGenerator : MonoBehaviour
         waveManager.InitializeSurfaces();
 
         StartCoroutine(LogicUpdate());
+        StartCoroutine(TowerUpdate());
     }
 
     public Rect GetBounds()
@@ -245,9 +246,22 @@ public class GameGenerator : MonoBehaviour
             {
                 MonsterBehaviour behaviour = monster.GetComponent<MonsterBehaviour>();
                 behaviour.UpdateObjective();
-                Debug.Log("Logic updated");
             }
+            Debug.Log("Monster Logic updated");
             yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    IEnumerator TowerUpdate()
+    {    while (true)
+        {
+            foreach (GameObject tower in towers)
+            {
+                TowerBehaviour behaviour = tower.GetComponent<TowerBehaviour>();
+                behaviour.UpdateLogic();
+            }
+            Debug.Log("Tower Logic updated");
+            yield return new WaitForSeconds(0.05f);
         }
     }
 }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2224625915161091164}
   - component: {fileID: 4639958255584462051}
   - component: {fileID: 5283030969429414183}
-  - component: {fileID: 7905601279080751347}
+  - component: {fileID: 7365477773000395424}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -28,10 +28,11 @@ Transform:
   m_GameObject: {fileID: 211289165208698345}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: -0.094}
-  m_LocalScale: {x: 0.75, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.50000006, z: 0.5000001}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6665744189014618122}
   m_Father: {fileID: 1262616207730525923}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4639958255584462051
@@ -84,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7905601279080751347
+--- !u!65 &7365477773000395424
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,7 +104,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.0000001, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &477601931729449430
 GameObject:
@@ -116,7 +117,7 @@ GameObject:
   - component: {fileID: 6665744189014618122}
   - component: {fileID: 8481524383643445916}
   - component: {fileID: 4607092080403324225}
-  - component: {fileID: 2737566008270987950}
+  - component: {fileID: 3478472742639155458}
   m_Layer: 0
   m_Name: Canon
   m_TagString: Untagged
@@ -132,12 +133,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477601931729449430}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
-  m_LocalPosition: {x: 0, y: 0.62, z: 0.317}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalRotation: {x: 0.53729963, y: -0, z: -0, w: 0.8433915}
+  m_LocalPosition: {x: 0, y: 0.039999958, z: 0.82199997}
+  m_LocalScale: {x: 0.66666675, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1262616207730525923}
+  m_Children:
+  - {fileID: 1198283343721877157}
+  m_Father: {fileID: 2224625915161091164}
   m_LocalEulerAnglesHint: {x: 65, y: 0, z: 0}
 --- !u!33 &8481524383643445916
 MeshFilter:
@@ -189,8 +191,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2737566008270987950
-CapsuleCollider:
+--- !u!135 &3478472742639155458
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -207,11 +209,40 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.0000002
+  m_Center: {x: 0.00000005960465, y: 0.00000011920929, z: 0.000000029802308}
+--- !u!1 &2158350673687075688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1198283343721877157}
+  m_Layer: 0
+  m_Name: ProjectileSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1198283343721877157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2158350673687075688}
   serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6665744189014618122}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8235465559784961698
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,8 +254,8 @@ GameObject:
   - component: {fileID: 1262616207730525923}
   - component: {fileID: 8432317529829012281}
   - component: {fileID: 5390360805813253619}
-  - component: {fileID: 2887786679483108527}
   - component: {fileID: -1979798257243354317}
+  - component: {fileID: 6406782511161831464}
   m_Layer: 0
   m_Name: BasicTower
   m_TagString: Untagged
@@ -245,7 +276,6 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6665744189014618122}
   - {fileID: 2224625915161091164}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -299,7 +329,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2887786679483108527
+--- !u!114 &-1979798257243354317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8235465559784961698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3973568f1ece5724caf8738bfe1ab154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  position: {x: 0, y: 0}
+  data: {fileID: 11400000, guid: f7c45916d1b18b0429b185642513e281, type: 2}
+  canon: {fileID: 477601931729449430}
+  projectileSpawnEmpty: {fileID: 2158350673687075688}
+  verticalShootAngle: 25
+--- !u!65 &6406782511161831464
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -320,18 +368,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-1979798257243354317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8235465559784961698}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3973568f1ece5724caf8738bfe1ab154, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  position: {x: 0, y: 0}
-  data: {fileID: 11400000, guid: f7c45916d1b18b0429b185642513e281, type: 2}
