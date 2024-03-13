@@ -40,6 +40,7 @@ public class GameGenerator : MonoBehaviour
 
     [Header("Parents")]
     public GameObject towerParent;
+    public GameObject projectileParent;
 
     [Header("Others")]
     public Camera mainCamera;
@@ -112,6 +113,7 @@ public class GameGenerator : MonoBehaviour
             );
             tower.transform.parent = towerParent.transform;
             tower.GetComponent<TowerBehaviour>().position = position;
+            tower.GetComponent<TowerBehaviour>().projectileParent = projectileParent;
             towers.Add(tower);
             return true;
         }
@@ -247,7 +249,7 @@ public class GameGenerator : MonoBehaviour
                 MonsterBehaviour behaviour = monster.GetComponent<MonsterBehaviour>();
                 behaviour.UpdateObjective();
             }
-            Debug.Log("Monster Logic updated");
+            // Debug.Log("Monster Logic updated");
             yield return new WaitForSeconds(0.5f);
         }
     }
@@ -260,7 +262,7 @@ public class GameGenerator : MonoBehaviour
                 TowerBehaviour behaviour = tower.GetComponent<TowerBehaviour>();
                 behaviour.UpdateLogic();
             }
-            Debug.Log("Tower Logic updated");
+            // Debug.Log("Tower Logic updated");
             yield return new WaitForSeconds(0.05f);
         }
     }

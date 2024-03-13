@@ -20,6 +20,7 @@ public class MonsterBehaviour : MonoBehaviour
     void Start()
     {
         agent.speed = data.speed * 4f;
+        health = data.maxHealth;
     }
 
     public void UpdateObjective()
@@ -54,28 +55,51 @@ public class MonsterBehaviour : MonoBehaviour
     {
         float attackCoolDown = 1f / data.attackSpeed;
         
-        if (timeFromPreviousAttack >= attackCoolDown && structure.CompareTag("Village Building")) {
+        if (timeFromPreviousAttack >= attackCoolDown) {
             VillageBehaviour villageBehaviour = structure.GetComponent<VillageBehaviour>();
             villageBehaviour.TakeDamage(data.damage);
-            Debug.Log($"Tower took {data.damage} damage.", structure);
+            // Debug.Log($"Tower took {data.damage} damage.", structure);
             timeFromPreviousAttack = 0f;
         }
+    }
+
+    public void TakeDamage(GameObject projectile)
+    {
+        health -= projectile.GetComponent<ProjectileBehaviour>().data.impactDamage;
+        CheckDeath();
     }
     
     public void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Monster collided with object", other.gameObject);        
-        AttackStructure(other.gameObject);
+        Debug.Log("ICI", other.gameObject);
+        if (other.gameObject.CompareTag("Village Building"))
+            AttackStructure(other.gameObject);
+        else if (other.gameObject.CompareTag("Projectile"))
+            TakeDamage(other.gameObject);
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Village Building"))
+            AttackStructure(other.gameObject);
+        else if (other.gameObject.CompareTag("Projectile"))
+            TakeDamage(other.gameObject);
+    }
+
+    void CheckDeath()
+    {
+        if (health <= 0)
+            Destroy(gameObject);
     }
 
     void Update()
     {
         timeFromPreviousAttack += Time.deltaTime;
 
-        if (agent.pathStatus == NavMeshPathStatus.PathComplete && targetTower != null)
+        /*if (agent.pathStatus == NavMeshPathStatus.PathComplete && targetTower != null)
         {
-            Debug.Log("Arrived to objective !", this.gameObject);
+            // Debug.Log("Arrived to objective !", this.gameObject);
             AttackStructure(targetTower);
-        }
+        }*/
     }
 }

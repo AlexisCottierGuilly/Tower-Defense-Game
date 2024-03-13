@@ -5,6 +5,7 @@ using UnityEngine;
 public class TowerBehaviour : StructureBehaviour
 {
     public TowerData data;
+    public GameObject projectileParent;
     [Space]
     public GameObject canon;
     public GameObject projectileSpawnEmpty;
@@ -29,11 +30,28 @@ public class TowerBehaviour : StructureBehaviour
 
     void Shoot()
     {
-        GameObject projectile = Instantiate(data.projectile, projectileSpawnEmpty.transform);
+        horizontalShootAngle = transform.eulerAngles.y;
+
+        GameObject projectile = Instantiate(data.projectile, projectileSpawnEmpty.transform.position, Quaternion.identity);
+        projectile.transform.eulerAngles = new Vector3(
+            canon.transform.eulerAngles.x,
+            projectile.transform.eulerAngles.y,
+            projectile.transform.eulerAngles.z
+        );
+        projectile.transform.parent = projectileParent.transform;
         
-        Vector3 force = Vector3.forward;
-        force.y = 0.5f; // temporaire avant de trouver les bonnes valeurs selon les angles
-        projectile.gameObject.GetComponent<Rigidbody>().AddForce(force * 1000f);
+        Vector3 force = new Vector3();
+        float power = 350f * data.attackStrength;
+
+        // TODO: change rotation (horizontal)
+
+        float horizontalPower = power * Mathf.Cos(verticalShootAngle * Mathf.Deg2Rad);  // horizontal force
+        force.y = power * Mathf.Sin(verticalShootAngle * Mathf.Deg2Rad);  // vertical force
+
+        force.z = horizontalPower * Mathf.Cos(horizontalShootAngle * Mathf.Deg2Rad);  // forward force
+        force.x = horizontalPower * Mathf.Sin(horizontalShootAngle * Mathf.Deg2Rad);  // side force
+
+        projectile.gameObject.GetComponent<Rigidbody>().AddForce(force);
     }
 
     bool UpdateShootAngle()

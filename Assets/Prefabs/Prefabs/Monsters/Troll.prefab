@@ -29,6 +29,18 @@ PrefabInstance:
       value: Troll
       objectReference: {fileID: 0}
     - target: {fileID: 7493300813611015526, guid: 76b74a2d21fe30c4b8e29daa20662be3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7493300813611015526, guid: 76b74a2d21fe30c4b8e29daa20662be3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7493300813611015526, guid: 76b74a2d21fe30c4b8e29daa20662be3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7493300813611015526, guid: 76b74a2d21fe30c4b8e29daa20662be3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}

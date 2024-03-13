@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2224625915161091164}
   - component: {fileID: 4639958255584462051}
   - component: {fileID: 5283030969429414183}
-  - component: {fileID: 7365477773000395424}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -85,27 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7365477773000395424
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 211289165208698345}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.0000001, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &477601931729449430
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +95,6 @@ GameObject:
   - component: {fileID: 6665744189014618122}
   - component: {fileID: 8481524383643445916}
   - component: {fileID: 4607092080403324225}
-  - component: {fileID: 3478472742639155458}
   m_Layer: 0
   m_Name: Canon
   m_TagString: Untagged
@@ -191,27 +168,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &3478472742639155458
-SphereCollider:
+--- !u!1 &1146240722398532183
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477601931729449430}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.0000002
-  m_Center: {x: 0.00000005960465, y: 0.00000011920929, z: 0.000000029802308}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5525266617462988188}
+  m_Layer: 0
+  m_Name: Projectiles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5525266617462988188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146240722398532183}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1262616207730525923}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2158350673687075688
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,6 +263,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5525266617462988188}
   - {fileID: 2224625915161091164}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -344,6 +332,7 @@ MonoBehaviour:
   health: 0
   position: {x: 0, y: 0}
   data: {fileID: 11400000, guid: f7c45916d1b18b0429b185642513e281, type: 2}
+  projectileParent: {fileID: 1146240722398532183}
   canon: {fileID: 477601931729449430}
   projectileSpawnEmpty: {fileID: 2158350673687075688}
   verticalShootAngle: 25
