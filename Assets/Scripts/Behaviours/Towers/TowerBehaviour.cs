@@ -28,7 +28,39 @@ public class TowerBehaviour : StructureBehaviour
         currentRechargingTime += Time.deltaTime;
     }
 
-    void Shoot()
+    float GetShootingForce(GameObject monster)
+    {
+        /*
+        Vi = ?
+        float angle = verticalShootAngle
+        float distY = gameObject.transform.position.y - monster.transform.position.y
+        float portee = Mathf.Sqrt(
+            Mathf.Pow(gameObject.transform.position.x - monster.transform.position.x, 2f),
+            Mathf.Pow(gameObject.transform.position.z - monster.transform.position.z, 2f),
+        );
+        float acceleration = Physics.gravity.y;
+
+        -> Système d'équations
+        Viy = Vix(tan(angle))
+        Vix = portee / deltaT
+        distY = Viy(deltaT) + 1/2(acceleration)(deltaT ** 2)
+
+        Trouver Vi...
+        
+        return Vi !!!
+        */
+        
+        float portee = Mathf.Sqrt(
+            Mathf.Pow(gameObject.transform.position.x - monster.transform.position.x, 2f) + 
+            Mathf.Pow(gameObject.transform.position.z - monster.transform.position.z, 2f)
+        );
+
+        float acceleration = Physics.gravity.y;
+
+        return 350f * data.attackStrength;
+    }
+
+    void Shoot(GameObject monster)
     {
         horizontalShootAngle = transform.eulerAngles.y;
 
@@ -41,7 +73,7 @@ public class TowerBehaviour : StructureBehaviour
         projectile.transform.parent = projectileParent.transform;
         
         Vector3 force = new Vector3();
-        float power = 350f * data.attackStrength;
+        float power = GetShootingForce(monster);  // 350f * data.attackStrength;
 
         // TODO: change rotation (horizontal)
 
@@ -54,19 +86,52 @@ public class TowerBehaviour : StructureBehaviour
         projectile.gameObject.GetComponent<Rigidbody>().AddForce(force);
     }
 
-    bool UpdateShootAngle()
+    GameObject UpdateShootAngle()
     {
         // Returns true if there is an enemy
-        return true;
+        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, data.maxRange);
+        float closestDistance = -1f;
+        GameObject closestObject = null;
+
+        foreach (Collider other in hitColliders)
+        {
+            GameObject obj = other.gameObject;
+
+            if (obj.CompareTag("Monster"))
+            {
+                float distance = Vector3.Distance(gameObject.transform.position, obj.transform.position);
+                if (closestDistance == -1f || distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestObject = obj;
+                }
+            }
+        }
+
+        if (closestObject != null)
+        {
+            float yVar = closestObject.transform.position.x - gameObject.transform.position.x;
+            float xVar = closestObject.transform.position.z - gameObject.transform.position.z;
+
+            float angle = Mathf.Atan2(yVar, xVar) * Mathf.Rad2Deg;
+            
+            gameObject.transform.eulerAngles = new Vector3(
+                gameObject.transform.eulerAngles.x,
+                angle,
+                gameObject.transform.eulerAngles.z
+            );
+        }
+        
+        return closestObject;
     }
 
     public void UpdateLogic()
     {
-        bool isEnemy = UpdateShootAngle();
-        if (isEnemy && currentRechargingTime >= data.attackSpeed) {
+        GameObject enemy = UpdateShootAngle();
+        if (enemy != null && currentRechargingTime >= data.attackSpeed) {
             currentRechargingTime = 0f;
-
-            Shoot();
+            
+            Shoot(enemy);
         }
     }
 }
