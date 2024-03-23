@@ -334,6 +334,7 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: f7c45916d1b18b0429b185642513e281, type: 2}
   projectileParent: {fileID: 1146240722398532183}
   canon: {fileID: 477601931729449430}
+  canonSupport: {fileID: 211289165208698345}
   projectileSpawnEmpty: {fileID: 2158350673687075688}
   verticalShootAngle: 25
 --- !u!65 &6406782511161831464

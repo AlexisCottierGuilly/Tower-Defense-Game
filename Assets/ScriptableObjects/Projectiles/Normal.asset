@@ -18,3 +18,4 @@ MonoBehaviour:
   fireDamage: 0
   impactDamage: 25
   shootingAngle: 20
+  followTarget: 1

@@ -8,6 +8,7 @@ public class TowerBehaviour : StructureBehaviour
     public GameObject projectileParent;
     [Space]
     public GameObject canon;
+    public GameObject canonSupport;
     public GameObject projectileSpawnEmpty;
     public float verticalShootAngle = 0f;
 
@@ -33,57 +34,78 @@ public class TowerBehaviour : StructureBehaviour
         /*
         Vi = ?
         float angle = verticalShootAngle
-        float distY = gameObject.transform.position.y - monster.transform.position.y
-        float portee = Mathf.Sqrt(
+        [deltaY] float distY = gameObject.transform.position.y - monster.transform.position.y
+        [deltaX] float portee = Mathf.Sqrt(
             Mathf.Pow(gameObject.transform.position.x - monster.transform.position.x, 2f),
             Mathf.Pow(gameObject.transform.position.z - monster.transform.position.z, 2f),
         );
         float acceleration = Physics.gravity.y;
 
-        -> Système d'équations
-        Viy = Vix(tan(angle))
-        Vix = portee / deltaT
-        distY = Viy(deltaT) + 1/2(acceleration)(deltaT ** 2)
+        Vix = deltaX / (sqrt((2(deltaX * tan(angle) - deltaY) / acceleration)))
 
-        Trouver Vi...
+                            OU
         
+                         deltaX
+        Vix = -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+              | deltaX * tan(angle) - deltaY
+              | ----------------------------
+             V        acceleration
+        
+        Viy = Vix * tan(angle)
+        Vi = Mathf.Atan2(Viy, Vix) * Mathf.Rad2Deg
+
         return Vi !!!
         */
         
-        float portee = Mathf.Sqrt(
+        float deltaX = Mathf.Sqrt(
             Mathf.Pow(gameObject.transform.position.x - monster.transform.position.x, 2f) + 
             Mathf.Pow(gameObject.transform.position.z - monster.transform.position.z, 2f)
         );
+        float deltaY = gameObject.transform.position.y - monster.transform.position.y;
+        float acceleration = Physics.gravity.y;  // acceleration negative
+        float angle = verticalShootAngle;
 
-        float acceleration = Physics.gravity.y;
+        if (Mathf.Atan2(deltaY, deltaX) * Mathf.Rad2Deg >= angle) {
+            return 0f;  // Not possible to shoot on the monster
+        }
 
-        return 350f * data.attackStrength;
+        float viX = deltaX / (Mathf.Sqrt((2 * (deltaX * Mathf.Tan(angle) * Mathf.Rad2Deg - deltaY)) / acceleration));
+        float viY = viX * Mathf.Tan(angle) * Mathf.Rad2Deg;
+        float vi = Mathf.Sqrt(Mathf.Pow(viX, 2f) + Mathf.Pow(viY, 2f));
+        Debug.Log(vi);
+
+        return vi * 7.5f;  // 10f;
+
+        //return 350f * data.attackStrength;
     }
 
     void Shoot(GameObject monster)
     {
         horizontalShootAngle = transform.eulerAngles.y;
 
-        GameObject projectile = Instantiate(data.projectile, projectileSpawnEmpty.transform.position, Quaternion.identity);
-        projectile.transform.eulerAngles = new Vector3(
-            canon.transform.eulerAngles.x,
-            projectile.transform.eulerAngles.y,
-            projectile.transform.eulerAngles.z
-        );
-        projectile.transform.parent = projectileParent.transform;
-        
-        Vector3 force = new Vector3();
-        float power = GetShootingForce(monster);  // 350f * data.attackStrength;
+        float power = GetShootingForce(monster);
 
-        // TODO: change rotation (horizontal)
+        if (power != 0f)
+        {
+            GameObject projectile = Instantiate(data.projectile, projectileSpawnEmpty.transform.position, Quaternion.identity);
+            projectile.transform.eulerAngles = new Vector3(  // ROTATION MOCHE
+                canonSupport.transform.eulerAngles.x,
+                projectile.transform.eulerAngles.y,
+                projectile.transform.eulerAngles.z
+            );
+            projectile.transform.parent = projectileParent.transform;
+            projectile.GetComponent<ProjectileBehaviour>().SetTarget(monster);
+            
+            Vector3 force = new Vector3();
 
-        float horizontalPower = power * Mathf.Cos(verticalShootAngle * Mathf.Deg2Rad);  // horizontal force
-        force.y = power * Mathf.Sin(verticalShootAngle * Mathf.Deg2Rad);  // vertical force
+            float horizontalPower = power * Mathf.Cos(verticalShootAngle * Mathf.Deg2Rad);  // horizontal force
+            force.y = power * Mathf.Sin(verticalShootAngle * Mathf.Deg2Rad);  // vertical force
 
-        force.z = horizontalPower * Mathf.Cos(horizontalShootAngle * Mathf.Deg2Rad);  // forward force
-        force.x = horizontalPower * Mathf.Sin(horizontalShootAngle * Mathf.Deg2Rad);  // side force
+            force.z = horizontalPower * Mathf.Cos(horizontalShootAngle * Mathf.Deg2Rad);  // forward force
+            force.x = horizontalPower * Mathf.Sin(horizontalShootAngle * Mathf.Deg2Rad);  // side force
 
-        projectile.gameObject.GetComponent<Rigidbody>().AddForce(force);
+            projectile.gameObject.GetComponent<Rigidbody>().AddForce(force);
+        }
     }
 
     GameObject UpdateShootAngle()
@@ -115,10 +137,10 @@ public class TowerBehaviour : StructureBehaviour
 
             float angle = Mathf.Atan2(yVar, xVar) * Mathf.Rad2Deg;
             
-            gameObject.transform.eulerAngles = new Vector3(
-                gameObject.transform.eulerAngles.x,
+            canonSupport.transform.eulerAngles = new Vector3(
+                canonSupport.transform.eulerAngles.x,
                 angle,
-                gameObject.transform.eulerAngles.z
+                canonSupport.transform.eulerAngles.z
             );
         }
         
@@ -130,7 +152,7 @@ public class TowerBehaviour : StructureBehaviour
         GameObject enemy = UpdateShootAngle();
         if (enemy != null && currentRechargingTime >= data.attackSpeed) {
             currentRechargingTime = 0f;
-            
+
             Shoot(enemy);
         }
     }
