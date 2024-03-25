@@ -66,7 +66,7 @@ public class TerrainGenerator : MonoBehaviour
                 new_tile.transform.localScale = new Vector3(
                     multiplier * tileSize,
                     multiplier * tileSize,
-                    multiplier /// 15f
+                    multiplier * 2f /// 15f
                 );
 
                 new_tile.transform.Rotate(new Vector3(-90f, 0f, 0f));

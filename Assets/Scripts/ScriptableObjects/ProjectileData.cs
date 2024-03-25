@@ -11,4 +11,5 @@ public class ProjectileData : ScriptableObject
     public int fireDamage;
     public int impactDamage;
     public float shootingAngle;
+    public bool followTarget;
 }
