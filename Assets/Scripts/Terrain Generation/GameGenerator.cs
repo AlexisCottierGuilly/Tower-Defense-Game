@@ -101,7 +101,9 @@ public class GameGenerator : MonoBehaviour
 
     public bool PlaceTower(Vector2 position, GameObject tower)
     {
-        if (CanPlace(position))
+        TowerData data = tower.GetComponent<TowerBehaviour>().data;
+        
+        if (CanPlace(position) && GameManager.instance.gold >= data.cost)
         {
             GameObject tile = tiles[(int)position.x][(int)position.y];
             GameObject placement = tile.GetComponent<TileBehaviour>().placement;
@@ -115,6 +117,7 @@ public class GameGenerator : MonoBehaviour
             tower.GetComponent<TowerBehaviour>().position = position;
             tower.GetComponent<TowerBehaviour>().projectileParent = projectileParent;
             towers.Add(tower);
+            GameManager.instance.gold -= data.cost;
             return true;
         }
         return false;

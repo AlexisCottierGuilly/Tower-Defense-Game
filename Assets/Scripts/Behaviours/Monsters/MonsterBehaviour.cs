@@ -90,6 +90,8 @@ public class MonsterBehaviour : MonoBehaviour
     {
         if (health <= 0)
             Destroy(gameObject);
+            GameManager.instance.gold += data.gold;
+
     }
 
     void Update()
