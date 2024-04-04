@@ -20,6 +20,11 @@ public class TowerBehaviour : StructureBehaviour
     public override void Start()
     {
         base.Start();
+        Physics.gravity = new Vector3(
+            0f,
+            -200f,
+            0f
+        );
     }
 
     // Update is called once per frame
@@ -74,7 +79,7 @@ public class TowerBehaviour : StructureBehaviour
         float vi = Mathf.Sqrt(Mathf.Pow(viX, 2f) + Mathf.Pow(viY, 2f));
         Debug.Log(vi);
 
-        return vi * 7.5f;  // 10f;
+        return vi * 9f; //7.5f;  // 10f;
 
         //return 350f * data.attackStrength;
     }
@@ -89,7 +94,7 @@ public class TowerBehaviour : StructureBehaviour
         {
             GameObject projectile = Instantiate(data.projectile, projectileSpawnEmpty.transform.position, Quaternion.identity);
             projectile.transform.eulerAngles = new Vector3(  // ROTATION MOCHE
-                canonSupport.transform.eulerAngles.x,
+                this.transform.eulerAngles.x, //canonSupport.transform.eulerAngles.x,
                 projectile.transform.eulerAngles.y,
                 projectile.transform.eulerAngles.z
             );
@@ -137,11 +142,17 @@ public class TowerBehaviour : StructureBehaviour
 
             float angle = Mathf.Atan2(yVar, xVar) * Mathf.Rad2Deg;
             
-            canonSupport.transform.eulerAngles = new Vector3(
+            this.transform.eulerAngles = new Vector3(
+                this.transform.eulerAngles.x,
+                angle,
+                this.transform.eulerAngles.z
+            );
+
+            /*canonSupport.transform.eulerAngles = new Vector3(
                 canonSupport.transform.eulerAngles.x,
                 angle,
                 canonSupport.transform.eulerAngles.z
-            );
+            );*/
         }
         
         return closestObject;

@@ -249,8 +249,11 @@ public class GameGenerator : MonoBehaviour
         {
             foreach (GameObject monster in waveManager.monsters)
             {
-                MonsterBehaviour behaviour = monster.GetComponent<MonsterBehaviour>();
-                behaviour.UpdateObjective();
+                if (monster != null)
+                {
+                    MonsterBehaviour behaviour = monster.GetComponent<MonsterBehaviour>();
+                    behaviour.UpdateObjective();
+                }
             }
             // Debug.Log("Monster Logic updated");
             yield return new WaitForSeconds(0.5f);

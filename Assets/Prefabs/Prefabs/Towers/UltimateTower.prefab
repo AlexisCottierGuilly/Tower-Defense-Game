@@ -578,7 +578,7 @@ MonoBehaviour:
   canon: {fileID: 1618297339877961037}
   canonSupport: {fileID: 4556532886603090416}
   projectileSpawnEmpty: {fileID: 7391351598065587097}
-  verticalShootAngle: 10
+  verticalShootAngle: 20
 --- !u!1 &7391351598065587097
 GameObject:
   m_ObjectHideFlags: 0
