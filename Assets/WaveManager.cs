@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.AI.Navigation;
 using UnityEngine.AI;
+using TMPro;
 
 public enum Monster
 {
@@ -24,6 +25,9 @@ public class WaveManager : MonoBehaviour
 
     [Header("Parents")]
     public GameObject monsterParent;
+
+    [Header("Others")]
+    public TextMeshProUGUI roundText;
     
     [HideInInspector] int currentPathIndex = 0;
     [HideInInspector] public List<GameObject> monsters = new List<GameObject>();
@@ -38,8 +42,12 @@ public class WaveManager : MonoBehaviour
     
     public IEnumerator LoadNextRound()
     {
+         waveFinished = false;
+        
         if (wave >= waves.Count)
             yield return new WaitForSeconds(0f);
+        
+        RoundDidStart();
         
         wave++;
         WaveData currentWaveData = waves[wave - 1];
@@ -85,6 +93,21 @@ public class WaveManager : MonoBehaviour
         monsters.Add(monster);
     }
 
+    void CleanMonsterList()
+    {
+        List<GameObject> toRemove = new List<GameObject>();
+        foreach (GameObject monster in monsters)
+        {
+            if (monster == null)
+                toRemove.Add(monster);
+        }
+
+        foreach (GameObject monster in toRemove)
+        {
+            monsters.Remove(monster);
+        }
+    }	
+
     public bool WaveIsFinished()
     {
         if (monsters.Count == 0)
@@ -92,14 +115,19 @@ public class WaveManager : MonoBehaviour
         return false;
     }
 
+    public void RoundDidStart()
+    {
+        roundText.text = $"Round {wave}";
+    }
+
     void Update()
     {
+        CleanMonsterList();
         waveFinished = WaveIsFinished();
         
         if (waveFinished && Time.time > 5f)
         {
             StartCoroutine(LoadNextRound());
-            waveFinished = false;
         }
     }
 }

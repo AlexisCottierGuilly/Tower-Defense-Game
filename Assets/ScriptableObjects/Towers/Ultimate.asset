@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ultimate
   m_EditorClassIdentifier: 
   cost: 500
-  maxRange: 100
+  maxRange: 45
   attackSpeed: 1
   attackStrength: 1
   projectile: {fileID: 6195515186249223512, guid: 18b7681244ce53b4dace7071ffaba149, type: 3}

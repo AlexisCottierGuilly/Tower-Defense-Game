@@ -34,6 +34,12 @@ public class TowerBehaviour : StructureBehaviour
         currentRechargingTime += Time.deltaTime;
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(gameObject.transform.position, data.maxRange);
+    }
+
     float GetShootingForce(GameObject monster)
     {
         /*
@@ -67,6 +73,9 @@ public class TowerBehaviour : StructureBehaviour
             Mathf.Pow(gameObject.transform.position.z - monster.transform.position.z, 2f)
         );
         float deltaY = gameObject.transform.position.y - monster.transform.position.y;
+        
+        deltaY *= 5f;
+        
         float acceleration = Physics.gravity.y;  // acceleration negative
         float angle = verticalShootAngle;
 
@@ -113,7 +122,7 @@ public class TowerBehaviour : StructureBehaviour
         }
     }
 
-    GameObject UpdateShootAngle()
+    GameObject FindEnemyAndAngle()
     {
         // Returns true if there is an enemy
         Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, data.maxRange);
@@ -160,7 +169,7 @@ public class TowerBehaviour : StructureBehaviour
 
     public void UpdateLogic()
     {
-        GameObject enemy = UpdateShootAngle();
+        GameObject enemy = FindEnemyAndAngle();
         if (enemy != null && currentRechargingTime >= data.attackSpeed) {
             currentRechargingTime = 0f;
 

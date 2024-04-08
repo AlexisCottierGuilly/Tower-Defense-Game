@@ -105,7 +105,7 @@ SphereCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.75
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-7349734883113270391
 MonoBehaviour:
@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: b8e72280350386141925e2ff072a3d0a, type: 2}
+  target: {fileID: 0}
 --- !u!54 &9172195577235128824
 Rigidbody:
   m_ObjectHideFlags: 0

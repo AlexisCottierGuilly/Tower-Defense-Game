@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ZoneDamage
   m_EditorClassIdentifier: 
   cost: 150
-  maxRange: 50
+  maxRange: 35
   attackSpeed: 1.5
   attackStrength: 2
   projectile: {fileID: 9201598211181502813, guid: 1a936eae301fb7c4b8973e1f4bee024d, type: 3}
