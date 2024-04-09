@@ -70,12 +70,24 @@ public class GameGenerator : MonoBehaviour
 
     public Rect GetBounds()
     {
-        return new Rect(
+        /* return new Rect(
             2 * terrainGenerator.tileSize * 2,
             2 * terrainGenerator.tileSize * 2,
             Mathf.Max(terrainGenerator.size.x - 3, 2) * terrainGenerator.tileSize * 2,
             Mathf.Max(terrainGenerator.size.y - 3, 2) * terrainGenerator.tileSize * 2
-        );
+        ); */
+
+        // take into account that it is a grid made out of hexagonal tiles, so the bounds are different
+
+        float xTileSize = 1.5f * terrainGenerator.tileSize * 1.1f;
+        float yTileSize = 1.732f * terrainGenerator.tileSize * 0.775f;
+
+        float minX = 2 * xTileSize;
+        float minY = 2 * yTileSize;
+        float maxX = Mathf.Max(terrainGenerator.size.x - 3, 2) * xTileSize;
+        float maxY = Mathf.Max(terrainGenerator.size.y - 3, 2) * yTileSize;
+
+        return new Rect(minX, minY, maxX, maxY);
     }
 
     public bool CanPlace(Vector2 position)
@@ -219,9 +231,9 @@ public class GameGenerator : MonoBehaviour
             Vector2 position = building.GetComponent<VillageBehaviour>().position;
             
             tiles.Add(position);
-            tiles.Add(position + new Vector2(-1f, 0f));
-            tiles.Add(position + new Vector2(0f, -1f));
-            tiles.Add(position + new Vector2(-1f, -1f));
+            //tiles.Add(position + new Vector2(-1f, 0f));
+            //tiles.Add(position + new Vector2(0f, -1f));
+            //tiles.Add(position + new Vector2(-1f, -1f));
         }
         return tiles;
     }
