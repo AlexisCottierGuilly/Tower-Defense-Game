@@ -46,16 +46,18 @@ public class WaveManager : MonoBehaviour
         
         if (wave >= waves.Count)
             yield return new WaitForSeconds(0f);
-        
-        RoundDidStart();
-        
-        wave++;
-        WaveData currentWaveData = waves[wave - 1];
-        Debug.Log($"Loading round {wave}.");
-        foreach (WavePart part in currentWaveData.waveParts)
+        else
         {
-            StartCoroutine(SpawnMonsters(part.monster, part.amount, part.interval));
-            yield return new WaitForSeconds((float)part.amount * part.interval);
+            wave++;
+            RoundDidStart();
+
+            WaveData currentWaveData = waves[wave - 1];
+            Debug.Log($"Loading round {wave}.");
+            foreach (WavePart part in currentWaveData.waveParts)
+            {
+                StartCoroutine(SpawnMonsters(part.monster, part.amount, part.interval));
+                yield return new WaitForSeconds((float)part.amount * part.interval);
+            }
         }
     }
 

@@ -6,4 +6,5 @@ using UnityEngine;
 public class VillageData : StructureData
 {
     public int maxHealth;
+    public float hitRange;
 }

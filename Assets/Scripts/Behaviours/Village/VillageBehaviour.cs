@@ -15,10 +15,17 @@ public class VillageBehaviour : StructureBehaviour
         health = data.maxHealth;
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(gameObject.transform.position, data.hitRange);
+    }
+
     // Update is called once per frame
     public override void Update()
     {
         base.Update();
+        UpdateMonsterHits();
     }
 
     public void TakeDamage(int damage)
@@ -32,5 +39,19 @@ public class VillageBehaviour : StructureBehaviour
     public void RemoveFromGame()
     {
         generator.RemoveVillageStructure(gameObject);
+    }
+
+    void UpdateMonsterHits()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, data.hitRange);
+
+        foreach (Collider hitCollider in hitColliders)
+        {
+            MonsterBehaviour monsterBehaviour = hitCollider.GetComponent<MonsterBehaviour>();
+            if (monsterBehaviour != null)
+            {
+                monsterBehaviour.AttackStructure(gameObject);
+            }
+        }
     }
 }

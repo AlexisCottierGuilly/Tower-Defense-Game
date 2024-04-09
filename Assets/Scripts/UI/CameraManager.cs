@@ -10,6 +10,7 @@ public class CameraManager : MonoBehaviour
     public Rigidbody rb;
 
     private float initialHeight;
+    private float additionalHeight = 0f;
     
     void Start()
     {
@@ -50,19 +51,48 @@ public class CameraManager : MonoBehaviour
         if (Input.GetMouseButton(1))
         {
             float mouseX = Input.GetAxis("Mouse X");
+            //float mouseY = Input.GetAxis("Mouse Y");
+
             mouseX *= turnSpeed / 2f;
+            //mouseY *= turnSpeed / 2f;
+
             transform.eulerAngles = new Vector3(
-                transform.eulerAngles.x,
+                transform.eulerAngles.x, //- mouseY,
                 transform.eulerAngles.y + mouseX,
                 transform.eulerAngles.z
             );
         }
 
+        // space : go up
+        // shift : go down
+
+        if (Input.GetKey(KeyCode.Space))
+            additionalHeight += moveSpeed / 150f / 10f;
+        else if (Input.GetKey(KeyCode.LeftShift))
+            additionalHeight -= moveSpeed / 150f / 10f;
+
         // reset the camera height (changed with AddRelativeForce)
         transform.position = new Vector3(
             transform.position.x,
-            initialHeight,
+            initialHeight + additionalHeight,
             transform.position.z
+        );
+
+        // the x rotation should change depending on additionnalHeight
+        // if its higher, the camera should look more down (1/x function -> the higher, the slower it changes)
+        // if its lower, the camera should look more up (1/x function -> the lower, the slower it changes)
+
+        // if additionnal height is 0, the x angle should be 40.
+        // If the add. height is -10, for example, the x rotation should go close to 0
+        // If the add. height is 100, it should go close to 90.
+
+        // rotx = 24(arctan(add. height)) + 50 // arctan in radians
+        float rotX = 25f * Mathf.Atan(0.035f * additionalHeight) + 35f;
+
+        transform.eulerAngles = new Vector3(
+            rotX,
+            transform.eulerAngles.y,
+            transform.eulerAngles.z
         );
 
         // check if camera is in bounds

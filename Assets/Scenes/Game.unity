@@ -640,7 +640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 150
-  turnSpeed: 8
+  turnSpeed: 15
   gameGenerator: {fileID: 1951690851}
   rb: {fileID: 549421230}
 --- !u!54 &549421230

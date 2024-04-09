@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1372143204177027672}
   - component: {fileID: 1157311495014305583}
   - component: {fileID: 1127438756709623517}
-  - component: {fileID: 831292898763426453}
   - component: {fileID: 838981291400609581}
   m_Layer: 0
   m_Name: MainVillage
@@ -90,27 +89,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &831292898763426453
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1318826244757169631}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 1
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 3.0000021, y: 1.2654077, z: 3.0000021}
-  m_Center: {x: 0, y: 0.13269994, z: 0}
 --- !u!114 &838981291400609581
 MonoBehaviour:
   m_ObjectHideFlags: 0

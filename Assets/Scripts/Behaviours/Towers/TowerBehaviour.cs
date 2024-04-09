@@ -74,14 +74,14 @@ public class TowerBehaviour : StructureBehaviour
         );
         float deltaY = gameObject.transform.position.y - monster.transform.position.y;
         
-        deltaY *= 5f;
+        deltaY *= 17.5f;
         
         float acceleration = Physics.gravity.y;  // acceleration negative
         float angle = verticalShootAngle;
 
-        if (Mathf.Atan2(deltaY, deltaX) * Mathf.Rad2Deg >= angle) {
+        /*if (Mathf.Atan2(deltaY, deltaX) * Mathf.Rad2Deg >= angle) {
             return 0f;  // Not possible to shoot on the monster
-        }
+        }*/
 
         float viX = deltaX / (Mathf.Sqrt((2 * (deltaX * Mathf.Tan(angle) * Mathf.Rad2Deg - deltaY)) / acceleration));
         float viY = viX * Mathf.Tan(angle) * Mathf.Rad2Deg;

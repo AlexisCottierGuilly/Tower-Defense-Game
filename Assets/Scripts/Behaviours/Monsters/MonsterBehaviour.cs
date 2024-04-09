@@ -58,7 +58,6 @@ public class MonsterBehaviour : MonoBehaviour
         if (timeFromPreviousAttack >= attackCoolDown) {
             VillageBehaviour villageBehaviour = structure.GetComponent<VillageBehaviour>();
             villageBehaviour.TakeDamage(data.damage);
-            // Debug.Log($"Tower took {data.damage} damage.", structure);
             timeFromPreviousAttack = 0f;
         }
     }
@@ -68,29 +67,20 @@ public class MonsterBehaviour : MonoBehaviour
         health -= projectile.GetComponent<ProjectileBehaviour>().data.impactDamage;
         CheckDeath();
     }
-    
-    public void OnCollisionEnter(Collision other)
-    {
-        Debug.Log("ICI", other.gameObject);
-        if (other.gameObject.CompareTag("Village Building"))
-            AttackStructure(other.gameObject);
-        else if (other.gameObject.CompareTag("Projectile"))
-            TakeDamage(other.gameObject);
-    }
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Village Building"))
-            AttackStructure(other.gameObject);
-        else if (other.gameObject.CompareTag("Projectile"))
+        if (other.gameObject.CompareTag("Projectile"))
             TakeDamage(other.gameObject);
     }
 
     void CheckDeath()
     {
         if (health <= 0)
+        {
             Destroy(gameObject);
             GameManager.instance.gold += data.gold;
+        }
 
     }
 
