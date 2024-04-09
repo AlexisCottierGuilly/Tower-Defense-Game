@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.018
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 82332814}
   - component: {fileID: 82332816}
   - component: {fileID: 82332815}
+  - component: {fileID: 82332817}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -344,7 +345,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 50 gold
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bb2584cf8bc3d4f419f460ec75cb67be, type: 2}
   m_sharedMaterial: {fileID: 2091675084531310322, guid: bb2584cf8bc3d4f419f460ec75cb67be, type: 2}
@@ -421,6 +422,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 82332813}
   m_CullTransparentMesh: 1
+--- !u!114 &82332817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82332813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a965a65b6ba4e554192d73e34e479661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: f7c45916d1b18b0429b185642513e281, type: 2}
+  text: {fileID: 82332815}
 --- !u!1 &92116814
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,6 +559,7 @@ GameObject:
   - component: {fileID: 116688125}
   - component: {fileID: 116688127}
   - component: {fileID: 116688126}
+  - component: {fileID: 116688128}
   m_Layer: 5
   m_Name: 'Text (TMP) '
   m_TagString: Untagged
@@ -590,7 +606,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100 gold
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bb2584cf8bc3d4f419f460ec75cb67be, type: 2}
   m_sharedMaterial: {fileID: 2091675084531310322, guid: bb2584cf8bc3d4f419f460ec75cb67be, type: 2}
@@ -667,6 +683,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116688124}
   m_CullTransparentMesh: 1
+--- !u!114 &116688128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116688124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a965a65b6ba4e554192d73e34e479661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 25704c5c7d9a50c4b866362ace9d9d43, type: 2}
+  text: {fileID: 116688126}
 --- !u!1 &468953515
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,6 +1010,7 @@ GameObject:
   - component: {fileID: 693172349}
   - component: {fileID: 693172351}
   - component: {fileID: 693172350}
+  - component: {fileID: 693172352}
   m_Layer: 5
   m_Name: 'Text (TMP) '
   m_TagString: Untagged
@@ -1026,7 +1057,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 500 gold
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bb2584cf8bc3d4f419f460ec75cb67be, type: 2}
   m_sharedMaterial: {fileID: 2091675084531310322, guid: bb2584cf8bc3d4f419f460ec75cb67be, type: 2}
@@ -1103,6 +1134,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693172348}
   m_CullTransparentMesh: 1
+--- !u!114 &693172352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693172348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a965a65b6ba4e554192d73e34e479661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 223e05a536cd95d4ba0908dc8507c60b, type: 2}
+  text: {fileID: 693172350}
 --- !u!1 &694465961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2038,7 +2083,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'gold: 0'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bb2584cf8bc3d4f419f460ec75cb67be, type: 2}
   m_sharedMaterial: {fileID: 2091675084531310322, guid: bb2584cf8bc3d4f419f460ec75cb67be, type: 2}

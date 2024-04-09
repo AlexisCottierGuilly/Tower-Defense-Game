@@ -118,7 +118,14 @@ public class TowerBehaviour : StructureBehaviour
             force.z = horizontalPower * Mathf.Cos(horizontalShootAngle * Mathf.Deg2Rad);  // forward force
             force.x = horizontalPower * Mathf.Sin(horizontalShootAngle * Mathf.Deg2Rad);  // side force
 
-            projectile.gameObject.GetComponent<Rigidbody>().AddForce(force);
+            if (!float.IsNaN(force.x))
+            {
+                projectile.gameObject.GetComponent<Rigidbody>().AddForce(force);
+            }
+            else
+            {
+                Destroy(projectile);
+            }
         }
     }
 

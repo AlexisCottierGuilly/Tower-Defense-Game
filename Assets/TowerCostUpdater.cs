@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class gold : MonoBehaviour
+public class TowerCostUpdater : MonoBehaviour
 {
+    public TowerData data;
     public TextMeshProUGUI text;
 
-    void Update()
+    void Start()
     {
-        text.text = GameManager.instance.gold.ToString() + " or";
+        text.text = $"{data.cost} or";
     }
 }
