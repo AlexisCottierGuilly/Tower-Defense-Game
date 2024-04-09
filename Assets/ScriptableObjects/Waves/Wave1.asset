@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveParts:
   - monster: 0
-    amount: 5
+    amount: 10
     interval: 1
   - monster: 1
     amount: 3

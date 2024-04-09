@@ -28,6 +28,8 @@ public class DetectSelection : MonoBehaviour
 
     public void SetStructure(GameObject structurePrefab)
     {
+        UnsetStructure();
+        
         placedObjectPrefab = structurePrefab;
         currentRotation = new Vector3(0, 30, 0);
         canPlace = true;
@@ -112,10 +114,14 @@ public class DetectSelection : MonoBehaviour
         }
 
         canPlace = gameGenerator.CanPlace(position);
+        if (placedObjectPrefab.GetComponent<TowerBehaviour>().data.cost > GameManager.instance.gold)
+            canPlace = false;
+
         Color color = Color.green;
 
         if (!canPlace)
             color = Color.red;
+        
         if (placedObject != null) //added by mic not effecient
         {
             placedObject.GetComponent<Renderer>().material.SetColor("_Color", color);

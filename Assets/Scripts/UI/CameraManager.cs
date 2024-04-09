@@ -40,20 +40,20 @@ public class CameraManager : MonoBehaviour
         rb.AddRelativeForce(force * moveSpeed * Time.deltaTime * 120f);
 
         // if QE or the mouse is moved while the right mouse button is held down, rotate the camera
-        Vector3 newRotation = new Vector3(0, 0, 0);
+        /* Vector3 newRotation = new Vector3(0, 0, 0);
         if (Input.GetKey(KeyCode.Q))
             newRotation += new Vector3(0, -1, 0);
         if (Input.GetKey(KeyCode.E))
             newRotation += new Vector3(0, 1, 0);
         
-        rb.AddTorque(newRotation * turnSpeed * Time.deltaTime * 120f);
+        rb.AddTorque(newRotation * turnSpeed * Time.deltaTime * 120f); */
         
         if (Input.GetMouseButton(1))
         {
             float mouseX = Input.GetAxis("Mouse X");
             //float mouseY = Input.GetAxis("Mouse Y");
 
-            mouseX *= turnSpeed / 2f;
+            mouseX *= turnSpeed * Time.deltaTime * 15f;
             //mouseY *= turnSpeed / 2f;
 
             transform.eulerAngles = new Vector3(
@@ -67,9 +67,9 @@ public class CameraManager : MonoBehaviour
         // shift : go down
 
         if (Input.GetKey(KeyCode.Space))
-            additionalHeight += moveSpeed / 150f / 10f;
+            additionalHeight += moveSpeed / 6f * Time.deltaTime;
         else if (Input.GetKey(KeyCode.LeftShift))
-            additionalHeight -= moveSpeed / 150f / 10f;
+            additionalHeight -= moveSpeed / 6f * Time.deltaTime;
 
         // reset the camera height (changed with AddRelativeForce)
         transform.position = new Vector3(

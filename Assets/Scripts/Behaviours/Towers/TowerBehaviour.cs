@@ -103,7 +103,7 @@ public class TowerBehaviour : StructureBehaviour
         {
             GameObject projectile = Instantiate(data.projectile, projectileSpawnEmpty.transform.position, Quaternion.identity);
             projectile.transform.eulerAngles = new Vector3(  // ROTATION MOCHE
-                this.transform.eulerAngles.x, //canonSupport.transform.eulerAngles.x,
+                90f - verticalShootAngle, //canonSupport.transform.eulerAngles.x,
                 projectile.transform.eulerAngles.y,
                 projectile.transform.eulerAngles.z
             );

@@ -16,5 +16,6 @@ MonoBehaviour:
   radius: 3
   fireDuration: 2
   fireDamage: 25
-  impactDamage: 50
+  impactDamage: 40
   shootingAngle: 60
+  followTarget: 0
