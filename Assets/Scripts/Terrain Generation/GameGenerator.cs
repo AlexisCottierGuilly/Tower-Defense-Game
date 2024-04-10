@@ -30,6 +30,8 @@ public class GameGenerator : MonoBehaviour
     
     [Header("Game Settings")]
     public int gold = 0;
+    public int maxHealth = 0;
+    public int health = 0;
     
     [Header("Generation Settings")]
     public long seed = -1;
@@ -63,6 +65,8 @@ public class GameGenerator : MonoBehaviour
         villageGenerator.GenerateVillage();
         pathGenerator.Generate();
         waveManager.InitializeSurfaces();
+
+        maxHealth = villageGenerator.GetRemainingLives();
 
         StartCoroutine(LogicUpdate());
         StartCoroutine(TowerUpdate());
@@ -283,5 +287,10 @@ public class GameGenerator : MonoBehaviour
             // Debug.Log("Tower Logic updated");
             yield return new WaitForSeconds(0.05f);
         }
+    }
+
+    void Update()
+    {
+        health = villageGenerator.GetRemainingLives();
     }
 }

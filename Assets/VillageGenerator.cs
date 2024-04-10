@@ -129,4 +129,20 @@ public class VillageGenerator : MonoBehaviour
             mainVillage = null;
         Destroy(structure);
     }
+
+    public int GetRemainingLives()
+    {
+        int total = 0;
+
+        if (mainVillage != null)
+            total += (int)mainVillage.GetComponent<VillageBehaviour>().health;
+        
+        foreach (GameObject house in villageBuildings)
+        {
+            if (house != null)
+                total += (int)house.GetComponent<VillageBehaviour>().health;
+        }
+
+        return total;
+    }
 }

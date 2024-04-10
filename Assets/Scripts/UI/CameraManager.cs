@@ -53,7 +53,7 @@ public class CameraManager : MonoBehaviour
             float mouseX = Input.GetAxis("Mouse X");
             //float mouseY = Input.GetAxis("Mouse Y");
 
-            mouseX *= turnSpeed * Time.deltaTime * 15f;
+            mouseX *= turnSpeed / 2f;
             //mouseY *= turnSpeed / 2f;
 
             transform.eulerAngles = new Vector3(

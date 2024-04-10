@@ -4,6 +4,7 @@ using UnityEngine;
 using Unity.AI.Navigation;
 using UnityEngine.AI;
 using TMPro;
+using UnityEngine.Events;
 
 public enum Monster
 {
@@ -28,9 +29,16 @@ public class WaveManager : MonoBehaviour
 
     [Header("Others")]
     public TextMeshProUGUI roundText;
+    public GameObject roundTextTitle;
+    public UnityEvent gameFinished;
     
     [HideInInspector] int currentPathIndex = 0;
     [HideInInspector] public List<GameObject> monsters = new List<GameObject>();
+    
+    void Start()
+    {
+        gameFinished = new UnityEvent();
+    }
     
     public void InitializeSurfaces()
     {
@@ -45,7 +53,10 @@ public class WaveManager : MonoBehaviour
          waveFinished = false;
         
         if (wave >= waves.Count)
+        {
+            gameFinished.Invoke();
             yield return new WaitForSeconds(0f);
+        }
         else
         {
             wave++;
@@ -120,6 +131,9 @@ public class WaveManager : MonoBehaviour
     public void RoundDidStart()
     {
         roundText.text = $"Round {wave}";
+        roundTextTitle.GetComponent<TextMeshProUGUI>().text = roundText.text;
+
+        roundTextTitle.GetComponent<Animator>().SetTrigger("ShowAnimation");
     }
 
     void Update()
