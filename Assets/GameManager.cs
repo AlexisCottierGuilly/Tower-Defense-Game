@@ -10,7 +10,8 @@ public enum GameState
     Game,
     Settings,
     Credits,
-    PreviousScene
+    PreviousScene,
+    Tutoriel
 }
 
 

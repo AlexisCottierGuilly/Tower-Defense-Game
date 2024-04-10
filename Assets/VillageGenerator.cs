@@ -82,6 +82,22 @@ public class VillageGenerator : MonoBehaviour
         Vector2 center = new Vector2(gameGenerator.terrainGenerator.size.x / 2f, gameGenerator.terrainGenerator.size.y / 2f);
         List<Vector2> villagePositions = new List<Vector2>();
 
+        Vector3 mainTextPosition = new Vector3(
+                mainVillage.transform.position.x,
+                mainVillage.transform.position.y + mainVillage.transform.localScale.y,
+                mainVillage.transform.position.z
+        );
+            
+        GameObject mainVillageText = Instantiate(
+                healthTextPrefab,
+                mainTextPosition,
+                Quaternion.identity,
+                mainVillage.transform
+        );
+
+        mainVillageText.GetComponent<HealthTextUpdater>().village = mainVillage.GetComponent<VillageBehaviour>();
+        mainVillageText.GetComponent<HealthTextUpdater>().camera = camera;
+
         for (int i=0; i < 4; i++)
         {
             Vector2 randomPosition = new Vector2();
