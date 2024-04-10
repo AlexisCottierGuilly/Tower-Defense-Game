@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class VillageGenerator : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class VillageGenerator : MonoBehaviour
 
     [Header("3D Models")]
     public GameObject mainVillagePrefab;
+    public GameObject healthTextPrefab;
+    public GameObject camera;
     public List<GameObject> villagePrefabs = new List<GameObject>();
 
     [Header("Parents")]
@@ -118,6 +121,22 @@ public class VillageGenerator : MonoBehaviour
             villageStructure.GetComponent<VillageBehaviour>().position = randomPosition;
             villageStructure.GetComponent<VillageBehaviour>().generator = this;
             villageBuildings.Add(villageStructure);
+
+            Vector3 textPosition = new Vector3(
+                villageStructure.transform.position.x,
+                villageStructure.transform.position.y + villageStructure.transform.localScale.y,
+                villageStructure.transform.position.z
+            );
+            
+            GameObject villageText = Instantiate(
+                healthTextPrefab,
+                textPosition,
+                Quaternion.identity,
+                villageStructure.transform
+            );
+
+            villageText.GetComponent<HealthTextUpdater>().village = villageStructure.GetComponent<VillageBehaviour>();
+            villageText.GetComponent<HealthTextUpdater>().camera = camera;
         }
     }
 

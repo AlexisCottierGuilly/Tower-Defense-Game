@@ -3852,6 +3852,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameGenerator: {fileID: 1951690851}
   mainVillagePrefab: {fileID: 1318826244757169631, guid: 81591eb5b4afac743aa13c8ecc3d7ec0, type: 3}
+  healthTextPrefab: {fileID: 8504813478896472654, guid: 3611a85ff1b8e5a4c9912ecae3209bd4, type: 3}
+  camera: {fileID: 549421225}
   villagePrefabs:
   - {fileID: 2107958595256771966, guid: 6b74584349e063049a67ba323ae53f42, type: 3}
   villageParent: {fileID: 1777719527}
