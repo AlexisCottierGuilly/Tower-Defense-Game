@@ -86,7 +86,6 @@ public class TowerBehaviour : StructureBehaviour
         float viX = deltaX / (Mathf.Sqrt((2 * (deltaX * Mathf.Tan(angle) * Mathf.Rad2Deg - deltaY)) / acceleration));
         float viY = viX * Mathf.Tan(angle) * Mathf.Rad2Deg;
         float vi = Mathf.Sqrt(Mathf.Pow(viX, 2f) + Mathf.Pow(viY, 2f));
-        Debug.Log(vi);
 
         return vi * 9f; //7.5f;  // 10f;
 

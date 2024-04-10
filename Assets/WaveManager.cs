@@ -97,14 +97,15 @@ public class WaveManager : MonoBehaviour
         MonsterBehaviour behaviour = monster.GetComponent<MonsterBehaviour>();
         
         behaviour.gameGenerator = gameGenerator;
+        monster.transform.localScale = behaviour.finalScale;
         monster.transform.position = new Vector3(
             placement.transform.position.x,
             placement.transform.position.y + monster.transform.localScale.y / 2f,
             placement.transform.position.z
         );
-        monster.transform.localScale = behaviour.finalScale;
         monster.transform.parent = monsterParent.transform;
         behaviour.agent.destination = gameGenerator.villageGenerator.mainVillage.transform.position;
+        // Destroy(monster.GetComponent<NavMeshAgent>());
         
         monsters.Add(monster);
     }
