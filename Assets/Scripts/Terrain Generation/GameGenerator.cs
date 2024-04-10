@@ -29,7 +29,7 @@ public class GameGenerator : MonoBehaviour
     public WaveManager waveManager;
     
     [Header("Game Settings")]
-    public int gold = 0;
+    // public int gold = 0;
     public int maxHealth = 0;
     public int health = 0;
     public float gameTime = 0f;
@@ -56,6 +56,8 @@ public class GameGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.instance.gold = GameManager.instance.initialGold;
+        
         seed = GameManager.instance.gameSeed;
         if (seed == -1)
             seed = Random.Range(0, GameManager.instance.maxGameSeed);

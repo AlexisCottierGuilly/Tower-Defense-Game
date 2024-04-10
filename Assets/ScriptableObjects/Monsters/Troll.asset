@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1048b24caeb7af4fb7437d13f3f9c38, type: 3}
   m_Name: Troll
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 300
   damage: 50
   attackSpeed: 0.5
   speed: 0.5
-  gold: 25
+  gold: 15
   prefab: {fileID: 1108500059226642014, guid: 28e9fb67265d8f547bb88160b5c95ec0, type: 3}

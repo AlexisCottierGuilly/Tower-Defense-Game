@@ -38,6 +38,9 @@ public class WaveManager : MonoBehaviour
     void Start()
     {
         gameFinished = new UnityEvent();
+        wave = 1;
+        LoadFogColor();
+        wave = 0;
     }
     
     public void InitializeSurfaces()
@@ -134,6 +137,30 @@ public class WaveManager : MonoBehaviour
         roundTextTitle.GetComponent<TextMeshProUGUI>().text = roundText.text;
 
         roundTextTitle.GetComponent<Animator>().SetTrigger("ShowAnimation");
+
+        LoadFogColor();
+    }
+
+    public void LoadFogColor()
+    {
+        Color startingColor = Color.green;
+        Color endingColor = Color.red;
+        
+        float percentage = ((float)wave - 1f) / Mathf.Max((float)waves.Count - 1f, 1f);
+        Debug.Log($"Percentage : {percentage}");
+        
+        Color waveColor = Color.Lerp(startingColor, endingColor, percentage);
+        float luminosityDivisor = 3f;
+
+        waveColor = new Color(
+            waveColor.r / luminosityDivisor,
+            waveColor.g / luminosityDivisor,
+            waveColor.b / luminosityDivisor,
+            
+            waveColor.a
+        );
+
+        RenderSettings.fogColor = waveColor;
     }
 
     void Update()

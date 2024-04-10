@@ -401,7 +401,8 @@ MonoBehaviour:
   previousScene: 0
   UISize: 1
   towerSize: 1
-  gold: 150
+  initialGold: 150
+  gold: 0
 --- !u!4 &268031490
 Transform:
   m_ObjectHideFlags: 0

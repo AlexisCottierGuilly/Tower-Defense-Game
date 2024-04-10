@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1048b24caeb7af4fb7437d13f3f9c38, type: 3}
-  m_Name: Goblin
+  m_Script: {fileID: 11500000, guid: f9e6a87393d3a0d46a2a68f3f9f6b170, type: 3}
+  m_Name: Wave 4
   m_EditorClassIdentifier: 
-  maxHealth: 60
-  damage: 20
-  attackSpeed: 1
-  speed: 1
-  gold: 5
-  prefab: {fileID: 137061676372472529, guid: f2c50cfd24d3cf9418d819ee2d46552d, type: 3}
+  waveParts:
+  - monster: 1
+    amount: 20
+    interval: 1
+  - monster: 0
+    amount: 10
+    interval: 2

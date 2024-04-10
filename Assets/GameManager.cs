@@ -25,7 +25,9 @@ public class GameManager : MonoBehaviour
     public GameState previousScene;
     public float UISize = 1;
     public float towerSize = 1;
-    public int gold = 100;
+    [Space]
+    public int initialGold = 150;
+    public int gold = 0;
     
     void Awake()
     {
