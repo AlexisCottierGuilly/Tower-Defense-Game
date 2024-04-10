@@ -32,6 +32,8 @@ public class GameGenerator : MonoBehaviour
     public int gold = 0;
     public int maxHealth = 0;
     public int health = 0;
+    public float gameTime = 0f;
+    public bool paused = false;
     
     [Header("Generation Settings")]
     public long seed = -1;
@@ -292,5 +294,8 @@ public class GameGenerator : MonoBehaviour
     void Update()
     {
         health = villageGenerator.GetRemainingLives();
+        
+        if (!paused)
+            gameTime += Time.deltaTime;
     }
 }

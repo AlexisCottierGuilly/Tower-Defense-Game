@@ -19,15 +19,18 @@ public class GameStatusManager : MonoBehaviour
         if (gameGenerator.health <= 0 || gameGenerator.villageGenerator.mainVillage == null)
         {
             defeat.SetActive(true);
+            gameGenerator.paused = true;
         }
         else
         {
             defeat.SetActive(false);
+            gameGenerator.paused = false;
         }
     }
 
     void GameIsFinished()
     {
         victory.SetActive(true);
+        gameGenerator.paused = true;
     }
 }
