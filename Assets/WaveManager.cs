@@ -40,6 +40,7 @@ public class WaveManager : MonoBehaviour
         gameFinished = new UnityEvent();
         wave = 1;
         LoadFogColor();
+        roundText.text = $"Round {wave}/{waves.Count}";
         wave = 0;
     }
     
@@ -136,6 +137,7 @@ public class WaveManager : MonoBehaviour
     {
         roundText.text = $"Round {wave}";
         roundTextTitle.GetComponent<TextMeshProUGUI>().text = roundText.text;
+        roundText.text += $"/{waves.Count}";
 
         roundTextTitle.GetComponent<Animator>().SetTrigger("ShowAnimation");
 

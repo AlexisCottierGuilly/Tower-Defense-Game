@@ -29,6 +29,11 @@ public class GameManager : MonoBehaviour
     [Space]
     public int initialGold = 150;
     public int gold = 0;
+
+    /* 
+    Best seeds
+        - 5564848
+    */    
     
     void Awake()
     {

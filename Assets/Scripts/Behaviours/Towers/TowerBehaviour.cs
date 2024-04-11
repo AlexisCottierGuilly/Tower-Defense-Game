@@ -67,6 +67,9 @@ public class TowerBehaviour : StructureBehaviour
 
         return Vi !!!
         */
+
+        float acceleration = Physics.gravity.y;  // acceleration negative
+        float angle = 25f; // BOGUE //verticalShootAngle;
         
         float deltaX = Mathf.Sqrt(
             Mathf.Pow(gameObject.transform.position.x - monster.transform.position.x, 2f) + 
@@ -74,11 +77,18 @@ public class TowerBehaviour : StructureBehaviour
         );
         float deltaY = gameObject.transform.position.y - monster.transform.position.y;
         
-        deltaY *= 17.5f;
+        float angleDiffMultiplier;
+        if (verticalShootAngle >= 25f)
+            angleDiffMultiplier = Mathf.Pow(verticalShootAngle / angle, 1.35f);
+        else
+            angleDiffMultiplier = 1f * 1.025f;
+        Debug.Log($"Vertical angle : {verticalShootAngle}, multiplier : {angleDiffMultiplier}");
         
-        float acceleration = Physics.gravity.y;  // acceleration negative
-        float angle = verticalShootAngle;
-
+        if (verticalShootAngle >= 25f)
+            deltaY *= 17.5f / Mathf.Pow(angleDiffMultiplier, 1.25f);
+        else
+            deltaY *= 17.5f / (angleDiffMultiplier * 0.8f);
+        
         /*if (Mathf.Atan2(deltaY, deltaX) * Mathf.Rad2Deg >= angle) {
             return 0f;  // Not possible to shoot on the monster
         }*/
@@ -87,7 +97,7 @@ public class TowerBehaviour : StructureBehaviour
         float viY = viX * Mathf.Tan(angle) * Mathf.Rad2Deg;
         float vi = Mathf.Sqrt(Mathf.Pow(viX, 2f) + Mathf.Pow(viY, 2f));
 
-        return vi * 9f; //7.5f;  // 10f;
+        return vi * 9f * angleDiffMultiplier; //7.5f;  // 10f;
 
         //return 350f * data.attackStrength;
     }
@@ -142,6 +152,8 @@ public class TowerBehaviour : StructureBehaviour
             if (obj.CompareTag("Monster"))
             {
                 float distance = Vector3.Distance(gameObject.transform.position, obj.transform.position);
+                
+                Debug.Log("Line of sight !!!");
                 if (closestDistance == -1f || distance < closestDistance)
                 {
                     closestDistance = distance;

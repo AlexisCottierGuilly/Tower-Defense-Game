@@ -71,7 +71,9 @@ public class MonsterBehaviour : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Projectile"))
+        {
             TakeDamage(other.gameObject);
+        }
     }
 
     void CheckDeath()
