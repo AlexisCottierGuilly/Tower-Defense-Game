@@ -61,16 +61,47 @@ public class ProjectileBehaviour : MonoBehaviour
         rb.AddForce(correctionForce);
     }
 
+    public void SpawnZone()
+    {
+        if (data.impactZone != null)
+        {
+            GameObject zone = Instantiate(data.impactZone, gameObject.transform.position, Quaternion.identity);
+            zone.transform.eulerAngles = new Vector3(
+                zone.transform.eulerAngles.x - 90f,
+                zone.transform.eulerAngles.y,
+                zone.transform.eulerAngles.z
+            );
+
+            float radius = zone.GetComponent<ZoneBehaviour>().data.radius / 10f;
+
+            zone.transform.localScale = new Vector3(
+                radius,
+                radius,
+
+                radius // height
+            );
+
+            // var zoneShape = zone.GetComponent<ParticleSystem>().shape;
+            // zoneShape.radius = radius;
+        }
+    }
+    
     public void SetTarget(GameObject target)
     {
         this.target = target;
+    }
+
+    public void Die()
+    {
+        SpawnZone();
+        Destroy(gameObject);
     }
 
     public void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Tile"))
         {
-            Destroy(gameObject);
+            Die();
         }
     }
 
@@ -78,8 +109,8 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Monster"))
         {
-            Destroy(gameObject);
             target = null;
+            Die();
         }
     }
 }

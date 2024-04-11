@@ -68,6 +68,12 @@ public class MonsterBehaviour : MonoBehaviour
         CheckDeath();
     }
 
+    public void TakeDamageFromZone(GameObject zone)
+    {
+        health -= zone.GetComponent<ZoneBehaviour>().data.damage;
+        CheckDeath();
+    }
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Projectile"))

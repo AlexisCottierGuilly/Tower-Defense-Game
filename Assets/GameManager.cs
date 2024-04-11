@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     /* 
     Best seeds
         - 5564848
-    */    
+    */
     
     void Awake()
     {
