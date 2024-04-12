@@ -7,6 +7,7 @@ public class MonsterBehaviour : MonoBehaviour
 {
     public MonsterData data;
     public int health;
+    public MonsterHealthUpdater healthScript;
     public GameGenerator gameGenerator = null;
     
     [Header("Space")]

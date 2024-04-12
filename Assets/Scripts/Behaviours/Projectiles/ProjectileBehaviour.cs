@@ -72,7 +72,7 @@ public class ProjectileBehaviour : MonoBehaviour
                 zone.transform.eulerAngles.z
             );
 
-            float radius = zone.GetComponent<ZoneBehaviour>().data.radius / 10f;
+            float radius = zone.GetComponent<ZoneBehaviour>().data.radius / 5f;
 
             zone.transform.localScale = new Vector3(
                 radius,

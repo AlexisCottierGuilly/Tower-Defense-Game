@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class HealthTextUpdater : MonoBehaviour
+public class MonsterHealthUpdater : MonoBehaviour
 {
-    public TextMeshPro text;
-    public VillageBehaviour village;
+    public MonsterBehaviour monster;
     public GameObject camera;
+    public TextMeshPro text;
 
     void Update()
     {
-        text.text = $"{village.health} / {village.data.maxHealth}";
+        text.text = $"{monster.health} / {monster.data.maxHealth}";
         text.transform.LookAt(camera.transform);
 
         float deltaX = gameObject.transform.position.x - camera.transform.position.x;
@@ -32,8 +32,7 @@ public class HealthTextUpdater : MonoBehaviour
             text.transform.eulerAngles.z
         );
 
-        text.color = new Color(1f-(float)village.health/(float)village.data.maxHealth, (float)village.health/(float)village.data.maxHealth, 0f, 1f);
-        //text.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(text.transform.position, camera.transform.position, 10000f, 0f)+new Vector3(0,0,180));
-       
+        float percentage = (float)monster.health / (float)monster.data.maxHealth;
+        text.color = Color.Lerp(Color.red, Color.green, percentage);
     }
 }

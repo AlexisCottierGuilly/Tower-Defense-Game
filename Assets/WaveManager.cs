@@ -31,6 +31,7 @@ public class WaveManager : MonoBehaviour
     public TextMeshProUGUI roundText;
     public GameObject roundTextTitle;
     public UnityEvent gameFinished;
+    public GameObject camera;
     
     [HideInInspector] int currentPathIndex = 0;
     [HideInInspector] public List<GameObject> monsters = new List<GameObject>();
@@ -106,6 +107,7 @@ public class WaveManager : MonoBehaviour
         );
         monster.transform.parent = monsterParent.transform;
         behaviour.agent.destination = gameGenerator.villageGenerator.mainVillage.transform.position;
+        behaviour.healthScript.camera = camera;
         // Destroy(monster.GetComponent<NavMeshAgent>());
         
         monsters.Add(monster);

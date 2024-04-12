@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cost: 150
   maxRange: 35
-  attackSpeed: 2
+  attackSpeed: 3
   attackStrength: 2
   projectile: {fileID: 9201598211181502813, guid: 1a936eae301fb7c4b8973e1f4bee024d, type: 3}
   prefab: {fileID: 2952150505218308268, guid: e789858200b51b242a2135212af0b9f8, type: 3}
