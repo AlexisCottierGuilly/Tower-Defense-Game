@@ -18,6 +18,7 @@ public class VillageGenerator : MonoBehaviour
 
     [HideInInspector] public GameObject mainVillage;
     [HideInInspector] public List<GameObject> villageBuildings = new List<GameObject>();
+    [HideInInspector] public int maxHealth;
 
     public void GenerateVillage()
     {
@@ -154,6 +155,8 @@ public class VillageGenerator : MonoBehaviour
             villageText.GetComponent<HealthTextUpdater>().village = villageStructure.GetComponent<VillageBehaviour>();
             villageText.GetComponent<HealthTextUpdater>().camera = camera;
         }
+
+        maxHealth = GetMaximumLives();
     }
 
     public void RemoveVillageStructure(GameObject structure)
@@ -163,6 +166,22 @@ public class VillageGenerator : MonoBehaviour
         else
             mainVillage = null;
         Destroy(structure);
+    }
+
+    public int GetMaximumLives()
+    {
+        int total = 0;
+
+        if (mainVillage != null)
+            total += (int)mainVillage.GetComponent<VillageBehaviour>().data.maxHealth;
+        
+        foreach (GameObject house in villageBuildings)
+        {
+            if (house != null)
+                total += (int)house.GetComponent<VillageBehaviour>().data.maxHealth;
+        }
+
+        return total;
     }
 
     public int GetRemainingLives()

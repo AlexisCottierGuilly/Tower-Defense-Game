@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Goblin
   m_EditorClassIdentifier: 
   maxHealth: 60
-  damage: 20
+  damage: 15
   attackSpeed: 1
   speed: 1
   gold: 5

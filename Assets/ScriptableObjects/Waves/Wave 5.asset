@@ -20,8 +20,11 @@ MonoBehaviour:
     amount: 5
     interval: 1
   - monster: 0
-    amount: 10
+    amount: 30
     interval: 2
   - monster: 1
-    amount: 30
+    amount: 5
     interval: 0.5
+  - monster: 1
+    amount: 10
+    interval: 3
