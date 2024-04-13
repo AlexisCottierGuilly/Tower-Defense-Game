@@ -87,7 +87,7 @@ public class TowerBehaviour : StructureBehaviour
         if (verticalShootAngle >= 25f)
             deltaY *= 17.5f / Mathf.Pow(angleDiffMultiplier, 1.25f);
         else
-            deltaY *= 17.5f / (angleDiffMultiplier * 0.8f);
+            deltaY *= 17.5f / (angleDiffMultiplier * 1f);
         
         /*if (Mathf.Atan2(deltaY, deltaX) * Mathf.Rad2Deg >= angle) {
             return 0f;  // Not possible to shoot on the monster
