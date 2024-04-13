@@ -3054,6 +3054,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 29e3fce03d7334f4eaf90e47755ef4c0, type: 2}
   - {fileID: 11400000, guid: 55b8c47f3bf3a17428c68bca04e616ee, type: 2}
   - {fileID: 11400000, guid: 3253e00ae3ee69746814c5aaa3b596b2, type: 2}
+  - {fileID: 11400000, guid: a558a6328756f254b805fce928e6d4ec, type: 2}
   waveFinished: 0
   monsterParent: {fileID: 80457012}
   roundText: {fileID: 814913607}
