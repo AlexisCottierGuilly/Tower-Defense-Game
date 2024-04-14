@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class tutotUI : MonoBehaviour
 {
@@ -66,10 +67,15 @@ public class tutotUI : MonoBehaviour
         else if (state == 5)
         {
             info5.SetActive(true);
-            oneUI.SetActive(true);
-            twoUI.SetActive(true);
-            threeUI.SetActive(true);
-            QUI.SetActive(true);
+            if (one == false)
+                oneUI.SetActive(true);
+            if (two == false)
+                twoUI.SetActive(true);
+            if (three == false)
+                threeUI.SetActive(true);
+            if (Q == false)
+                QUI.SetActive(true);
+            
             if (Q == true && one == true && two == true && three == true)
             {
                 state += 1;
@@ -78,22 +84,22 @@ public class tutotUI : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Q))
             {
                 Q = true;
-                QUI.SetActive(false);
+                QUI.GetComponent<Image>().color = Color.green;  // QUI.SetActive(false);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 one = true;
-                oneUI.SetActive(false);
+                oneUI.GetComponent<Image>().color = Color.green;  // oneUI.SetActive(false);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 two = true;
-                twoUI.SetActive(false);
+                twoUI.GetComponent<Image>().color = Color.green;  // twoUI.SetActive(false);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 three = true;
-                threeUI.SetActive(false);
+                threeUI.GetComponent<Image>().color = Color.green;  // threeUI.SetActive(false);
             }
         }
     }
