@@ -141,7 +141,7 @@ public class VillageGenerator : MonoBehaviour
 
             Vector3 textPosition = new Vector3(
                 villageStructure.transform.position.x,
-                villageStructure.transform.position.y + villageStructure.transform.localScale.y,
+                villageStructure.transform.position.y + GetTotalHeight(villageStructure),
                 villageStructure.transform.position.z
             );
             
@@ -157,6 +157,18 @@ public class VillageGenerator : MonoBehaviour
         }
 
         maxHealth = GetMaximumLives();
+    }
+
+    public float GetTotalHeight(GameObject go)
+    {
+        Bounds bounds = go.GetComponent<MeshRenderer>().bounds;
+        foreach (Transform child in go.transform)
+        {
+            if (child.gameObject.name != "NavMeshCollider")
+                bounds.Encapsulate(child.gameObject.GetComponent<MeshRenderer>().bounds);
+        }
+
+        return bounds.size.y;
     }
 
     public void RemoveVillageStructure(GameObject structure)

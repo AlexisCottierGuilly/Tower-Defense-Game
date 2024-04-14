@@ -25,6 +25,7 @@ public class GameGenerator : MonoBehaviour
     public TerrainGenerator terrainGenerator;
     public PathGenerator pathGenerator;
     public VillageGenerator villageGenerator;
+    public DecorationGenerator decorationGenerator;
 
     [Header("Managers")]
     public WaveManager waveManager;
@@ -53,6 +54,7 @@ public class GameGenerator : MonoBehaviour
 
     [HideInInspector] public List<List<GameObject>> tiles = new List<List<GameObject>>();
     [HideInInspector] public List<GameObject> towers = new List<GameObject>();
+    [HideInInspector] public List<GameObject> decorations = new List<GameObject>();
     [HideInInspector] public System.Random randomWithSeed;
     
     // Start is called before the first frame update
@@ -72,6 +74,8 @@ public class GameGenerator : MonoBehaviour
         terrainGenerator.Generate();
         villageGenerator.GenerateVillage();
         pathGenerator.Generate();
+        decorationGenerator.AddDecorations();
+        
         waveManager.InitializeSurfaces();
 
         maxHealth = villageGenerator.GetRemainingLives();
@@ -155,10 +159,27 @@ public class GameGenerator : MonoBehaviour
             return tiles;
         
         Vector2 position = villageGenerator.mainVillage.GetComponent<VillageBehaviour>().position;
-        for (int x=-1; x < 2; x++)
+        /* for (int x=-1; x < 2; x++)
         {
             for (int y=-1; y < 2; y++)
                 tiles.Add(position + new Vector2(x, y));
+        } */
+        tiles.Add(position);
+
+        return tiles;
+    }
+
+    public List<Vector2> GetVillageTiles()
+    {
+        List<Vector2> tiles = new List<Vector2>();
+        foreach (GameObject building in villageGenerator.villageBuildings)
+        {
+            Vector2 position = building.GetComponent<VillageBehaviour>().position;
+            
+            tiles.Add(position);
+            //tiles.Add(position + new Vector2(-1f, 0f));
+            //tiles.Add(position + new Vector2(0f, -1f));
+            //tiles.Add(position + new Vector2(-1f, -1f));
         }
         return tiles;
     }
@@ -233,21 +254,6 @@ public class GameGenerator : MonoBehaviour
         float distanceFromSideY = Mathf.Min(position.y, terrainGenerator.size.y - position.y - 1);
 
         return Mathf.Min(distanceFromSideX, distanceFromSideY);
-    }
-
-    public List<Vector2> GetVillageTiles()
-    {
-        List<Vector2> tiles = new List<Vector2>();
-        foreach (GameObject building in villageGenerator.villageBuildings)
-        {
-            Vector2 position = building.GetComponent<VillageBehaviour>().position;
-            
-            tiles.Add(position);
-            //tiles.Add(position + new Vector2(-1f, 0f));
-            //tiles.Add(position + new Vector2(0f, -1f));
-            //tiles.Add(position + new Vector2(-1f, -1f));
-        }
-        return tiles;
     }
     
     public float TileDirectionToVillage(Vector2 initialPosition, Vector2 projectedPosition)

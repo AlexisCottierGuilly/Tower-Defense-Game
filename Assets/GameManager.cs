@@ -32,8 +32,12 @@ public class GameManager : MonoBehaviour
 
     /* 
     Best seeds
+        Without Spikes :
         - 5564848
-        - 9357669 (with spikes)
+
+        With Spikes :
+        - 9357669
+        - 2944643
     */
     
     void Awake()
