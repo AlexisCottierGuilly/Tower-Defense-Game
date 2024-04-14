@@ -23,7 +23,7 @@ public class GameGenerator : MonoBehaviour
 {
     [Header("Generators")]
     public TerrainGenerator terrainGenerator;
-    public PathGenerator pathGenerator;
+    public PathGenerator2 pathGenerator;
     public VillageGenerator villageGenerator;
     public DecorationGenerator decorationGenerator;
 

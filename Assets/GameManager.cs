@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
         With Spikes :
         - 9357669
         - 2944643
+
+        Paths Testing :
+        - 6564189
     */
     
     void Awake()

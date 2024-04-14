@@ -20,8 +20,11 @@ public class DecorationGenerator : MonoBehaviour
     [Header("Decorations (count for 32x32)")]
     public List<Decoration> decorations = new List<Decoration>();
 
+    [Header("Parents")]
+    public GameObject decorationsParent;
+
     private Dictionary<GameObject, int> decorationCounts = new Dictionary<GameObject, int>();
-    private int countMultiplier = 1;
+    private float countMultiplier = 1;
 
     /*
     if (gameGenerator.randomWithSeed.Next(0, 10) == 0)
@@ -30,7 +33,8 @@ public class DecorationGenerator : MonoBehaviour
 
     void Start()
     {
-        countMultiplier = (int)(gameGenerator.terrainGenerator.size.x * gameGenerator.terrainGenerator.size.y / (32f * 32f));
+        countMultiplier = (GameManager.instance.mapSize.x * GameManager.instance.mapSize.y / (32f * 32f));
+        Debug.Log($"Count multiplier: {countMultiplier}");
     }
 
     public void AddDecorations()
@@ -79,7 +83,7 @@ public class DecorationGenerator : MonoBehaviour
         int totalDecorationCount = 0;
         foreach (Decoration decoration in decorations)
         {
-            totalDecorationCount += decoration.count * countMultiplier;
+            totalDecorationCount += (int)((float)decoration.count * countMultiplier);
         }
 
         int totalTileCount = (int)(gameGenerator.terrainGenerator.size.x * gameGenerator.terrainGenerator.size.y);
@@ -146,6 +150,8 @@ public class DecorationGenerator : MonoBehaviour
             decoration.transform.position.y + decoration.transform.localScale.y * decorationInfo.offsetMultiplier,
             decoration.transform.position.z
         );
+
+        decoration.transform.parent = decorationsParent.transform;
 
         gameGenerator.decorations.Add(decoration);
     }

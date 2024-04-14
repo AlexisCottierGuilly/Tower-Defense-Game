@@ -94,7 +94,9 @@ public class WaveManager : MonoBehaviour
         if (currentPathIndex >= gameGenerator.pathGenerator.paths.Count)
             currentPathIndex = 0;
 
-        Vector2 tilePosition = gameGenerator.pathGenerator.paths[currentPathIndex][0];
+        int lastItemIndex = gameGenerator.pathGenerator.paths[currentPathIndex].Count - 1;
+        
+        Vector2 tilePosition = gameGenerator.pathGenerator.paths[currentPathIndex][lastItemIndex];
         GameObject placement = gameGenerator.tiles[(int)tilePosition.x][(int)tilePosition.y].GetComponent<TileBehaviour>().placement;
         MonsterBehaviour behaviour = monster.GetComponent<MonsterBehaviour>();
         

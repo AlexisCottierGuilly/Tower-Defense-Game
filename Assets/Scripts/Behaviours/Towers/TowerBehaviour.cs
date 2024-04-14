@@ -153,7 +153,6 @@ public class TowerBehaviour : StructureBehaviour
             {
                 float distance = Vector3.Distance(gameObject.transform.position, obj.transform.position);
                 
-                Debug.Log("Line of sight !!!");
                 if (closestDistance == -1f || distance < closestDistance)
                 {
                     closestDistance = distance;

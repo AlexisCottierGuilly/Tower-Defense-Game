@@ -1087,13 +1087,14 @@ MonoBehaviour:
   gameGenerator: {fileID: 1951690851}
   decorations:
   - prefab: {fileID: 7601498783428254333, guid: 387c19cd656171a42858b3f5ae4b20eb, type: 3}
-    count: 32
+    count: 48
     scale: 15
     offsetMultiplier: 1.85
   - prefab: {fileID: 2228810829999391279, guid: db97d2cbb06a17e41ac7f2cee74fdb84, type: 3}
-    count: 10
+    count: 16
     scale: 3.25
     offsetMultiplier: 1
+  decorationsParent: {fileID: 1698317305}
 --- !u!1 &468953515
 GameObject:
   m_ObjectHideFlags: 0
@@ -3233,6 +3234,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1115452087}
   m_CullTransparentMesh: 1
+--- !u!1 &1156944602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1156944603}
+  - component: {fileID: 1156944604}
+  m_Layer: 0
+  m_Name: PathGenerator2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1156944603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156944602}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1857188824}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1156944604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156944602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 085ce5c5bd5332746bcb66665843e3e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameGenerator: {fileID: 1951690851}
+  stepHeight: 1
+  maxAcceptedStepHeight: 10
+  pathTilePrefab: {fileID: 5861721181273509266, guid: 4feddbd6b1b00c442a2d0b1f5c0e747d, type: 3}
 --- !u!1 &1185471225
 GameObject:
   m_ObjectHideFlags: 0
@@ -4369,6 +4418,37 @@ Transform:
   - {fileID: 1418954255}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1698317305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1698317306}
+  m_Layer: 0
+  m_Name: Decorations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1698317306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698317305}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 106.51196, y: 56.1434, z: 88.52032}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1734584378
 GameObject:
   m_ObjectHideFlags: 0
@@ -4689,6 +4769,7 @@ Transform:
   m_Children:
   - {fileID: 1782145874}
   - {fileID: 1926732113}
+  - {fileID: 1156944603}
   - {fileID: 1894735704}
   - {fileID: 292465603}
   m_Father: {fileID: 0}
@@ -4825,7 +4906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrainGenerator: {fileID: 1782145875}
-  pathGenerator: {fileID: 1926732112}
+  pathGenerator: {fileID: 1156944604}
   villageGenerator: {fileID: 1894735705}
   decorationGenerator: {fileID: 292465604}
   waveManager: {fileID: 1348605624}
@@ -5538,3 +5619,4 @@ SceneRoots:
   - {fileID: 80457013}
   - {fileID: 550238019}
   - {fileID: 1491924915}
+  - {fileID: 1698317306}
