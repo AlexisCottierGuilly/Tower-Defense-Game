@@ -19,7 +19,7 @@ public class DetectSelection : MonoBehaviour
 
     [Header("Other")]
     public Camera mainCamera;
-    public GameObject placedObjectPrefab;
+    public GameObject placedObjectPrefab = null;
 
     [HideInInspector] public bool canPlace = false;
     [HideInInspector] public GameObject placedObject;
@@ -40,7 +40,8 @@ public class DetectSelection : MonoBehaviour
     public void UnsetStructure()
     {
         placedObjectPrefab = null;
-        Destroy(placedObject);
+        if (placedObject != null)
+            Destroy(placedObject);
         placedObject = null;
         currentRotation = new Vector3(0, 30, 0);
         canPlace = false;
@@ -64,6 +65,7 @@ public class DetectSelection : MonoBehaviour
             return;
         
         if (placedObjectPrefab != null && placedObject != null)
+        {
             if (Input.GetMouseButtonDown(0) && canPlace)
             {
                 GameObject newObject = Instantiate(
@@ -87,6 +89,7 @@ public class DetectSelection : MonoBehaviour
             }
 
             UpdatePlacementPosition();
+        }
     }
 
     void UpdatePlacementPosition()

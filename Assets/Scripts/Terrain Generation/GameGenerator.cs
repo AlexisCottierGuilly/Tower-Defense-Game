@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 [System.Serializable]
 public class MonsterPrefab
@@ -48,6 +49,7 @@ public class GameGenerator : MonoBehaviour
 
     [Header("Others")]
     public Camera mainCamera;
+    public TextMeshProUGUI seedText;
 
     [HideInInspector] public List<List<GameObject>> tiles = new List<List<GameObject>>();
     [HideInInspector] public List<GameObject> towers = new List<GameObject>();
@@ -61,6 +63,8 @@ public class GameGenerator : MonoBehaviour
         seed = GameManager.instance.gameSeed;
         if (seed == -1)
             seed = Random.Range(0, GameManager.instance.maxGameSeed);
+        
+        seedText.text = seed.ToString();
         
         terrainGenerator.size = GameManager.instance.mapSize;
 

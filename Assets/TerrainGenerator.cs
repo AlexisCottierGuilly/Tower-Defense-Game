@@ -17,7 +17,8 @@ public class TerrainGenerator : MonoBehaviour
     public List<Vector2> mountains = new List<Vector2>();
     public float stepHeight = 1f;
     [Space]
-    public bool addFog = true;
+    public bool addSpikes = true;
+    public bool addFog = false;
 
     [Header("3D Models")]
     public GameObject grassTilePrefab;
@@ -154,7 +155,12 @@ public class TerrainGenerator : MonoBehaviour
         final_height *= 5f;
         final_height = (final_height + Mathf.Sqrt(0.2f * Mathf.Pow(hills1 + 1f, 4f)) * 1.35f) / 2f;
 
-        return AddMountains(position, AddCentralHill(position, final_height));
+        final_height = AddMountains(position, AddCentralHill(position, final_height));
+
+        if (addSpikes)
+            final_height = AddSpikes(position, final_height);
+        
+        return final_height;
     }
 
     float AddCentralHill(Vector2 position, float height)
@@ -187,5 +193,27 @@ public class TerrainGenerator : MonoBehaviour
 
         float meanDistance = System.Linq.Enumerable.Sum(proximities) / (float)proximities.Count;
         return height * Mathf.Pow((meanDistance + 0.5f), 6f);
+    }
+
+    float AddSpikes(Vector2 position, float height)
+    {
+        float value = Mathf.PerlinNoise(
+            (position.x + gameGenerator.seed + 2048f) / 5f / scale,
+            (position.y + gameGenerator.seed + 2048f) / 5f / scale
+        );
+
+        float value2 = Mathf.PerlinNoise(
+            (position.x + gameGenerator.seed + 1024f) / 2f / scale,
+            (position.y + gameGenerator.seed + 1024f) / 2f / scale
+        );
+
+        value2 += 0.5f;
+
+        if (value > 0.65f)
+            value *= 7.5f * value2;
+        else
+            value = 0f;
+        
+        return height + value;
     }
 }
