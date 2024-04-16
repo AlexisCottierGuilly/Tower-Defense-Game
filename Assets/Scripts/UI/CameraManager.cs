@@ -26,6 +26,8 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float localDeltaTime = Time.unscaledDeltaTime;
+        
         // if WASD, move in x and y
         Vector3 force = new Vector3(0, 0, 0);
         if (Input.GetKey(KeyCode.W))
@@ -37,7 +39,7 @@ public class CameraManager : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
             force += new Vector3(1, 0, 0);
         
-        rb.AddRelativeForce(force * moveSpeed * Time.deltaTime * 120f);
+        rb.AddRelativeForce(force * moveSpeed * localDeltaTime * 120f);
 
         // if QE or the mouse is moved while the right mouse button is held down, rotate the camera
         /* Vector3 newRotation = new Vector3(0, 0, 0);
@@ -46,7 +48,7 @@ public class CameraManager : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
             newRotation += new Vector3(0, 1, 0);
         
-        rb.AddTorque(newRotation * turnSpeed * Time.deltaTime * 120f); */
+        rb.AddTorque(newRotation * turnSpeed * localDeltaTime * 120f); */
         
         if (Input.GetMouseButton(1))
         {
@@ -67,9 +69,9 @@ public class CameraManager : MonoBehaviour
         // shift : go down
 
         if (Input.GetKey(KeyCode.Space))
-            additionalHeight += moveSpeed / 6f * Time.deltaTime;
+            additionalHeight += moveSpeed / 6f * localDeltaTime;
         else if (Input.GetKey(KeyCode.LeftShift))
-            additionalHeight -= moveSpeed / 6f * Time.deltaTime;
+            additionalHeight -= moveSpeed / 6f * localDeltaTime;
 
         // reset the camera height (changed with AddRelativeForce)
         transform.position = new Vector3(

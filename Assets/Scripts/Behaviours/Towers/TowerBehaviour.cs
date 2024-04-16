@@ -82,7 +82,6 @@ public class TowerBehaviour : StructureBehaviour
             angleDiffMultiplier = Mathf.Pow(verticalShootAngle / angle, 1.35f);
         else
             angleDiffMultiplier = 1f * 1.025f;
-        Debug.Log($"Vertical angle : {verticalShootAngle}, multiplier : {angleDiffMultiplier}");
         
         if (verticalShootAngle >= 25f)
             deltaY *= 17.5f / Mathf.Pow(angleDiffMultiplier, 1.25f);

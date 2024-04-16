@@ -18,6 +18,8 @@ public class PathGenerator2 : MonoBehaviour
     {
         GeneratePaths();
 
+        return; // IT WILL NOT REPLACE THE TILES WITH PATH TILES
+
         for (int i=0; i < paths.Count; i++)
         {
             for (int j=0; j < paths[i].Count; j++)
@@ -142,7 +144,7 @@ public class PathGenerator2 : MonoBehaviour
 
         List<Vector2> ends = GeneratePathEnds();
         paths = new List<List<Vector2>>();
-        
+
         foreach (Vector2 end in ends)
         {
             Vector2 start = gameGenerator.villageGenerator.mainVillage.GetComponent<VillageBehaviour>().position;
@@ -365,7 +367,7 @@ public class PathGenerator2 : MonoBehaviour
                 next = neightboursByScore[i];
                 break;
             }
-            
+            /*
             else
             {
                 // MODIFYING THE HEIGHT IS NOT WORKING PROPERLY
@@ -395,7 +397,7 @@ public class PathGenerator2 : MonoBehaviour
                 float bestNewHeight = currentHeight;
                 float bestNewDifference = heightDifference;
 
-                int pathStepModifier = 2;
+                int pathStepModifier = 1;
 
                 for (int j = 1; j <= pathStepModifier; j++)
                 {
@@ -428,7 +430,7 @@ public class PathGenerator2 : MonoBehaviour
                     next = neightboursByScore[i];
                     break;
                 }
-            }
+            }*/
         }
 
         return next;

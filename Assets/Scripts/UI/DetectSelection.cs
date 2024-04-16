@@ -20,6 +20,7 @@ public class DetectSelection : MonoBehaviour
     [Header("Other")]
     public Camera mainCamera;
     public GameObject placedObjectPrefab = null;
+    public bool autoDeselection = true;
 
     [HideInInspector] public bool canPlace = false;
     [HideInInspector] public GameObject placedObject;
@@ -64,6 +65,12 @@ public class DetectSelection : MonoBehaviour
         if (GameManager.instance.gameState != GameState.Game)
             return;
         
+        if (gameGenerator.paused)
+        {
+            UnsetStructure();
+            return;
+        }
+
         if (placedObjectPrefab != null && placedObject != null)
         {
             if (Input.GetMouseButtonDown(0) && canPlace)
@@ -80,6 +87,9 @@ public class DetectSelection : MonoBehaviour
 
                 currentRotation = new Vector3(0, 30, 0);
                 placedObject.transform.eulerAngles = currentRotation;
+
+                if (autoDeselection)
+                    UnsetStructure();
             }
             
             if (Input.GetKeyDown(KeyCode.R))
@@ -88,7 +98,8 @@ public class DetectSelection : MonoBehaviour
                 placedObject.transform.eulerAngles = currentRotation;
             }
 
-            UpdatePlacementPosition();
+            if (placedObjectPrefab != null && placedObject != null)
+                UpdatePlacementPosition();
         }
     }
 
@@ -129,7 +140,7 @@ public class DetectSelection : MonoBehaviour
         {
             placedObject.GetComponent<Renderer>().material.SetColor("_Color", color);
             foreach (Renderer child in placedObject.GetComponentsInChildren<Renderer>())
-            child.material.SetColor("_Color", color);
+                child.material.SetColor("_Color", color);
             placedObject.transform.eulerAngles = currentRotation;
         }
     }

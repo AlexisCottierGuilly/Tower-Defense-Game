@@ -23,6 +23,7 @@ public class WaveManager : MonoBehaviour
     public int wave = 0;
     public List<WaveData> waves = new List<WaveData>();
     public bool waveFinished = true;
+    public bool autoStart = false;
 
     [Header("Parents")]
     public GameObject monsterParent;
@@ -60,6 +61,9 @@ public class WaveManager : MonoBehaviour
         if (wave >= waves.Count)
         {
             gameFinished.Invoke();
+            gameGenerator.paused = true;
+            Time.timeScale = 0f;
+            
             yield return new WaitForSeconds(0f);
         }
         else
@@ -170,14 +174,20 @@ public class WaveManager : MonoBehaviour
         RenderSettings.fogColor = waveColor;
     }
 
+    public void LoadRound()
+    {
+        if (waveFinished)
+        {
+            StartCoroutine(LoadNextRound());
+        }
+    }
+    
     void Update()
     {
         CleanMonsterList();
         waveFinished = WaveIsFinished();
         
-        if (waveFinished && Time.time > 5f)
-        {
-            StartCoroutine(LoadNextRound());
-        }
+        if (autoStart)
+            LoadRound();
     }
 }
