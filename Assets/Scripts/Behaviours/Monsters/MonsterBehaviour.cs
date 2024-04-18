@@ -15,7 +15,6 @@ public class MonsterBehaviour : MonoBehaviour
     public NavMeshAgent agent;
     public Vector3 finalScale = new Vector3(1f, 1f, 1f);
     [Space]
-    public float speed = 1f;
     public float climbingSpeedDivisor = 7f;
 
     private float timeFromPreviousAttack = 0f;
@@ -25,6 +24,20 @@ public class MonsterBehaviour : MonoBehaviour
     [HideInInspector] public Vector3 lastPosition;
 
     private bool didFirstUpdate = false;
+    private Dictionary<MonsterTimedSpawn, float> timesSinceSpawn = new Dictionary<MonsterTimedSpawn, float>();
+    private Dictionary<MonsterTimedSpawn, float> spawnRateIntervals = new Dictionary<MonsterTimedSpawn, float>();
+
+    /*
+    Here is how to implement data.timedSpawns:
+    -> The timedSpawn is a class defining the random rate at which a certain number of monsters will spawn.
+    -> So wee need to compare the current time with the spawn rate interval, and choose when to spawn which timedSpawn (there can be multiple timedSpawns in the list).
+
+    1 - Save a dictionary of the current time since the last spawn for each timedSpawn.
+    2 - For each timeSpawn, define a new spawn rate interval (random between the min and max of the spawn rate interval).
+        Save it in a dictionary.
+    3 - In update. For each timedSpawn, check if the current time is greater than the spawn rate interval.
+        If it is, spawn the monsters, reset the spawn rate interval and define a new random interval.
+    */
     
     // Start is called before the first frame update
     void Start()
@@ -32,7 +45,20 @@ public class MonsterBehaviour : MonoBehaviour
         agent.speed = data.speed * 4f;
         health = data.maxHealth;
 
+        InitializeTimedSpawns();
         UpdateObjective();
+    }
+
+    void InitializeTimedSpawns()
+    {
+        timesSinceSpawn = new Dictionary<MonsterTimedSpawn, float>();
+        spawnRateIntervals = new Dictionary<MonsterTimedSpawn, float>();
+        
+        foreach (MonsterTimedSpawn timedSpawn in data.timedSpawns)
+        {
+            timesSinceSpawn[timedSpawn] = 0f;
+            spawnRateIntervals[timedSpawn] = Random.Range(timedSpawn.spawnRateInterval.x, timedSpawn.spawnRateInterval.y);
+        }
     }
 
     public void UpdateObjective()
@@ -77,9 +103,9 @@ public class MonsterBehaviour : MonoBehaviour
         isClimbing = angle > 60f;
 
         if (isClimbing)
-            agent.speed = speed / climbingSpeedDivisor;
+            agent.speed = data.speed * 4f / climbingSpeedDivisor;
         else
-            agent.speed = speed;
+            agent.speed = data.speed * 4f;
     }
 
     public void AttackStructure(GameObject structure)
@@ -125,16 +151,40 @@ public class MonsterBehaviour : MonoBehaviour
     {
         Destroy(gameObject);
         GameManager.instance.gold += data.gold;
-        SpawnDeathMonsters();
+        SpawnMonsters(data.spawnOnDeath);
     }
 
-    void SpawnDeathMonsters()
+    void SpawnMonsters(List<MonsterCount> monsters)
     {
-        foreach (MonsterCount monsterCount in data.spawnOnDeath)
+        foreach (MonsterCount monsterCount in monsters)
         {
-            for (int i = 0; i < monsterCount.count; i++)
+            int count = gameGenerator.randomWithSeed.Next((int)monsterCount.countInterval.x, (int)monsterCount.countInterval.y);
+            Debug.Log("Spawning " + count + " " + monsterCount.type, this.gameObject);
+            
+            for (int i = 0; i < count; i++)
             {
                 waveManager.SpawnMonster(monsterCount.type, transform.position);
+            }
+        }
+    }
+
+    void UpdateTimedSpawns()
+    {
+        foreach (MonsterTimedSpawn timedSpawn in data.timedSpawns)
+        {
+            timesSinceSpawn[timedSpawn] += Time.deltaTime;
+
+            if (timesSinceSpawn[timedSpawn] >= spawnRateIntervals[timedSpawn])
+            {
+                Debug.Log("Time from last spawn: " + timesSinceSpawn[timedSpawn] + " for " + timedSpawn.monsters[0].type, this.gameObject);
+                SpawnMonsters(timedSpawn.monsters);
+
+                timesSinceSpawn[timedSpawn] = 0f;
+                
+                float min = timedSpawn.spawnRateInterval.x;
+                float diff = timedSpawn.spawnRateInterval.y - min;
+                spawnRateIntervals[timedSpawn] = (float)(gameGenerator.randomWithSeed.NextDouble() * diff + min);
+                Debug.Log("New spawn rate interval: " + spawnRateIntervals[timedSpawn] + " for " + timedSpawn.monsters[0].type, this.gameObject);
             }
         }
     }
@@ -153,6 +203,8 @@ public class MonsterBehaviour : MonoBehaviour
             didFirstUpdate = true;
             UpdateObjective();
         }
+
+        UpdateTimedSpawns();
 
         /*if (agent.pathStatus == NavMeshPathStatus.PathComplete && targetTower != null)
         {

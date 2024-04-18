@@ -34,7 +34,6 @@ public class DecorationGenerator : MonoBehaviour
     void Start()
     {
         countMultiplier = (GameManager.instance.mapSize.x * GameManager.instance.mapSize.y / (32f * 32f));
-        Debug.Log($"Count multiplier: {countMultiplier}");
     }
 
     public void AddDecorations()
@@ -63,15 +62,6 @@ public class DecorationGenerator : MonoBehaviour
                 }
             }
         }
-
-        string decorationCountString = "";
-        // print the number of decorations spawned and the name of each decoration
-        foreach (KeyValuePair<GameObject, int> decorationCount in decorationCounts)
-        {
-            decorationCountString += $"{decorationCount.Key.name}: {decorationCount.Value}\n";
-        }
-
-        Debug.Log(decorationCountString);
     }
 
     public bool ShouldSpawnDecoration()

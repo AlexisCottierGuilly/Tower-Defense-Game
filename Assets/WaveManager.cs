@@ -9,7 +9,8 @@ using UnityEngine.Events;
 public enum Monster
 {
     Goblin,
-    Troll
+    Troll,
+    TrollThatTrolls
 }
 
 public class WaveManager : MonoBehaviour
@@ -171,7 +172,6 @@ public class WaveManager : MonoBehaviour
         Color endingColor = Color.red;
         
         float percentage = ((float)wave - 1f) / Mathf.Max((float)waves.Count - 1f, 1f);
-        Debug.Log($"Percentage : {percentage}");
         
         Color waveColor = Color.Lerp(startingColor, endingColor, percentage);
         float luminosityDivisor = 3f;

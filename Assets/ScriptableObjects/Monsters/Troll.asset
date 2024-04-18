@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1048b24caeb7af4fb7437d13f3f9c38, type: 3}
   m_Name: Troll
   m_EditorClassIdentifier: 
+  name: Troll
+  isBoss: 0
   maxHealth: 300
   damage: 50
   attackSpeed: 0.5

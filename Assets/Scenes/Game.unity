@@ -4078,10 +4078,7 @@ MonoBehaviour:
   wave: 0
   waves:
   - {fileID: 11400000, guid: 7f9116e445769f14db028f20dbf7c74e, type: 2}
-  - {fileID: 11400000, guid: 29e3fce03d7334f4eaf90e47755ef4c0, type: 2}
-  - {fileID: 11400000, guid: 55b8c47f3bf3a17428c68bca04e616ee, type: 2}
-  - {fileID: 11400000, guid: 3253e00ae3ee69746814c5aaa3b596b2, type: 2}
-  - {fileID: 11400000, guid: a558a6328756f254b805fce928e6d4ec, type: 2}
+  - {fileID: 11400000, guid: 7bc3b0f36186f8748aaea341c8231b67, type: 2}
   waveFinished: 0
   autoStart: 0
   monsterParent: {fileID: 80457012}
@@ -5710,6 +5707,8 @@ MonoBehaviour:
     data: {fileID: 11400000, guid: b8b472c757cf1f54283c13f6c4b1eb90, type: 2}
   - monster: 1
     data: {fileID: 11400000, guid: 398ba89b5f0eb3b47acbb9f8052a6cbc, type: 2}
+  - monster: 2
+    data: {fileID: 11400000, guid: 2857204815a5e7843a08297a9fc3e655, type: 2}
   towerParent: {fileID: 1268763543}
   projectileParent: {fileID: 550238018}
   mainCamera: {fileID: 549421227}

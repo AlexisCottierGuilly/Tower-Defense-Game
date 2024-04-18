@@ -5,12 +5,18 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "MonsterData", menuName = "Monsters/MonsterData")]
 public class MonsterData : ScriptableObject
 {
+    public string name = "";
+    [Space]
+    public bool isBoss = false;
+    [Space]
     public int maxHealth;
     public int damage;
     public float attackSpeed;
     public float speed;
     public int gold;
+    [Space]
     public List<MonsterCount> spawnOnDeath;
+    public List<MonsterTimedSpawn> timedSpawns;
     [Space]
     public GameObject prefab;
 }
@@ -19,6 +25,12 @@ public class MonsterData : ScriptableObject
 public class MonsterCount
 {
     public Monster type;
-    public int count;
+    public Vector2 countInterval;
 }
 
+[System.Serializable]
+public class MonsterTimedSpawn
+{
+    public List<MonsterCount> monsters;
+    public Vector2 spawnRateInterval;
+}

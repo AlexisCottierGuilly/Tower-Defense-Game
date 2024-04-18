@@ -10,14 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1048b24caeb7af4fb7437d13f3f9c38, type: 3}
-  m_Name: Goblin
+  m_Name: Troll That Trolls
   m_EditorClassIdentifier: 
-  name: Goblin
-  isBoss: 0
-  maxHealth: 60
-  damage: 15
-  attackSpeed: 1
-  speed: 1
-  gold: 5
+  name: Troll qui Troll
+  isBoss: 1
+  maxHealth: 2500
+  damage: 150
+  attackSpeed: 0.5
+  speed: 0.5
+  gold: 100
   spawnOnDeath: []
-  prefab: {fileID: 137061676372472529, guid: f2c50cfd24d3cf9418d819ee2d46552d, type: 3}
+  timedSpawns:
+  - monsters:
+    - type: 1
+      countInterval: {x: 1, y: 5}
+    spawnRateInterval: {x: 7.5, y: 10}
+  prefab: {fileID: 4451012924925943445, guid: d8a0b9073b8d8444bbcd0463959f184a, type: 3}
