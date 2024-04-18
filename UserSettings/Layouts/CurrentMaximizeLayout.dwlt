@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 7705
+  controlID: 10540
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -94,7 +94,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 7706
+  controlID: 10541
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 7707
+  controlID: 10542
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -237,10 +237,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: f06efdff9a52feff0453feff5855feffd0f1feff1cf3feff74c3ffff56c6ffff32fbffff34850000
+      scrollPos: {x: 0, y: 60}
+      m_SelectedIDs: 548e0000
+      m_LastClickedID: 36436
+      m_ExpandedIDs: 4e78fcff64a8fcff90aefcff3eb8fcff24fafcfff06efdff9a52feff0453feff5855feffd0f1feff1cf3feff74c3ffff56c6ffff32fbffff34850000188b0000688e0000568f0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -635,9 +635,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 105.046135, y: -57.354507, z: -47.320354}
+    m_Target: {x: 95.92743, y: -47.5147, z: -50.768936}
     speed: 2
-    m_Value: {x: 105.046135, y: -57.354507, z: -47.320354}
+    m_Value: {x: 95.92743, y: -47.5147, z: -50.768936}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -683,9 +683,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.13239178, y: -0.86576587, z: 0.3108461, w: -0.37019765}
+    m_Target: {x: -0.072097935, y: -0.9276262, z: 0.2594221, w: -0.26031375}
     speed: 2
-    m_Value: {x: -0.13234217, y: -0.8654415, z: 0.31072962, w: -0.37005895}
+    m_Value: {x: 0.072097935, y: 0.92762625, z: -0.2594221, w: 0.26031375}
   m_Size:
     m_Target: 83.943794
     speed: 2
@@ -828,7 +828,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -837,15 +837,15 @@ MonoBehaviour:
     y: 480.8
     width: 1178.4
     height: 242
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 12}
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+  m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
   - {fileID: 12}
   - {fileID: 13}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -891,7 +891,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/ScriptableObjects/Monsters
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -899,15 +899,15 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/ScriptableObjects/Monsters
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\cotti\OneDrive\Documents\GitHub\Tower-Defense-Game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 431}
-    m_SelectedIDs: 944f0000
-    m_LastClickedID: 20372
+    m_SelectedIDs: 924f0000
+    m_LastClickedID: 20370
     m_ExpandedIDs: 00000000524f0000544f0000564f0000584f00005a4f00005c4f00005e4f0000604f0000624f0000644f000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -961,9 +961,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 8ef8ffff
-    m_LastClickedInstanceID: -1906
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 548e0000
+    m_LastClickedInstanceID: 36436
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c623000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1062,7 +1062,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 33740
+  m_LastSelectedObjectID: 36496
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
