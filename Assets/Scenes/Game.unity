@@ -1087,15 +1087,15 @@ MonoBehaviour:
   gameGenerator: {fileID: 1951690851}
   decorations:
   - prefab: {fileID: 7601498783428254333, guid: 387c19cd656171a42858b3f5ae4b20eb, type: 3}
-    count: 48
+    count: 72
     scale: 15
     offsetMultiplier: 1.85
   - prefab: {fileID: 2228810829999391279, guid: db97d2cbb06a17e41ac7f2cee74fdb84, type: 3}
-    count: 16
+    count: 24
     scale: 3.25
     offsetMultiplier: 1.075
   - prefab: {fileID: 5614248286015445405, guid: 3ddd19dbcdd36024092dca17cca7c067, type: 3}
-    count: 24
+    count: 16
     scale: 2
     offsetMultiplier: 2.35
   decorationsParent: {fileID: 1698317305}
@@ -5412,6 +5412,7 @@ MonoBehaviour:
   seedText: {fileID: 1449424629}
   towers: []
   decorations: []
+  didModifyVillage: 0
 --- !u!4 &1951690852
 Transform:
   m_ObjectHideFlags: 0

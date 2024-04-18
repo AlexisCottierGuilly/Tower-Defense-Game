@@ -57,6 +57,8 @@ public class GameGenerator : MonoBehaviour
     [HideInInspector] public List<GameObject> decorations = new List<GameObject>();
     [HideInInspector] public System.Random randomWithSeed;
     
+    [HideInInspector] public bool didModifyVillage = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -73,6 +75,8 @@ public class GameGenerator : MonoBehaviour
         randomWithSeed = new System.Random((int)seed);
         terrainGenerator.Generate();
         villageGenerator.GenerateVillage();
+        didModifyVillage = true;
+
         pathGenerator.Generate();
         decorationGenerator.AddDecorations();
         
@@ -279,12 +283,15 @@ public class GameGenerator : MonoBehaviour
         {
             foreach (GameObject monster in waveManager.monsters)
             {
-                if (monster != null)
+                if (monster != null && didModifyVillage)
                 {
                     MonsterBehaviour behaviour = monster.GetComponent<MonsterBehaviour>();
                     behaviour.UpdateObjective();
                 }
             }
+
+            didModifyVillage = false;
+
             // Debug.Log("Monster Logic updated");
             yield return new WaitForSeconds(0.5f);
         }

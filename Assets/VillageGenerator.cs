@@ -178,6 +178,8 @@ public class VillageGenerator : MonoBehaviour
         else
             mainVillage = null;
         Destroy(structure);
+
+        gameGenerator.didModifyVillage = true;
     }
 
     public int GetMaximumLives()

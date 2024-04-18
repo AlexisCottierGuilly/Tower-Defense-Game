@@ -10,18 +10,28 @@ public class MonsterBehaviour : MonoBehaviour
     public MonsterHealthUpdater healthScript;
     public GameGenerator gameGenerator = null;
     
-    [Header("Space")]
+    [Space]
     public NavMeshAgent agent;
     public Vector3 finalScale = new Vector3(1f, 1f, 1f);
+    [Space]
+    public float speed = 1f;
+    public float climbingSpeedDivisor = 7f;
 
     private float timeFromPreviousAttack = 0f;
     private GameObject targetTower = null;
+
+    [HideInInspector] public bool isClimbing;
+    [HideInInspector] public Vector3 lastPosition;
+
+    private bool didFirstUpdate = false;
     
     // Start is called before the first frame update
     void Start()
     {
         agent.speed = data.speed * 4f;
         health = data.maxHealth;
+
+        UpdateObjective();
     }
 
     public void UpdateObjective()
@@ -50,6 +60,25 @@ public class MonsterBehaviour : MonoBehaviour
 
         agent.destination = objective;
         targetTower = objectiveObject;
+    }
+
+    public void UpdateIsClimbing()
+    {
+        float xzDistance = Vector3.Distance(
+            new Vector3(lastPosition.x, 0f, lastPosition.z),
+            new Vector3(transform.position.x, 0f, transform.position.z)
+        );
+        float yDistance = transform.position.y - lastPosition.y;
+
+        float angle = Mathf.Atan(yDistance / xzDistance) * Mathf.Rad2Deg;
+        angle = Mathf.Abs(angle);
+
+        isClimbing = angle > 60f;
+
+        if (isClimbing)
+            agent.speed = speed / climbingSpeedDivisor;
+        else
+            agent.speed = speed;
     }
 
     public void AttackStructure(GameObject structure)
@@ -96,6 +125,17 @@ public class MonsterBehaviour : MonoBehaviour
     void Update()
     {
         timeFromPreviousAttack += Time.deltaTime;
+
+        if (lastPosition != null)
+            UpdateIsClimbing();
+
+        lastPosition = transform.position;
+
+        if (!didFirstUpdate)
+        {
+            didFirstUpdate = true;
+            UpdateObjective();
+        }
 
         /*if (agent.pathStatus == NavMeshPathStatus.PathComplete && targetTower != null)
         {

@@ -313,6 +313,10 @@ MonoBehaviour:
   gameGenerator: {fileID: 0}
   agent: {fileID: -8780990787958884246}
   finalScale: {x: 1, y: 1, z: 1}
+  speed: 1
+  climbingSpeedDivisor: 20
+  isClimbing: 0
+  lastPosition: {x: 0, y: 0, z: 0}
 --- !u!195 &-8780990787958884246
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -327,7 +331,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 4
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

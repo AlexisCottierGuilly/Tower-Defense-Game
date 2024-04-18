@@ -33,6 +33,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b8b472c757cf1f54283c13f6c4b1eb90, type: 2}
     - target: {fileID: 3726788157187442337, guid: 76b74a2d21fe30c4b8e29daa20662be3, type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3726788157187442337, guid: 76b74a2d21fe30c4b8e29daa20662be3, type: 3}
+      propertyPath: climbSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3726788157187442337, guid: 76b74a2d21fe30c4b8e29daa20662be3, type: 3}
       propertyPath: finalScale.x
       value: 1.25
       objectReference: {fileID: 0}
@@ -43,6 +51,10 @@ PrefabInstance:
     - target: {fileID: 3726788157187442337, guid: 76b74a2d21fe30c4b8e29daa20662be3, type: 3}
       propertyPath: finalScale.z
       value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3726788157187442337, guid: 76b74a2d21fe30c4b8e29daa20662be3, type: 3}
+      propertyPath: climbingSpeedDivisor
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4451012924925943445, guid: 76b74a2d21fe30c4b8e29daa20662be3, type: 3}
       propertyPath: m_Name

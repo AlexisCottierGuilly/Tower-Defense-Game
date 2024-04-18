@@ -19,8 +19,8 @@ NavMeshProjectSettings:
     cost: 1
   - name: 
     cost: 1
-  - name: 
-    cost: 1
+  - name: Decoration
+    cost: 10000
   - name: 
     cost: 1
   - name: 
@@ -92,9 +92,9 @@ NavMeshProjectSettings:
   - serializedVersion: 3
     agentTypeID: -1372625422
     agentRadius: 1
-    agentHeight: 5
+    agentHeight: 10
     agentSlope: 0
-    agentClimb: 5
+    agentClimb: 10
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -110,9 +110,9 @@ NavMeshProjectSettings:
   - serializedVersion: 3
     agentTypeID: -334000983
     agentRadius: 2
-    agentHeight: 6
+    agentHeight: 10
     agentSlope: 0
-    agentClimb: 4
+    agentClimb: 10
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2

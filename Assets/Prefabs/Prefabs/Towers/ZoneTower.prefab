@@ -125,7 +125,6 @@ GameObject:
   - component: {fileID: 6663494111838740007}
   - component: {fileID: 7112903091825495247}
   - component: {fileID: 685416158891331180}
-  - component: {fileID: 2359561792784799518}
   - component: {fileID: 7303739346008316107}
   m_Layer: 0
   m_Name: ZoneTower
@@ -201,27 +200,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2359561792784799518
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2952150505218308268}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7303739346008316107
 MonoBehaviour:
   m_ObjectHideFlags: 0

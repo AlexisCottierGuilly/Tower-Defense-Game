@@ -72,7 +72,6 @@ public class WaveManager : MonoBehaviour
             RoundDidStart();
 
             WaveData currentWaveData = waves[wave - 1];
-            Debug.Log($"Loading round {wave}.");
             foreach (WavePart part in currentWaveData.waveParts)
             {
                 StartCoroutine(SpawnMonsters(part.monster, part.amount, part.interval));
