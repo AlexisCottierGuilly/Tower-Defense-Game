@@ -26,20 +26,42 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float localDeltaTime = Time.unscaledDeltaTime;
+        float localDeltaTime = Time.deltaTime;
+        if (localDeltaTime == 0f)
+            localDeltaTime = Time.unscaledDeltaTime;
         
-        // if WASD, move in x and y
-        Vector3 force = new Vector3(0, 0, 0);
-        if (Input.GetKey(KeyCode.W))
-            force += new Vector3(0, 0, 1);
-        if (Input.GetKey(KeyCode.S))
-            force += new Vector3(0, 0, -1);
-        if (Input.GetKey(KeyCode.A))
-            force += new Vector3(-1, 0, 0);
-        if (Input.GetKey(KeyCode.D))
-            force += new Vector3(1, 0, 0);
-        
-        rb.AddRelativeForce(force * moveSpeed * localDeltaTime * 120f);
+        if (Time.deltaTime != 0f)
+        {
+            // if WASD, move in x and y
+            Vector3 force = new Vector3(0, 0, 0);
+            if (Input.GetKey(KeyCode.W))
+                force += new Vector3(0, 0, 1);
+            if (Input.GetKey(KeyCode.S))
+                force += new Vector3(0, 0, -1);
+            if (Input.GetKey(KeyCode.A))
+                force += new Vector3(-1, 0, 0);
+            if (Input.GetKey(KeyCode.D))
+                force += new Vector3(1, 0, 0);
+            
+            rb.AddRelativeForce(force * moveSpeed * localDeltaTime * 120f);
+        }
+        else
+        {
+            // move with WASD using the localDeltaTime, but without applying forces
+
+            Vector3 move = new Vector3(0, 0, 0);
+            if (Input.GetKey(KeyCode.W))
+                move += new Vector3(0, 0, 1);
+            if (Input.GetKey(KeyCode.S))
+                move += new Vector3(0, 0, -1);
+            if (Input.GetKey(KeyCode.A))
+                move += new Vector3(-1, 0, 0);
+            if (Input.GetKey(KeyCode.D))
+                move += new Vector3(1, 0, 0);
+
+            move *= moveSpeed * localDeltaTime / 6f;
+            transform.position += transform.TransformDirection(move);
+        }
 
         // if QE or the mouse is moved while the right mouse button is held down, rotate the camera
         /* Vector3 newRotation = new Vector3(0, 0, 0);

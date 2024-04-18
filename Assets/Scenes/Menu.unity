@@ -402,7 +402,7 @@ MonoBehaviour:
   previousScene: 0
   UISize: 1
   towerSize: 1
-  initialGold: 150
+  initialGold: 2094893
   gold: 0
 --- !u!4 &268031490
 Transform:

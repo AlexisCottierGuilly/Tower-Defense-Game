@@ -8,6 +8,7 @@ public class MonsterBehaviour : MonoBehaviour
     public MonsterData data;
     public int health;
     public MonsterHealthUpdater healthScript;
+    public WaveManager waveManager;
     public GameGenerator gameGenerator = null;
     
     [Space]
@@ -116,10 +117,26 @@ public class MonsterBehaviour : MonoBehaviour
     {
         if (health <= 0)
         {
-            Destroy(gameObject);
-            GameManager.instance.gold += data.gold;
+            Die();
         }
+    }
 
+    void Die()
+    {
+        Destroy(gameObject);
+        GameManager.instance.gold += data.gold;
+        SpawnDeathMonsters();
+    }
+
+    void SpawnDeathMonsters()
+    {
+        foreach (MonsterCount monsterCount in data.spawnOnDeath)
+        {
+            for (int i = 0; i < monsterCount.count; i++)
+            {
+                waveManager.SpawnMonster(monsterCount.type, transform.position);
+            }
+        }
     }
 
     void Update()

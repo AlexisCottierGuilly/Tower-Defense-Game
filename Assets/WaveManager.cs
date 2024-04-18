@@ -33,6 +33,9 @@ public class WaveManager : MonoBehaviour
     public GameObject roundTextTitle;
     public UnityEvent gameFinished;
     public GameObject camera;
+
+    [Space]
+    public bool isSpawningMonsters = false;
     
     [HideInInspector] int currentPathIndex = 0;
     [HideInInspector] public List<GameObject> monsters = new List<GameObject>();
@@ -57,12 +60,12 @@ public class WaveManager : MonoBehaviour
     public IEnumerator LoadNextRound()
     {
          waveFinished = false;
+         isSpawningMonsters = true;
         
         if (wave >= waves.Count)
         {
             gameFinished.Invoke();
-            gameGenerator.paused = true;
-            Time.timeScale = 0f;
+            gameGenerator.PauseGame();
             
             yield return new WaitForSeconds(0f);
         }
@@ -78,6 +81,8 @@ public class WaveManager : MonoBehaviour
                 yield return new WaitForSeconds((float)part.amount * part.interval);
             }
         }
+
+        isSpawningMonsters = false;
     }
 
     IEnumerator SpawnMonsters(Monster type, int repetition, float interval)
@@ -89,30 +94,39 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    void SpawnMonster(Monster type)
+    public void SpawnMonster(Monster type, Vector3 position = new Vector3())
     {
         GameObject monster = Instantiate(gameGenerator.GetMonsterPrefab(type));
-
-        currentPathIndex++;
-        if (currentPathIndex >= gameGenerator.pathGenerator.paths.Count)
-            currentPathIndex = 0;
-
-        int lastItemIndex = gameGenerator.pathGenerator.paths[currentPathIndex].Count - 1;
-        
-        Vector2 tilePosition = gameGenerator.pathGenerator.paths[currentPathIndex][lastItemIndex];
-        GameObject placement = gameGenerator.tiles[(int)tilePosition.x][(int)tilePosition.y].GetComponent<TileBehaviour>().placement;
         MonsterBehaviour behaviour = monster.GetComponent<MonsterBehaviour>();
-        
-        behaviour.gameGenerator = gameGenerator;
         monster.transform.localScale = behaviour.finalScale;
-        monster.transform.position = new Vector3(
-            placement.transform.position.x,
-            placement.transform.position.y + monster.transform.localScale.y / 2f,
-            placement.transform.position.z
-        );
+
+        if (position != Vector3.zero)
+        {
+            monster.transform.position = position;
+        }
+        else
+        {
+            currentPathIndex++;
+            if (currentPathIndex >= gameGenerator.pathGenerator.paths.Count)
+                currentPathIndex = 0;
+
+            int lastItemIndex = gameGenerator.pathGenerator.paths[currentPathIndex].Count - 1;
+            
+            Vector2 tilePosition = gameGenerator.pathGenerator.paths[currentPathIndex][lastItemIndex];
+            GameObject placement = gameGenerator.tiles[(int)tilePosition.x][(int)tilePosition.y].GetComponent<TileBehaviour>().placement;
+            
+            monster.transform.position = new Vector3(
+                placement.transform.position.x,
+                placement.transform.position.y + monster.transform.localScale.y / 2f,
+                placement.transform.position.z
+            );
+        };
+
         monster.transform.parent = monsterParent.transform;
+        behaviour.gameGenerator = gameGenerator;
         behaviour.agent.destination = gameGenerator.villageGenerator.mainVillage.transform.position;
         behaviour.healthScript.camera = camera;
+        behaviour.waveManager = this;
         // Destroy(monster.GetComponent<NavMeshAgent>());
         
         monsters.Add(monster);
@@ -135,7 +149,7 @@ public class WaveManager : MonoBehaviour
 
     public bool WaveIsFinished()
     {
-        if (monsters.Count == 0)
+        if (monsters.Count == 0 && !isSpawningMonsters)
             return true;
         return false;
     }

@@ -10,6 +10,15 @@ public class MonsterData : ScriptableObject
     public float attackSpeed;
     public float speed;
     public int gold;
+    public List<MonsterCount> spawnOnDeath;
     [Space]
     public GameObject prefab;
 }
+
+[System.Serializable]
+public class MonsterCount
+{
+    public Monster type;
+    public int count;
+}
+

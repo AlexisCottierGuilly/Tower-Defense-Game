@@ -310,6 +310,18 @@ public class GameGenerator : MonoBehaviour
         }
     }
 
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+        paused = true;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        paused = false;
+    }
+
     void Update()
     {
         health = villageGenerator.GetRemainingLives();

@@ -15,6 +15,14 @@ public class UI : MonoBehaviour
         5 - Appuyer sur Create Font Atlas
         6 - Cliquer sur "Save" et enregistrer le fichier dans le dossier Assets\CustomFonts
     */
+
+    public bool resetTimeScale = true;
+
+    void Start()
+    {
+        if (resetTimeScale)
+            Time.timeScale = 1f;
+    }
     
     public void ChangeScene(string sceneName)
     {
