@@ -10,6 +10,13 @@ public enum Tower
     Ultimate
 }
 
+public enum ObjectType
+{
+    None,
+    Tower,
+    Village
+}
+
 public class DetectSelection : MonoBehaviour
 {
     public GameGenerator gameGenerator;
@@ -25,15 +32,17 @@ public class DetectSelection : MonoBehaviour
     [HideInInspector] public bool canPlace = false;
     [HideInInspector] public GameObject placedObject;
     [HideInInspector] public Vector2 position = Vector2.zero;
-    private Vector3 currentRotation = new Vector3(0, 30, 0);
+    [HideInInspector] public ObjectType objectType = ObjectType.None;
+    private Vector3 currentRotation = new Vector3(0, 0, 0);
 
-    public void SetStructure(GameObject structurePrefab)
+    public void SetStructure(GameObject structurePrefab, ObjectType objectType = ObjectType.Tower)
     {
         UnsetStructure();
         
         placedObjectPrefab = structurePrefab;
-        currentRotation = new Vector3(0, 30, 0);
+        currentRotation = new Vector3(0, 0, 0);
         canPlace = true;
+        this.objectType = objectType;
 
         Start();
     }
@@ -44,9 +53,10 @@ public class DetectSelection : MonoBehaviour
         if (placedObject != null)
             Destroy(placedObject);
         placedObject = null;
-        currentRotation = new Vector3(0, 30, 0);
+        currentRotation = new Vector3(0, 0, 0);
         canPlace = false;
         position = Vector2.zero;
+        objectType = ObjectType.None;
     }
     
     void Start()
@@ -82,21 +92,32 @@ public class DetectSelection : MonoBehaviour
                 );
                 newObject.transform.localScale *= GameManager.instance.towerSize;
                 newObject.transform.eulerAngles = currentRotation;
-                if (!gameGenerator.PlaceTower(position, newObject))
-                    Destroy(newObject);
 
-                currentRotation = new Vector3(0, 30, 0);
+                if (objectType == ObjectType.Tower)
+                {
+                    if (!gameGenerator.PlaceTower(position, newObject))
+                        Destroy(newObject);
+                }
+                else
+                {
+                    // The village is already created in the PlaceVillage function,
+                    // so we need to destroy it
+                    gameGenerator.PlaceVillage(position, newObject);
+                    Destroy(newObject);
+                }
+
+                currentRotation = new Vector3(0, 0, 0);
                 placedObject.transform.eulerAngles = currentRotation;
 
                 if (autoDeselection)
                     UnsetStructure();
             }
             
-            if (Input.GetKeyDown(KeyCode.R))
+            /*if (Input.GetKeyDown(KeyCode.R))
             {
                 currentRotation.y += 60;
                 placedObject.transform.eulerAngles = currentRotation;
-            }
+            }*/
 
             if (placedObjectPrefab != null && placedObject != null)
                 UpdatePlacementPosition();
@@ -128,7 +149,13 @@ public class DetectSelection : MonoBehaviour
         }
 
         canPlace = gameGenerator.CanPlace(position);
-        if (placedObjectPrefab.GetComponent<TowerBehaviour>().data.cost > GameManager.instance.gold)
+        int cost = -1;
+        if (objectType == ObjectType.Tower)
+            cost = placedObjectPrefab.GetComponent<TowerBehaviour>().data.cost;
+        else if (objectType == ObjectType.Village)
+            cost = placedObjectPrefab.GetComponent<VillageBehaviour>().data.cost;
+        
+        if (cost == -1 || cost > GameManager.instance.gold)
             canPlace = false;
 
         Color color = Color.green;

@@ -38,7 +38,11 @@ public class VillageBehaviour : StructureBehaviour
 
     public void RemoveFromGame()
     {
-        generator.RemoveVillageStructure(gameObject);
+        if (gameObject != null)
+        {
+            // Oui... le gameObject a déjà été détruit une fois.
+            generator.RemoveVillageStructure(gameObject);
+        }
     }
 
     void UpdateMonsterHits()

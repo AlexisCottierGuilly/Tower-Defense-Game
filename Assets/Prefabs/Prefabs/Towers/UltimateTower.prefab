@@ -463,6 +463,7 @@ GameObject:
   - component: {fileID: 8985427550309880912}
   - component: {fileID: 6257408844803561148}
   - component: {fileID: -3813001231847804795}
+  - component: {fileID: -5541327635516342203}
   m_Layer: 0
   m_Name: UltimateTower
   m_TagString: Untagged
@@ -557,6 +558,27 @@ MonoBehaviour:
   canonSupport: {fileID: 4556532886603090416}
   projectileSpawnEmpty: {fileID: 7391351598065587097}
   verticalShootAngle: 20
+--- !u!65 &-5541327635516342203
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5767136952099664468}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 51
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7391351598065587097
 GameObject:
   m_ObjectHideFlags: 0

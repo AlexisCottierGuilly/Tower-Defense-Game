@@ -18,7 +18,7 @@ public class VillageGenerator : MonoBehaviour
 
     [HideInInspector] public GameObject mainVillage;
     [HideInInspector] public List<GameObject> villageBuildings = new List<GameObject>();
-    [HideInInspector] public int maxHealth;
+    [HideInInspector] public int maxHealth = 0;
 
     public void GenerateVillage()
     {
@@ -60,6 +60,8 @@ public class VillageGenerator : MonoBehaviour
             new Vector3(0f, 0f, 0f),
             Quaternion.identity
         );
+        VillageBehaviour behaviour = mainVillage.GetComponent<VillageBehaviour>();
+
         mainVillage.transform.localScale *= GameManager.instance.towerSize;
         mainVillage.transform.position = new Vector3(
             position.x,
@@ -69,9 +71,11 @@ public class VillageGenerator : MonoBehaviour
 
         mainVillage.name = "Main Village";
         mainVillage.transform.parent = villageParent.transform;
-        mainVillage.GetComponent<VillageBehaviour>().position = highestPointPosition;
-        mainVillage.GetComponent<VillageBehaviour>().generator = this;
+        behaviour.position = highestPointPosition;
+        behaviour.generator = this;
         highestPointTile.GetComponent<TileBehaviour>().structure = mainVillage;
+
+        maxHealth += behaviour.data.maxHealth;
 
         float cameraHeight = (mainVillage.transform.position.y + mainVillage.GetComponent<MeshRenderer>().bounds.size.y
             / GameManager.instance.towerSize + gameGenerator.terrainGenerator.stepHeight * 10f); // *2f
@@ -81,7 +85,6 @@ public class VillageGenerator : MonoBehaviour
         float maxDistanceFromCenter = Mathf.Round(gameGenerator.terrainGenerator.size.x / 4f);
         float minDistanceFromMainTower = Mathf.Round(gameGenerator.terrainGenerator.size.x / 8f);
         Vector2 center = new Vector2(gameGenerator.terrainGenerator.size.x / 2f, gameGenerator.terrainGenerator.size.y / 2f);
-        List<Vector2> villagePositions = new List<Vector2>();
 
         Vector3 mainTextPosition = new Vector3(
                 mainVillage.transform.position.x,
@@ -102,6 +105,8 @@ public class VillageGenerator : MonoBehaviour
         for (int i=0; i < 4; i++)
         {
             Vector2 randomPosition = new Vector2();
+            List<Vector2> villagePositions = GetVillagePositions();
+
             while (villagePositions.Contains(randomPosition) || randomPosition == Vector2.zero
                 || (randomPosition - highestPointPosition).magnitude < minDistanceFromMainTower)
             {
@@ -115,48 +120,69 @@ public class VillageGenerator : MonoBehaviour
                 );
             }
             // gameGenerator.FlattenAround(randomPosition, 1, false);
-            villagePositions.Add(randomPosition);
 
             GameObject villageStructurePrefab = villagePrefabs[gameGenerator.randomWithSeed.Next(0, villagePrefabs.Count)];
-            GameObject tile = gameGenerator.tiles[(int)randomPosition.x][(int)randomPosition.y];
-            position = tile.GetComponent<TileBehaviour>().placement.transform.position;
-            GameObject villageStructure = GameObject.Instantiate(
-                villageStructurePrefab,
-                new Vector3(0f, 0f, 0f),
-                Quaternion.identity
-            );
-            
-            villageStructure.transform.localScale *= GameManager.instance.towerSize;
-            villageStructure.transform.position = new Vector3(
-                position.x, // - tile.GetComponent<MeshRenderer>().bounds.size.x / 2f,
-                position.y + villageStructure.transform.localScale.y / 2f,
-                position.z // - tile.GetComponent<MeshRenderer>().bounds.size.z / 2f
-            );
+            PlaceVillage(villageStructurePrefab, randomPosition);
+        }
+    }
 
-            villageStructure.name = $"Village Structure {i}";
-            villageStructure.transform.parent = villageParent.transform;
-            villageStructure.GetComponent<VillageBehaviour>().position = randomPosition;
-            villageStructure.GetComponent<VillageBehaviour>().generator = this;
-            villageBuildings.Add(villageStructure);
+    public List<Vector2> GetVillagePositions()
+    {
+        List<Vector2> positions = new List<Vector2>();
 
-            Vector3 textPosition = new Vector3(
-                villageStructure.transform.position.x,
-                villageStructure.transform.position.y + GetTotalHeight(villageStructure),
-                villageStructure.transform.position.z
-            );
-            
-            GameObject villageText = Instantiate(
-                healthTextPrefab,
-                textPosition,
-                Quaternion.identity,
-                villageStructure.transform
-            );
+        if (mainVillage != null)
+            positions.Add(mainVillage.GetComponent<VillageBehaviour>().position);
 
-            villageText.GetComponent<HealthTextUpdater>().village = villageStructure.GetComponent<VillageBehaviour>();
-            villageText.GetComponent<HealthTextUpdater>().camera = camera;
+        foreach(GameObject building in villageBuildings)
+        {
+            positions.Add(building.GetComponent<VillageBehaviour>().position);
         }
 
-        maxHealth = GetMaximumLives();
+        return positions;
+    }
+
+    public void PlaceVillage(GameObject prefab, Vector2 gridPosition)
+    {
+        GameObject tile = gameGenerator.tiles[(int)gridPosition.x][(int)gridPosition.y];
+        Vector3 position = tile.GetComponent<TileBehaviour>().placement.transform.position;
+        GameObject villageStructure = GameObject.Instantiate(
+            prefab,
+            new Vector3(0f, 0f, 0f),
+            Quaternion.identity
+        );
+
+        VillageBehaviour behaviour = villageStructure.GetComponent<VillageBehaviour>();
+        
+        villageStructure.transform.localScale *= GameManager.instance.towerSize;
+        villageStructure.transform.position = new Vector3(
+            position.x, // - tile.GetComponent<MeshRenderer>().bounds.size.x / 2f,
+            position.y + villageStructure.transform.localScale.y / 2f,
+            position.z // - tile.GetComponent<MeshRenderer>().bounds.size.z / 2f
+        );
+
+        villageStructure.name = $"Village Structure {villageBuildings.Count + 1}";
+        villageStructure.transform.parent = villageParent.transform;
+        behaviour.position = gridPosition;
+        behaviour.generator = this;
+        villageBuildings.Add(villageStructure);
+
+        maxHealth += behaviour.data.maxHealth;
+
+        Vector3 textPosition = new Vector3(
+            villageStructure.transform.position.x,
+            villageStructure.transform.position.y + GetTotalHeight(villageStructure),
+            villageStructure.transform.position.z
+        );
+        
+        GameObject villageText = Instantiate(
+            healthTextPrefab,
+            textPosition,
+            Quaternion.identity,
+            villageStructure.transform
+        );
+
+        villageText.GetComponent<HealthTextUpdater>().village = behaviour;
+        villageText.GetComponent<HealthTextUpdater>().camera = camera;
     }
 
     public float GetTotalHeight(GameObject go)

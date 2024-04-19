@@ -6,6 +6,8 @@ public class CameraManager : MonoBehaviour
 {
     public float moveSpeed = 200f;
     public float turnSpeed = 8f;
+    public float minHeight = 10f;
+    public float maxHeight = 85f;
     public GameGenerator gameGenerator;
     public Rigidbody rb;
 
@@ -94,6 +96,9 @@ public class CameraManager : MonoBehaviour
             additionalHeight += moveSpeed / 6f * localDeltaTime;
         else if (Input.GetKey(KeyCode.LeftShift))
             additionalHeight -= moveSpeed / 6f * localDeltaTime;
+
+        additionalHeight = Mathf.Min(maxHeight - initialHeight, additionalHeight);
+        additionalHeight = Mathf.Max(minHeight - initialHeight, additionalHeight);
 
         // reset the camera height (changed with AddRelativeForce)
         transform.position = new Vector3(

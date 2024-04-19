@@ -137,7 +137,8 @@ public class GameGenerator : MonoBehaviour
 
     public bool PlaceTower(Vector2 position, GameObject tower)
     {
-        TowerData data = tower.GetComponent<TowerBehaviour>().data;
+        TowerBehaviour behaviour = tower.GetComponent<TowerBehaviour>();
+        TowerData data = behaviour.data;
         
         if (CanPlace(position) && GameManager.instance.gold >= data.cost)
         {
@@ -150,12 +151,31 @@ public class GameGenerator : MonoBehaviour
                 placement.transform.position.z
             );
             tower.transform.parent = towerParent.transform;
-            tower.GetComponent<TowerBehaviour>().position = position;
-            tower.GetComponent<TowerBehaviour>().projectileParent = projectileParent;
+            behaviour.position = position;
+            behaviour.projectileParent = projectileParent;
             towers.Add(tower);
             GameManager.instance.gold -= data.cost;
+
             return true;
         }
+
+        return false;
+    }
+
+    public bool PlaceVillage(Vector2 position, GameObject village)
+    {
+        VillageBehaviour behaviour = village.GetComponent<VillageBehaviour>();
+        VillageData data = village.GetComponent<VillageBehaviour>().data;
+
+        if (data.cost != -1 && CanPlace(position) && GameManager.instance.gold >= data.cost)
+        {
+            villageGenerator.PlaceVillage(village, position);
+            GameManager.instance.gold -= data.cost;
+            didModifyVillage = true;
+
+            return true;
+        }
+
         return false;
     }
 
