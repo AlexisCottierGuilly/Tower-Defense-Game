@@ -16,10 +16,14 @@ public class tutotUI : MonoBehaviour
     public GameObject twoUI;
     public GameObject threeUI;
     public GameObject QUI;
+    public GameObject ShiftUI;
+    public GameObject SpaceUI;
     private bool one = false;
     private bool two = false;
     private bool three = false;
     private bool Q = false;
+    private bool shift = false;
+    private bool space = false;
     private int state = 0;
 
     void Start()
@@ -30,16 +34,12 @@ public class tutotUI : MonoBehaviour
         info4.SetActive(false);
         info5.SetActive(false);
         info6.SetActive(false);
-        oneUI.SetActive(false);
-        twoUI.SetActive(false);
-        threeUI.SetActive(false);
-        QUI.SetActive(false);
     }
     
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && state != 5)
+        if (Input.GetKeyDown(KeyCode.Return) && state != 5  && state != 6)
         {
             state += 1;
             if (state == 1)
@@ -58,10 +58,6 @@ public class tutotUI : MonoBehaviour
             else if (state == 4)
             {
                 info4.SetActive(true);
-            }
-            else if (state == 6)
-            {
-                info6.SetActive(true);
             }
         }
         else if (state == 5)
@@ -84,22 +80,44 @@ public class tutotUI : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Q))
             {
                 Q = true;
-                QUI.GetComponent<Image>().color = Color.green;  // QUI.SetActive(false);
+                QUI.GetComponent<Image>().color = Color.green;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 one = true;
-                oneUI.GetComponent<Image>().color = Color.green;  // oneUI.SetActive(false);
+                oneUI.GetComponent<Image>().color = Color.green;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 two = true;
-                twoUI.GetComponent<Image>().color = Color.green;  // twoUI.SetActive(false);
+                twoUI.GetComponent<Image>().color = Color.green;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 three = true;
-                threeUI.GetComponent<Image>().color = Color.green;  // threeUI.SetActive(false);
+                threeUI.GetComponent<Image>().color = Color.green;
+            }
+        }
+        else if (state == 6)
+        {
+            info6.SetActive(true);
+            if (shift == false)
+                ShiftUI.SetActive(true);
+            if (space == false)
+                SpaceUI.SetActive(true);
+            if (shift == true && space == true)
+            {
+                state += 1;
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                shift = true;
+                ShiftUI.GetComponent<Image>().color = Color.green;
+            }
+            else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                space = true;
+                SpaceUI.GetComponent<Image>().color = Color.green;
             }
         }
     }

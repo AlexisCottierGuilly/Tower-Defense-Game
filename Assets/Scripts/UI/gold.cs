@@ -9,6 +9,6 @@ public class gold : MonoBehaviour
 
     void Update()
     {
-        text.text = GameManager.instance.gold.ToString() + " or";
+        text.text = GameManager.instance.gold.ToString();
     }
 }

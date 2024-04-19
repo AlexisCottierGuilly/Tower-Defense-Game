@@ -10,6 +10,6 @@ public class TowerCostUpdater : MonoBehaviour
 
     void Start()
     {
-        text.text = $"{data.cost} or";
+        text.text = $"{data.cost}";
     }
 }
