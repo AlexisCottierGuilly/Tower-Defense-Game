@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 3726788157187442337}
   - component: {fileID: -8780990787958884246}
   m_Layer: 0
-  m_Name: Base Enemy
+  m_Name: Sliding Slime
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -252,7 +252,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: d90a6e93c4a260d4ea937f8aa5986a52, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -307,13 +307,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e35f097941db90d438753500a8ba550b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 0}
+  data: {fileID: 11400000, guid: f6906f558812ab64eaddee04f8a75e83, type: 2}
   health: 0
   healthScript: {fileID: 971457823520332070}
   waveManager: {fileID: 0}
   gameGenerator: {fileID: 0}
   agent: {fileID: -8780990787958884246}
-  finalScale: {x: 1, y: 1, z: 1}
+  finalScale: {x: 5, y: 5, z: 5}
   climbingSpeedDivisor: 5
   isClimbing: 0
   lastPosition: {x: 0, y: 0, z: 0}

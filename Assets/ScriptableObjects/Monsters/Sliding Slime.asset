@@ -10,19 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1048b24caeb7af4fb7437d13f3f9c38, type: 3}
-  m_Name: Troll That Trolls
+  m_Name: Sliding Slime
   m_EditorClassIdentifier: 
-  name: Troll qui Troll
+  name: Slime Glissant
   isBoss: 1
-  maxHealth: 2500
-  damage: 150
-  attackSpeed: 0.5
-  speed: 0.5
-  gold: 100
-  spawnOnDeath: []
-  timedSpawns:
-  - monsters:
-    - type: 1
-      countInterval: {x: 2, y: 4}
-    spawnRateInterval: {x: 7.5, y: 12.5}
-  prefab: {fileID: 4451012924925943445, guid: d8a0b9073b8d8444bbcd0463959f184a, type: 3}
+  maxHealth: 5000
+  damage: 75
+  attackSpeed: 0.65
+  speed: 0.4
+  gold: 50
+  spawnOnDeath:
+  - type: 4
+    countInterval: {x: 3, y: 5}
+  timedSpawns: []
+  prefab: {fileID: 4451012924925943445, guid: e449fe19a921cda41bc6a58d465172c4, type: 3}

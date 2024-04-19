@@ -10,7 +10,10 @@ public enum Monster
 {
     Goblin,
     Troll,
-    TrollThatTrolls
+    TrollThatTrolls,
+    SlidingSlime,
+    MediumSlime,
+    Slime
 }
 
 public class WaveManager : MonoBehaviour
@@ -32,6 +35,7 @@ public class WaveManager : MonoBehaviour
     [Header("Others")]
     public TextMeshProUGUI roundText;
     public GameObject roundTextTitle;
+    public GameObject bossHealthBar;
     public UnityEvent gameFinished;
     public GameObject camera;
 
@@ -97,7 +101,14 @@ public class WaveManager : MonoBehaviour
 
     public void SpawnMonster(Monster type, Vector3 position = new Vector3())
     {
-        GameObject monster = Instantiate(gameGenerator.GetMonsterPrefab(type));
+        GameObject monsterPrefab = gameGenerator.GetMonsterPrefab(type);
+        if (monsterPrefab == null)
+        {
+            Debug.LogError($"You Need to Add the {type} prefab to the GameGenerator's monsterPrefabs list.");
+            return;
+        }
+        
+        GameObject monster = Instantiate(monsterPrefab);
         MonsterBehaviour behaviour = monster.GetComponent<MonsterBehaviour>();
         monster.transform.localScale = behaviour.finalScale;
 
@@ -126,8 +137,13 @@ public class WaveManager : MonoBehaviour
         monster.transform.parent = monsterParent.transform;
         behaviour.gameGenerator = gameGenerator;
         behaviour.agent.destination = gameGenerator.villageGenerator.mainVillage.transform.position;
+        behaviour.agent.Warp(monster.transform.position);
         behaviour.healthScript.camera = camera;
         behaviour.waveManager = this;
+
+        if (behaviour.data.isBoss)
+            SetBossBar(behaviour);
+
         // Destroy(monster.GetComponent<NavMeshAgent>());
         
         monsters.Add(monster);
@@ -146,7 +162,33 @@ public class WaveManager : MonoBehaviour
         {
             monsters.Remove(monster);
         }
-    }	
+    }
+
+    public void SetBossBar(MonsterBehaviour boss)
+    {
+        bossHealthBar.GetComponent<RectTransform>().localScale = new Vector3(0f, 0f, 1f);
+        
+        bossHealthBar.SetActive(true);
+        bossHealthBar.GetComponent<BossHealthBar>().boss = boss;
+        bossHealthBar.GetComponent<Animator>().SetTrigger("ShowAnimation");
+
+        /*
+        Bug : the bossHealthBar shows up at full scale, and then it begins it's animation (0 scale to full scale)
+        the problem is that the bossHealthBas's initial scale is 1,1,1, and it should be 0, 1, 1
+
+        How to fix this ?
+
+        1. Set the initial scale of the bossHealthBar to 0, 1, 1
+        2. Remove the line  "bossHealthBar.GetComponent<RectTransform>().localScale = new Vector3(0f, 1f, 1f);"
+        3. Done
+        */
+    }
+
+    public void UnsetBossBar()
+    {
+        bossHealthBar.SetActive(false);
+        bossHealthBar.GetComponent<BossHealthBar>().boss = null;
+    }
 
     public bool WaveIsFinished()
     {

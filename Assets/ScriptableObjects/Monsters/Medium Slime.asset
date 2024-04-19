@@ -10,19 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1048b24caeb7af4fb7437d13f3f9c38, type: 3}
-  m_Name: Troll That Trolls
+  m_Name: Medium Slime
   m_EditorClassIdentifier: 
-  name: Troll qui Troll
-  isBoss: 1
-  maxHealth: 2500
-  damage: 150
+  name: Slime Moyen
+  isBoss: 0
+  maxHealth: 2000
+  damage: 50
   attackSpeed: 0.5
-  speed: 0.5
-  gold: 100
-  spawnOnDeath: []
-  timedSpawns:
-  - monsters:
-    - type: 1
-      countInterval: {x: 2, y: 4}
-    spawnRateInterval: {x: 7.5, y: 12.5}
-  prefab: {fileID: 4451012924925943445, guid: d8a0b9073b8d8444bbcd0463959f184a, type: 3}
+  speed: 0.65
+  gold: 25
+  spawnOnDeath:
+  - type: 5
+    countInterval: {x: 3, y: 5}
+  timedSpawns: []
+  prefab: {fileID: 4451012924925943445, guid: daa1e5ca864b94546a22993356a43fb1, type: 3}

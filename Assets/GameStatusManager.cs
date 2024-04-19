@@ -16,21 +16,16 @@ public class GameStatusManager : MonoBehaviour
     
     void LateUpdate()
     {
-        if (gameGenerator.health <= 0 || gameGenerator.villageGenerator.mainVillage == null)
+        if (gameGenerator.didFinishLoading && (gameGenerator.health <= 0 || gameGenerator.villageGenerator.mainVillage == null))
         {
             defeat.SetActive(true);
-            gameGenerator.paused = true;
-        }
-        else
-        {
-            defeat.SetActive(false);
-            gameGenerator.paused = false;
+            gameGenerator.PauseGame();
         }
     }
 
     void GameIsFinished()
     {
         victory.SetActive(true);
-        gameGenerator.paused = true;
+        gameGenerator.PauseGame();
     }
 }

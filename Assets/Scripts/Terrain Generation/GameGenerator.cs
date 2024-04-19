@@ -58,6 +58,7 @@ public class GameGenerator : MonoBehaviour
     [HideInInspector] public System.Random randomWithSeed;
     
     [HideInInspector] public bool didModifyVillage = false;
+    [HideInInspector] public bool didFinishLoading = false;
     
     // Start is called before the first frame update
     void Start()
@@ -83,6 +84,7 @@ public class GameGenerator : MonoBehaviour
         waveManager.InitializeSurfaces();
 
         maxHealth = villageGenerator.GetRemainingLives();
+        health = maxHealth;
 
         StartCoroutine(LogicUpdate());
         StartCoroutine(TowerUpdate());
@@ -327,6 +329,10 @@ public class GameGenerator : MonoBehaviour
         health = villageGenerator.GetRemainingLives();
         
         if (!paused)
+        {
             gameTime += Time.deltaTime;
+            if (health > 0)
+                didFinishLoading = true;
+        }
     }
 }

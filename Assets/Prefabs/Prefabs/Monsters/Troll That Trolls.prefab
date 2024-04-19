@@ -314,7 +314,7 @@ MonoBehaviour:
   gameGenerator: {fileID: 0}
   agent: {fileID: -8780990787958884246}
   finalScale: {x: 4, y: 4, z: 4}
-  climbingSpeedDivisor: 20
+  climbingSpeedDivisor: 5
   isClimbing: 0
   lastPosition: {x: 0, y: 0, z: 0}
 --- !u!195 &-8780990787958884246

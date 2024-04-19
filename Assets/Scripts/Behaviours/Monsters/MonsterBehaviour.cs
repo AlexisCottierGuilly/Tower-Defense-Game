@@ -15,7 +15,7 @@ public class MonsterBehaviour : MonoBehaviour
     public NavMeshAgent agent;
     public Vector3 finalScale = new Vector3(1f, 1f, 1f);
     [Space]
-    public float climbingSpeedDivisor = 7f;
+    public float climbingSpeedDivisor = 5f;
 
     private float timeFromPreviousAttack = 0f;
     private GameObject targetTower = null;
@@ -159,7 +159,6 @@ public class MonsterBehaviour : MonoBehaviour
         foreach (MonsterCount monsterCount in monsters)
         {
             int count = gameGenerator.randomWithSeed.Next((int)monsterCount.countInterval.x, (int)monsterCount.countInterval.y);
-            Debug.Log("Spawning " + count + " " + monsterCount.type, this.gameObject);
             
             for (int i = 0; i < count; i++)
             {
@@ -176,7 +175,6 @@ public class MonsterBehaviour : MonoBehaviour
 
             if (timesSinceSpawn[timedSpawn] >= spawnRateIntervals[timedSpawn])
             {
-                Debug.Log("Time from last spawn: " + timesSinceSpawn[timedSpawn] + " for " + timedSpawn.monsters[0].type, this.gameObject);
                 SpawnMonsters(timedSpawn.monsters);
 
                 timesSinceSpawn[timedSpawn] = 0f;
@@ -184,7 +182,6 @@ public class MonsterBehaviour : MonoBehaviour
                 float min = timedSpawn.spawnRateInterval.x;
                 float diff = timedSpawn.spawnRateInterval.y - min;
                 spawnRateIntervals[timedSpawn] = (float)(gameGenerator.randomWithSeed.NextDouble() * diff + min);
-                Debug.Log("New spawn rate interval: " + spawnRateIntervals[timedSpawn] + " for " + timedSpawn.monsters[0].type, this.gameObject);
             }
         }
     }
