@@ -402,7 +402,7 @@ MonoBehaviour:
   previousScene: 0
   UISize: 1
   towerSize: 1
-  initialGold: 2094893
+  initialGold: 100000
   gold: 0
 --- !u!4 &268031490
 Transform:
@@ -716,6 +716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c7eb7c64513e741a3c7b12630ac2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetTimeScale: 1
 --- !u!4 &494402433
 Transform:
   m_ObjectHideFlags: 0

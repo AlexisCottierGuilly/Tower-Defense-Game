@@ -238,27 +238,29 @@ public class PathGenerator2 : MonoBehaviour
 
         List<List<Vector2>> endsList = new List<List<Vector2>>();
 
+        int cornerCut = 5;
+
         // add top row without corners
         List<Vector2> topRow = new List<Vector2>();
-        for (int x = 1; x < gameGenerator.terrainGenerator.size.x - 1; x++)
+        for (int x = cornerCut; x < gameGenerator.terrainGenerator.size.x - cornerCut; x++)
             topRow.Add(new Vector2(x, gameGenerator.terrainGenerator.size.y - 1));
         endsList.Add(topRow);
 
         // add right column without corners
         List<Vector2> rightColumn = new List<Vector2>();
-        for (int y = 1; y < gameGenerator.terrainGenerator.size.y - 1; y++)
+        for (int y = cornerCut; y < gameGenerator.terrainGenerator.size.y - cornerCut; y++)
             rightColumn.Add(new Vector2(gameGenerator.terrainGenerator.size.x - 1, y));
         endsList.Add(rightColumn);
 
         // add bottom row without corners
         List<Vector2> bottomRow = new List<Vector2>();
-        for (int x = 1; x < gameGenerator.terrainGenerator.size.x - 1; x++)
+        for (int x = cornerCut; x < gameGenerator.terrainGenerator.size.x - cornerCut; x++)
             bottomRow.Add(new Vector2(x, 0));
         endsList.Add(bottomRow);
 
         // add left column without corners
         List<Vector2> leftColumn = new List<Vector2>();
-        for (int y = 1; y < gameGenerator.terrainGenerator.size.y - 1; y++)
+        for (int y = cornerCut; y < gameGenerator.terrainGenerator.size.y - cornerCut; y++)
             leftColumn.Add(new Vector2(0, y));
         endsList.Add(leftColumn);
 

@@ -29,6 +29,12 @@ public class WaveManager : MonoBehaviour
     public bool waveFinished = true;
     public bool autoStart = false;
 
+    [Header("Paths")]
+    public int initialUsedPaths = 1;
+
+    // AddPathReccurence controls the number of rounds before adding a new path
+    public int addPathReccurence = 2;
+
     [Header("Parents")]
     public GameObject monsterParent;
 
@@ -44,6 +50,7 @@ public class WaveManager : MonoBehaviour
     
     [HideInInspector] int currentPathIndex = 0;
     [HideInInspector] public List<GameObject> monsters = new List<GameObject>();
+    [HideInInspector] public List<List<Vector2>> usedPaths = new List<List<Vector2>>();
     
     void Start()
     {
@@ -61,12 +68,32 @@ public class WaveManager : MonoBehaviour
             surface.BuildNavMesh();
         }
     }
+
+    void UpdateUsedPaths()
+    {
+        int numberOfPaths = 0;
+        
+        if (wave == 0)
+        {
+            numberOfPaths = initialUsedPaths;
+        }
+        else
+        {
+            numberOfPaths = (wave - 1) / addPathReccurence + initialUsedPaths;
+            numberOfPaths = Mathf.Min(numberOfPaths, gameGenerator.pathGenerator.paths.Count);
+        }
+
+        usedPaths.Clear();
+        for (int i = 0; i < numberOfPaths; i++)
+        {
+            usedPaths.Add(gameGenerator.pathGenerator.paths[i]);
+        }
+
+        Debug.Log($"Wave {wave} : {usedPaths.Count} paths");
+    }
     
     public IEnumerator LoadNextRound()
     {
-         waveFinished = false;
-         isSpawningMonsters = true;
-        
         if (wave >= waves.Count)
         {
             gameFinished.Invoke();
@@ -76,6 +103,9 @@ public class WaveManager : MonoBehaviour
         }
         else
         {
+            waveFinished = false;
+            isSpawningMonsters = true;
+            
             wave++;
             RoundDidStart();
 
@@ -119,12 +149,12 @@ public class WaveManager : MonoBehaviour
         else
         {
             currentPathIndex++;
-            if (currentPathIndex >= gameGenerator.pathGenerator.paths.Count)
+            if (currentPathIndex >= usedPaths.Count)
                 currentPathIndex = 0;
 
-            int lastItemIndex = gameGenerator.pathGenerator.paths[currentPathIndex].Count - 1;
+            int lastItemIndex = usedPaths[currentPathIndex].Count - 1;
             
-            Vector2 tilePosition = gameGenerator.pathGenerator.paths[currentPathIndex][lastItemIndex];
+            Vector2 tilePosition = usedPaths[currentPathIndex][lastItemIndex];
             GameObject placement = gameGenerator.tiles[(int)tilePosition.x][(int)tilePosition.y].GetComponent<TileBehaviour>().placement;
             
             monster.transform.position = new Vector3(
@@ -206,6 +236,7 @@ public class WaveManager : MonoBehaviour
         roundTextTitle.GetComponent<Animator>().SetTrigger("ShowAnimation");
 
         LoadFogColor();
+        UpdateUsedPaths();
     }
 
     public void LoadFogColor()

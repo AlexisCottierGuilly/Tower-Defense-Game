@@ -82,7 +82,6 @@ public class GameManager : MonoBehaviour
             if (additive)
             {
                 GameObject.Find("EventSystem").SetActive(false);
-                Debug.Log("EventSystem deactivated");
             }
             
             SceneManager.LoadScene(gameState.ToString(), additive ? LoadSceneMode.Additive : LoadSceneMode.Single);

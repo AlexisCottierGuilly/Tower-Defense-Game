@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,9 +26,9 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float localDeltaTime = Time.deltaTime;
-        if (localDeltaTime == 0f)
-            localDeltaTime = Time.unscaledDeltaTime;
+        float localDeltaTime = Time.unscaledDeltaTime;
+        // if (localDeltaTime == 0f)
+        //     localDeltaTime = Time.unscaledDeltaTime;
         
         if (Time.deltaTime != 0f)
         {

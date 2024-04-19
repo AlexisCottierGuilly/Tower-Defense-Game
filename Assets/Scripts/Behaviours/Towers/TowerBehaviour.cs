@@ -86,7 +86,7 @@ public class TowerBehaviour : StructureBehaviour
         if (verticalShootAngle >= 25f)
             deltaY *= 17.5f / Mathf.Pow(angleDiffMultiplier, 1.25f);
         else
-            deltaY *= 17.5f / (angleDiffMultiplier * 1f);
+            deltaY *= 17.5f / (angleDiffMultiplier * 0.825f);  // Mathf.Pow(angleDiffMultiplier, 1.15f) * 1.2f;
         
         /*if (Mathf.Atan2(deltaY, deltaX) * Mathf.Rad2Deg >= angle) {
             return 0f;  // Not possible to shoot on the monster
@@ -112,7 +112,7 @@ public class TowerBehaviour : StructureBehaviour
             GameObject projectile = Instantiate(data.projectile, projectileSpawnEmpty.transform.position, Quaternion.identity);
             projectile.transform.eulerAngles = new Vector3(  // ROTATION MOCHE
                 90f - verticalShootAngle, //canonSupport.transform.eulerAngles.x,
-                projectile.transform.eulerAngles.y,
+                this.transform.eulerAngles.y,
                 projectile.transform.eulerAngles.z
             );
             projectile.transform.parent = projectileParent.transform;

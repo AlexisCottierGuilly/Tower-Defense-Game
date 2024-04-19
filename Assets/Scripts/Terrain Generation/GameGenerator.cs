@@ -36,6 +36,8 @@ public class GameGenerator : MonoBehaviour
     public int health = 0;
     public float gameTime = 0f;
     public bool paused = false;
+    [Space]
+    public float defaultSpeed = 1f;
     
     [Header("Generation Settings")]
     public long seed = -1;
@@ -101,13 +103,13 @@ public class GameGenerator : MonoBehaviour
 
         // take into account that it is a grid made out of hexagonal tiles, so the bounds are different
 
-        float xTileSize = 1.5f * terrainGenerator.tileSize * 1.1f;
-        float yTileSize = 1.732f * terrainGenerator.tileSize * 0.775f;
+        float xTileSize = (5f / 3f) * terrainGenerator.tileSize;
+        float yTileSize = Mathf.Sqrt(2) * terrainGenerator.tileSize;
 
-        float minX = 2 * xTileSize;
-        float minY = 2 * yTileSize;
-        float maxX = Mathf.Max(terrainGenerator.size.x - 3, 2) * xTileSize;
-        float maxY = Mathf.Max(terrainGenerator.size.y - 3, 2) * yTileSize;
+        float minX = xTileSize / 4f;
+        float minY = 0f;
+        float maxX = (terrainGenerator.size.x + 0f) * xTileSize;
+        float maxY = (terrainGenerator.size.y + 1f / 3f) * yTileSize;
 
         return new Rect(minX, minY, maxX, maxY);
     }
@@ -320,7 +322,7 @@ public class GameGenerator : MonoBehaviour
 
     public void ResumeGame()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = defaultSpeed;
         paused = false;
     }
 
