@@ -203,4 +203,9 @@ public class TowerBehaviour : StructureBehaviour
             Shoot(enemy);
         }
     }
+
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
 }

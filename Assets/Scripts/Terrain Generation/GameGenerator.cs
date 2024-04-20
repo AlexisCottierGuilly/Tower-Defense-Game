@@ -321,9 +321,24 @@ public class GameGenerator : MonoBehaviour
         }
     }
 
-    IEnumerator TowerUpdate()
-    {    while (true)
+    public void CleanTowersList()
+    {
+        List<GameObject> newTowers = new List<GameObject>();
+        foreach (GameObject tower in towers)
         {
+            if (tower != null)
+                newTowers.Add(tower);
+        }
+
+        towers = newTowers;
+    }
+
+    IEnumerator TowerUpdate()
+    {   
+        while (true)
+        {
+            CleanTowersList();
+            
             foreach (GameObject tower in towers)
             {
                 TowerBehaviour behaviour = tower.GetComponent<TowerBehaviour>();

@@ -9,10 +9,15 @@ public class TowerSelectionManager : MonoBehaviour
     public DetectSelection detectSelection;
     public Camera camera;
     public GameGenerator gameGenerator;
-    [Space]
+
+    [Header("Tower Stats")]
     public GameObject statsPanel;
     public TextMeshProUGUI statsTitle;
     public TextMeshProUGUI damageText;
+    public TextMeshProUGUI sellValueText;
+
+    [Space]
+    public float sellRate = 0.25f;
 
     private GameObject selection = null;
 
@@ -47,9 +52,15 @@ public class TowerSelectionManager : MonoBehaviour
 
     void Update()
     {
+        if (gameGenerator.paused)
+        {
+            Unselect();
+            return;
+        }
+        
         if (detectSelection.objectType == ObjectType.None)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonUp(0))
             {
                 Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
                 CheckSelection(mousePosition);
@@ -72,6 +83,7 @@ public class TowerSelectionManager : MonoBehaviour
             {
                 statsTitle.text = behaviour.data.name;
                 damageText.text = behaviour.stats.damageDealt.ToString();
+                sellValueText.text = Mathf.Round(behaviour.data.cost * sellRate).ToString();
             }
         }
     }
@@ -97,6 +109,24 @@ public class TowerSelectionManager : MonoBehaviour
         }
 
         statsPanel.SetActive(false);
+    }
+
+    public void Sell()
+    {
+        if (selection == null)
+            return;
+        
+        TowerBehaviour behaviour = selection.GetComponent<TowerBehaviour>();
+        
+        if (behaviour != null)
+        {
+            int gainedGold = (int)(behaviour.data.cost * sellRate);
+            GameManager.instance.gold += gainedGold;
+
+            behaviour.Die();
+        }
+
+        Unselect();
     }
 
     private void ApplyOutline(GameObject go, bool remove=false)
