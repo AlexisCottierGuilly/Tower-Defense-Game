@@ -121,7 +121,7 @@ public class MonsterBehaviour : MonoBehaviour
 
     public void TakeDamage(GameObject projectile)
     {
-        health -= projectile.GetComponent<ProjectileBehaviour>().data.impactDamage;
+        health -= projectile.GetComponent<ProjectileBehaviour>().GetDamage();
         CheckDeath();
     }
 

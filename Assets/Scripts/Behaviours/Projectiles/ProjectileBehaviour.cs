@@ -5,12 +5,29 @@ using UnityEngine;
 public class ProjectileBehaviour : MonoBehaviour
 {
     public ProjectileData data;
+    [HideInInspector] public GameObject sender;
     [HideInInspector] public GameObject target;
     
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    public int GetDamage()
+    {
+        int damage = data.impactDamage;
+
+        if (sender != null)
+        {
+            TowerBehaviour behaviour = sender.GetComponent<TowerBehaviour>();
+            if (behaviour != null)
+            {
+                behaviour.stats.damageDealt += damage;
+            }
+        }
+        
+        return damage;
     }
 
     // Update is called once per frame

@@ -88,8 +88,6 @@ public class WaveManager : MonoBehaviour
         {
             usedPaths.Add(gameGenerator.pathGenerator.paths[i]);
         }
-
-        Debug.Log($"Wave {wave} : {usedPaths.Count} paths");
     }
     
     public IEnumerator LoadNextRound()

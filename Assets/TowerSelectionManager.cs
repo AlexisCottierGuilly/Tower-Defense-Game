@@ -13,6 +13,8 @@ public class TowerSelectionManager : MonoBehaviour
 
     private void CheckSelection(Vector2 mouse)
     {
+        Unselect();
+        
         // Find if the mouse is clicking on a tower
         GameObject tower = null;
 
@@ -30,10 +32,6 @@ public class TowerSelectionManager : MonoBehaviour
             selection = tower;
 
             ApplyOutline(tower);
-        }
-        else
-        {
-            Unselect();
         }
     }
 

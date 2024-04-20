@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[System.Serializable]
+public class TowerStats
+{
+    public int damageDealt = 0;
+}
+
+
 public class TowerBehaviour : StructureBehaviour
 {
     public TowerData data;
@@ -11,6 +19,8 @@ public class TowerBehaviour : StructureBehaviour
     public GameObject canonSupport;
     public GameObject projectileSpawnEmpty;
     public float verticalShootAngle = 0f;
+    [Header("Stats")]
+    public TowerStats stats = new TowerStats();
 
     // Shooting infos
     private float horizontalShootAngle = 0f;
@@ -117,6 +127,7 @@ public class TowerBehaviour : StructureBehaviour
             );
             projectile.transform.parent = projectileParent.transform;
             projectile.GetComponent<ProjectileBehaviour>().SetTarget(monster);
+            projectile.GetComponent<ProjectileBehaviour>().sender = this.gameObject;
             
             Vector3 force = new Vector3();
 
