@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using cakeslice;
 
 public class TowerSelectionManager : MonoBehaviour
@@ -8,13 +9,20 @@ public class TowerSelectionManager : MonoBehaviour
     public DetectSelection detectSelection;
     public Camera camera;
     public GameGenerator gameGenerator;
+    [Space]
+    public GameObject statsPanel;
+    public TextMeshProUGUI statsTitle;
+    public TextMeshProUGUI damageText;
 
     private GameObject selection = null;
 
-    private void CheckSelection(Vector2 mouse)
+    void Start()
     {
         Unselect();
-        
+    }
+    
+    private void CheckSelection(Vector2 mouse)
+    {
         // Find if the mouse is clicking on a tower
         GameObject tower = null;
 
@@ -29,9 +37,11 @@ public class TowerSelectionManager : MonoBehaviour
 
         if (tower != null)
         {
-            selection = tower;
-
-            ApplyOutline(tower);
+            Select(tower);
+        }
+        else
+        {
+            Unselect();
         }
     }
 
@@ -49,6 +59,33 @@ public class TowerSelectionManager : MonoBehaviour
         {
             Unselect();
         }
+
+        UpdateStats();
+    }
+
+    public void UpdateStats()
+    {
+        if (selection != null)
+        {
+            TowerBehaviour behaviour = selection.GetComponent<TowerBehaviour>();
+            if (behaviour != null)
+            {
+                statsTitle.text = behaviour.data.name;
+                damageText.text = behaviour.stats.damageDealt.ToString();
+            }
+        }
+    }
+
+    public void Select(GameObject go)
+    {
+        Unselect();
+
+        selection = go;
+        ApplyOutline(go);
+
+        statsPanel.SetActive(true);
+
+        UpdateStats();
     }
 
     private void Unselect()
@@ -58,6 +95,8 @@ public class TowerSelectionManager : MonoBehaviour
             ApplyOutline(selection, true);
             selection = null;
         }
+
+        statsPanel.SetActive(false);
     }
 
     private void ApplyOutline(GameObject go, bool remove=false)

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f7304acefd9ad4ba8653c6817824e5, type: 3}
   m_Name: ZoneDamage
   m_EditorClassIdentifier: 
+  name: Tour de Zone
   cost: 150
   maxRange: 35
   attackSpeed: 3

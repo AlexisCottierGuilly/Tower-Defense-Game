@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930c251841a80c240a8540c87ed3e6c4, type: 3}
   m_Name: MainVillage
   m_EditorClassIdentifier: 
+  name: Village Principal
   cost: -1
   maxHealth: 1000
   hitRange: 10

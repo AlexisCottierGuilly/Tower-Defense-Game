@@ -5,8 +5,9 @@ using UnityEngine;
 public class ZoneBehaviour : MonoBehaviour
 {
     public ZoneData data;
+    public GameObject sender;
     private float timeFromSpawn = 0f;
-    private float timeFromLastDamage = 0f;
+    private float timeFromLastDamage = int.MaxValue;
 
     void OnDrawGizmos()
     {
@@ -26,6 +27,22 @@ public class ZoneBehaviour : MonoBehaviour
                 monsterBehaviour.TakeDamageFromZone(gameObject);
             }
         }
+    }
+
+    public int GetDamage()
+    {
+        int damage = data.damage;
+
+        if (sender != null)
+        {
+            TowerBehaviour behaviour = sender.GetComponent<TowerBehaviour>();
+            if (behaviour != null)
+            {
+                behaviour.stats.damageDealt += damage;
+            }
+        }
+
+        return damage;
     }
     
     void Update()

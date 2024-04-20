@@ -127,7 +127,7 @@ public class MonsterBehaviour : MonoBehaviour
 
     public void TakeDamageFromZone(GameObject zone)
     {
-        health -= zone.GetComponent<ZoneBehaviour>().data.damage;
+        health -= zone.GetComponent<ZoneBehaviour>().GetDamage();
         CheckDeath();
     }
 

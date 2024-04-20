@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f7304acefd9ad4ba8653c6817824e5, type: 3}
   m_Name: Ultimate
   m_EditorClassIdentifier: 
+  name: Tour Ultime
   cost: 500
   maxRange: 45
   attackSpeed: 0.25

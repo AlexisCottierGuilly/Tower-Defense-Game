@@ -8,7 +8,6 @@ public class ProjectileData : ScriptableObject
     public float speed;
     public float radius;
     public int impactDamage;
-    public float shootingAngle;
     public bool followTarget;
     [Space]
     public GameObject impactZone;

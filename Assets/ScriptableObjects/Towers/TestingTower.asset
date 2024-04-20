@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f7304acefd9ad4ba8653c6817824e5, type: 3}
   m_Name: TestingTower
   m_EditorClassIdentifier: 
-  maxHealth: 250
-  projectilePrefab: {fileID: 6195515186249223512, guid: 6efff87029677de408c4ffb447c75ff1, type: 3}
+  name: Tour de Test
+  cost: 100
   maxRange: 5
   attackSpeed: 1
-  cost: 100
+  attackStrength: 0
+  projectile: {fileID: 0}
+  prefab: {fileID: 0}

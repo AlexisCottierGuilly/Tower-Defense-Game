@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.35
   radius: 3
-  impactDamage: 10
-  shootingAngle: 60
+  impactDamage: 0
   followTarget: 0
   impactZone: {fileID: 8416028450855969510, guid: 75870a614e1c64f4e96430eaa7402a1e, type: 3}

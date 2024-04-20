@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class StructureData : ScriptableObject
 {
+    public string name;
     public int cost;
 }
