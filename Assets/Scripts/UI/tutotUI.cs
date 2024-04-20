@@ -12,12 +12,14 @@ public class tutotUI : MonoBehaviour
     public GameObject info4;
     public GameObject info5;
     public GameObject info6;
+    public GameObject VUI;
     public GameObject oneUI;
     public GameObject twoUI;
     public GameObject threeUI;
     public GameObject QUI;
     public GameObject ShiftUI;
     public GameObject SpaceUI;
+    private bool V = false;
     private bool one = false;
     private bool two = false;
     private bool three = false;
@@ -39,17 +41,13 @@ public class tutotUI : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && state != 5  && state != 6)
+        if (Input.GetKeyDown(KeyCode.Return) && state != 5  && state != 6 && state != 2)
         {
             state += 1;
             if (state == 1)
             {
                 info1.SetActive(true);
                 loreText.SetActive(false);
-            }
-            else if (state == 2)
-            {
-                info2.SetActive(true);
             }
             else if (state == 3)
             {
@@ -58,6 +56,23 @@ public class tutotUI : MonoBehaviour
             else if (state == 4)
             {
                 info4.SetActive(true);
+            }
+        }
+        else if (state == 2)
+        {
+            info2.SetActive(true);
+            if (V == false)
+                VUI.SetActive(true);
+            
+            if (V == true)
+            {
+                state += 1;
+                info3.SetActive(true);
+            }
+            else if (Input.GetKeyDown(KeyCode.V))
+            {
+                V = true;
+                VUI.GetComponent<Image>().color = Color.green;
             }
         }
         else if (state == 5)
