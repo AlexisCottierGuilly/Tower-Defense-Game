@@ -13,7 +13,8 @@ public enum Monster
     TrollThatTrolls,
     SlidingSlime,
     MediumSlime,
-    Slime
+    Slime,
+    Hunter
 }
 
 public class WaveManager : MonoBehaviour
@@ -173,6 +174,7 @@ public class WaveManager : MonoBehaviour
         behaviour.agent.Warp(monster.transform.position);
         behaviour.healthScript.camera = camera;
         behaviour.waveManager = this;
+        behaviour.projectileParent = gameGenerator.projectileParent;
 
         if (behaviour.data.isBoss)
             SetBossBar(behaviour);

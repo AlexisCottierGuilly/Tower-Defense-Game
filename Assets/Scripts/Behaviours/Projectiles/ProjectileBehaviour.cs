@@ -30,6 +30,12 @@ public class ProjectileBehaviour : MonoBehaviour
         return damage;
     }
 
+    void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(0f, 1f, 1f, 0.5f);
+        Gizmos.DrawWireSphere(gameObject.transform.position, data.hitRadius);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -38,9 +44,38 @@ public class ProjectileBehaviour : MonoBehaviour
             Destroy(gameObject);
         }
 
+        UpdateHits();
+
         if (target != null && data.followTarget)
         {
             CorrectTrajectory();
+        }
+    }
+
+    void UpdateHits()
+    {
+        Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, data.hitRadius);
+
+        foreach (Collider collider in colliders)
+        {
+            if (collider.gameObject.CompareTag("Monster") && !data.isEnemy)
+            {
+                MonsterBehaviour monster = collider.gameObject.GetComponent<MonsterBehaviour>();
+                monster.ProjectileHit(gameObject);
+
+                Die();
+            }
+            else if (collider.gameObject.CompareTag("Tile"))
+            {
+                Die();
+            }
+            else if (collider.gameObject.CompareTag("Village Building") && data.isEnemy)
+            {
+                VillageBehaviour village = collider.gameObject.GetComponent<VillageBehaviour>();
+                village.ProjectileHit(gameObject);
+
+                Die();
+            }
         }
     }
 
@@ -115,22 +150,5 @@ public class ProjectileBehaviour : MonoBehaviour
     {
         SpawnZone();
         Destroy(gameObject);
-    }
-
-    public void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.CompareTag("Tile"))
-        {
-            Die();
-        }
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Monster"))
-        {
-            target = null;
-            Die();
-        }
     }
 }

@@ -30,6 +30,7 @@ public class GameGenerator : MonoBehaviour
     [Header("Managers")]
     public WaveManager waveManager;
     public NotificationManager notificationManager;
+    public ShootingManager shootingManager;
     
     [Header("Game Settings")]
     // public int gold = 0;
@@ -66,6 +67,8 @@ public class GameGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.instance.generator = this;
+        
         GameManager.instance.gold = GameManager.instance.initialGold;
         
         seed = GameManager.instance.gameSeed;
@@ -92,6 +95,12 @@ public class GameGenerator : MonoBehaviour
 
         StartCoroutine(LogicUpdate());
         StartCoroutine(TowerUpdate());
+
+        Physics.gravity = new Vector3(
+            0f,
+            -200f,
+            0f
+        );
     }
 
     public Rect GetBounds()

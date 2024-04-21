@@ -21,10 +21,15 @@ public class ZoneBehaviour : MonoBehaviour
 
         foreach (Collider hitCollider in hitColliders)
         {
-            MonsterBehaviour monsterBehaviour = hitCollider.GetComponent<MonsterBehaviour>();
-            if (monsterBehaviour != null)
+            if (hitCollider.gameObject.CompareTag("Monster") && !data.isEnemy)
             {
-                monsterBehaviour.TakeDamageFromZone(gameObject);
+                MonsterBehaviour monster = hitCollider.gameObject.GetComponent<MonsterBehaviour>();
+                monster.ZoneHit(gameObject);
+            }
+            else if (hitCollider.gameObject.CompareTag("Village Building") && data.isEnemy)
+            {
+                VillageBehaviour village = hitCollider.gameObject.GetComponent<VillageBehaviour>();
+                village.ZoneHit(gameObject);
             }
         }
     }

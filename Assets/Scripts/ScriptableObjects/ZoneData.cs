@@ -9,5 +9,7 @@ public class ZoneData : ScriptableObject
     public float interval;
     public float radius;
     public float duration;
+    [Space]
+    public bool isEnemy = false;
 }
 

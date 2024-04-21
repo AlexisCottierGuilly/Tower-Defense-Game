@@ -16,6 +16,10 @@ public class MonsterBehaviour : MonoBehaviour
     public Vector3 finalScale = new Vector3(1f, 1f, 1f);
     [Space]
     public float climbingSpeedDivisor = 5f;
+    [Space]
+    public GameObject projectileSpawnEmpty;
+    public GameObject projectileParent;
+    public float verticalShootAngle;
 
     private float timeFromPreviousAttack = 0f;
     private GameObject targetTower = null;
@@ -26,23 +30,13 @@ public class MonsterBehaviour : MonoBehaviour
     private bool didFirstUpdate = false;
     private Dictionary<MonsterTimedSpawn, float> timesSinceSpawn = new Dictionary<MonsterTimedSpawn, float>();
     private Dictionary<MonsterTimedSpawn, float> spawnRateIntervals = new Dictionary<MonsterTimedSpawn, float>();
+    private float currentRechargingTime = 0f;
 
-    /*
-    Here is how to implement data.timedSpawns:
-    -> The timedSpawn is a class defining the random rate at which a certain number of monsters will spawn.
-    -> So wee need to compare the current time with the spawn rate interval, and choose when to spawn which timedSpawn (there can be multiple timedSpawns in the list).
-
-    1 - Save a dictionary of the current time since the last spawn for each timedSpawn.
-    2 - For each timeSpawn, define a new spawn rate interval (random between the min and max of the spawn rate interval).
-        Save it in a dictionary.
-    3 - In update. For each timedSpawn, check if the current time is greater than the spawn rate interval.
-        If it is, spawn the monsters, reset the spawn rate interval and define a new random interval.
-    */
-    
-    // Start is called before the first frame update
     void Start()
     {
         agent.speed = data.speed * 4f;
+
+        agent.stoppingDistance = 4f;
         health = data.maxHealth;
 
         InitializeTimedSpawns();
@@ -119,24 +113,16 @@ public class MonsterBehaviour : MonoBehaviour
         }
     }
 
-    public void TakeDamage(GameObject projectile)
+    public void ProjectileHit(GameObject projectile)
     {
         health -= projectile.GetComponent<ProjectileBehaviour>().GetDamage();
         CheckDeath();
     }
 
-    public void TakeDamageFromZone(GameObject zone)
+    public void ZoneHit(GameObject zone)
     {
         health -= zone.GetComponent<ZoneBehaviour>().GetDamage();
         CheckDeath();
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Projectile"))
-        {
-            TakeDamage(other.gameObject);
-        }
     }
 
     void CheckDeath()
@@ -190,6 +176,7 @@ public class MonsterBehaviour : MonoBehaviour
     void Update()
     {
         timeFromPreviousAttack += Time.deltaTime;
+        currentRechargingTime += Time.deltaTime;
 
         if (lastPosition != null)
             UpdateIsClimbing();
@@ -202,6 +189,13 @@ public class MonsterBehaviour : MonoBehaviour
             UpdateObjective();
         }
 
+        if (data.canShoot)
+        {
+            UpdateStop();
+            UpdateRotation();
+            TryShoot();
+        }
+
         UpdateTimedSpawns();
 
         /*if (agent.pathStatus == NavMeshPathStatus.PathComplete && targetTower != null)
@@ -209,5 +203,52 @@ public class MonsterBehaviour : MonoBehaviour
             // Debug.Log("Arrived to objective !", this.gameObject);
             AttackStructure(targetTower);
         }*/
+    }
+
+    private void UpdateStop()
+    {
+        if (targetTower != null)
+        {
+            float distance = Vector3.Distance(transform.position, targetTower.transform.position);
+            if (distance <= data.range)
+            {
+                agent.isStopped = true;
+            }
+            else
+            {
+                agent.isStopped = false;
+            }
+        }
+    }
+
+    private void UpdateRotation()
+    {
+        if (targetTower != null)
+        {
+            Vector3 direction = targetTower.transform.position - transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * 5f).eulerAngles;
+            transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        }
+    }
+
+    private void TryShoot()
+    {
+        if (data.canShoot && currentRechargingTime >= data.shootSpeed && targetTower != null && agent.isStopped)
+        {
+            float distance = Vector3.Distance(transform.position, targetTower.transform.position);
+            if (distance <= data.range)
+            {
+                gameGenerator.shootingManager.Shoot(
+                    this.gameObject,
+                    targetTower,
+                    data.projectile,
+                    verticalShootAngle,
+                    projectileParent,
+                    projectileSpawnEmpty
+                );
+                currentRechargingTime = 0f;
+            }
+        }
     }
 }

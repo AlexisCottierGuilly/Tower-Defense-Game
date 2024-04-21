@@ -30,11 +30,6 @@ public class TowerBehaviour : StructureBehaviour
     public override void Start()
     {
         base.Start();
-        Physics.gravity = new Vector3(
-            0f,
-            -200f,
-            0f
-        );
     }
 
     // Update is called once per frame
@@ -200,7 +195,16 @@ public class TowerBehaviour : StructureBehaviour
         if (enemy != null && currentRechargingTime >= data.attackSpeed) {
             currentRechargingTime = 0f;
 
-            Shoot(enemy);
+            //Shoot(enemy);
+
+            GameManager.instance.generator.shootingManager.Shoot(
+                gameObject,
+                enemy,
+                data.projectile,
+                verticalShootAngle,
+                projectileParent,
+                projectileSpawnEmpty
+            );
         }
     }
 

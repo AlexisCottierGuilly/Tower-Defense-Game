@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1048b24caeb7af4fb7437d13f3f9c38, type: 3}
+  m_Name: Hunter
+  m_EditorClassIdentifier: 
+  name: Chasseur
+  spawnMessage: 
+  isBoss: 0
+  maxHealth: 100
+  damage: 0
+  attackSpeed: 0
+  speed: 1
+  gold: 5
+  crystals: 0
+  canShoot: 1
+  range: 20
+  shootSpeed: 1.5
+  projectile: {fileID: 6195515186249223512, guid: d026ddd00687d5b43847ec604a962c81, type: 3}
+  spawnOnDeath: []
+  timedSpawns: []
+  prefab: {fileID: 137061676372472529, guid: 8f876abe40467ef449675396e94bfb5f, type: 3}

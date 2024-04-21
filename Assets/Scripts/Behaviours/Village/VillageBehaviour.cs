@@ -36,6 +36,24 @@ public class VillageBehaviour : StructureBehaviour
             RemoveFromGame();
     }
 
+    public void ProjectileHit(GameObject projectile)
+    {
+        ProjectileBehaviour behaviour = projectile.GetComponent<ProjectileBehaviour>();
+        if (behaviour != null)
+        {
+            TakeDamage(behaviour.GetDamage());
+        }
+    }
+
+    public void ZoneHit(GameObject zone)
+    {
+        ZoneBehaviour behaviour = zone.GetComponent<ZoneBehaviour>();
+        if (behaviour != null)
+        {
+            TakeDamage(behaviour.GetDamage());
+        }
+    }
+
     public void RemoveFromGame()
     {
         if (gameObject != null)

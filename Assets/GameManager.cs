@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     [Space]
     public SaveData save;
     public PlayerData player;
+    [Space]
+    public GameGenerator generator = null;
 
     /* 
     Best seeds
