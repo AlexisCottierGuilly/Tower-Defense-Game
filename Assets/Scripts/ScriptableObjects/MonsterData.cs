@@ -15,6 +15,7 @@ public class MonsterData : ScriptableObject
     public float attackSpeed;
     public float speed;
     public int gold;
+    public int crystals;
     [Space]
     public List<MonsterCount> spawnOnDeath;
     public List<MonsterTimedSpawn> timedSpawns;

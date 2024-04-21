@@ -151,6 +151,7 @@ public class MonsterBehaviour : MonoBehaviour
     {
         Destroy(gameObject);
         GameManager.instance.gold += data.gold;
+        GameManager.instance.player.crystals += data.crystals;
         SpawnMonsters(data.spawnOnDeath);
     }
 

@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     [Space]
     public int initialGold = 150;
     public int gold = 0;
+    [Space]
+    public SaveData save;
+    public PlayerData player;
 
     /* 
     Best seeds
@@ -55,6 +58,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         previousScene = gameState;
+        player = save.players[0];
     }
 
     public void SwitchScene(GameState sceneName, bool additive = false, bool unloadCurrent = false)

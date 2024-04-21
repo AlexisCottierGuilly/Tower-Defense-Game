@@ -20,6 +20,7 @@ MonoBehaviour:
   attackSpeed: 0.65
   speed: 0.4
   gold: 50
+  crystals: 3
   spawnOnDeath:
   - type: 4
     countInterval: {x: 3, y: 5}

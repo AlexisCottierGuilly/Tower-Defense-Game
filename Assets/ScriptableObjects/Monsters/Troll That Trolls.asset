@@ -20,6 +20,7 @@ MonoBehaviour:
   attackSpeed: 0.5
   speed: 0.5
   gold: 100
+  crystals: 1
   spawnOnDeath: []
   timedSpawns:
   - monsters:
