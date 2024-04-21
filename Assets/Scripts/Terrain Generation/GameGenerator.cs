@@ -29,6 +29,7 @@ public class GameGenerator : MonoBehaviour
 
     [Header("Managers")]
     public WaveManager waveManager;
+    public NotificationManager notificationManager;
     
     [Header("Game Settings")]
     // public int gold = 0;
@@ -84,6 +85,7 @@ public class GameGenerator : MonoBehaviour
         decorationGenerator.AddDecorations();
         
         waveManager.InitializeSurfaces();
+        notificationManager.ShowNotification("Bonne chance !");
 
         maxHealth = villageGenerator.GetRemainingLives();
         health = maxHealth;

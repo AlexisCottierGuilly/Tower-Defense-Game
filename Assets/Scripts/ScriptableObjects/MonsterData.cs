@@ -6,6 +6,7 @@ using UnityEngine;
 public class MonsterData : ScriptableObject
 {
     public string name = "";
+    public string spawnMessage = "";
     [Space]
     public bool isBoss = false;
     [Space]

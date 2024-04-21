@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Sliding Slime
   m_EditorClassIdentifier: 
   name: Slime Glissant
+  spawnMessage: A slime a day keeps the monsters away!
   isBoss: 1
   maxHealth: 5000
   damage: 75

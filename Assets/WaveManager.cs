@@ -140,6 +140,11 @@ public class WaveManager : MonoBehaviour
         MonsterBehaviour behaviour = monster.GetComponent<MonsterBehaviour>();
         monster.transform.localScale = behaviour.finalScale;
 
+        if (behaviour.data.spawnMessage != "")
+        {
+            gameGenerator.notificationManager.ShowNotification(behaviour.data.spawnMessage);
+        }
+
         if (position != Vector3.zero)
         {
             monster.transform.position = position;

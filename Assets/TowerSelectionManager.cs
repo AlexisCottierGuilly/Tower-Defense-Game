@@ -124,6 +124,7 @@ public class TowerSelectionManager : MonoBehaviour
             GameManager.instance.gold += gainedGold;
 
             behaviour.Die();
+            gameGenerator.notificationManager.ShowNotification("Bro tu viens de te faire scam.");
         }
 
         Unselect();

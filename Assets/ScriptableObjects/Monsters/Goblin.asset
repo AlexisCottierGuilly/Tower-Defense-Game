@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Goblin
   m_EditorClassIdentifier: 
   name: Goblin
+  spawnMessage: 
   isBoss: 0
   maxHealth: 60
   damage: 15
@@ -20,4 +21,5 @@ MonoBehaviour:
   speed: 1
   gold: 5
   spawnOnDeath: []
+  timedSpawns: []
   prefab: {fileID: 137061676372472529, guid: f2c50cfd24d3cf9418d819ee2d46552d, type: 3}

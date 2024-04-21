@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Troll That Trolls
   m_EditorClassIdentifier: 
   name: Troll qui Troll
+  spawnMessage: Imagine troller ?
   isBoss: 1
   maxHealth: 2500
   damage: 150
