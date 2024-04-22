@@ -14,7 +14,7 @@ public class MonsterPrefab
 [System.Serializable]
 public class TowerPrefab
 {
-    public Tower monster;
+    public TowerType tower;
     public TowerData data;
 }
 
@@ -47,6 +47,7 @@ public class GameGenerator : MonoBehaviour
 
     [Header("Prefabs")]
     public List<MonsterPrefab> monsterPrefabs = new List<MonsterPrefab>();
+    public List<TowerPrefab> towerPrefabs = new List<TowerPrefab>();
 
     [Header("Parents")]
     public GameObject towerParent;
@@ -229,6 +230,16 @@ public class GameGenerator : MonoBehaviour
         {
             if (monsterPrefab.monster == type)
                 return monsterPrefab.data.prefab;
+        }
+        return null;
+    }
+
+    public GameObject GetTowerPrefab(TowerType type)
+    {
+        foreach (TowerPrefab towerPrefab in towerPrefabs)
+        {
+            if (towerPrefab.tower == type)
+                return towerPrefab.data.prefab;
         }
         return null;
     }

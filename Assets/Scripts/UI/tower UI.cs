@@ -15,15 +15,14 @@ public enum TowerType
 
 public class TowerUI : MonoBehaviour
 {
+    public GameGenerator gameGenerator;
+    [Space]
     public TowerType type = TowerType.None;
     public List<TowerButton> towerButtons = new List<TowerButton>();
     [Space]
     public GameObject towerButtonPlaceHolder;
     public GameObject buttonsParent;
     [Space]
-    public GameObject tower1;
-    public GameObject tower2;
-    public GameObject tower3;
     public GameObject selectionManagerObject;
 
     DetectSelection selectionManager;
@@ -54,32 +53,21 @@ public class TowerUI : MonoBehaviour
         TowerPlaceHolder towerPlaceHolder = go.GetComponent<TowerPlaceHolder>();
         towerPlaceHolder.icon.sprite = Sprite.Create(button.icon, new Rect(0, 0, button.icon.width, button.icon.height), new Vector2(0.5f, 0.5f));
         
-        towerPlaceHolder.text.GetComponent<TextMeshProUGUI>().text = button.data.cost.ToString();
-        towerPlaceHolder.text.GetComponent<TowerCostUpdater>().data = button.data;
+        TowerData data = gameGenerator.GetTowerPrefab(button.type).GetComponent<TowerBehaviour>().data;
+        
+        towerPlaceHolder.text.GetComponent<TextMeshProUGUI>().text = data.cost.ToString();
+        towerPlaceHolder.text.GetComponent<TowerCostUpdater>().data = data;
         
         towerPlaceHolder.button.onClick.AddListener(() => ChangeTower(button.type.ToString()));
         go.transform.parent = buttonsParent.transform;
 
         return go;
     }
-
-    GameObject GetPrefab(TowerType type)
-    {
-        foreach (TowerButton button in towerButtons)
-        {
-            if (button.type == type)
-            {
-                return button.prefab;
-            }
-        }
-
-        return null;
-    }
     
     public void ChangeTower(string newTower)
     {
         type = (TowerType)System.Enum.Parse(typeof(TowerType), newTower);
-        GameObject prefab = GetPrefab(type);
+        GameObject prefab = gameGenerator.GetTowerPrefab(type);
         if (type != null && prefab != null)
         {
             selectionManager.SetStructure(prefab);
@@ -113,8 +101,6 @@ public class TowerUI : MonoBehaviour
 public class TowerButton
 {
     public TowerType type;
-    public TowerData data;
-    public GameObject prefab;
     public Texture2D icon;
     public KeyCode key = KeyCode.Alpha1;
 }
