@@ -67,5 +67,10 @@ public class TowerUI : MonoBehaviour
             type = TowerType.Ultimate;
             selectionManager.SetStructure(tower3);
         }
+
+        else if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            GameManager.instance.generator.notificationManager.ShowNotification($"Sending notification {Time.time}");
+        }
     }
 }

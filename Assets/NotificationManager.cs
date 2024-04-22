@@ -26,7 +26,6 @@ public class NotificationManager : MonoBehaviour
     {
         text = notificationPreview.GetComponent<TextMeshProUGUI>();
         animator = notificationPreview.GetComponent<Animator>();
-        notificationPreview.SetActive(false);
     }
 
     public void ShowNotification(string text, float duration=2.5f)
@@ -41,7 +40,6 @@ public class NotificationManager : MonoBehaviour
     {
         animator.speed = 1f / notification.duration * 2f / durationMultiplier;
         text.text = notification.text;
-        notificationPreview.SetActive(true);
 
         animator.SetTrigger("Notify");
     }
@@ -65,7 +63,6 @@ public class NotificationManager : MonoBehaviour
             {
                 timeFromNotification = 0f;
                 notificationDuration = 0f;
-                notificationPreview.SetActive(false);
             }
         }
     }

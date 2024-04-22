@@ -33,15 +33,15 @@ public class WaveManager : MonoBehaviour
     [Header("Paths")]
     public int initialUsedPaths = 1;
 
-    // AddPathReccurence controls the number of rounds before adding a new path
+    // AddPathReccurence controls the number of waves before adding a new path
     public int addPathReccurence = 2;
 
     [Header("Parents")]
     public GameObject monsterParent;
 
     [Header("Others")]
-    public TextMeshProUGUI roundText;
-    public GameObject roundTextTitle;
+    public TextMeshProUGUI waveText;
+    public GameObject waveTextTitle;
     public GameObject bossHealthBar;
     public UnityEvent gameFinished;
     public GameObject camera;
@@ -58,7 +58,7 @@ public class WaveManager : MonoBehaviour
         gameFinished = new UnityEvent();
         wave = 1;
         LoadFogColor();
-        roundText.text = $"Round {wave}/{waves.Count}";
+        waveText.text = $"Vague {wave}/{waves.Count}";
         wave = 0;
     }
     
@@ -91,7 +91,7 @@ public class WaveManager : MonoBehaviour
         }
     }
     
-    public IEnumerator LoadNextRound()
+    public IEnumerator LoadNextWave()
     {
         if (wave >= waves.Count)
         {
@@ -106,7 +106,7 @@ public class WaveManager : MonoBehaviour
             isSpawningMonsters = true;
             
             wave++;
-            RoundDidStart();
+            WaveDidStart();
 
             WaveData currentWaveData = waves[wave - 1];
             foreach (WavePart part in currentWaveData.waveParts)
@@ -232,13 +232,13 @@ public class WaveManager : MonoBehaviour
         return false;
     }
 
-    public void RoundDidStart()
+    public void WaveDidStart()
     {
-        roundText.text = $"Round {wave}";
-        roundTextTitle.GetComponent<TextMeshProUGUI>().text = roundText.text;
-        roundText.text += $"/{waves.Count}";
+        waveText.text = $"Vague {wave}";
+        waveTextTitle.GetComponent<TextMeshProUGUI>().text = waveText.text;
+        waveText.text += $"/{waves.Count}";
 
-        roundTextTitle.GetComponent<Animator>().SetTrigger("ShowAnimation");
+        waveTextTitle.GetComponent<Animator>().SetTrigger("ShowAnimation");
 
         LoadFogColor();
         UpdateUsedPaths();
@@ -265,11 +265,11 @@ public class WaveManager : MonoBehaviour
         RenderSettings.fogColor = waveColor;
     }
 
-    public void LoadRound()
+    public void LoadWave()
     {
         if (waveFinished)
         {
-            StartCoroutine(LoadNextRound());
+            StartCoroutine(LoadNextWave());
         }
     }
     
@@ -279,6 +279,6 @@ public class WaveManager : MonoBehaviour
         waveFinished = WaveIsFinished();
         
         if (autoStart)
-            LoadRound();
+            LoadWave();
     }
 }
