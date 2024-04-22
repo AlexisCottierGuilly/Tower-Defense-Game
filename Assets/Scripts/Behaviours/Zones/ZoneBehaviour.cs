@@ -18,18 +18,23 @@ public class ZoneBehaviour : MonoBehaviour
     void CheckForEnemies()
     {
         Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, data.radius);
-
+        bool dealDamage = timeFromLastDamage >= data.interval;
+        
         foreach (Collider hitCollider in hitColliders)
         {
             if (hitCollider.gameObject.CompareTag("Monster") && !data.isEnemy)
             {
                 MonsterBehaviour monster = hitCollider.gameObject.GetComponent<MonsterBehaviour>();
-                monster.ZoneHit(gameObject);
+                if (dealDamage)
+                    monster.ZoneHit(gameObject);
+
+                monster.AddTemporaryModifier(data.speedModifier);
             }
             else if (hitCollider.gameObject.CompareTag("Village Building") && data.isEnemy)
             {
                 VillageBehaviour village = hitCollider.gameObject.GetComponent<VillageBehaviour>();
-                village.ZoneHit(gameObject);
+                if (dealDamage)
+                    village.ZoneHit(gameObject);
             }
         }
     }
@@ -55,13 +60,15 @@ public class ZoneBehaviour : MonoBehaviour
         timeFromSpawn += Time.deltaTime;
         timeFromLastDamage += Time.deltaTime;
 
-        if (timeFromLastDamage >= data.interval)
-        {
-            CheckForEnemies();
-            timeFromLastDamage = 0f;
-        }
-
         if (timeFromSpawn >= data.duration)
             Destroy(gameObject);
+        
+        if (data.speedModifier != 1f || timeFromLastDamage >= data.interval)
+        {
+            CheckForEnemies();
+            
+            if (timeFromLastDamage >= data.interval)
+                timeFromLastDamage = 0f;
+        }
     }
 }

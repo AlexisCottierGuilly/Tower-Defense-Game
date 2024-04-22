@@ -16,3 +16,5 @@ MonoBehaviour:
   interval: 1
   radius: 5
   duration: 3
+  speedModifier: 1
+  isEnemy: 0

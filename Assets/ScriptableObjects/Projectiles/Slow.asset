@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9e6a87393d3a0d46a2a68f3f9f6b170, type: 3}
-  m_Name: Hunters
+  m_Script: {fileID: 11500000, guid: 73f37d39983a66a4b8112305d9a8960a, type: 3}
+  m_Name: Slow
   m_EditorClassIdentifier: 
-  waveParts:
-  - monster: 6
-    amount: 1
-    interval: 0.5
+  hitRadius: 1
+  impactDamage: 0
+  followTarget: 0
+  impactZone: {fileID: 8416028450855969510, guid: 9f4d817d59c181b43ae0db75a62c9c8c, type: 3}
+  isEnemy: 0

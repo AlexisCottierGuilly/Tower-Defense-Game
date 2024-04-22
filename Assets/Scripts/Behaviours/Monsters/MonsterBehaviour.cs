@@ -20,12 +20,16 @@ public class MonsterBehaviour : MonoBehaviour
     public GameObject projectileSpawnEmpty;
     public GameObject projectileParent;
     public float verticalShootAngle;
+    [Space]
+    public float permanentSpeedModifier = 1f;
+    public float temporarySpeedModifier = 1f;
 
     private float timeFromPreviousAttack = 0f;
     private GameObject targetTower = null;
 
     [HideInInspector] public bool isClimbing;
     [HideInInspector] public Vector3 lastPosition;
+    [HideInInspector] public float unmodifiedSpeed = 1f;
 
     private bool didFirstUpdate = false;
     private Dictionary<MonsterTimedSpawn, float> timesSinceSpawn = new Dictionary<MonsterTimedSpawn, float>();
@@ -34,13 +38,36 @@ public class MonsterBehaviour : MonoBehaviour
 
     void Start()
     {
-        agent.speed = data.speed * 4f;
+        SetSpeed(data.speed);
 
         agent.stoppingDistance = 4f;
         health = data.maxHealth;
 
         InitializeTimedSpawns();
         UpdateObjective();
+    }
+
+    public void SetSpeed(float speed)
+    {
+        unmodifiedSpeed = speed;
+        float finalSpeed = unmodifiedSpeed;
+
+        finalSpeed *= permanentSpeedModifier;
+        finalSpeed *= temporarySpeedModifier;
+
+        agent.speed = finalSpeed * 4f;
+    }
+
+    public void AddTemporaryModifier(float modifier)
+    {
+        temporarySpeedModifier *= modifier;
+        SetSpeed(unmodifiedSpeed);
+    }
+
+    public void AddPermanentModifier(float modifier)
+    {
+        permanentSpeedModifier *= modifier;
+        SetSpeed(unmodifiedSpeed);
     }
 
     void InitializeTimedSpawns()
@@ -97,9 +124,9 @@ public class MonsterBehaviour : MonoBehaviour
         isClimbing = angle > 60f;
 
         if (isClimbing)
-            agent.speed = data.speed * 4f / climbingSpeedDivisor;
+            SetSpeed(data.speed / climbingSpeedDivisor);
         else
-            agent.speed = data.speed * 4f;
+            SetSpeed(data.speed);
     }
 
     public void AttackStructure(GameObject structure)
@@ -197,12 +224,11 @@ public class MonsterBehaviour : MonoBehaviour
         }
 
         UpdateTimedSpawns();
+    }
 
-        /*if (agent.pathStatus == NavMeshPathStatus.PathComplete && targetTower != null)
-        {
-            // Debug.Log("Arrived to objective !", this.gameObject);
-            AttackStructure(targetTower);
-        }*/
+    void LateUpdate()
+    {
+        temporarySpeedModifier = 1f;
     }
 
     private void UpdateStop()
