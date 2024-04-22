@@ -1952,8 +1952,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Il y a plusieurs types d''ennemis. Leur but est simple: causer le plus
-    de chaos sur leur chemin.
+  m_text: 'Il y a plusieurs types d''ennemis. Leur but est simple: detuire Eldoria
+    et voler ses  ressources.
 
 
     Appuyez sur enter'
