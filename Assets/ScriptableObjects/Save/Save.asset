@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Save
   m_EditorClassIdentifier: 
   players:
-  - name: Truc 1
-    crystals: 0
+  - name: Gardien 001
+    crystals: 27
