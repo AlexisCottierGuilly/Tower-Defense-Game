@@ -32,6 +32,9 @@ public class VillageBehaviour : StructureBehaviour
     {
         health -= damage;
 
+        if (health > data.maxHealth)
+            health = data.maxHealth;
+
         if (health <= 0)
             RemoveFromGame();
     }

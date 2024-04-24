@@ -35,6 +35,7 @@ public class MonsterBehaviour : MonoBehaviour
     private Dictionary<MonsterTimedSpawn, float> timesSinceSpawn = new Dictionary<MonsterTimedSpawn, float>();
     private Dictionary<MonsterTimedSpawn, float> spawnRateIntervals = new Dictionary<MonsterTimedSpawn, float>();
     private float currentRechargingTime = 0f;
+    private bool shootOverride = true;
 
     void Start()
     {
@@ -82,7 +83,24 @@ public class MonsterBehaviour : MonoBehaviour
         }
     }
 
-    public void UpdateObjective()
+    public void UpdateObjective(bool canSearchVillages = true)
+    {
+        bool searchVillages = true;
+        if (data.targetEnemies)
+        {
+            searchVillages = !UpdateEnemyObjective();
+        }
+
+        if (searchVillages && canSearchVillages)
+        {
+            UpdateVillageObjective();
+
+            if (data.targetEnemies)
+                shootOverride = false;
+        }
+    }
+
+    private void UpdateVillageObjective()
     {
         Vector3 objective = Vector3.zero;
         GameObject objectiveObject = null;
@@ -108,6 +126,38 @@ public class MonsterBehaviour : MonoBehaviour
 
         agent.destination = objective;
         targetTower = objectiveObject;
+    }
+
+    private bool UpdateEnemyObjective()
+    {
+        GameObject closestEnemy = null;
+        float minDistance = -1f;
+
+        foreach (GameObject enemy in gameGenerator.waveManager.monsters)
+        {
+            if (enemy == null || enemy == gameObject)
+                continue;
+            
+            MonsterBehaviour monster = enemy.GetComponent<MonsterBehaviour>();
+            if (monster != null && monster.data == data)
+                continue;
+
+            float dist = Vector3.Distance(enemy.transform.position, transform.position);
+            if (minDistance == -1f || dist < minDistance)
+            {
+                minDistance = dist;
+                closestEnemy = enemy;
+            }
+        }
+
+        if (closestEnemy != null)
+        {
+            agent.destination = closestEnemy.transform.position;
+            targetTower = closestEnemy;
+            return true;
+        }
+
+        return false;
     }
 
     public void UpdateIsClimbing()
@@ -144,12 +194,20 @@ public class MonsterBehaviour : MonoBehaviour
     {
         health -= projectile.GetComponent<ProjectileBehaviour>().GetDamage();
         CheckDeath();
+
+        if (health > data.maxHealth)
+            health = data.maxHealth;
     }
 
     public void ZoneHit(GameObject zone)
     {
-        health -= zone.GetComponent<ZoneBehaviour>().GetDamage();
+        int damage = zone.GetComponent<ZoneBehaviour>().GetDamage();
+
+        health -= damage;
         CheckDeath();
+
+        if (health > data.maxHealth)
+            health = data.maxHealth;
     }
 
     void CheckDeath()
@@ -216,7 +274,7 @@ public class MonsterBehaviour : MonoBehaviour
             UpdateObjective();
         }
 
-        if (data.canShoot)
+        if (data.canShoot && shootOverride)
         {
             UpdateStop();
             UpdateRotation();

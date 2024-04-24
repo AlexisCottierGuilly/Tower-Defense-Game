@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1048b24caeb7af4fb7437d13f3f9c38, type: 3}
-  m_Name: Hunter
+  m_Name: Healer
   m_EditorClassIdentifier: 
-  name: Chasseur
+  name: "Gu\xE9risseur Tueur"
   spawnMessage: 
   isBoss: 0
-  maxHealth: 100
+  maxHealth: 250
   damage: 5
   attackSpeed: 0.5
-  speed: 1
+  speed: 2
   gold: 5
   crystals: 0
-  targetEnemies: 0
+  targetEnemies: 1
   avoidSameType: 1
   canShoot: 1
-  range: 20
-  shootSpeed: 1.5
-  projectile: {fileID: 6195515186249223512, guid: d026ddd00687d5b43847ec604a962c81, type: 3}
+  range: 10
+  shootSpeed: 2.5
+  projectile: {fileID: 9201598211181502813, guid: f3ba182b1ecdbe942a16bd8382d5e690, type: 3}
   spawnOnDeath: []
   timedSpawns: []
-  prefab: {fileID: 137061676372472529, guid: 8f876abe40467ef449675396e94bfb5f, type: 3}
+  prefab: {fileID: 137061676372472529, guid: 1be0571a11d634047bd70839d0c1e434, type: 3}

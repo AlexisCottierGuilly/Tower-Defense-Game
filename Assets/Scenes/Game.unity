@@ -8760,6 +8760,8 @@ MonoBehaviour:
     data: {fileID: 11400000, guid: f5e14b2f6c2130147b9ff14489dc118f, type: 2}
   - monster: 6
     data: {fileID: 11400000, guid: 36e4c6f194639904ca63901dc69bdf6f, type: 2}
+  - monster: 7
+    data: {fileID: 11400000, guid: 27c7125f0a66e9e45bc59eabeaf838fa, type: 2}
   towerPrefabs:
   - tower: 1
     data: {fileID: 11400000, guid: f7c45916d1b18b0429b185642513e281, type: 2}

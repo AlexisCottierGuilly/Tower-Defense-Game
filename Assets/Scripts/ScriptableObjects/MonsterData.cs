@@ -17,6 +17,9 @@ public class MonsterData : ScriptableObject
     public float speed;
     public int gold;
     public int crystals;
+    [Space]
+    public bool targetEnemies = false;
+    public bool avoidSameType = true;
 
     [Header("Shooting")]
     public bool canShoot = false;

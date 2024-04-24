@@ -9,6 +9,7 @@ public class TowerData : StructureData
     public float attackSpeed;
     public float attackStrength;
     public GameObject projectile;
+    public bool targetVillage = false;
     [Space]
     public GameObject prefab;
 }

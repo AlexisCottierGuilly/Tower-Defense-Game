@@ -404,12 +404,13 @@ MonoBehaviour:
   previousScene: 0
   UISize: 1
   towerSize: 1
-  initialGold: 100000
+  initialGold: 150
   gold: 0
   save: {fileID: 11400000, guid: 8822c229f31678b43ae17bb7369bc6f9, type: 2}
   player:
     name: Player
     crystals: 0
+  generator: {fileID: 0}
 --- !u!4 &268031490
 Transform:
   m_ObjectHideFlags: 0

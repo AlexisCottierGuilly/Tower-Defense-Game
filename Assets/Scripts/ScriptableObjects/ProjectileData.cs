@@ -12,4 +12,6 @@ public class ProjectileData : ScriptableObject
     public GameObject impactZone;
     [Space]
     public bool isEnemy = false;
+    [Space]
+    public bool skipSameTypeAsSender = false;
 }

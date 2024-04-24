@@ -14,7 +14,8 @@ public enum Monster
     SlidingSlime,
     MediumSlime,
     Slime,
-    Hunter
+    Hunter,
+    Healer
 }
 
 public class WaveManager : MonoBehaviour

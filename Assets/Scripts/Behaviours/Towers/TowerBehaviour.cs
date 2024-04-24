@@ -45,34 +45,32 @@ public class TowerBehaviour : StructureBehaviour
         Gizmos.DrawWireSphere(gameObject.transform.position, data.maxRange);
     }
 
-    float GetShootingForce(GameObject monster)
+    /*float GetShootingForce(GameObject monster)
     {
-        /*
-        Vi = ?
-        float angle = verticalShootAngle
-        [deltaY] float distY = gameObject.transform.position.y - monster.transform.position.y
-        [deltaX] float portee = Mathf.Sqrt(
-            Mathf.Pow(gameObject.transform.position.x - monster.transform.position.x, 2f),
-            Mathf.Pow(gameObject.transform.position.z - monster.transform.position.z, 2f),
-        );
-        float acceleration = Physics.gravity.y;
+        // Vi = ?
+        // float angle = verticalShootAngle
+        // [deltaY] float distY = gameObject.transform.position.y - monster.transform.position.y
+        // [deltaX] float portee = Mathf.Sqrt(
+        //     Mathf.Pow(gameObject.transform.position.x - monster.transform.position.x, 2f),
+        //     Mathf.Pow(gameObject.transform.position.z - monster.transform.position.z, 2f),
+        // );
+        // float acceleration = Physics.gravity.y;
 
-        Vix = deltaX / (sqrt((2(deltaX * tan(angle) - deltaY) / acceleration)))
+        // Vix = deltaX / (sqrt((2(deltaX * tan(angle) - deltaY) / acceleration)))
 
-                            OU
+        //                     OU
         
-                         deltaX
-        Vix = -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-              | deltaX * tan(angle) - deltaY
-              | ----------------------------
-             V        acceleration
+        //                  deltaX
+        // Vix = -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+        //       | deltaX * tan(angle) - deltaY
+        //       | ----------------------------
+        //      V        acceleration
         
-        Viy = Vix * tan(angle)
-        Vi = Mathf.Atan2(Viy, Vix) * Mathf.Rad2Deg
+        // Viy = Vix * tan(angle)
+        // Vi = Mathf.Atan2(Viy, Vix) * Mathf.Rad2Deg
 
-        return Vi !!!
-        */
-
+        // return Vi !!!
+        
         float acceleration = Physics.gravity.y;  // acceleration negative
         float angle = 25f; // BOGUE //verticalShootAngle;
         
@@ -93,9 +91,9 @@ public class TowerBehaviour : StructureBehaviour
         else
             deltaY *= 17.5f / (angleDiffMultiplier * 0.825f);  // Mathf.Pow(angleDiffMultiplier, 1.15f) * 1.2f;
         
-        /*if (Mathf.Atan2(deltaY, deltaX) * Mathf.Rad2Deg >= angle) {
-            return 0f;  // Not possible to shoot on the monster
-        }*/
+        // if (Mathf.Atan2(deltaY, deltaX) * Mathf.Rad2Deg >= angle) {
+        //     return 0f;  // Not possible to shoot on the monster
+        // }
 
         float viX = deltaX / (Mathf.Sqrt((2 * (deltaX * Mathf.Tan(angle) * Mathf.Rad2Deg - deltaY)) / acceleration));
         float viY = viX * Mathf.Tan(angle) * Mathf.Rad2Deg;
@@ -141,6 +139,30 @@ public class TowerBehaviour : StructureBehaviour
                 Destroy(projectile);
             }
         }
+    }*/
+
+    void TurnToward(GameObject go)
+    {
+        float yVar = go.transform.position.x - gameObject.transform.position.x;
+        float xVar = go.transform.position.z - gameObject.transform.position.z;
+
+        float angle = Mathf.Atan2(yVar, xVar) * Mathf.Rad2Deg;
+        
+        this.transform.eulerAngles = new Vector3(
+            this.transform.eulerAngles.x,
+            angle,
+            this.transform.eulerAngles.z
+        );
+    }
+
+    GameObject FindTargetAndAngle()
+    {
+        if (data.targetVillage)
+        {
+            return FindVillageAndAngle();
+        }
+        else
+            return FindEnemyAndAngle();
     }
 
     GameObject FindEnemyAndAngle()
@@ -168,22 +190,38 @@ public class TowerBehaviour : StructureBehaviour
 
         if (closestObject != null)
         {
-            float yVar = closestObject.transform.position.x - gameObject.transform.position.x;
-            float xVar = closestObject.transform.position.z - gameObject.transform.position.z;
+            TurnToward(closestObject);
+        }
+        
+        return closestObject;
+    }
 
-            float angle = Mathf.Atan2(yVar, xVar) * Mathf.Rad2Deg;
-            
-            this.transform.eulerAngles = new Vector3(
-                this.transform.eulerAngles.x,
-                angle,
-                this.transform.eulerAngles.z
-            );
+    GameObject FindVillageAndAngle()
+    {
+        // Returns true if there is an enemy
+        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, data.maxRange);
+        float closestDistance = -1f;
+        GameObject closestObject = null;
 
-            /*canonSupport.transform.eulerAngles = new Vector3(
-                canonSupport.transform.eulerAngles.x,
-                angle,
-                canonSupport.transform.eulerAngles.z
-            );*/
+        foreach (Collider other in hitColliders)
+        {
+            GameObject obj = other.gameObject;
+
+            if (obj.CompareTag("Village Building"))
+            {
+                float distance = Vector3.Distance(gameObject.transform.position, obj.transform.position);
+                
+                if (closestDistance == -1f || distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestObject = obj;
+                }
+            }
+        }
+
+        if (closestObject != null)
+        {
+            TurnToward(closestObject);
         }
         
         return closestObject;
@@ -191,7 +229,7 @@ public class TowerBehaviour : StructureBehaviour
 
     public void UpdateLogic()
     {
-        GameObject enemy = FindEnemyAndAngle();
+        GameObject enemy = FindTargetAndAngle();
         if (enemy != null && currentRechargingTime >= data.attackSpeed) {
             currentRechargingTime = 0f;
 

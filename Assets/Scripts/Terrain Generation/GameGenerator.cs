@@ -56,6 +56,7 @@ public class GameGenerator : MonoBehaviour
     [Header("Others")]
     public Camera mainCamera;
     public TextMeshProUGUI seedText;
+    public float logicUpdateDelay = 1f;
 
     [HideInInspector] public List<List<GameObject>> tiles = new List<List<GameObject>>();
     [HideInInspector] public List<GameObject> towers = new List<GameObject>();
@@ -329,17 +330,18 @@ public class GameGenerator : MonoBehaviour
         {
             foreach (GameObject monster in waveManager.monsters)
             {
-                if (monster != null && didModifyVillage)
+                if (monster != null)
                 {
                     MonsterBehaviour behaviour = monster.GetComponent<MonsterBehaviour>();
-                    behaviour.UpdateObjective();
+                    bool modifyVillageObjective = didModifyVillage;
+                    behaviour.UpdateObjective(modifyVillageObjective);
                 }
             }
 
             didModifyVillage = false;
 
             // Debug.Log("Monster Logic updated");
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(logicUpdateDelay);
         }
     }
 

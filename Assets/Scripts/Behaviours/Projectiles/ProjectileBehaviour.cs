@@ -58,10 +58,24 @@ public class ProjectileBehaviour : MonoBehaviour
 
         foreach (Collider collider in colliders)
         {
+            if (collider.gameObject == sender)
+                continue;
+            
+            if (data.skipSameTypeAsSender)
+            {
+                MonsterBehaviour senderMonster = sender.GetComponent<MonsterBehaviour>();
+                MonsterBehaviour monster = collider.gameObject.GetComponent<MonsterBehaviour>();
+                if (senderMonster != null && monster != null && senderMonster.data == monster.data)
+                {
+                    continue;
+                    Debug.Log("Skip");
+                }
+            }
+            
             if (collider.gameObject.CompareTag("Monster") && !data.isEnemy)
             {
-                MonsterBehaviour monster = collider.gameObject.GetComponent<MonsterBehaviour>();
-                monster.ProjectileHit(gameObject);
+                MonsterBehaviour behaviour = collider.gameObject.GetComponent<MonsterBehaviour>();
+                behaviour.ProjectileHit(gameObject);
 
                 Die();
             }
