@@ -13,12 +13,21 @@ MonoBehaviour:
   m_Name: Medium Slime
   m_EditorClassIdentifier: 
   name: Slime Moyen
+  spawnMessage: 
   isBoss: 0
   maxHealth: 2000
   damage: 50
   attackSpeed: 0.5
   speed: 0.65
   gold: 25
+  crystals: 0
+  canShoot: 0
+  range: 0
+  shootSpeed: 0
+  targetEnemy: 0
+  targetVillage: 1
+  avoidSameType: 0
+  projectile: {fileID: 0}
   spawnOnDeath:
   - type: 5
     countInterval: {x: 3, y: 5}

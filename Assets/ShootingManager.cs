@@ -6,7 +6,16 @@ public class ShootingManager : MonoBehaviour
 {
     public GameGenerator gameGenerator;
 
-    public bool Shoot(GameObject sender, GameObject target, GameObject projectile, float verticalAngle, GameObject projectileParent, GameObject spawnEmpty)
+    public bool Shoot(
+        GameObject sender,
+        GameObject target,
+        bool targetEnemy,
+        bool targetVillage,
+        GameObject projectile,
+        float verticalAngle,
+        GameObject projectileParent,
+        GameObject spawnEmpty
+        )
     {
         float power = GetShootingForce(sender, target, verticalAngle);
 
@@ -18,9 +27,14 @@ public class ShootingManager : MonoBehaviour
                 sender.transform.eulerAngles.y,
                 projectileInstance.transform.eulerAngles.z
             );
+
+            ProjectileBehaviour behaviour = projectileInstance.GetComponent<ProjectileBehaviour>();
+
             projectileInstance.transform.parent = projectileParent.transform;
-            projectileInstance.GetComponent<ProjectileBehaviour>().SetTarget(target);
-            projectileInstance.GetComponent<ProjectileBehaviour>().sender = sender;
+            behaviour.SetTarget(target);
+            behaviour.sender = sender;
+            behaviour.targetEnemy = targetEnemy;
+            behaviour.targetVillage = targetVillage;
 
             Vector3 force = new Vector3();
 

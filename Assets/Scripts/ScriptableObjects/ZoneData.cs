@@ -10,7 +10,4 @@ public class ZoneData : ScriptableObject
     public float radius;
     public float duration;
     public float speedModifier = 1f;
-    [Space]
-    public bool isEnemy = false;
 }
-

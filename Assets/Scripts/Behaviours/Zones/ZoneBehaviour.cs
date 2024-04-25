@@ -5,9 +5,13 @@ using UnityEngine;
 public class ZoneBehaviour : MonoBehaviour
 {
     public ZoneData data;
-    public GameObject sender;
+
     private float timeFromSpawn = 0f;
     private float timeFromLastDamage = int.MaxValue;
+
+    [HideInInspector] public GameObject sender;
+    [HideInInspector] public bool targetEnemy = true;
+    [HideInInspector] public bool targetVillage = true;
 
     void OnDrawGizmos()
     {
@@ -22,7 +26,7 @@ public class ZoneBehaviour : MonoBehaviour
         
         foreach (Collider hitCollider in hitColliders)
         {
-            if (hitCollider.gameObject.CompareTag("Monster") && !data.isEnemy)
+            if (hitCollider.gameObject.CompareTag("Monster") && targetEnemy)
             {
                 MonsterBehaviour monster = hitCollider.gameObject.GetComponent<MonsterBehaviour>();
                 if (dealDamage)
@@ -30,7 +34,7 @@ public class ZoneBehaviour : MonoBehaviour
 
                 monster.AddTemporaryModifier(data.speedModifier);
             }
-            else if (hitCollider.gameObject.CompareTag("Village Building") && data.isEnemy)
+            else if (hitCollider.gameObject.CompareTag("Village Building") && targetVillage)
             {
                 VillageBehaviour village = hitCollider.gameObject.GetComponent<VillageBehaviour>();
                 if (dealDamage)

@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28f7304acefd9ad4ba8653c6817824e5, type: 3}
-  m_Name: TestingTower
+  m_Script: {fileID: 11500000, guid: b34910aa594091348835f768491aa328, type: 3}
+  m_Name: Regeneration
   m_EditorClassIdentifier: 
-  name: Tour de Test
-  cost: 100
-  maxRange: 5
-  attackSpeed: 1
-  attackStrength: 0
-  projectile: {fileID: 0}
-  prefab: {fileID: 0}
+  damage: -5
+  interval: 1
+  radius: 5
+  duration: 3
+  speedModifier: 1

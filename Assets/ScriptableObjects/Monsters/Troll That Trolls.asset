@@ -21,6 +21,13 @@ MonoBehaviour:
   speed: 0.5
   gold: 100
   crystals: 1
+  canShoot: 0
+  range: 0
+  shootSpeed: 0
+  targetEnemy: 0
+  targetVillage: 1
+  avoidSameType: 0
+  projectile: {fileID: 0}
   spawnOnDeath: []
   timedSpawns:
   - monsters:

@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public GameState gameState = GameState.Menu;
     public GameState previousScene;
     public float UISize = 1;
-    public float towerSize = 1;
+    public float volume = 0.5f;
     [Space]
     public int initialGold = 150;
     public int gold = 0;

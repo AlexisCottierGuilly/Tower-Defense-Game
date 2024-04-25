@@ -13,12 +13,21 @@ MonoBehaviour:
   m_Name: Slime
   m_EditorClassIdentifier: 
   name: Slime
+  spawnMessage: 
   isBoss: 0
   maxHealth: 250
   damage: 20
   attackSpeed: 0.75
   speed: 0.85
   gold: 10
+  crystals: 0
+  canShoot: 0
+  range: 0
+  shootSpeed: 0
+  targetEnemy: 0
+  targetVillage: 1
+  avoidSameType: 0
+  projectile: {fileID: 0}
   spawnOnDeath: []
   timedSpawns: []
   prefab: {fileID: 4451012924925943445, guid: 75b532e85f9ed3941a156e17752013d8, type: 3}

@@ -122,7 +122,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 7943296ef56e61944b35ac5bf41576d7, type: 2}
+  sender: {fileID: 0}
   target: {fileID: 0}
+  targetEnemy: 1
+  targetVillage: 1
 --- !u!54 &3180433485802648610
 Rigidbody:
   m_ObjectHideFlags: 0

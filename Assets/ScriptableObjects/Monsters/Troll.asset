@@ -13,11 +13,21 @@ MonoBehaviour:
   m_Name: Troll
   m_EditorClassIdentifier: 
   name: Troll
+  spawnMessage: 
   isBoss: 0
   maxHealth: 300
   damage: 50
   attackSpeed: 0.5
   speed: 0.5
   gold: 15
+  crystals: 0
+  canShoot: 0
+  range: 0
+  shootSpeed: 0
+  targetEnemy: 0
+  targetVillage: 1
+  avoidSameType: 0
+  projectile: {fileID: 0}
   spawnOnDeath: []
+  timedSpawns: []
   prefab: {fileID: 1108500059226642014, guid: 28e9fb67265d8f547bb88160b5c95ec0, type: 3}

@@ -20,6 +20,14 @@ MonoBehaviour:
   attackSpeed: 1
   speed: 1
   gold: 5
+  crystals: 0
+  canShoot: 0
+  range: 0
+  shootSpeed: 0
+  targetEnemy: 0
+  targetVillage: 1
+  avoidSameType: 0
+  projectile: {fileID: 0}
   spawnOnDeath: []
   timedSpawns: []
   prefab: {fileID: 137061676372472529, guid: f2c50cfd24d3cf9418d819ee2d46552d, type: 3}

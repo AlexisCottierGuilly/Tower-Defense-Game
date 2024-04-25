@@ -23,7 +23,7 @@ public class SliderCount : MonoBehaviour
         if (sliderType is SliderType.UI)
             slider.value = GameManager.instance.UISize * 100f;
         else
-            slider.value = GameManager.instance.towerSize * 100f;
+            slider.value = GameManager.instance.volume * 100f;
     }
 
     // Update is called once per frame
@@ -37,6 +37,6 @@ public class SliderCount : MonoBehaviour
         if (sliderType is SliderType.UI)
             GameManager.instance.UISize = slider.value / 100f;
         else
-            GameManager.instance.towerSize = slider.value / 100f;
+            GameManager.instance.volume = slider.value / 100f;
     }
 }

@@ -5,8 +5,11 @@ using UnityEngine;
 public class ProjectileBehaviour : MonoBehaviour
 {
     public ProjectileData data;
+    
     [HideInInspector] public GameObject sender;
     [HideInInspector] public GameObject target;
+    [HideInInspector] public bool targetEnemy = true;
+    [HideInInspector] public bool targetVillage = true;
     
     // Start is called before the first frame update
     void Start()
@@ -68,26 +71,25 @@ public class ProjectileBehaviour : MonoBehaviour
                 if (senderMonster != null && monster != null && senderMonster.data == monster.data)
                 {
                     continue;
-                    Debug.Log("Skip");
                 }
             }
             
-            if (collider.gameObject.CompareTag("Monster") && !data.isEnemy)
+            if (collider.gameObject.CompareTag("Monster") && targetEnemy)
             {
                 MonsterBehaviour behaviour = collider.gameObject.GetComponent<MonsterBehaviour>();
                 behaviour.ProjectileHit(gameObject);
 
                 Die();
             }
-            else if (collider.gameObject.CompareTag("Tile"))
-            {
-                Die();
-            }
-            else if (collider.gameObject.CompareTag("Village Building") && data.isEnemy)
+            else if (collider.gameObject.CompareTag("Village Building") && targetVillage)
             {
                 VillageBehaviour village = collider.gameObject.GetComponent<VillageBehaviour>();
                 village.ProjectileHit(gameObject);
 
+                Die();
+            }
+            else if (collider.gameObject.CompareTag("Tile"))
+            {
                 Die();
             }
         }
@@ -141,6 +143,9 @@ public class ProjectileBehaviour : MonoBehaviour
             ZoneBehaviour behaviour = zone.GetComponent<ZoneBehaviour>();
 
             behaviour.sender = sender;
+            behaviour.targetEnemy = targetEnemy;
+            behaviour.targetVillage = targetVillage;
+
             float radius = behaviour.data.radius / 5f;
 
             zone.transform.localScale = new Vector3(

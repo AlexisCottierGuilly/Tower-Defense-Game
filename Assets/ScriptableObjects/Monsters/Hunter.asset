@@ -21,11 +21,12 @@ MonoBehaviour:
   speed: 1
   gold: 5
   crystals: 0
-  targetEnemies: 0
-  avoidSameType: 1
   canShoot: 1
   range: 20
   shootSpeed: 1.5
+  targetEnemy: 0
+  targetVillage: 1
+  avoidSameType: 0
   projectile: {fileID: 6195515186249223512, guid: d026ddd00687d5b43847ec604a962c81, type: 3}
   spawnOnDeath: []
   timedSpawns: []

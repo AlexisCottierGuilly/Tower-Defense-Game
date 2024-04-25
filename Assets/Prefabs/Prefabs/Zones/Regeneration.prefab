@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5608812405439735900}
   - component: {fileID: 7020074126148480219}
   m_Layer: 0
-  m_Name: Monster Regen
+  m_Name: Regeneration
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,8 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 242894091473d8b4085dd203909e600b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: ac6a32b87c50048468e43c105a8eb8a4, type: 2}
+  data: {fileID: 11400000, guid: 4dec684d2e7be1e419cd6bcec9f461b6, type: 2}
   sender: {fileID: 0}
+  targetEnemy: 1
+  targetVillage: 1
 --- !u!198 &5608812405439735900
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4792,7 +4794,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b71b55896cfb58c448db38595334ac01, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

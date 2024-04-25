@@ -7,8 +7,8 @@ public class TowerData : StructureData
 {
     public float maxRange;
     public float attackSpeed;
-    public float attackStrength;
     public GameObject projectile;
+    public bool targetEnemy = true;
     public bool targetVillage = false;
     [Space]
     public GameObject prefab;

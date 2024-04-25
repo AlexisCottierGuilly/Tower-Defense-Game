@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 6090a07d95cf6b6479ec20361114af86, type: 2}
   sender: {fileID: 0}
+  targetEnemy: 1
+  targetVillage: 1
 --- !u!198 &5608812405439735900
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4792,7 +4794,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: be9e19d26d8482e47861c495b9dac35f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

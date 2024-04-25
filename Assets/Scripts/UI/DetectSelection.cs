@@ -65,7 +65,6 @@ public class DetectSelection : MonoBehaviour
         {
             placedObject = Instantiate(placedObjectPrefab);
             placedObject.transform.eulerAngles = currentRotation;
-            placedObject.transform.localScale *= GameManager.instance.towerSize;
         }
     }
     
@@ -90,7 +89,6 @@ public class DetectSelection : MonoBehaviour
                     placedObject.transform.position,
                     Quaternion.identity
                 );
-                newObject.transform.localScale *= GameManager.instance.towerSize;
                 newObject.transform.eulerAngles = currentRotation;
 
                 if (objectType == ObjectType.Tower)

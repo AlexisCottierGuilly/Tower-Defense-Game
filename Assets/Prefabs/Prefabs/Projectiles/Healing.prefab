@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 7497472709280302518}
   - component: {fileID: 5127401958951189595}
   - component: {fileID: 6167250801974881756}
-  - component: {fileID: 5358575301404580204}
   - component: {fileID: -7349734883113270391}
   - component: {fileID: 9172195577235128824}
+  - component: {fileID: 8633454710699809617}
   m_Layer: 0
-  m_Name: Monster Healing
+  m_Name: Healing
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,27 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5358575301404580204
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9201598211181502813}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 1
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.75
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-7349734883113270391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,9 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d720558a1724eb44af18d44a29b08ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 3b4d06fcfda3c3b4a86db0675dc00db9, type: 2}
+  data: {fileID: 11400000, guid: 9b323ce6450884d44ae9d0ecd6967def, type: 2}
   sender: {fileID: 0}
   target: {fileID: 0}
+  targetEnemy: 1
+  targetVillage: 1
 --- !u!54 &9172195577235128824
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -149,3 +130,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &8633454710699809617
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9201598211181502813}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.25
+  m_Center: {x: 0, y: 0, z: 0}

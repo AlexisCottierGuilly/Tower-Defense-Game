@@ -18,15 +18,16 @@ MonoBehaviour:
   maxHealth: 250
   damage: 5
   attackSpeed: 0.5
-  speed: 2
+  speed: 1.25
   gold: 5
   crystals: 0
-  targetEnemies: 1
-  avoidSameType: 1
   canShoot: 1
   range: 10
   shootSpeed: 2.5
-  projectile: {fileID: 9201598211181502813, guid: f3ba182b1ecdbe942a16bd8382d5e690, type: 3}
+  targetEnemy: 1
+  targetVillage: 0
+  avoidSameType: 1
+  projectile: {fileID: 9201598211181502813, guid: 7e3b72993936b5c409ea3c774fd422db, type: 3}
   spawnOnDeath: []
   timedSpawns: []
   prefab: {fileID: 137061676372472529, guid: 1be0571a11d634047bd70839d0c1e434, type: 3}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.AI.Navigation;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 using TMPro;
 using UnityEngine.Events;
 
@@ -25,6 +26,7 @@ public class WaveManager : MonoBehaviour
     [Header("Prefabs")]
     public List<NavMeshSurface> surfaces = new List<NavMeshSurface>();
 
+
     [Header("Settings")]
     public int wave = 0;
     public List<WaveData> waves = new List<WaveData>();
@@ -40,6 +42,12 @@ public class WaveManager : MonoBehaviour
     [Header("Parents")]
     public GameObject monsterParent;
 
+    [Header("Audio")]
+    public AudioSource startWaveSound;
+    public AudioSource winWaveSound;
+    public AudioSource winGameSound;
+    public AudioSource bossSpawnSound;
+
     [Header("Others")]
     public TextMeshProUGUI waveText;
     public GameObject waveTextTitle;
@@ -54,12 +62,17 @@ public class WaveManager : MonoBehaviour
     [HideInInspector] public List<GameObject> monsters = new List<GameObject>();
     [HideInInspector] public List<List<Vector2>> usedPaths = new List<List<Vector2>>();
     
+    private bool playedWinWaveSound = true;
+    private bool didCallGameFinished = false;
+    
     void Start()
     {
         gameFinished = new UnityEvent();
         wave = 1;
         LoadFogColor();
         waveText.text = $"Vague {wave}/{waves.Count}";
+        didCallGameFinished = false;
+        playedWinWaveSound = true;
         wave = 0;
     }
     
@@ -96,8 +109,13 @@ public class WaveManager : MonoBehaviour
     {
         if (wave >= waves.Count)
         {
-            gameFinished.Invoke();
-            gameGenerator.PauseGame();
+            if (!didCallGameFinished)
+            {
+                winGameSound.Play();
+                gameFinished.Invoke();
+                gameGenerator.PauseGame();
+                didCallGameFinished = true;
+            }
             
             yield return new WaitForSeconds(0f);
         }
@@ -105,6 +123,8 @@ public class WaveManager : MonoBehaviour
         {
             waveFinished = false;
             isSpawningMonsters = true;
+            playedWinWaveSound = false;
+            startWaveSound.Play();
             
             wave++;
             WaveDidStart();
@@ -178,7 +198,10 @@ public class WaveManager : MonoBehaviour
         behaviour.projectileParent = gameGenerator.projectileParent;
 
         if (behaviour.data.isBoss)
+        {
+            bossSpawnSound.Play();
             SetBossBar(behaviour);
+        }
 
         // Destroy(monster.GetComponent<NavMeshAgent>());
         
@@ -278,6 +301,13 @@ public class WaveManager : MonoBehaviour
     {
         CleanMonsterList();
         waveFinished = WaveIsFinished();
+
+        if (waveFinished && !playedWinWaveSound)
+        {
+            if (wave <= waves.Count)
+                winWaveSound.Play();
+            playedWinWaveSound = true;
+        }
         
         if (autoStart)
             LoadWave();

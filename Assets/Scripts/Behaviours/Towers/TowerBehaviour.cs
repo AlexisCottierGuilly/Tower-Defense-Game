@@ -13,7 +13,6 @@ public class TowerStats
 public class TowerBehaviour : StructureBehaviour
 {
     public TowerData data;
-    public GameObject projectileParent;
     [Space]
     public GameObject canon;
     public GameObject canonSupport;
@@ -25,6 +24,8 @@ public class TowerBehaviour : StructureBehaviour
     // Shooting infos
     private float horizontalShootAngle = 0f;
     private float currentRechargingTime = 0f;
+
+    [HideInInspector] public GameObject projectileParent;
     
     // Start is called before the first frame update
     public override void Start()
@@ -157,12 +158,14 @@ public class TowerBehaviour : StructureBehaviour
 
     GameObject FindTargetAndAngle()
     {
-        if (data.targetVillage)
+        if (data.targetEnemy)
+        {
+            return FindEnemyAndAngle();
+        }
+        else
         {
             return FindVillageAndAngle();
         }
-        else
-            return FindEnemyAndAngle();
     }
 
     GameObject FindEnemyAndAngle()
@@ -238,6 +241,8 @@ public class TowerBehaviour : StructureBehaviour
             GameManager.instance.generator.shootingManager.Shoot(
                 gameObject,
                 enemy,
+                data.targetEnemy,
+                data.targetVillage,
                 data.projectile,
                 verticalShootAngle,
                 projectileParent,

@@ -18,7 +18,6 @@ public class MonsterBehaviour : MonoBehaviour
     public float climbingSpeedDivisor = 5f;
     [Space]
     public GameObject projectileSpawnEmpty;
-    public GameObject projectileParent;
     public float verticalShootAngle;
     [Space]
     public float permanentSpeedModifier = 1f;
@@ -30,6 +29,7 @@ public class MonsterBehaviour : MonoBehaviour
     [HideInInspector] public bool isClimbing;
     [HideInInspector] public Vector3 lastPosition;
     [HideInInspector] public float unmodifiedSpeed = 1f;
+    [HideInInspector] public GameObject projectileParent;
 
     private bool didFirstUpdate = false;
     private Dictionary<MonsterTimedSpawn, float> timesSinceSpawn = new Dictionary<MonsterTimedSpawn, float>();
@@ -86,17 +86,23 @@ public class MonsterBehaviour : MonoBehaviour
     public void UpdateObjective(bool canSearchVillages = true)
     {
         bool searchVillages = true;
-        if (data.targetEnemies)
+        if (data.targetEnemy)
         {
             searchVillages = !UpdateEnemyObjective();
         }
 
-        if (searchVillages && canSearchVillages)
+        if (searchVillages && (canSearchVillages || (data.targetEnemy && shootOverride && !GameManager.instance.generator.waveManager.isSpawningMonsters)))
         {
-            UpdateVillageObjective();
+            if (!data.targetEnemy || !GameManager.instance.generator.waveManager.isSpawningMonsters)
+            {
+                UpdateVillageObjective();
 
-            if (data.targetEnemies)
-                shootOverride = false;
+                if (data.targetEnemy)
+                {
+                    shootOverride = false;
+                    agent.isStopped = false;
+                }
+            }
         }
     }
 
@@ -124,7 +130,7 @@ public class MonsterBehaviour : MonoBehaviour
             }
         }
 
-        agent.destination = objective;
+        agent.SetDestination(objective);
         targetTower = objectiveObject;
     }
 
@@ -152,7 +158,7 @@ public class MonsterBehaviour : MonoBehaviour
 
         if (closestEnemy != null)
         {
-            agent.destination = closestEnemy.transform.position;
+            agent.SetDestination(closestEnemy.transform.position);
             targetTower = closestEnemy;
             return true;
         }
@@ -326,6 +332,8 @@ public class MonsterBehaviour : MonoBehaviour
                 gameGenerator.shootingManager.Shoot(
                     this.gameObject,
                     targetTower,
+                    data.targetEnemy,
+                    data.targetVillage,
                     data.projectile,
                     verticalShootAngle,
                     projectileParent,

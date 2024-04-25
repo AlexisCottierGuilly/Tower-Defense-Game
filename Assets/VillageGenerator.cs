@@ -62,7 +62,6 @@ public class VillageGenerator : MonoBehaviour
         );
         VillageBehaviour behaviour = mainVillage.GetComponent<VillageBehaviour>();
 
-        mainVillage.transform.localScale *= GameManager.instance.towerSize;
         mainVillage.transform.position = new Vector3(
             position.x,
             position.y + mainVillage.transform.localScale.y / 2f,
@@ -77,8 +76,7 @@ public class VillageGenerator : MonoBehaviour
 
         maxHealth += behaviour.data.maxHealth;
 
-        float cameraHeight = (mainVillage.transform.position.y + mainVillage.GetComponent<MeshRenderer>().bounds.size.y
-            / GameManager.instance.towerSize + gameGenerator.terrainGenerator.stepHeight * 10f); // *2f
+        float cameraHeight = (mainVillage.transform.position.y + mainVillage.GetComponent<MeshRenderer>().bounds.size.y + gameGenerator.terrainGenerator.stepHeight * 10f); // *2f
         gameGenerator.mainCamera.GetComponent<CameraManager>().SetHeight(cameraHeight);
 
         // place 4 towers around the main village, randomly
@@ -153,7 +151,6 @@ public class VillageGenerator : MonoBehaviour
 
         VillageBehaviour behaviour = villageStructure.GetComponent<VillageBehaviour>();
         
-        villageStructure.transform.localScale *= GameManager.instance.towerSize;
         villageStructure.transform.position = new Vector3(
             position.x, // - tile.GetComponent<MeshRenderer>().bounds.size.x / 2f,
             position.y + villageStructure.transform.localScale.y / 2f,
