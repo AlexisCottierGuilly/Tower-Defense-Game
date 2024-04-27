@@ -9,4 +9,5 @@ public class TowerPlaceHolder : MonoBehaviour
     public Image icon;
     public GameObject text;
     public Button button;
+    public GameObject title;
 }

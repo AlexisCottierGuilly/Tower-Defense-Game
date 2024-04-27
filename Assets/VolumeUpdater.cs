@@ -5,6 +5,8 @@ using UnityEngine.Audio;
 
 public class VolumeUpdater : MonoBehaviour
 {
+    public float volumeMultiplier = 1f;
+    
     private AudioSource audioSource;
 
     void Start()
@@ -14,6 +16,6 @@ public class VolumeUpdater : MonoBehaviour
 
     void Update()
     {
-        audioSource.volume = GameManager.instance.volume;
+        audioSource.volume = GameManager.instance.volume * volumeMultiplier;
     }
 }

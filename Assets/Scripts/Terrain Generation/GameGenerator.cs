@@ -16,6 +16,8 @@ public class TowerPrefab
 {
     public TowerType tower;
     public TowerData data;
+    public Texture2D icon;
+    public KeyCode key = KeyCode.Alpha1;
 }
 
 

@@ -8,8 +8,9 @@ public enum TowerType
 {
     None,
     Normal,
-    Splash,
-    Ultimate
+    Explosive,
+    Ultimate,
+    Slow
 }
 
 
@@ -18,7 +19,6 @@ public class TowerUI : MonoBehaviour
     public GameGenerator gameGenerator;
     [Space]
     public TowerType type = TowerType.None;
-    public List<TowerButton> towerButtons = new List<TowerButton>();
     [Space]
     public GameObject towerButtonPlaceHolder;
     public GameObject buttonsParent;
@@ -39,26 +39,28 @@ public class TowerUI : MonoBehaviour
 
     void InitializeButtons()
     {
-        foreach (TowerButton button in towerButtons)
+        foreach (TowerPrefab prefab in gameGenerator.towerPrefabs)
         {
-            GameObject go = AddButton(button);
+            GameObject go = AddButton(prefab);
 
         }
     }
 
-    GameObject AddButton(TowerButton button)
+    GameObject AddButton(TowerPrefab prefab)
     {
         GameObject go = Instantiate(towerButtonPlaceHolder, transform);
         go.SetActive(true);
         TowerPlaceHolder towerPlaceHolder = go.GetComponent<TowerPlaceHolder>();
-        towerPlaceHolder.icon.sprite = Sprite.Create(button.icon, new Rect(0, 0, button.icon.width, button.icon.height), new Vector2(0.5f, 0.5f));
-        
-        TowerData data = gameGenerator.GetTowerPrefab(button.type).GetComponent<TowerBehaviour>().data;
-        
+        towerPlaceHolder.icon.sprite = Sprite.Create(prefab.icon, new Rect(0, 0, prefab.icon.width, prefab.icon.height), new Vector2(0.5f, 0.5f));
+
+        TowerData data = gameGenerator.GetTowerPrefab(prefab.tower).GetComponent<TowerBehaviour>().data;
+
         towerPlaceHolder.text.GetComponent<TextMeshProUGUI>().text = data.cost.ToString();
         towerPlaceHolder.text.GetComponent<TowerCostUpdater>().data = data;
-        
-        towerPlaceHolder.button.onClick.AddListener(() => ChangeTower(button.type.ToString()));
+
+        towerPlaceHolder.title.GetComponent<TextMeshProUGUI>().text = data.name;
+
+        towerPlaceHolder.button.onClick.AddListener(() => ChangeTower(prefab.tower.ToString()));
         go.transform.parent = buttonsParent.transform;
 
         return go;
@@ -76,11 +78,11 @@ public class TowerUI : MonoBehaviour
 
     void HandleInputs()
     {
-        foreach (TowerButton button in towerButtons)
+        foreach (TowerPrefab prefab in gameGenerator.towerPrefabs)
         {
-            if (Input.GetKeyDown(button.key))
+            if (Input.GetKeyDown(prefab.key))
             {
-                ChangeTower(button.type.ToString());
+                ChangeTower(prefab.tower.ToString());
             }
         }
     }
@@ -94,13 +96,4 @@ public class TowerUI : MonoBehaviour
 
         HandleInputs();
     }
-}
-
-
-[System.Serializable]
-public class TowerButton
-{
-    public TowerType type;
-    public Texture2D icon;
-    public KeyCode key = KeyCode.Alpha1;
 }

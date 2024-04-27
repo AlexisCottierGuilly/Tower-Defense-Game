@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SetHeightFromChildren : MonoBehaviour
 {
-    public float spacing = 0;
+    public VerticalLayoutGroup layoutGroup;
     public float additionnalHeight = 0;
     
     void Start()
@@ -21,6 +22,8 @@ public class SetHeightFromChildren : MonoBehaviour
     {
         // set sizeDelta of RectTransform to the total height of all children
 
+        float spacing = layoutGroup.spacing;
+        
         float height = additionnalHeight;
         int childrenCount = 0;
 
