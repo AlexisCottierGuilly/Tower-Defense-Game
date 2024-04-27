@@ -103,6 +103,8 @@ public class GameGenerator : MonoBehaviour
             -200f,
             0f
         );
+
+        Time.timeScale = defaultSpeed;
     }
 
     public Rect GetBounds()

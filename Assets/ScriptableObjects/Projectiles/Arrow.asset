@@ -15,5 +15,6 @@ MonoBehaviour:
   hitRadius: 0.5
   impactDamage: 10
   followTarget: 0
+  rotate: 0
   impactZone: {fileID: 0}
-  isEnemy: 1
+  skipSameTypeAsSender: 0

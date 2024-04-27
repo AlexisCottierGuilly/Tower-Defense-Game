@@ -23,7 +23,7 @@ public class ShootingManager : MonoBehaviour
         {
             GameObject projectileInstance = Instantiate(projectile, spawnEmpty.transform.position, Quaternion.identity);
             projectileInstance.transform.eulerAngles = new Vector3(
-                90f - verticalAngle,
+                90f - verticalAngle / 2f,
                 sender.transform.eulerAngles.y,
                 projectileInstance.transform.eulerAngles.z
             );
@@ -47,6 +47,15 @@ public class ShootingManager : MonoBehaviour
             if (!float.IsNaN(force.x))
             {
                 projectileInstance.gameObject.GetComponent<Rigidbody>().AddForce(force);
+
+                if (behaviour.data.rotate)
+                {
+                    Vector3 rotationForce = new Vector3();
+                    rotationForce.y = 0f;
+                    rotationForce.z = force.z;
+                    rotationForce.x = force.x;
+                    projectileInstance.gameObject.GetComponent<Rigidbody>().AddTorque(rotationForce);
+                }
             }
             else
             {

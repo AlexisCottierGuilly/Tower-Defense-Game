@@ -16,9 +16,6 @@ MonoBehaviour:
   - monster: 7
     amount: 1
     interval: 0.5
-  - monster: 0
+  - monster: 6
     amount: 5
     interval: 0.5
-  - monster: 1
-    amount: 2
-    interval: 1
