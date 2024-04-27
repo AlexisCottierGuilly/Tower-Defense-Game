@@ -10655,6 +10655,7 @@ GameObject:
   - component: {fileID: 2061935711}
   - component: {fileID: 2061935710}
   - component: {fileID: 2061935709}
+  - component: {fileID: 2061935712}
   m_Layer: 5
   m_Name: Testing Image
   m_TagString: Untagged
@@ -10688,7 +10689,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061935707}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb688d6fa9dbbed4d85d7cf988b72f28, type: 3}
   m_Name: 
@@ -10733,6 +10734,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061935707}
   m_CullTransparentMesh: 1
+--- !u!114 &2061935712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061935707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c9c834f32a366d4ca867177330ad61b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameObjectToSnapshot: {fileID: 2952150505218308268, guid: e789858200b51b242a2135212af0b9f8, type: 3}
+  image: {fileID: 2061935710}
+  color: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
 --- !u!1 &2062929864
 GameObject:
   m_ObjectHideFlags: 0

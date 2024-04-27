@@ -403,7 +403,7 @@ MonoBehaviour:
   gameState: 0
   previousScene: 0
   UISize: 1
-  towerSize: 1
+  volume: 0.5
   initialGold: 100000
   gold: 0
   save: {fileID: 11400000, guid: 8822c229f31678b43ae17bb7369bc6f9, type: 2}
