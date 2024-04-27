@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: Boss Troll
   m_EditorClassIdentifier: 
   waveParts:
+  - monster: 7
+    amount: 3
+    interval: 0
+  - monster: 0
+    amount: 5
+    interval: 0.5
   - monster: 2
     amount: 1
     interval: 0

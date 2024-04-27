@@ -6845,7 +6845,6 @@ MonoBehaviour:
   - {fileID: 821537990}
   wave: 0
   waves:
-  - {fileID: 11400000, guid: 3316596250071a840bd447dc82bfec73, type: 2}
   - {fileID: 11400000, guid: eb01862f4fff49b4c996ff9e613e9f2f, type: 2}
   waveFinished: 0
   autoStart: 0
