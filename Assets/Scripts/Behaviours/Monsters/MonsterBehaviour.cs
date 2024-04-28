@@ -240,7 +240,15 @@ public class MonsterBehaviour : MonoBehaviour
             
             for (int i = 0; i < count; i++)
             {
-                waveManager.SpawnMonster(monsterCount.type, transform.position);
+                // a little randomised position with the gameGenerator.randomWithSeed (+- 0.2f tiles)
+
+                Vector3 position = new Vector3(
+                    transform.position.x + (float)(gameGenerator.randomWithSeed.NextDouble() * 0.4f - 0.2f),
+                    transform.position.y,
+                    transform.position.z + (float)(gameGenerator.randomWithSeed.NextDouble() * 0.4f - 0.2f)
+                );
+                
+                waveManager.SpawnMonster(monsterCount.type, position);
             }
         }
     }

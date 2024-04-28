@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum ObjectType
+{
+    None,
+    Tower,
+    Village
+}
+
+
 public enum Tower
 {
     Basic,
@@ -10,12 +18,6 @@ public enum Tower
     Ultimate
 }
 
-public enum ObjectType
-{
-    None,
-    Tower,
-    Village
-}
 
 public class DetectSelection : MonoBehaviour
 {

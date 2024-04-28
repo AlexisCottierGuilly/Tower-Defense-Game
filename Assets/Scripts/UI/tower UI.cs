@@ -4,15 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public enum TowerType
-{
-    None,
-    Normal,
-    Explosive,
-    Ultimate,
-    Slow
-}
-
 
 public class TowerUI : MonoBehaviour
 {

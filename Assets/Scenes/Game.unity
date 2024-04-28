@@ -9941,10 +9941,14 @@ MonoBehaviour:
     data: {fileID: 11400000, guid: 236fe73fd2ddc1344ad4201439d48349, type: 2}
     icon: {fileID: 2800000, guid: 5ba1b1ae4bc313043990807cca978c8f, type: 3}
     key: 51
+  - tower: 5
+    data: {fileID: 11400000, guid: ae42e772343bdf64f9b76971c16be8e3, type: 2}
+    icon: {fileID: 2800000, guid: 5ba1b1ae4bc313043990807cca978c8f, type: 3}
+    key: 52
   - tower: 3
     data: {fileID: 11400000, guid: 223e05a536cd95d4ba0908dc8507c60b, type: 2}
     icon: {fileID: 2800000, guid: e0a8342123d5a484d916bee7a833cbc4, type: 3}
-    key: 52
+    key: 53
   towerParent: {fileID: 1268763543}
   projectileParent: {fileID: 550238018}
   mainCamera: {fileID: 549421227}

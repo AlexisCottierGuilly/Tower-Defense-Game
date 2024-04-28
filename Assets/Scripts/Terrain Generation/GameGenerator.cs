@@ -332,13 +332,16 @@ public class GameGenerator : MonoBehaviour
     {
         while (true)
         {
-            foreach (GameObject monster in waveManager.monsters)
+            if (!waveManager.waveFinished)
             {
-                if (monster != null)
+                foreach (GameObject monster in waveManager.monsters)
                 {
-                    MonsterBehaviour behaviour = monster.GetComponent<MonsterBehaviour>();
-                    bool modifyVillageObjective = didModifyVillage;
-                    behaviour.UpdateObjective(modifyVillageObjective);
+                    if (monster != null)
+                    {
+                        MonsterBehaviour behaviour = monster.GetComponent<MonsterBehaviour>();
+                        bool modifyVillageObjective = didModifyVillage;
+                        behaviour.UpdateObjective(modifyVillageObjective);
+                    }
                 }
             }
 
@@ -365,12 +368,15 @@ public class GameGenerator : MonoBehaviour
     {   
         while (true)
         {
-            CleanTowersList();
-            
-            foreach (GameObject tower in towers)
+            if (!waveManager.waveFinished)
             {
-                TowerBehaviour behaviour = tower.GetComponent<TowerBehaviour>();
-                behaviour.UpdateLogic();
+                CleanTowersList();
+                
+                foreach (GameObject tower in towers)
+                {
+                    TowerBehaviour behaviour = tower.GetComponent<TowerBehaviour>();
+                    behaviour.UpdateLogic();
+                }
             }
             // Debug.Log("Tower Logic updated");
             yield return new WaitForSeconds(0.05f);
