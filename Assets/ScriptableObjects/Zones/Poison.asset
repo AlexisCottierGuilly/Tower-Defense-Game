@@ -16,4 +16,5 @@ MonoBehaviour:
   interval: 1.5
   radius: 3
   duration: 3
-  isEnemy: 1
+  speedModifier: 1
+  sound: {fileID: 8300000, guid: b19f7c787eb6e2347a8e675810027594, type: 3}

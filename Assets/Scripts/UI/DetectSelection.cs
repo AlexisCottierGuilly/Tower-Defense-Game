@@ -162,7 +162,10 @@ public class DetectSelection : MonoBehaviour
         
         if (placedObject != null) //added by mic not effecient
         {
-            placedObject.GetComponent<Renderer>().material.SetColor("_Color", color);
+            Renderer r =  placedObject.GetComponent<Renderer>();
+            if (r != null)
+                r.material.SetColor("_Color", color);
+
             foreach (Renderer child in placedObject.GetComponentsInChildren<Renderer>())
                 child.material.SetColor("_Color", color);
             placedObject.transform.eulerAngles = currentRotation;

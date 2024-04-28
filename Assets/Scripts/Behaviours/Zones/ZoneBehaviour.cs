@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ZoneBehaviour : MonoBehaviour
 {
@@ -12,6 +13,20 @@ public class ZoneBehaviour : MonoBehaviour
     [HideInInspector] public GameObject sender;
     [HideInInspector] public bool targetEnemy = true;
     [HideInInspector] public bool targetVillage = true;
+
+    void Start()
+    {
+        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+        VolumeUpdater volumeUpdater = gameObject.AddComponent<VolumeUpdater>();
+        volumeUpdater.volumeMultiplier = 1f;
+
+        audioSource.spatialBlend = 0.75f;
+        audioSource.rolloffMode = AudioRolloffMode.Linear;
+        audioSource.maxDistance = 100f;
+
+        audioSource.clip = data.sound;
+        audioSource.Play();
+    }
 
     void OnDrawGizmos()
     {

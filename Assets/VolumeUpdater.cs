@@ -16,6 +16,6 @@ public class VolumeUpdater : MonoBehaviour
 
     void Update()
     {
-        audioSource.volume = GameManager.instance.volume * volumeMultiplier;
+        audioSource.volume = GameManager.instance.volume * volumeMultiplier / 3f;
     }
 }

@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 772.8
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Project
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 321}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 62430
+  controlID: 29289
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 62357
+  controlID: 29290
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 62358
+  controlID: 29266
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -416,9 +416,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 184d0000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 028cecfff4b4eeff0cb5eeffb8eceeffac37efff3a39efffc60bfcff564dfcff484ffcffe4c7ffff36c9ffff32fbffffce7100002ee5000094e500005287020044970200fc970200c2d002007ad10200
+      m_ExpandedIDs: 62ccf3ffce2ef4ff5a22f6ff7224f6ff5420f7ffc221f7ff1838fbff9cbafbff3ebffbff32fbffffc8f80000cc0d0100023b010088490100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -785,9 +785,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 401.66626, y: 99.52104, z: -517.09576}
+    m_Target: {x: 125.67217, y: 54.739834, z: 92.91486}
     speed: 2
-    m_Value: {x: 401.66626, y: 99.52104, z: -517.09576}
+    m_Value: {x: 125.67217, y: 54.739834, z: 92.91486}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -833,9 +833,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.016993465, y: 0.0020883942, z: -0.000035597863, w: 1.0003017}
+    m_Target: {x: 0.13283677, y: -0.83213145, z: 0.225874, w: 0.48968145}
     speed: 2
-    m_Value: {x: 0.016993465, y: -0.0020883942, z: 0.000035597863, w: -1.0003017}
+    m_Value: {x: 0.13277735, y: -0.8317592, z: 0.22577298, w: 0.4894624}
   m_Size:
     m_Target: 2.052368
     speed: 2
@@ -1064,7 +1064,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/ScriptableObjects/Waves
+    - Assets/Prefabs/Prefabs/Zones
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1072,16 +1072,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 65
   m_LastFolders:
-  - Assets/ScriptableObjects/Waves
+  - Assets/Prefabs/Prefabs/Zones
   m_LastFoldersGridSize: 65
   m_LastProjectPath: C:\Users\cotti\OneDrive\Documents\GitHub\Tower-Defense-Game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 495}
+    scrollPos: {x: 0, y: 471}
     m_SelectedIDs: 74500000
     m_LastClickedID: 20596
-    m_ExpandedIDs: 000000002450000026500000285000002a5000002c5000002e5000003050000032500000345000003650000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000325000003450000036500000385000003a5000003c5000003e5000004050000042500000445000005e50000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1109,7 +1109,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002450000026500000285000002a5000002c5000002e5000003050000032500000345000003650000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000325000003450000036500000385000003a5000003c5000003e5000004050000042500000445000005e50000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1136,7 +1136,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000ea53000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1235,7 +1235,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 163466
+  m_LastSelectedObjectID: 63376
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1277,7 +1277,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 904.00006
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:

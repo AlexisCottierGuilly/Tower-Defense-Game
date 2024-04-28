@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d971d4d1a765c6845b38f2ecc7292848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeMultiplier: 0.35
+  volumeMultiplier: 1
 --- !u!1 &49077041
 GameObject:
   m_ObjectHideFlags: 0
@@ -7277,7 +7277,7 @@ MonoBehaviour:
   - {fileID: 821537990}
   wave: 0
   waves:
-  - {fileID: 11400000, guid: eb01862f4fff49b4c996ff9e613e9f2f, type: 2}
+  - {fileID: 11400000, guid: 3316596250071a840bd447dc82bfec73, type: 2}
   waveFinished: 0
   autoStart: 0
   initialUsedPaths: 1
@@ -7636,7 +7636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d971d4d1a765c6845b38f2ecc7292848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeMultiplier: 0.35
+  volumeMultiplier: 1
 --- !u!1 &1418954253
 GameObject:
   m_ObjectHideFlags: 0
@@ -8191,7 +8191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d971d4d1a765c6845b38f2ecc7292848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeMultiplier: 0.35
+  volumeMultiplier: 1
 --- !u!82 &1476763200
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8646,7 +8646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d971d4d1a765c6845b38f2ecc7292848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeMultiplier: 0.55
+  volumeMultiplier: 1.5
 --- !u!1 &1610549003
 GameObject:
   m_ObjectHideFlags: 0
