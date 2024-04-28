@@ -15,6 +15,7 @@ public class TowerSelectionManager : MonoBehaviour
     public TextMeshProUGUI statsTitle;
     public TextMeshProUGUI damageText;
     public TextMeshProUGUI sellValueText;
+    public TowerTargetHandler towerTargetHandler;
 
     [Space]
     public float sellRate = 0.25f;
@@ -28,6 +29,9 @@ public class TowerSelectionManager : MonoBehaviour
     
     private void CheckSelection(Vector2 mouse)
     {
+        if (RectTransformUtility.RectangleContainsScreenPoint(statsPanel.GetComponent<RectTransform>(), mouse))
+            return;
+        
         // Find if the mouse is clicking on a tower
         GameObject tower = null;
 
@@ -94,6 +98,9 @@ public class TowerSelectionManager : MonoBehaviour
 
         selection = go;
         ApplyOutline(go);
+        
+        towerTargetHandler.tower = go.GetComponent<TowerBehaviour>();
+        towerTargetHandler.Start();
 
         statsPanel.SetActive(true);
 
@@ -107,6 +114,8 @@ public class TowerSelectionManager : MonoBehaviour
             ApplyOutline(selection, true);
             selection = null;
         }
+
+        towerTargetHandler.tower = null;
 
         statsPanel.SetActive(false);
     }

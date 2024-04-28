@@ -20,9 +20,6 @@ public enum ObjectType
 public class DetectSelection : MonoBehaviour
 {
     public GameGenerator gameGenerator;
-    
-    [Header("Prefabs")]
-    public List<TowerPrefab> towerPrefabs = new List<TowerPrefab>();
 
     [Header("Other")]
     public Camera mainCamera;

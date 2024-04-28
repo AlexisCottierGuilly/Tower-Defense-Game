@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+public enum TargetType
+{
+    Proche,
+    Loin,
+    Fort,
+    Faible
+}
+
+
 [System.Serializable]
 public class TowerStats
 {
@@ -26,6 +35,7 @@ public class TowerBehaviour : StructureBehaviour
     private float currentRechargingTime = 0f;
 
     [HideInInspector] public GameObject projectileParent;
+    [HideInInspector] public TargetType targetType = TargetType.Proche;
     
     // Start is called before the first frame update
     public override void Start()
@@ -172,8 +182,8 @@ public class TowerBehaviour : StructureBehaviour
     {
         // Returns true if there is an enemy
         Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, data.maxRange);
-        float closestDistance = -1f;
-        GameObject closestObject = null;
+        float bestScore = -1f;
+        GameObject bestObject = null;
 
         foreach (Collider other in hitColliders)
         {
@@ -182,21 +192,37 @@ public class TowerBehaviour : StructureBehaviour
             if (obj.CompareTag("Monster"))
             {
                 float distance = Vector3.Distance(gameObject.transform.position, obj.transform.position);
+                health = obj.GetComponent<MonsterBehaviour>().health;
                 
-                if (closestDistance == -1f || distance < closestDistance)
+                if (targetType == TargetType.Proche && (bestScore == -1f || distance < bestScore))
                 {
-                    closestDistance = distance;
-                    closestObject = obj;
+                    bestScore = distance;
+                    bestObject = obj;
+                }
+                else if (targetType == TargetType.Loin && (bestScore == -1f || distance > bestScore))
+                {
+                    bestScore = distance;
+                    bestObject = obj;
+                }
+                else if (targetType == TargetType.Fort && (bestScore == -1f || health > bestScore))
+                {
+                    bestScore = health;
+                    bestObject = obj;
+                }
+                else if (targetType == TargetType.Faible && (bestScore == -1f || health < bestScore))
+                {
+                    bestScore = health;
+                    bestObject = obj;
                 }
             }
         }
 
-        if (closestObject != null)
+        if (bestObject != null)
         {
-            TurnToward(closestObject);
+            TurnToward(bestObject);
         }
         
-        return closestObject;
+        return bestObject;
     }
 
     GameObject FindVillageAndAngle()
