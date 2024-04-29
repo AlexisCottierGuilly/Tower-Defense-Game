@@ -433,6 +433,7 @@ GameObject:
   - component: {fileID: 5260731567904432725}
   - component: {fileID: 6716486602429832723}
   - component: {fileID: 2920430685337151025}
+  - component: {fileID: 6989745999313072236}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -529,8 +530,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.71, y: 1, z: 0.96}
+  m_Center: {x: 0.021146178, y: 0, z: -0.041141465}
 --- !u!114 &2920430685337151025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -550,6 +551,19 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &6989745999313072236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2228810829999391279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 711cef8f7cda56e4f97dde61adbb1587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sellValue: 25
 --- !u!1 &4062002175375649252
 GameObject:
   m_ObjectHideFlags: 0

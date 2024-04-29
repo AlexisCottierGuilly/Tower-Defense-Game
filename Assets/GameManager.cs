@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public enum GameState
 {
@@ -12,6 +13,16 @@ public enum GameState
     Credits,
     PreviousScene,
     Tutoriel
+}
+
+
+[System.Serializable]
+public class DifficultyModifier
+{
+    public MapDifficultyTypes difficulty;
+    public int initialUsedPaths = 1;
+    public int addPathReccurence = 2;
+    public int crystals = 5;
 }
 
 
@@ -27,6 +38,8 @@ public class GameManager : MonoBehaviour
     public float UISize = 1;
     public float volume = 0.5f;
     [Space]
+    public List<DifficultyModifier> difficultyModifiers = new List<DifficultyModifier>();
+    [Space]
     public int initialGold = 150;
     public int gold = 0;
     [Space]
@@ -34,6 +47,9 @@ public class GameManager : MonoBehaviour
     public PlayerData player;
     [Space]
     public GameGenerator generator = null;
+    [Space]
+    public AudioClip clickSound;
+    public AudioSource audioSource;
 
     /* 
     Best seeds
@@ -106,5 +122,18 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public DifficultyModifier GetDifficultyModifier()
+    {
+        foreach (DifficultyModifier modifier in difficultyModifiers)
+        {
+            if (modifier.difficulty == mapDifficulty)
+                return modifier;
+        }
+
+        throw new System.Exception("No difficulty modifier found for " + mapDifficulty.ToString());
+
+        return null;
     }
 }

@@ -97,6 +97,8 @@ public class GameGenerator : MonoBehaviour
         maxHealth = villageGenerator.GetRemainingLives();
         health = maxHealth;
 
+        waveManager.gameFinished.AddListener(GameDidFinish);
+
         StartCoroutine(LogicUpdate());
         StartCoroutine(TowerUpdate());
 
@@ -393,6 +395,22 @@ public class GameGenerator : MonoBehaviour
     {
         Time.timeScale = defaultSpeed;
         paused = false;
+    }
+
+    public void GameDidFinish()
+    {
+        int crystals = 0;
+        foreach (GameObject building in villageGenerator.villageBuildings)
+        {
+            VillageBehaviour behaviour = building.GetComponent<VillageBehaviour>();
+            crystals += 1;
+        }
+
+        crystals += GameManager.instance.GetDifficultyModifier().crystals;
+
+        GameManager.instance.player.crystals += crystals;
+
+        
     }
 
     void Update()

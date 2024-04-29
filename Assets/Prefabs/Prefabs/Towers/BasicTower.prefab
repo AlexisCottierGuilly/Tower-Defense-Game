@@ -322,13 +322,14 @@ MonoBehaviour:
   health: 0
   position: {x: 0, y: 0}
   data: {fileID: 11400000, guid: f7c45916d1b18b0429b185642513e281, type: 2}
-  projectileParent: {fileID: 0}
   canon: {fileID: 1974972864975859953}
   canonSupport: {fileID: 211289165208698345}
   projectileSpawnEmpty: {fileID: 8138819971495819710}
   verticalShootAngle: 25
   stats:
     damageDealt: 0
+  projectileParent: {fileID: 0}
+  targetType: 0
 --- !u!65 &-4896419330519377841
 BoxCollider:
   m_ObjectHideFlags: 0

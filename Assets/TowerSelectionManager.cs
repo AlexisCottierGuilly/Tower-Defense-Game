@@ -17,6 +17,10 @@ public class TowerSelectionManager : MonoBehaviour
     public TextMeshProUGUI sellValueText;
     public TowerTargetHandler towerTargetHandler;
 
+    [Header("Decoration Stats")]
+    public GameObject decorationStatsPanel;
+    public TextMeshProUGUI decorationSellValueText;
+
     [Space]
     public float sellRate = 0.25f;
 
@@ -40,17 +44,18 @@ public class TowerSelectionManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.collider.gameObject.GetComponent<TowerBehaviour>() != null)
-                tower = hit.collider.gameObject;
-        }
-
-        if (tower != null)
-        {
-            Select(tower);
-        }
-        else
-        {
-            Unselect();
+            if (hit.collider.gameObject == null)
+                Unselect();
+            else if (hit.collider.gameObject.GetComponent<TowerBehaviour>() != null)
+            {
+                SelectTower(hit.collider.gameObject);
+            }
+            else if (hit.collider.gameObject.GetComponent<DecorationBehaviour>() != null)
+            {
+                SelectDecoration(hit.collider.gameObject);
+            }
+            else
+                Unselect();
         }
     }
 
@@ -75,10 +80,10 @@ public class TowerSelectionManager : MonoBehaviour
             Unselect();
         }
 
-        UpdateStats();
+        UpdateTowerStats();
     }
 
-    public void UpdateStats()
+    public void UpdateTowerStats()
     {
         if (selection != null)
         {
@@ -92,7 +97,19 @@ public class TowerSelectionManager : MonoBehaviour
         }
     }
 
-    public void Select(GameObject go)
+    public void UpdateDecorationStats()
+    {
+        if (selection != null)
+        {
+            DecorationBehaviour behaviour = selection.GetComponent<DecorationBehaviour>();
+            if (behaviour != null)
+            {
+                decorationSellValueText.text = behaviour.sellValue.ToString();
+            }
+        }
+    }
+
+    public void SelectTower(GameObject go)
     {
         Unselect();
 
@@ -104,7 +121,20 @@ public class TowerSelectionManager : MonoBehaviour
 
         statsPanel.SetActive(true);
 
-        UpdateStats();
+        UpdateTowerStats();
+    }
+
+    public void SelectDecoration(GameObject go)
+    {
+        Unselect();
+
+        selection = go;
+        ApplyOutline(go);
+        
+        DecorationBehaviour behaviour = go.GetComponent<DecorationBehaviour>();
+        decorationStatsPanel.SetActive(true);
+
+        UpdateDecorationStats();
     }
 
     private void Unselect()
@@ -118,9 +148,10 @@ public class TowerSelectionManager : MonoBehaviour
         towerTargetHandler.tower = null;
 
         statsPanel.SetActive(false);
+        decorationStatsPanel.SetActive(false);
     }
 
-    public void Sell()
+    public void SellTower()
     {
         if (selection == null)
             return;
@@ -134,6 +165,28 @@ public class TowerSelectionManager : MonoBehaviour
 
             behaviour.Die();
             gameGenerator.notificationManager.ShowNotification("Bro tu viens de te faire scam.");
+        }
+
+        Unselect();
+    }
+
+    public void SellDecoration()
+    {
+        if (selection == null)
+            return;
+        
+        DecorationBehaviour behaviour = selection.GetComponent<DecorationBehaviour>();
+        
+        if (behaviour != null)
+        {
+            if (GameManager.instance.gold >= behaviour.sellValue)
+            {
+                GameManager.instance.gold -= behaviour.sellValue;
+
+                Destroy(selection);
+                gameGenerator.notificationManager.ShowNotification("Pauvre panorama magnifique :(");
+                Unselect();
+            }
         }
 
         Unselect();

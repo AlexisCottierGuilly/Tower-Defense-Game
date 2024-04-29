@@ -19,6 +19,7 @@ public enum Monster
     Healer
 }
 
+
 public class WaveManager : MonoBehaviour
 {
     public GameGenerator gameGenerator;
@@ -32,12 +33,6 @@ public class WaveManager : MonoBehaviour
     public List<WaveData> waves = new List<WaveData>();
     public bool waveFinished = true;
     public bool autoStart = false;
-
-    [Header("Paths")]
-    public int initialUsedPaths = 1;
-
-    // AddPathReccurence controls the number of waves before adding a new path
-    public int addPathReccurence = 2;
 
     [Header("Parents")]
     public GameObject monsterParent;
@@ -87,6 +82,8 @@ public class WaveManager : MonoBehaviour
     void UpdateUsedPaths()
     {
         int numberOfPaths = 0;
+        int initialUsedPaths = GameManager.instance.GetDifficultyModifier().initialUsedPaths;
+        int addPathReccurence = GameManager.instance.GetDifficultyModifier().addPathReccurence;
         
         if (wave == 0)
         {
