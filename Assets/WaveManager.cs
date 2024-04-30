@@ -33,6 +33,8 @@ public class WaveManager : MonoBehaviour
     public List<WaveData> waves = new List<WaveData>();
     public bool waveFinished = true;
     public bool autoStart = false;
+    [Space]
+    public bool infiniteMode = false;
 
     [Header("Parents")]
     public GameObject monsterParent;
@@ -104,7 +106,14 @@ public class WaveManager : MonoBehaviour
     
     public IEnumerator LoadNextWave()
     {
-        if (wave >= waves.Count)
+        if (wave == waves.Count && infiniteMode)
+        {
+            // add a new wave to the waves
+            WaveData newWave = gameGenerator.waveGenerator.GetRandomWave(wave + 1);
+            waves.Add(newWave);
+        }
+        
+        if (wave == waves.Count)
         {
             if (!didCallGameFinished)
             {
@@ -129,7 +138,7 @@ public class WaveManager : MonoBehaviour
             WaveData currentWaveData = waves[wave - 1];
             foreach (WavePart part in currentWaveData.waveParts)
             {
-                StartCoroutine(SpawnMonsters(part.monster, part.amount, part.interval));
+                StartCoroutine(SpawnMonsters(part.monster, part.amount, part.interval, hideBossBar: currentWaveData.hideBossBar));
                 yield return new WaitForSeconds((float)part.amount * part.interval);
             }
         }
@@ -137,16 +146,16 @@ public class WaveManager : MonoBehaviour
         isSpawningMonsters = false;
     }
 
-    IEnumerator SpawnMonsters(Monster type, int repetition, float interval)
+    IEnumerator SpawnMonsters(Monster type, int repetition, float interval, bool hideBossBar=false)
     {
         for (int i = 0; i < repetition; i++)
         {
-            SpawnMonster(type);
+            SpawnMonster(type, hideBossBar: hideBossBar);
             yield return new WaitForSeconds(interval);
         }
     }
 
-    public void SpawnMonster(Monster type, Vector3 position = new Vector3())
+    public void SpawnMonster(Monster type, Vector3 position = new Vector3(), bool hideBossBar=false)
     {
         GameObject monsterPrefab = gameGenerator.GetMonsterPrefab(type);
         if (monsterPrefab == null)
@@ -159,7 +168,7 @@ public class WaveManager : MonoBehaviour
         MonsterBehaviour behaviour = monster.GetComponent<MonsterBehaviour>();
         monster.transform.localScale = behaviour.finalScale;
 
-        if (behaviour.data.spawnMessage != "")
+        if (behaviour.data.spawnMessage != "" && !hideBossBar)
         {
             gameGenerator.notificationManager.ShowNotification(behaviour.data.spawnMessage);
         }
@@ -194,7 +203,7 @@ public class WaveManager : MonoBehaviour
         behaviour.waveManager = this;
         behaviour.projectileParent = gameGenerator.projectileParent;
 
-        if (behaviour.data.isBoss)
+        if (behaviour.data.isBoss && !hideBossBar)
         {
             bossSpawnSound.Play();
             SetBossBar(behaviour);
@@ -257,7 +266,9 @@ public class WaveManager : MonoBehaviour
     {
         waveText.text = $"Vague {wave}";
         waveTextTitle.GetComponent<TextMeshProUGUI>().text = waveText.text;
-        waveText.text += $"/{waves.Count}";
+
+        if (!infiniteMode)
+            waveText.text += $"/{waves.Count}";
 
         waveTextTitle.GetComponent<Animator>().SetTrigger("ShowAnimation");
 
@@ -293,6 +304,13 @@ public class WaveManager : MonoBehaviour
             StartCoroutine(LoadNextWave());
         }
     }
+
+    public void SetInfiniteMode()
+    {
+        infiniteMode = true;
+        gameGenerator.ResumeGame();
+        gameGenerator.notificationManager.ShowNotification("Mode infini activé");
+    }
     
     void Update()
     {
@@ -307,6 +325,8 @@ public class WaveManager : MonoBehaviour
         }
         
         if (autoStart)
+        {
             LoadWave();
+        }
     }
 }

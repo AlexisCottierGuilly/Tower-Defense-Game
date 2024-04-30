@@ -18,7 +18,7 @@ public class NewRoundButtonManager : MonoBehaviour
             gameObject.GetComponent<Animator>().SetBool("New Round", false);
         }
 
-        if (waveManager.wave == waveManager.waves.Count)
+        if (waveManager.wave == waveManager.waves.Count && !waveManager.infiniteMode)
         {
             gameObject.GetComponent<Button>().onClick.Invoke();
         }

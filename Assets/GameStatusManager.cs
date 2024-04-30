@@ -21,6 +21,11 @@ public class GameStatusManager : MonoBehaviour
             defeat.SetActive(true);
             gameGenerator.PauseGame();
         }
+        else if (waveManager.infiniteMode)
+        {
+            victory.SetActive(false);
+            defeat.SetActive(false);
+        }
     }
 
     void GameIsFinished()

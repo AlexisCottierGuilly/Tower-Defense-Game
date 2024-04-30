@@ -28,6 +28,7 @@ public class GameGenerator : MonoBehaviour
     public PathGenerator2 pathGenerator;
     public VillageGenerator villageGenerator;
     public DecorationGenerator decorationGenerator;
+    public WaveGenerator waveGenerator;
 
     [Header("Managers")]
     public WaveManager waveManager;
@@ -64,6 +65,7 @@ public class GameGenerator : MonoBehaviour
     [HideInInspector] public List<GameObject> towers = new List<GameObject>();
     [HideInInspector] public List<GameObject> decorations = new List<GameObject>();
     [HideInInspector] public System.Random randomWithSeed;
+    [HideInInspector] public System.Random waveRandomWithSeed;
     
     [HideInInspector] public bool didModifyVillage = false;
     [HideInInspector] public bool didFinishLoading = false;
@@ -84,6 +86,8 @@ public class GameGenerator : MonoBehaviour
         terrainGenerator.size = GameManager.instance.mapSize;
 
         randomWithSeed = new System.Random((int)seed);
+        waveRandomWithSeed = new System.Random((int)seed);
+
         terrainGenerator.Generate();
         villageGenerator.GenerateVillage();
         didModifyVillage = true;

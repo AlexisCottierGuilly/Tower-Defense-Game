@@ -6,6 +6,7 @@ using UnityEngine;
 public class WaveData : ScriptableObject
 {
     public List<WavePart> waveParts;
+    public bool hideBossBar = false;
 }
 
 [System.Serializable]

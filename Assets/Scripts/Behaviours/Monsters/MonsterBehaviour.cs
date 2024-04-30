@@ -36,6 +36,7 @@ public class MonsterBehaviour : MonoBehaviour
     private Dictionary<MonsterTimedSpawn, float> spawnRateIntervals = new Dictionary<MonsterTimedSpawn, float>();
     private float currentRechargingTime = 0f;
     private bool shootOverride = true;
+    private bool didRegisterDeath = false;
 
     void Start()
     {
@@ -227,9 +228,14 @@ public class MonsterBehaviour : MonoBehaviour
     void Die()
     {
         Destroy(gameObject);
-        GameManager.instance.gold += data.gold;
-        GameManager.instance.player.crystals += data.crystals;
-        SpawnMonsters(data.spawnOnDeath);
+        if (!didRegisterDeath)
+        {
+            GameManager.instance.gold += data.gold;
+            GameManager.instance.player.crystals += data.crystals;
+            SpawnMonsters(data.spawnOnDeath);
+
+            didRegisterDeath = true;
+        }
     }
 
     void SpawnMonsters(List<MonsterCount> monsters)
