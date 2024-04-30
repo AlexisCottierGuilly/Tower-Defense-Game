@@ -1666,7 +1666,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Pour vous d\xE9fendre, vous avez acc\xE8s \xE0 plusieurs types de tours.
     Il est possible de changer de tour en touchant des boutons ou en appuyant sur
-    1, 2, 3. La rouche Q permet de d\xE9s\xE9lectionner une tour."
+    1, 2, 3, etc. La rouche Q permet de d\xE9s\xE9lectionner une tour."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bb2584cf8bc3d4f419f460ec75cb67be, type: 2}
   m_sharedMaterial: {fileID: 2091675084531310322, guid: bb2584cf8bc3d4f419f460ec75cb67be, type: 2}
@@ -2071,10 +2071,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Insane lore
-
-
-    Appuyez sur enter'
+  m_text: "Il y a longtemps, la cit\xE9 d'Eldoria a \xE9t\xE9 fond\xE9e par des aventuriers
+    curieux qui s\u2019\xE9taient perdus au milieu de nulle part. Depuis plusieurs
+    ann\xE9es, les monstres attaquent sans cesse la cit\xE9 pour voler ses ressources.
+    M\xEAme si elle est prot\xE9g\xE9e par un bouclier de montagnes myst\xE9rieuses,
+    les monstres ne l\xE2chent pas. C\u2019est pour cela que la cit\xE9 demande votre
+    aide pour gagner cette bataille.\r\n\nAppuyez sur enter"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bb2584cf8bc3d4f419f460ec75cb67be, type: 2}
   m_sharedMaterial: {fileID: 2091675084531310322, guid: bb2584cf8bc3d4f419f460ec75cb67be, type: 2}
@@ -2083,8 +2085,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4285595392
+  m_fontColor: {r: 0, g: 1, b: 0.4384992, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2167,8 +2169,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 30.648682, y: 16.901398}
-  m_SizeDelta: {x: 1000, y: 50}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &788583570
 GameObject:
