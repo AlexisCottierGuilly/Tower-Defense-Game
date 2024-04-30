@@ -24,8 +24,6 @@ public class WaveGenerator : MonoBehaviour
     
     public WaveData GetRandomWave(int waveNumber)
     {
-        waveNumber += 1000;
-        
         System.Random rndSeed = GameManager.instance.generator.waveRandomWithSeed;
 
         int money = 75 + waveNumber * 15;
