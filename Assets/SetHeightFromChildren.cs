@@ -22,7 +22,10 @@ public class SetHeightFromChildren : MonoBehaviour
     {
         // set sizeDelta of RectTransform to the total height of all children
 
-        float spacing = layoutGroup.spacing;
+        float spacing = 0;
+
+        if (layoutGroup != null)
+            spacing = layoutGroup.spacing;
         
         float height = additionnalHeight;
         int childrenCount = 0;

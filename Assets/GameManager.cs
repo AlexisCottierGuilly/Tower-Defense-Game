@@ -12,7 +12,8 @@ public enum GameState
     Settings,
     Credits,
     PreviousScene,
-    Tutoriel
+    Tutoriel,
+    Achievements
 }
 
 
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
     [Space]
     public SaveData save;
     public PlayerData player;
+    public List<AchievementData> achievements;
     [Space]
     public GameGenerator generator = null;
     [Space]
@@ -106,6 +108,9 @@ public class GameManager : MonoBehaviour
                 GameObject.Find("EventSystem").SetActive(false);
             }
             
+            if (sceneName == GameState.Credits)
+                player.achievementStats.timesOpeningCredits += 1;
+
             SceneManager.LoadScene(gameState.ToString(), additive ? LoadSceneMode.Additive : LoadSceneMode.Single);
         }
     }

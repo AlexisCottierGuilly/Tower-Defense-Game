@@ -10,6 +10,8 @@ public class ProjectileBehaviour : MonoBehaviour
     [HideInInspector] public GameObject target;
     [HideInInspector] public bool targetEnemy = true;
     [HideInInspector] public bool targetVillage = true;
+
+    private List<GameObject> decorationHits = new List<GameObject>();
     
     // Start is called before the first frame update
     void Start()
@@ -58,6 +60,7 @@ public class ProjectileBehaviour : MonoBehaviour
     void UpdateHits()
     {
         Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, data.hitRadius);
+        bool skipNext = false;
 
         foreach (Collider collider in colliders)
         {
@@ -74,23 +77,35 @@ public class ProjectileBehaviour : MonoBehaviour
                 }
             }
             
-            if (collider.gameObject.CompareTag("Monster") && targetEnemy)
+            if (!skipNext && collider.gameObject.CompareTag("Monster") && targetEnemy)
             {
                 MonsterBehaviour behaviour = collider.gameObject.GetComponent<MonsterBehaviour>();
                 behaviour.ProjectileHit(gameObject);
 
                 Die();
+                skipNext = true;
             }
-            else if (collider.gameObject.CompareTag("Village Building") && targetVillage)
+            else if (!skipNext && collider.gameObject.CompareTag("Village Building") && targetVillage)
             {
                 VillageBehaviour village = collider.gameObject.GetComponent<VillageBehaviour>();
                 village.ProjectileHit(gameObject);
 
                 Die();
+                skipNext = true;
             }
-            else if (collider.gameObject.CompareTag("Tile"))
+            else if (!skipNext && collider.gameObject.CompareTag("Tile"))
             {
                 Die();
+                skipNext = true;
+            }
+            
+            else if (collider.gameObject.CompareTag("Decoration"))
+            {
+                if (!decorationHits.Contains(collider.gameObject))
+                {
+                    decorationHits.Add(collider.gameObject);
+                    GameManager.instance.player.achievementStats.shotsOnDecorations += 1;
+                }
             }
         }
     }

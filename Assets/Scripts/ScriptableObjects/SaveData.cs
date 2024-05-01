@@ -12,6 +12,10 @@ public class SaveData : ScriptableObject
 public class PlayerData
 {
     public string name = "Player";
-    [Space]
+
+    [Header("General")]
     public int crystals;
+
+    [Header("Achievements")]
+    public AchievementStats achievementStats;
 }

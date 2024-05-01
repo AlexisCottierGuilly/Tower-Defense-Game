@@ -44,9 +44,7 @@ public class TowerSelectionManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.collider.gameObject == null)
-                Unselect();
-            else if (hit.collider.gameObject.GetComponent<TowerBehaviour>() != null)
+            if (hit.collider.gameObject.GetComponent<TowerBehaviour>() != null)
             {
                 SelectTower(hit.collider.gameObject);
             }
@@ -57,6 +55,8 @@ public class TowerSelectionManager : MonoBehaviour
             else
                 Unselect();
         }
+        else
+            Unselect();
     }
 
     void Update()

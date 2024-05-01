@@ -8,6 +8,7 @@ TagManager:
   - Village Building
   - Projectile
   - Monster
+  - Decoration
   layers:
   - Default
   - TransparentFX
