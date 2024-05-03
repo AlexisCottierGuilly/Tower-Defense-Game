@@ -15,6 +15,6 @@ MonoBehaviour:
   damage: 0
   interval: 0
   radius: 5
-  duration: 0.5
+  duration: 1
   speedModifier: 0
   sound: {fileID: 8300000, guid: b19f7c787eb6e2347a8e675810027594, type: 3}

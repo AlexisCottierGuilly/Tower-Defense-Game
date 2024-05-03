@@ -22,7 +22,7 @@ MonoBehaviour:
   gold: 5
   crystals: 0
   canShoot: 1
-  range: 20
+  range: 25
   shootSpeed: 1.5
   targetEnemy: 0
   targetVillage: 1
