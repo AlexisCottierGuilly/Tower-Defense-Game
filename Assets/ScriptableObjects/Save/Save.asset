@@ -17,5 +17,6 @@ MonoBehaviour:
     crystals: 27
     achievementStats:
       shotsOnDecorations: 990
-      timesOpeningCredits: 18
-      timeWaitedInTutorial: 58.93
+      timesOpeningCredits: 90
+      timesOpeningAchievements: 0
+      timeWaitedInTutorial: 250

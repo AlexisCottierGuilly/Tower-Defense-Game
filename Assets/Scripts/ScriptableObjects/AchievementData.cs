@@ -18,6 +18,7 @@ public class AchievementStats
 {
     public int shotsOnDecorations;
     public int timesOpeningCredits;
+    public int timesOpeningAchievements;
     public float timeWaitedInTutorial;
 }
 

@@ -10,4 +10,5 @@ public class AchievementPreviewManager : MonoBehaviour
     public TextMeshProUGUI description;
     public TextMeshProUGUI progressText;
     public Slider progressSlider;
+    public AchievementData achievement;
 }

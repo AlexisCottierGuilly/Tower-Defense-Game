@@ -32,6 +32,9 @@ public class SetHeightFromChildren : MonoBehaviour
 
         foreach (Transform child in transform)
         {
+            if (child.gameObject.activeSelf == false)
+                continue;
+            
             height += child.GetComponent<RectTransform>().rect.height;
             childrenCount++;
         }
