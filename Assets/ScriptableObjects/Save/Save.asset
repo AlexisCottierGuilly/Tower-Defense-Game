@@ -15,3 +15,7 @@ MonoBehaviour:
   players:
   - name: Gardien 001
     crystals: 27
+    achievementStats:
+      shotsOnDecorations: 990
+      timesOpeningCredits: 18
+      timeWaitedInTutorial: 58.93

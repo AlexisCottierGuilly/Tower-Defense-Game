@@ -11,6 +11,7 @@ public class AchievementsManager : MonoBehaviour
 
     void Start()
     {
+        GameManager.instance.UpdateAchievementProgress();
         LoadAchievements();
         ReorderAchievements();
     }
@@ -25,6 +26,8 @@ public class AchievementsManager : MonoBehaviour
 
     void LoadAchievement(AchievementData achievement)
     {
+        // do not recalculate the progress of the achievements (use GameManager.instance.GetAchievementProgress(achievement) instead)
+
         GameObject newAchievement = Instantiate(achievementPlaceholder, contentParent.transform);
 
         newAchievement.SetActive(true);
@@ -33,36 +36,13 @@ public class AchievementsManager : MonoBehaviour
         previewManager.title.text = achievement.name;
         previewManager.description.text = achievement.description;
 
-        int progress = 0;
-        int total = 0;
+        AchievementProgress progress = GameManager.instance.GetAchievementProgress(achievement);
 
-        foreach (var field in typeof(AchievementStats).GetFields())
-        {
-            int maximum = 0;
-            int current = 0;
-
-            if (field.FieldType == typeof(int))
-            {
-                maximum = (int)field.GetValue(achievement.requirements);
-                current = (int)field.GetValue(GameManager.instance.player.achievementStats);
-            }
-            else if (field.FieldType == typeof(float))
-            {
-                maximum = Mathf.RoundToInt((float)field.GetValue(achievement.requirements));
-                current = Mathf.RoundToInt((float)field.GetValue(GameManager.instance.player.achievementStats));
-            }
-
-            current = Mathf.Min(current, maximum);
-
-            progress += current;
-            total += maximum;
-        }
-
-        previewManager.progressText.text = progress + " / " + total;
+        previewManager.progressText.text = progress.currentProgress + " / " + progress.maxProgress;
         if (achievement.mesureUnit != "")
             previewManager.progressText.text += " " + achievement.mesureUnit;
-
-        previewManager.progressSlider.value = (float)progress / total;
+        
+        previewManager.progressSlider.value = (float)progress.currentProgress / progress.maxProgress;
 
         achievements.Add(newAchievement);
     }

@@ -20,3 +20,13 @@ public class AchievementStats
     public int timesOpeningCredits;
     public float timeWaitedInTutorial;
 }
+
+
+[System.Serializable]
+public class AchievementProgress
+{
+    public AchievementData achievement;
+    public int currentProgress;
+    public int maxProgress;
+    public bool completed;
+}

@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public SaveData save;
     public PlayerData player;
     public List<AchievementData> achievements;
+    public List<AchievementProgress> achievementProgress;
     [Space]
     public GameGenerator generator = null;
     [Space]
@@ -79,6 +80,8 @@ public class GameManager : MonoBehaviour
     {
         previousScene = gameState;
         player = save.players[0];
+
+        LoadAchievementProgress();
     }
 
     public void SwitchScene(GameState sceneName, bool additive = false, bool unloadCurrent = false)
@@ -138,6 +141,64 @@ public class GameManager : MonoBehaviour
         }
 
         throw new System.Exception("No difficulty modifier found for " + mapDifficulty.ToString());
+
+        return null;
+    }
+
+    public void LoadAchievementProgress()
+    {
+        foreach (AchievementData achievement in achievements)
+        {
+            AchievementProgress progress = new AchievementProgress();
+            progress.achievement = achievement;
+            achievementProgress.Add(progress);
+        }
+
+        UpdateAchievementProgress();
+    }
+
+    public void UpdateAchievementProgress()
+    {
+        foreach (AchievementProgress aProgress in achievementProgress)
+        {
+            int progress = 0;
+            int total = 0;
+
+            foreach (var field in typeof(AchievementStats).GetFields())
+            {
+                int maximum = 0;
+                int current = 0;
+
+                if (field.FieldType == typeof(int))
+                {
+                    maximum = (int)field.GetValue(aProgress.achievement.requirements);
+                    current = (int)field.GetValue(GameManager.instance.player.achievementStats);
+                }
+                else if (field.FieldType == typeof(float))
+                {
+                    maximum = Mathf.RoundToInt((float)field.GetValue(aProgress.achievement.requirements));
+                    current = Mathf.RoundToInt((float)field.GetValue(GameManager.instance.player.achievementStats));
+                }
+
+                current = Mathf.Min(current, maximum);
+
+                progress += current;
+                total += maximum;
+            }
+
+            aProgress.currentProgress = progress;
+            aProgress.maxProgress = total;
+            aProgress.completed = aProgress.currentProgress >= aProgress.maxProgress;
+        }
+    }
+
+    public AchievementProgress GetAchievementProgress(AchievementData achievement)
+    {
+        foreach (AchievementProgress progress in achievementProgress)
+        {
+            if (progress.achievement == achievement)
+                return progress;
+        }
 
         return null;
     }
