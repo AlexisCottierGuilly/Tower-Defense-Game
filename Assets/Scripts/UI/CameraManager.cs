@@ -28,6 +28,8 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GetComponent<Camera>().fieldOfView = GameManager.instance.fov;
+        
         float localDeltaTime = Time.unscaledDeltaTime;
         // if (localDeltaTime == 0f)
         //     localDeltaTime = Time.unscaledDeltaTime;

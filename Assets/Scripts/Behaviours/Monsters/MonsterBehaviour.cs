@@ -248,10 +248,12 @@ public class MonsterBehaviour : MonoBehaviour
             {
                 // a little randomised position with the gameGenerator.randomWithSeed (+- 0.2f tiles)
 
+                float randomRandius = 2f;
+
                 Vector3 position = new Vector3(
-                    transform.position.x + (float)(gameGenerator.randomWithSeed.NextDouble() * 0.4f - 0.2f),
+                    transform.position.x + (float)(gameGenerator.randomWithSeed.NextDouble() * randomRandius * 2f - randomRandius),
                     transform.position.y,
-                    transform.position.z + (float)(gameGenerator.randomWithSeed.NextDouble() * 0.4f - 0.2f)
+                    transform.position.z + (float)(gameGenerator.randomWithSeed.NextDouble() * randomRandius * 2f - randomRandius)
                 );
                 
                 waveManager.SpawnMonster(monsterCount.type, position);
@@ -302,10 +304,7 @@ public class MonsterBehaviour : MonoBehaviour
         }
 
         UpdateTimedSpawns();
-    }
 
-    void LateUpdate()
-    {
         temporarySpeedModifier = 1f;
     }
 

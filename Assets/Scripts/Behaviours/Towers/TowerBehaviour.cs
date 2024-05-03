@@ -19,7 +19,8 @@ public enum TowerType
     Explosive,
     Ultimate,
     Slow,
-    Healing
+    Healing,
+    Paralysing
 }
 
 

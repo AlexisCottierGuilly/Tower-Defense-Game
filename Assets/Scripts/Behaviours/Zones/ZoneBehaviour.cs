@@ -74,7 +74,7 @@ public class ZoneBehaviour : MonoBehaviour
         return damage;
     }
     
-    void Update()
+    void LateUpdate()
     {
         timeFromSpawn += Time.deltaTime;
         timeFromLastDamage += Time.deltaTime;

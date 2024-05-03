@@ -103,8 +103,11 @@ public class ProjectileBehaviour : MonoBehaviour
             {
                 if (!decorationHits.Contains(collider.gameObject))
                 {
-                    decorationHits.Add(collider.gameObject);
-                    GameManager.instance.player.achievementStats.shotsOnDecorations += 1;
+                    if (sender != null && sender.GetComponent<TowerBehaviour>() != null)
+                    {
+                        decorationHits.Add(collider.gameObject);
+                        GameManager.instance.player.achievementStats.shotsOnDecorations += 1;
+                    }
                 }
             }
         }

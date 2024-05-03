@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcd428b89fb556148bcd36b307488a0e, type: 3}
-  m_Name: Save
+  m_Script: {fileID: 11500000, guid: 73f37d39983a66a4b8112305d9a8960a, type: 3}
+  m_Name: Paralysing
   m_EditorClassIdentifier: 
-  players:
-  - name: Gardien 001
-    crystals: 36
-    achievementStats:
-      shotsOnDecorations: 990
-      timesOpeningCredits: 99
-      timesOpeningAchievements: 1
-      timeWaitedInTutorial: 290
+  hitRadius: 1
+  impactDamage: 0
+  followTarget: 0
+  rotate: 1
+  impactZone: {fileID: 8416028450855969510, guid: 0bbe11e09c8e97c4bb11bb74121183a3, type: 3}
+  skipSameTypeAsSender: 0

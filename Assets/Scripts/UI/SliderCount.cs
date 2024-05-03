@@ -6,8 +6,8 @@ using TMPro;
 
 public enum SliderType
 {
-    UI,
-    Tower
+    FOV,
+    Volume
 }
 
 public class SliderCount : MonoBehaviour
@@ -20,22 +20,22 @@ public class SliderCount : MonoBehaviour
     void Start()
     {
         textMeshPro = gameObject.GetComponent<TextMeshProUGUI>();
-        if (sliderType is SliderType.UI)
-            slider.value = GameManager.instance.UISize * 100f;
+        if (sliderType is SliderType.FOV)
+            slider.value = GameManager.instance.fov;
         else
             slider.value = GameManager.instance.volume * 100f;
     }
 
     // Update is called once per frame
-    void Update()
+    public void UpdateValue()
     {
         if (Input.GetKey(KeyCode.LeftShift))
             slider.value = Mathf.Round(slider.value / 10f) * 10f;
         
         textMeshPro.text = $"{slider.value.ToString()}%";
 
-        if (sliderType is SliderType.UI)
-            GameManager.instance.UISize = slider.value / 100f;
+        if (sliderType is SliderType.FOV)
+            GameManager.instance.fov = (int)slider.value;
         else
             GameManager.instance.volume = slider.value / 100f;
     }

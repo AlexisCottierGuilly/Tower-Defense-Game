@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     public MapDifficultyTypes mapDifficulty = MapDifficultyTypes.Moyen;
     public GameState gameState = GameState.Menu;
     public GameState previousScene;
-    public float UISize = 1;
+    public int fov = 70;
     public float volume = 0.5f;
     [Space]
     public List<DifficultyModifier> difficultyModifiers = new List<DifficultyModifier>();
@@ -178,6 +178,11 @@ public class GameManager : MonoBehaviour
                 {
                     maximum = Mathf.RoundToInt((float)field.GetValue(aProgress.achievement.requirements));
                     current = Mathf.RoundToInt((float)field.GetValue(GameManager.instance.player.achievementStats));
+                }
+                else if (field.FieldType == typeof(bool))
+                {
+                    maximum = (bool)field.GetValue(aProgress.achievement.requirements) ? 1 : 0;
+                    current = (bool)field.GetValue(GameManager.instance.player.achievementStats) ? 1 : 0;
                 }
 
                 current = Mathf.Min(current, maximum);

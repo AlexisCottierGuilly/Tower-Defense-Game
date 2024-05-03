@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 190965044}
   - component: {fileID: 190965043}
   m_Layer: 5
-  m_Name: UISizeTitle
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -517,7 +517,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Taille du UI
+  m_text: Champ de vision
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bb2584cf8bc3d4f419f460ec75cb67be, type: 2}
   m_sharedMaterial: {fileID: 2091675084531310322, guid: bb2584cf8bc3d4f419f460ec75cb67be, type: 2}
@@ -2086,7 +2086,7 @@ GameObject:
   - component: {fileID: 1022951972}
   - component: {fileID: 1022951973}
   m_Layer: 5
-  m_Name: UISize
+  m_Name: FOV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2160,13 +2160,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 779330075}
   m_HandleRect: {fileID: 632343941}
   m_Direction: 0
-  m_MinValue: 20
-  m_MaxValue: 200
+  m_MinValue: 30
+  m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 100
+  m_Value: 70
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1545321425}
+        m_TargetAssemblyTypeName: SliderCount, Assembly-CSharp
+        m_MethodName: UpdateValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1069577591
 GameObject:
   m_ObjectHideFlags: 0
@@ -2994,7 +3006,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 200%
+  m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4c5f0e6fb767058448c40e970a36c6c0, type: 2}
   m_sharedMaterial: {fileID: 1065820540021948941, guid: 4c5f0e6fb767058448c40e970a36c6c0, type: 2}
@@ -3188,7 +3200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100%
+  m_text: 70
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4c5f0e6fb767058448c40e970a36c6c0, type: 2}
   m_sharedMaterial: {fileID: 1065820540021948941, guid: 4c5f0e6fb767058448c40e970a36c6c0, type: 2}
@@ -3356,7 +3368,19 @@ MonoBehaviour:
   m_Value: 50
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1069577593}
+        m_TargetAssemblyTypeName: SliderCount, Assembly-CSharp
+        m_MethodName: UpdateValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1585645547
 GameObject:
   m_ObjectHideFlags: 0
@@ -3834,7 +3858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1976516027}
   m_Layer: 5
-  m_Name: UI
+  m_Name: FOV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3918,7 +3942,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 20%
+  m_text: 30
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4c5f0e6fb767058448c40e970a36c6c0, type: 2}
   m_sharedMaterial: {fileID: 1065820540021948941, guid: 4c5f0e6fb767058448c40e970a36c6c0, type: 2}
