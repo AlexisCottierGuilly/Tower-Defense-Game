@@ -27,6 +27,16 @@ public class DifficultyModifier
 }
 
 
+[System.Serializable]
+public class TowerPrefab
+{
+    public TowerType tower;
+    public TowerData data;
+    public Texture2D icon;
+    public KeyCode key = KeyCode.Alpha1;
+}
+
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
@@ -53,6 +63,9 @@ public class GameManager : MonoBehaviour
     [Space]
     public AudioClip clickSound;
     public AudioSource audioSource;
+
+    [Header("Game Prefabs")]
+    public List<TowerPrefab> towerPrefabs = new List<TowerPrefab>();
 
     /* 
     Best seeds
@@ -203,6 +216,27 @@ public class GameManager : MonoBehaviour
         {
             if (progress.achievement == achievement)
                 return progress;
+        }
+
+        return null;
+    }
+
+    public GameObject GetTowerPrefab(TowerType type)
+    {
+        foreach (TowerPrefab towerPrefab in GameManager.instance.towerPrefabs)
+        {
+            if (towerPrefab.tower == type)
+                return towerPrefab.data.prefab;
+        }
+        return null;
+    }
+
+    public TowerPrefab TowerPrefabFromType(TowerType type)
+    {
+        foreach (TowerPrefab prefab in towerPrefabs)
+        {
+            if (prefab.tower == type)
+                return prefab;
         }
 
         return null;

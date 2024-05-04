@@ -20,6 +20,7 @@ public class AchievementStats
     public int timesOpeningCredits;
     public int timesOpeningAchievements;
     public float timeWaitedInTutorial;
+    public int openedBoxes;
 }
 
 

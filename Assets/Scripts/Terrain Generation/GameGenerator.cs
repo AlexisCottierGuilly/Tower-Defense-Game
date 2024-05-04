@@ -4,20 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+
 [System.Serializable]
 public class MonsterPrefab
 {
     public Monster monster;
     public MonsterData data;
-}
-
-[System.Serializable]
-public class TowerPrefab
-{
-    public TowerType tower;
-    public TowerData data;
-    public Texture2D icon;
-    public KeyCode key = KeyCode.Alpha1;
 }
 
 
@@ -50,7 +42,6 @@ public class GameGenerator : MonoBehaviour
 
     [Header("Prefabs")]
     public List<MonsterPrefab> monsterPrefabs = new List<MonsterPrefab>();
-    public List<TowerPrefab> towerPrefabs = new List<TowerPrefab>();
 
     [Header("Parents")]
     public GameObject towerParent;
@@ -245,16 +236,6 @@ public class GameGenerator : MonoBehaviour
         return null;
     }
 
-    public GameObject GetTowerPrefab(TowerType type)
-    {
-        foreach (TowerPrefab towerPrefab in towerPrefabs)
-        {
-            if (towerPrefab.tower == type)
-                return towerPrefab.data.prefab;
-        }
-        return null;
-    }
-
     public void FlattenAround(Vector2 position, int radius=1, bool centered=true)
     {
         GameObject tile = tiles[(int)position.x][(int)position.y];
@@ -413,7 +394,7 @@ public class GameGenerator : MonoBehaviour
         crystals += GameManager.instance.GetDifficultyModifier().crystals;
 
         GameManager.instance.player.crystals += crystals;
-        GameManager.instance.player.hasReward = true;
+        GameManager.instance.player.rewardCount += 1;
 
         
     }

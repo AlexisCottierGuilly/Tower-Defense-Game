@@ -30,7 +30,7 @@ public class TowerUI : MonoBehaviour
 
     void InitializeButtons()
     {
-        foreach (TowerPrefab prefab in gameGenerator.towerPrefabs)
+        foreach (TowerPrefab prefab in GameManager.instance.towerPrefabs)
         {
             if (GameManager.instance.player.unlockedTowers.Contains(prefab.tower))
                 AddButton(prefab);
@@ -44,7 +44,7 @@ public class TowerUI : MonoBehaviour
         TowerPlaceHolder towerPlaceHolder = go.GetComponent<TowerPlaceHolder>();
         towerPlaceHolder.icon.sprite = Sprite.Create(prefab.icon, new Rect(0, 0, prefab.icon.width, prefab.icon.height), new Vector2(0.5f, 0.5f));
 
-        TowerData data = gameGenerator.GetTowerPrefab(prefab.tower).GetComponent<TowerBehaviour>().data;
+        TowerData data = GameManager.instance.GetTowerPrefab(prefab.tower).GetComponent<TowerBehaviour>().data;
 
         towerPlaceHolder.text.GetComponent<TextMeshProUGUI>().text = data.cost.ToString();
         towerPlaceHolder.text.GetComponent<TowerCostUpdater>().data = data;
@@ -60,7 +60,7 @@ public class TowerUI : MonoBehaviour
     public void ChangeTower(string newTower)
     {
         type = (TowerType)System.Enum.Parse(typeof(TowerType), newTower);
-        GameObject prefab = gameGenerator.GetTowerPrefab(type);
+        GameObject prefab = GameManager.instance.GetTowerPrefab(type);
         if (type != null && prefab != null)
         {
             selectionManager.SetStructure(prefab);
@@ -69,7 +69,7 @@ public class TowerUI : MonoBehaviour
 
     void HandleInputs()
     {
-        foreach (TowerPrefab prefab in gameGenerator.towerPrefabs)
+        foreach (TowerPrefab prefab in GameManager.instance.towerPrefabs)
         {
             if (Input.GetKeyDown(prefab.key))
             {

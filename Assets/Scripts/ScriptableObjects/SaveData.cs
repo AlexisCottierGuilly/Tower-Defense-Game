@@ -15,7 +15,7 @@ public class PlayerData
 
     [Header("General")]
     public int crystals;
-    public bool hasReward = false;
+    public int rewardCount = 0;
 
     [Header("Achievements")]
     public AchievementStats achievementStats;
