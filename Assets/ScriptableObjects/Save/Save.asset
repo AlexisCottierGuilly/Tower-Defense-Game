@@ -16,7 +16,8 @@ MonoBehaviour:
   - name: Gardien 001
     crystals: 36
     achievementStats:
-      shotsOnDecorations: 990
+      shotsOnDecorations: 1007
       timesOpeningCredits: 99
       timesOpeningAchievements: 1
       timeWaitedInTutorial: 290
+    unlockedTowers: 01000000

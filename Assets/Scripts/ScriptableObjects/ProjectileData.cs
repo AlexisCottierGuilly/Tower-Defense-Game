@@ -9,6 +9,7 @@ public class ProjectileData : ScriptableObject
     public int impactDamage;
     public bool followTarget;
     public bool rotate = true;
+    public bool angleFromGravity = false;
     [Space]
     public GameObject impactZone;
     [Space]

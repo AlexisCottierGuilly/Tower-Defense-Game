@@ -12,6 +12,7 @@ public class ProjectileBehaviour : MonoBehaviour
     [HideInInspector] public bool targetVillage = true;
 
     private List<GameObject> decorationHits = new List<GameObject>();
+    private Vector3 lastPosition;
     
     // Start is called before the first frame update
     void Start()
@@ -55,6 +56,15 @@ public class ProjectileBehaviour : MonoBehaviour
         {
             CorrectTrajectory();
         }
+
+        /*
+        NOT WORKING
+        if (data.angleFromGravity)
+        {
+            UpdateAngleFromGravity();
+        } */
+
+        lastPosition = gameObject.transform.position;
     }
 
     void UpdateHits()
@@ -111,6 +121,29 @@ public class ProjectileBehaviour : MonoBehaviour
                 }
             }
         }
+    }
+
+    void UpdateAngleFromGravity()
+    {
+        // use current and last position to calculate the angle that the projectile should be facing
+        // calculate the x, y and z angles based on the difference between the current and last position
+        
+        float deltaX = gameObject.transform.position.x - lastPosition.x;
+        float deltaY = gameObject.transform.position.y - lastPosition.y;
+        float deltaZ = gameObject.transform.position.z - lastPosition.z;
+
+        // only the y angle can stay the same.
+        // the x and z angles need to be calculated based on the delta values
+        // for the rotation to be correct, the x and z angle together should give the vertical wanted angle
+
+        float distanceHorizontal = Mathf.Sqrt(deltaX * deltaX + deltaZ * deltaZ);
+        float verticalAngle = Mathf.Atan2(deltaY, distanceHorizontal) * Mathf.Rad2Deg;
+
+        // the projection of the x and z angles on the ground should be equal to the y angle. In addition, the x and z angles should make the vertical angle together
+
+        float horizontalAngle = Mathf.Atan2(deltaZ, deltaX) * Mathf.Rad2Deg;
+
+        // DOES NOT WORK :(
     }
 
     void CorrectTrajectory()

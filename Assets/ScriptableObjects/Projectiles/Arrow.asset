@@ -16,5 +16,6 @@ MonoBehaviour:
   impactDamage: 10
   followTarget: 0
   rotate: 0
+  angleFromGravity: 1
   impactZone: {fileID: 0}
   skipSameTypeAsSender: 0

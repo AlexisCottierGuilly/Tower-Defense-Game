@@ -18,4 +18,7 @@ public class PlayerData
 
     [Header("Achievements")]
     public AchievementStats achievementStats;
+    
+    [Header("Unlocked Towers")]
+    public List<TowerType> unlockedTowers = new List<TowerType>() { TowerType.Normal };
 }

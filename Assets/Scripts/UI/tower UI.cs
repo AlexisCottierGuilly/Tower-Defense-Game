@@ -32,8 +32,8 @@ public class TowerUI : MonoBehaviour
     {
         foreach (TowerPrefab prefab in gameGenerator.towerPrefabs)
         {
-            GameObject go = AddButton(prefab);
-
+            if (GameManager.instance.player.unlockedTowers.Contains(prefab.tower))
+                AddButton(prefab);
         }
     }
 
