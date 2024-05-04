@@ -413,6 +413,7 @@ public class GameGenerator : MonoBehaviour
         crystals += GameManager.instance.GetDifficultyModifier().crystals;
 
         GameManager.instance.player.crystals += crystals;
+        GameManager.instance.player.hasReward = true;
 
         
     }

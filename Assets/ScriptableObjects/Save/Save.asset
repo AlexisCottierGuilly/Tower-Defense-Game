@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players:
   - name: Gardien 001
-    crystals: 36
+    crystals: 188
+    hasReward: 0
     achievementStats:
       shotsOnDecorations: 1007
-      timesOpeningCredits: 99
-      timesOpeningAchievements: 1
-      timeWaitedInTutorial: 290
+      timesOpeningCredits: 100
+      timesOpeningAchievements: 3
+      timeWaitedInTutorial: 345.7568
     unlockedTowers: 01000000
