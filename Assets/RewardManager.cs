@@ -27,54 +27,55 @@ public class RewardManager : MonoBehaviour
     public List<TowerWeight> towerWeights;
 
     private bool didLoadReward = false;
-    private bool didFinishLoadingReward = false;
+    private bool showingReward = false;
     private GameObject rewardInstance = null;
 
     void Start()
     {
         InititalizeWeights();
-        
-        if (GameManager.instance.player.rewardCount > 0)
-        {
-            screen.SetActive(true);
-        }
-        else
-            screen.SetActive(false);
     }
 
     void Update()
     {
+        if (GameManager.instance.player.rewardCount > 0)
+            screen.SetActive(true);
+        else if (!showingReward)
+        {
+            screen.SetActive(false);
+            didLoadReward = false;
+            showingReward = false;
+        }
+        
+
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
         {
-            if (GameManager.instance.player.rewardCount > 0 && !didLoadReward)
+            if (GameManager.instance.player.rewardCount > 0 && !didLoadReward && !showingReward)
             {
                 ShowReward();
-                didLoadReward = true;
+                showingReward = true;
             }
-            else if (didLoadReward || didFinishLoadingReward)
+
+            else if (didLoadReward)
             {
                 if (GameManager.instance.player.rewardCount == 0)
                     screen.SetActive(false);
+                else
+                {
+                    Animator chestAnim = chest.GetComponent<Animator>();
+                    chestAnim.Rebind();
+                    chestAnim.Update(0f);
+
+                    Animator titleAnim = title.GetComponent<Animator>();
+                    titleAnim.Rebind();
+                    titleAnim.Update(0f);
+                }
                 
                 if (rewardInstance != null)
                     Destroy(rewardInstance);
                 
                 didLoadReward = false;
-                didFinishLoadingReward = true;
+                showingReward = false;
             }
-        }
-
-        if (!didLoadReward && didFinishLoadingReward)
-        {
-            didFinishLoadingReward = false;
-
-            Animator chestAnim = chest.GetComponent<Animator>();
-            chestAnim.Rebind();
-            chestAnim.Update(0f);
-
-            Animator titleAnim = title.GetComponent<Animator>();
-            titleAnim.Rebind();
-            titleAnim.Update(0f);
         }
     }
 
@@ -104,6 +105,9 @@ public class RewardManager : MonoBehaviour
         GameObject reward = Instantiate(rewardPlaceholder, rewardParent.transform);
         rewardInstance = reward;
         reward.SetActive(true);
+
+        StartCoroutine(UpdateDidLoadReward(reward.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length));
+
         reward.transform.localPosition = Vector3.zero;
         reward.transform.localScale = Vector3.one;
 
@@ -117,6 +121,12 @@ public class RewardManager : MonoBehaviour
             GiveTower(reward.GetComponent<RewardPreviewManager>(), notUnlocked);
         
         GameManager.instance.player.achievementStats.openedBoxes += 1;
+    }
+
+    IEnumerator UpdateDidLoadReward(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        didLoadReward = true;
     }
 
     void GiveCrystals(RewardPreviewManager preview)

@@ -3228,7 +3228,7 @@ MonoBehaviour:
   title: {fileID: 768815187}
   rewardPlaceholder: {fileID: 1513013914}
   rewardParent: {fileID: 1169144495}
-  crystalPercentage: 0.75
+  crystalPercentage: 0.9
   crystalIcon: {fileID: 21300000, guid: 936251c5bdac61e4bb3b645667a1c1aa, type: 3}
   towerWeights:
   - tower: 1
