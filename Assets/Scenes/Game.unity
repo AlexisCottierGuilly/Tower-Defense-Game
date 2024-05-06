@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13110483, g: 0.09076635, b: 0.13997692, a: 1}
+  m_IndirectSpecularColor: {r: 0.13105246, g: 0.09076703, b: 0.14026171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8840,7 +8840,7 @@ MonoBehaviour:
   - {fileID: 821537990}
   wave: 0
   waves:
-  - {fileID: 11400000, guid: a558a6328756f254b805fce928e6d4ec, type: 2}
+  - {fileID: 11400000, guid: 3316596250071a840bd447dc82bfec73, type: 2}
   waveFinished: 0
   autoStart: 0
   infiniteMode: 0
@@ -11921,31 +11921,6 @@ MonoBehaviour:
     data: {fileID: 11400000, guid: 36e4c6f194639904ca63901dc69bdf6f, type: 2}
   - monster: 7
     data: {fileID: 11400000, guid: 27c7125f0a66e9e45bc59eabeaf838fa, type: 2}
-  towerPrefabs:
-  - tower: 1
-    data: {fileID: 11400000, guid: f7c45916d1b18b0429b185642513e281, type: 2}
-    icon: {fileID: 2800000, guid: 8589fe7e5e55cb3438abd8154c253515, type: 3}
-    key: 49
-  - tower: 2
-    data: {fileID: 11400000, guid: d73d16de65b0a1a499bf20f53334b398, type: 2}
-    icon: {fileID: 2800000, guid: 5ba1b1ae4bc313043990807cca978c8f, type: 3}
-    key: 50
-  - tower: 4
-    data: {fileID: 11400000, guid: 236fe73fd2ddc1344ad4201439d48349, type: 2}
-    icon: {fileID: 2800000, guid: 5ba1b1ae4bc313043990807cca978c8f, type: 3}
-    key: 51
-  - tower: 5
-    data: {fileID: 11400000, guid: ae42e772343bdf64f9b76971c16be8e3, type: 2}
-    icon: {fileID: 2800000, guid: 5ba1b1ae4bc313043990807cca978c8f, type: 3}
-    key: 52
-  - tower: 6
-    data: {fileID: 11400000, guid: 7d682fad027ef794f9348f667c255316, type: 2}
-    icon: {fileID: 2800000, guid: 5ba1b1ae4bc313043990807cca978c8f, type: 3}
-    key: 53
-  - tower: 3
-    data: {fileID: 11400000, guid: 223e05a536cd95d4ba0908dc8507c60b, type: 2}
-    icon: {fileID: 2800000, guid: e0a8342123d5a484d916bee7a833cbc4, type: 3}
-    key: 54
   towerParent: {fileID: 1268763543}
   projectileParent: {fileID: 550238018}
   mainCamera: {fileID: 549421227}

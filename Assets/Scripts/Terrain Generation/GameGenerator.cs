@@ -396,7 +396,18 @@ public class GameGenerator : MonoBehaviour
         GameManager.instance.player.crystals += crystals;
         GameManager.instance.player.rewardCount += 1;
 
-        
+        switch (GameManager.instance.mapDifficulty)
+        {
+            case MapDifficultyTypes.Facile:
+                GameManager.instance.player.achievementStats.winsInEasy += 1;
+                break;
+            case MapDifficultyTypes.Moyen:
+                GameManager.instance.player.achievementStats.winsInMedium += 1;
+                break;
+            case MapDifficultyTypes.Difficile:
+                GameManager.instance.player.achievementStats.winsInHard += 1;
+                break;
+        }
     }
 
     void Update()

@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab8669f0053e94c48aee34c58315dfdf, type: 3}
-  m_Name: Boxes
+  m_Name: EasyWins
   m_EditorClassIdentifier: 
-  name: "Bo\xEEte + bo\xEEte = bo\xEEtes"
-  description: "Ouvrir 50 bo\xEEtes"
-  mesureUnit: fois
+  name: Apprenti Protecteur
+  description: Gagner 10 parties en mode facile.
+  mesureUnit: parties
   requirements:
     shotsOnDecorations: 0
     timesOpeningCredits: 0
     timesOpeningAchievements: 0
     timeWaitedInTutorial: 0
-    openedBoxes: 50
-    winsInEasy: 0
+    openedBoxes: 0
+    winsInEasy: 10
     winsInMedium: 0
     winsInHard: 0

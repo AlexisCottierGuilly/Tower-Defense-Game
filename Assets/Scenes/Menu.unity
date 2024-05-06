@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13167956, g: 0.090852536, b: 0.139786, a: 1}
+  m_IndirectSpecularColor: {r: 0.1317214, g: 0.090852536, b: 0.1401858, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -418,7 +418,7 @@ MonoBehaviour:
   gameSeed: -1
   maxGameSeed: 9999999
   mapSize: {x: 24, y: 24}
-  mapDifficulty: 1
+  mapDifficulty: 0
   gameState: 0
   previousScene: 0
   fov: 70
@@ -449,6 +449,9 @@ MonoBehaviour:
       timesOpeningAchievements: 0
       timeWaitedInTutorial: 0
       openedBoxes: 0
+      winsInEasy: 0
+      winsInMedium: 0
+      winsInHard: 0
     unlockedTowers: 01000000
   achievements:
   - {fileID: 11400000, guid: 42ccca5ea18752b4199ae39ea47a6aea, type: 2}
@@ -456,6 +459,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dfa8da8e0e3ee2d4bb922f4739f0996c, type: 2}
   - {fileID: 11400000, guid: 079c42ea127149844bc178ea0a48581b, type: 2}
   - {fileID: 11400000, guid: d6413027f01cb2f41a3e26267d0e1330, type: 2}
+  - {fileID: 11400000, guid: b478bd520d73bea4db2c77954704c797, type: 2}
+  - {fileID: 11400000, guid: 7c6e9ec0a9cdbce498b9e058d0f8f433, type: 2}
+  - {fileID: 11400000, guid: 11bd7c741f9e9a14fbcde8d2bdc2df83, type: 2}
   achievementProgress: []
   generator: {fileID: 0}
   clickSound: {fileID: 8300000, guid: 7adc718a1ef3fd24c920157cfcf0af2f, type: 3}

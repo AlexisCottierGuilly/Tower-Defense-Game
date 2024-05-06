@@ -21,6 +21,9 @@ public class AchievementStats
     public int timesOpeningAchievements;
     public float timeWaitedInTutorial;
     public int openedBoxes;
+    public int winsInEasy;
+    public int winsInMedium;
+    public int winsInHard;
 }
 
 

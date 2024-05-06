@@ -14,15 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players:
   - name: Noob 2
-    crystals: 0
+    crystals: 33
     rewardCount: 0
     achievementStats:
-      shotsOnDecorations: 0
+      shotsOnDecorations: 1016
       timesOpeningCredits: 1
       timesOpeningAchievements: 4
-      timeWaitedInTutorial: 0
-      openedBoxes: 0
-    unlockedTowers: 01000000
+      timeWaitedInTutorial: 10.205703
+      openedBoxes: 7
+      winsInEasy: 0
+      winsInMedium: 0
+      winsInHard: 0
+    unlockedTowers: 0100000004000000
   - name: Gardien 001
     crystals: 1121
     rewardCount: 0
@@ -32,4 +35,7 @@ MonoBehaviour:
       timesOpeningAchievements: 3
       timeWaitedInTutorial: 280.54965
       openedBoxes: 130
+      winsInEasy: 0
+      winsInMedium: 0
+      winsInHard: 0
     unlockedTowers: 010000000200000005000000040000000600000003000000
