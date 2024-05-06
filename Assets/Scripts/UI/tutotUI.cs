@@ -41,7 +41,7 @@ public class tutotUI : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && state != 5  && state != 6 && state != 2)
+        if (Input.GetKeyDown(KeyCode.Return) && state != 5  && state != 6 && state != 2 && state != 7)
         {
             state += 1;
             if (state == 1)
@@ -134,6 +134,11 @@ public class tutotUI : MonoBehaviour
                 space = true;
                 SpaceUI.GetComponent<Image>().color = Color.green;
             }
+        }
+        else if (Input.GetKeyDown(KeyCode.Return) && state == 7)
+        {
+            
+            GameManager.instance.SwitchScene(GameState.Menu);
         }
     }
 }
