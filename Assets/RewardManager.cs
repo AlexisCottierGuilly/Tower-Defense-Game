@@ -131,7 +131,7 @@ public class RewardManager : MonoBehaviour
 
     void GiveCrystals(RewardPreviewManager preview)
     {
-        int crystals = Random.Range(1, 6);
+        int crystals = Random.Range(1, 3);
 
         string suffix = crystals > 1 ? "cristaux" : "cristal";
         string tempTitle = $"{crystals} {suffix} !";

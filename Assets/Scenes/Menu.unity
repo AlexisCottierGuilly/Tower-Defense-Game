@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1317214, g: 0.090852536, b: 0.1401858, a: 1}
+  m_IndirectSpecularColor: {r: 0.13167956, g: 0.090852536, b: 0.139786, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -428,14 +428,17 @@ MonoBehaviour:
     initialUsedPaths: 1
     addPathReccurence: 4
     crystals: 3
+    waves: 1
   - difficulty: 1
     initialUsedPaths: 1
     addPathReccurence: 3
     crystals: 5
+    waves: 2
   - difficulty: 2
     initialUsedPaths: 2
     addPathReccurence: 2
     crystals: 10
+    waves: 3
   initialGold: 100000
   gold: 0
   save: {fileID: 11400000, guid: 8822c229f31678b43ae17bb7369bc6f9, type: 2}
@@ -452,6 +455,7 @@ MonoBehaviour:
       winsInEasy: 0
       winsInMedium: 0
       winsInHard: 0
+      winWithAllVillage: 0
     unlockedTowers: 01000000
   achievements:
   - {fileID: 11400000, guid: 42ccca5ea18752b4199ae39ea47a6aea, type: 2}
@@ -462,6 +466,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b478bd520d73bea4db2c77954704c797, type: 2}
   - {fileID: 11400000, guid: 7c6e9ec0a9cdbce498b9e058d0f8f433, type: 2}
   - {fileID: 11400000, guid: 11bd7c741f9e9a14fbcde8d2bdc2df83, type: 2}
+  - {fileID: 11400000, guid: a0c3123d681e9654f8627fc6447b0ba1, type: 2}
   achievementProgress: []
   generator: {fileID: 0}
   clickSound: {fileID: 8300000, guid: 7adc718a1ef3fd24c920157cfcf0af2f, type: 3}

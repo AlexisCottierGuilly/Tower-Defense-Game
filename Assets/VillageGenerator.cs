@@ -197,7 +197,10 @@ public class VillageGenerator : MonoBehaviour
     public void RemoveVillageStructure(GameObject structure)
     {
         if (structure != mainVillage)
+        {
             villageBuildings.Remove(structure);
+            gameGenerator.lostHouses++;
+        }
         else
             mainVillage = null;
         Destroy(structure);

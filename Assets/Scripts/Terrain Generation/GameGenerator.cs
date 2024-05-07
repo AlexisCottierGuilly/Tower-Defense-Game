@@ -51,6 +51,7 @@ public class GameGenerator : MonoBehaviour
     public Camera mainCamera;
     public TextMeshProUGUI seedText;
     public float logicUpdateDelay = 1f;
+    public int lostHouses = 0;
 
     [HideInInspector] public List<List<GameObject>> tiles = new List<List<GameObject>>();
     [HideInInspector] public List<GameObject> towers = new List<GameObject>();
@@ -407,6 +408,11 @@ public class GameGenerator : MonoBehaviour
             case MapDifficultyTypes.Difficile:
                 GameManager.instance.player.achievementStats.winsInHard += 1;
                 break;
+        }
+
+        if (lostHouses == 0)
+        {
+            GameManager.instance.player.achievementStats.winWithAllVillage += 1;
         }
     }
 

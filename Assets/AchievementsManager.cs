@@ -29,17 +29,15 @@ public class AchievementsManager : MonoBehaviour
 
     void LoadAchievement(AchievementData achievement)
     {
-        // do not recalculate the progress of the achievements (use GameManager.instance.GetAchievementProgress(achievement) instead)
+        AchievementProgress progress = GameManager.instance.GetAchievementProgress(achievement);
 
+        if (achievement.hidden && !progress.completed)
+            return;
+        
         GameObject newAchievement = Instantiate(achievementPlaceholder, contentParent.transform);
-
         newAchievement.SetActive(true);
 
         AchievementPreviewManager previewManager = newAchievement.GetComponent<AchievementPreviewManager>();
-        previewManager.title.text = achievement.name;
-        previewManager.description.text = achievement.description;
-
-        AchievementProgress progress = GameManager.instance.GetAchievementProgress(achievement);
 
         previewManager.progressText.text = progress.currentProgress + " / " + progress.maxProgress;
         if (achievement.mesureUnit != "")
@@ -47,6 +45,17 @@ public class AchievementsManager : MonoBehaviour
         
         previewManager.progressSlider.value = (float)progress.currentProgress / progress.maxProgress;
         previewManager.achievement = achievement;
+
+        if (progress.completed || !achievement.unknown)
+        {
+            previewManager.title.text = achievement.name;
+            previewManager.description.text = achievement.description;
+        }
+        else
+        {
+            previewManager.title.text = "???";
+            previewManager.description.text = "???";
+        }
 
         if (!showCompleted && progress.completed)
             newAchievement.SetActive(false);

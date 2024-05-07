@@ -30,7 +30,8 @@ public class WaveManager : MonoBehaviour
 
     [Header("Settings")]
     public int wave = 0;
-    public List<WaveData> waves = new List<WaveData>();
+    public List<WaveData> allWaves = new List<WaveData>();
+    [HideInInspector] public List<WaveData> waves = new List<WaveData>();
     public bool waveFinished = true;
     public bool autoStart = false;
     [Space]
@@ -65,12 +66,21 @@ public class WaveManager : MonoBehaviour
     void Start()
     {
         gameFinished = new UnityEvent();
+        LoadDifficultyWaves();
+
         wave = 1;
         LoadFogColor();
         waveText.text = $"Vague {wave}/{waves.Count}";
         didCallGameFinished = false;
         playedWinWaveSound = true;
         wave = 0;
+    }
+
+    void LoadDifficultyWaves()
+    {
+        DifficultyModifier modifier = GameManager.instance.GetDifficultyModifier();
+        waves = allWaves.GetRange(0, Mathf.Min(modifier.waves, allWaves.Count));
+        Debug.Log($"WIth difficulty {modifier.ToString()}, we have {waves.Count} waves.");
     }
     
     public void InitializeSurfaces()
@@ -97,10 +107,20 @@ public class WaveManager : MonoBehaviour
             numberOfPaths = Mathf.Min(numberOfPaths, gameGenerator.pathGenerator.paths.Count);
         }
 
+        int pathsCount = usedPaths.Count;
+
         usedPaths.Clear();
         for (int i = 0; i < numberOfPaths; i++)
         {
             usedPaths.Add(gameGenerator.pathGenerator.paths[i]);
+        }
+
+        int pathsCountDifference = usedPaths.Count - pathsCount;
+
+        if (pathsCountDifference > 0 && wave > 1)
+        {
+            gameGenerator.notificationManager.ShowNotification($"{pathsCountDifference} nouveau chemin est apparu !");
+        
         }
     }
     
@@ -108,9 +128,16 @@ public class WaveManager : MonoBehaviour
     {
         if (wave == waves.Count && infiniteMode)
         {
-            // add a new wave to the waves
-            WaveData newWave = gameGenerator.waveGenerator.GetRandomWave(wave + 1);
-            waves.Add(newWave);
+            if (waves.Count < allWaves.Count)
+            {
+                waves.Add(allWaves[waves.Count]);
+            }
+            else
+            {
+                WaveData newWave = gameGenerator.waveGenerator.GetRandomWave(wave + 1);
+                waves.Add(newWave);
+            }
+
         }
         
         if (wave == waves.Count)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13105246, g: 0.09076703, b: 0.14026171, a: 1}
+  m_IndirectSpecularColor: {r: 0.13110483, g: 0.09076635, b: 0.13997692, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8839,8 +8839,16 @@ MonoBehaviour:
   surfaces:
   - {fileID: 821537990}
   wave: 0
+  allWaves:
+  - {fileID: 11400000, guid: 7f9116e445769f14db028f20dbf7c74e, type: 2}
+  - {fileID: 11400000, guid: 29e3fce03d7334f4eaf90e47755ef4c0, type: 2}
+  - {fileID: 11400000, guid: 55b8c47f3bf3a17428c68bca04e616ee, type: 2}
+  - {fileID: 11400000, guid: 3253e00ae3ee69746814c5aaa3b596b2, type: 2}
   waves:
   - {fileID: 11400000, guid: 7f9116e445769f14db028f20dbf7c74e, type: 2}
+  - {fileID: 11400000, guid: 29e3fce03d7334f4eaf90e47755ef4c0, type: 2}
+  - {fileID: 11400000, guid: 55b8c47f3bf3a17428c68bca04e616ee, type: 2}
+  - {fileID: 11400000, guid: 3253e00ae3ee69746814c5aaa3b596b2, type: 2}
   waveFinished: 0
   autoStart: 0
   infiniteMode: 0
@@ -11926,6 +11934,7 @@ MonoBehaviour:
   mainCamera: {fileID: 549421227}
   seedText: {fileID: 1449424629}
   logicUpdateDelay: 1
+  lostHouses: 0
   towers: []
   decorations: []
   didModifyVillage: 0

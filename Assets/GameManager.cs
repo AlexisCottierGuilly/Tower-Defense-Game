@@ -24,6 +24,7 @@ public class DifficultyModifier
     public int initialUsedPaths = 1;
     public int addPathReccurence = 2;
     public int crystals = 5;
+    public int waves = 10;
 }
 
 

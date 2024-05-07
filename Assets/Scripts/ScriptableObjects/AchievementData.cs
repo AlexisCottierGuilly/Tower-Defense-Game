@@ -9,6 +9,8 @@ public class AchievementData : ScriptableObject
     public string name;
     public string description;
     public string mesureUnit;
+    public bool unknown = false;
+    public bool hidden = false;
     public AchievementStats requirements;
 }
 
@@ -24,6 +26,7 @@ public class AchievementStats
     public int winsInEasy;
     public int winsInMedium;
     public int winsInHard;
+    public int winWithAllVillage;
 }
 
 
