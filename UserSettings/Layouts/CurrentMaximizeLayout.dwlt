@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 15893
+  controlID: 3345
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 15894
+  controlID: 3346
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 15895
+  controlID: 3347
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -238,9 +238,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 64620000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 1e08f2ffc40cf2ff8249f2fffa51f2ffe052f2ff3855f2ffbe92f2ff4895f2ff4a89f3ffda99f3ff625dffff3060ffff8a60ffff60deffff06e1ffff66e1ffff32fbffffe065000024680000267e00000080000094800000e2800000c0b2000010b300009ab400002eb500007cdb000078dc000050dd000084ec0000d4ec000010ed00006eee00000aef000058ef00003cf700008cf70000c8f700002af8000026f90000c2f9000010fa00003209010082090100be090100200a01001c0b0100b80b0100f20b0100060c0100
+      m_SelectedIDs: c8f9ffff
+      m_LastClickedID: -1592
+      m_ExpandedIDs: 32fbffff5a4f0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -837,9 +837,9 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 81ffff6d33c80d34cbd9e0dc6f4aab5f, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: acb8af8be97d4dd44884e7a802cf2489, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: -8817825204351036377, guid: 81ffff6d33c80d34cbd9e0dc6f4aab5f, type: 2}
+  - m_Target: {fileID: -4758057883478506153, guid: acb8af8be97d4dd44884e7a802cf2489, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -879,7 +879,7 @@ MonoBehaviour:
   - {fileID: 12}
   - {fileID: 13}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 2
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -925,7 +925,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Animations
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -933,15 +933,15 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 65
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Animations
   m_LastFoldersGridSize: 65
   m_LastProjectPath: C:\Users\cotti\OneDrive\Documents\GitHub\Tower-Defense-Game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 319}
-    m_SelectedIDs: 14560000
-    m_LastClickedID: 22036
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: e8550000
+    m_LastClickedID: 21992
     m_ExpandedIDs: 00000000d0550000d2550000d4550000d6550000d8550000da550000dc550000de550000e0550000e255000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -995,9 +995,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 64620000
-    m_LastClickedInstanceID: 25188
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: c8f9ffff
+    m_LastClickedInstanceID: -1592
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000ea53000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1014,7 +1014,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 10}
+      m_ClientGUIView: {fileID: 7}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -1022,7 +1022,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 230}
     m_GridSize: 65
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 149
@@ -1096,7 +1096,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 46440
+  m_LastSelectedObjectID: -1592
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1165,7 +1165,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 216
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
