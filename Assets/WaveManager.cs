@@ -80,7 +80,6 @@ public class WaveManager : MonoBehaviour
     {
         DifficultyModifier modifier = GameManager.instance.GetDifficultyModifier();
         waves = allWaves.GetRange(0, Mathf.Min(modifier.waves, allWaves.Count));
-        Debug.Log($"WIth difficulty {modifier.ToString()}, we have {waves.Count} waves.");
     }
     
     public void InitializeSurfaces()

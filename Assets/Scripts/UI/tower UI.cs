@@ -17,6 +17,7 @@ public class TowerUI : MonoBehaviour
     public GameObject selectionManagerObject;
 
     DetectSelection selectionManager;
+    private List<TowerType> unlockedTowers = new List<TowerType>();
 
     void Start()
     {
@@ -54,6 +55,10 @@ public class TowerUI : MonoBehaviour
         towerPlaceHolder.button.onClick.AddListener(() => ChangeTower(prefab.tower.ToString()));
         go.transform.parent = buttonsParent.transform;
 
+        towerPlaceHolder.keyText.text = $"{unlockedTowers.Count + 1}";
+
+        unlockedTowers.Add(prefab.tower);
+
         return go;
     }
     
@@ -69,12 +74,15 @@ public class TowerUI : MonoBehaviour
 
     void HandleInputs()
     {
-        foreach (TowerPrefab prefab in GameManager.instance.towerPrefabs)
+        int i = 0;
+        foreach (TowerType t in unlockedTowers)
         {
-            if (Input.GetKeyDown(prefab.key))
+            if (Input.GetKeyDown(KeyCode.Alpha1 + i))
             {
-                ChangeTower(prefab.tower.ToString());
+                ChangeTower(t.ToString());
             }
+
+            i++;
         }
     }
 

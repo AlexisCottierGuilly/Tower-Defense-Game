@@ -10,4 +10,5 @@ public class TowerPlaceHolder : MonoBehaviour
     public GameObject text;
     public Button button;
     public GameObject title;
+    public TextMeshProUGUI keyText;
 }
