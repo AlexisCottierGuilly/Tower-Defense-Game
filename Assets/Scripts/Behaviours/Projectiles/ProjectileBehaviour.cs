@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ProjectileBehaviour : MonoBehaviour
 {
     public ProjectileData data;
-    
+    public AudioSource sound;
+
     [HideInInspector] public GameObject sender;
     [HideInInspector] public GameObject target;
     [HideInInspector] public bool targetEnemy = true;
@@ -17,7 +19,8 @@ public class ProjectileBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (sound != null)
+            sound.Play();
     }
 
     public int GetDamage()

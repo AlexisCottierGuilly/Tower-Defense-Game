@@ -2366,7 +2366,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "       n\xE9es, les monstres\n        la cit\xE9 pour voler ses \n      
-    elle est prot\xE9g\xE9e par\n     agnes myst\xE9rieuses,"
+    elle est prot\xE9g\xE9e par\n      agnes myst\xE9rieuses,"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bb2584cf8bc3d4f419f460ec75cb67be, type: 2}
   m_sharedMaterial: {fileID: 2091675084531310322, guid: bb2584cf8bc3d4f419f460ec75cb67be, type: 2}
@@ -5306,7 +5306,7 @@ GameObject:
   - component: {fileID: 1728734769}
   - component: {fileID: 1728734768}
   m_Layer: 5
-  m_Name: loreText 3 (1)
+  m_Name: original lore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
