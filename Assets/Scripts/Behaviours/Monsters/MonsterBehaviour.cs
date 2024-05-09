@@ -57,7 +57,7 @@ public class MonsterBehaviour : MonoBehaviour
         finalSpeed *= permanentSpeedModifier;
         finalSpeed *= temporarySpeedModifier;
 
-        agent.speed = finalSpeed * 4f;
+        agent.speed = finalSpeed * 3f;
     }
 
     public void AddTemporaryModifier(float modifier)

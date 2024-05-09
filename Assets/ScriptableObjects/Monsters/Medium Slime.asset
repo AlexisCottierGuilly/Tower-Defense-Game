@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Slime Moyen
   spawnMessage: 
   isBoss: 0
-  maxHealth: 2000
+  maxHealth: 1000
   damage: 50
   attackSpeed: 0.5
   speed: 0.65

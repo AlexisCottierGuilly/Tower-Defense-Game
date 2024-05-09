@@ -15,10 +15,11 @@ MonoBehaviour:
   waveParts:
   - monster: 0
     amount: 15
-    interval: 0.75
+    interval: 1
   - monster: 1
     amount: 10
-    interval: 1
-  - monster: 0
+    interval: 5
+  - monster: 6
     amount: 5
-    interval: 1.5
+    interval: 4
+  hideBossBar: 0

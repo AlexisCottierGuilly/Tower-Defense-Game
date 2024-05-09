@@ -14,17 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveParts:
   - monster: 0
-    amount: 20
-    interval: 0.25
+    amount: 15
+    interval: 1
   - monster: 1
+    amount: 5
+    interval: 2
+  - monster: 0
+    amount: 20
+    interval: 1.5
+  - monster: 6
     amount: 5
     interval: 1
-  - monster: 0
-    amount: 30
-    interval: 2
-  - monster: 1
-    amount: 5
-    interval: 0.5
   - monster: 1
     amount: 10
     interval: 3
+  - monster: 4
+    amount: 1
+    interval: 1
+  hideBossBar: 0
