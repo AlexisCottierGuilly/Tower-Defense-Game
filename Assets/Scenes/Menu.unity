@@ -219,6 +219,7 @@ RectTransform:
   m_Children:
   - {fileID: 1091000018}
   - {fileID: 1676051306}
+  - {fileID: 1570176609}
   - {fileID: 633007227}
   - {fileID: 1448869414}
   - {fileID: 113606038}
@@ -233,7 +234,6 @@ RectTransform:
   - {fileID: 1491885765}
   - {fileID: 550456204}
   - {fileID: 1513013915}
-  - {fileID: 1570176609}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -440,7 +440,7 @@ MonoBehaviour:
     addPathReccurence: 2
     crystals: 10
     waves: 3
-  initialGold: 100000
+  initialGold: 150
   gold: 0
   save: {fileID: 11400000, guid: 8822c229f31678b43ae17bb7369bc6f9, type: 2}
   player:

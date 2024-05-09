@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players:
   - name: Noob 2
-    crystals: 162
-    rewardCount: 0
+    crystals: 198
+    rewardCount: 1
     achievementStats:
-      shotsOnDecorations: 2383
+      shotsOnDecorations: 4214
       timesOpeningCredits: 1
-      timesOpeningAchievements: 17
+      timesOpeningAchievements: 18
       timeWaitedInTutorial: 10.205703
-      openedBoxes: 60
-      winsInEasy: 3
+      openedBoxes: 62
+      winsInEasy: 5
       winsInMedium: 0
-      winsInHard: 0
-      winWithAllVillage: 2
-    unlockedTowers: 0100000003000000
+      winsInHard: 1
+      winWithAllVillage: 5
+    unlockedTowers: 010000000200000005000000040000000600000003000000
