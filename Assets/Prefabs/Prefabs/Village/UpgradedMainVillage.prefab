@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 2561671811617057767}
   - component: {fileID: 9066101040668442966}
   m_Layer: 3
-  m_Name: a
+  m_Name: UpgradedMainVillage
   m_TagString: Village Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
