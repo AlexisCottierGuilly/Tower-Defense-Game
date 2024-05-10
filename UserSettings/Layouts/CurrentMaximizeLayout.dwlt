@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 5185
+  controlID: 5399
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -368,9 +368,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -1.5334454, y: -5.7064524, z: 1.6815765}
+    m_Target: {x: -1.7748108, y: 2.81006, z: 11.740156}
     speed: 2
-    m_Value: {x: -1.5334454, y: -5.7064524, z: 1.6815765}
+    m_Value: {x: -1.7748108, y: 2.81006, z: 11.740156}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -416,20 +416,20 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.29442015, y: 0.616287, z: -0.26699382, w: -0.67996424}
+    m_Target: {x: -0.04458061, y: 0.21721266, z: -0.010056982, w: -0.97515815}
     speed: 2
-    m_Value: {x: -0.29400024, y: 0.6172661, z: -0.2674178, w: -0.67899495}
+    m_Value: {x: -0.047500998, y: 0.21715944, z: -0.010707738, w: -0.974921}
   m_Size:
-    m_Target: 4.6048613
+    m_Target: 10.564751
     speed: 2
-    m_Value: 4.4065657
+    m_Value: 10.109809
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 0.8006002
-    m_SpeedNormalized: 0.4000001
+    m_Speed: 0.08096016
+    m_SpeedNormalized: 0.04000008
     m_SpeedMin: 0.001
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -471,7 +471,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 5186
+  controlID: 5400
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -496,7 +496,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 5187
+  controlID: 5401
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -562,21 +562,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: e0cafbffcccffbff36c200006ec20000
+      m_ExpandedIDs: 2238fbffc61a0100c81a0100921b0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Cube (1)
+        m_OriginalName: Cube (1)
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 72474
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 5}
       m_SearchString: 
@@ -613,7 +613,7 @@ MonoBehaviour:
   - {fileID: 8}
   - {fileID: 9}
   m_Selected: 0
-  m_LastSelected: 2
+  m_LastSelected: 1
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -683,7 +683,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -925,7 +925,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Prefabs/Village
+    - Assets/Materials/Villages/House
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -933,16 +933,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 65
   m_LastFolders:
-  - Assets/Prefabs/Prefabs/Village
+  - Assets/Materials/Villages/House
   m_LastFoldersGridSize: 65
   m_LastProjectPath: C:\Users\brouilletm\Documents\GitHub\Tower-Defense-Game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 92}
-    m_SelectedIDs: 44c00000
-    m_LastClickedID: 49220
-    m_ExpandedIDs: 000000008c5900008e590000a859000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: e81b0100
+    m_LastClickedID: 72680
+    m_ExpandedIDs: 000000008c590000a05900001405010000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1014,7 +1014,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 7}
+      m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
