@@ -196,6 +196,8 @@ public class VillageGenerator : MonoBehaviour
 
     public void RemoveVillageStructure(GameObject structure)
     {
+        maxHealth -= structure.GetComponent<VillageBehaviour>().data.maxHealth;
+        
         if (structure != mainVillage)
         {
             villageBuildings.Remove(structure);
