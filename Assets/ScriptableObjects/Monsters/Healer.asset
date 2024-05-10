@@ -15,14 +15,14 @@ MonoBehaviour:
   name: "Gu\xE9risseur Tueur"
   spawnMessage: 
   isBoss: 0
-  maxHealth: 250
+  maxHealth: 150
   damage: 5
   attackSpeed: 0.5
-  speed: 1.25
+  speed: 1.1
   gold: 5
   crystals: 0
   canShoot: 1
-  range: 10
+  range: 15
   shootSpeed: 2.5
   targetEnemy: 1
   targetVillage: 0
