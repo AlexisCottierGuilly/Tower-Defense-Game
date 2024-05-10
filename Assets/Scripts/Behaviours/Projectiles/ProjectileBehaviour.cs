@@ -6,7 +6,6 @@ using UnityEngine.Audio;
 public class ProjectileBehaviour : MonoBehaviour
 {
     public ProjectileData data;
-    public AudioSource sound;
 
     [HideInInspector] public GameObject sender;
     [HideInInspector] public GameObject target;
@@ -19,8 +18,19 @@ public class ProjectileBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (sound != null)
-            sound.Play();
+        if (data.sound != null)
+        {
+            AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+            VolumeUpdater volumeUpdater = gameObject.AddComponent<VolumeUpdater>();
+            volumeUpdater.volumeMultiplier = data.volume;
+
+            audioSource.spatialBlend = 0.75f;
+            audioSource.rolloffMode = AudioRolloffMode.Linear;
+            audioSource.maxDistance = 100f;
+
+            audioSource.clip = data.sound;
+            audioSource.Play();
+        }
     }
 
     public int GetDamage()

@@ -9,6 +9,7 @@ public class TowerSelectionManager : MonoBehaviour
     public DetectSelection detectSelection;
     public Camera camera;
     public GameGenerator gameGenerator;
+    public ShowRangeManager showRangeManager;
 
     [Header("Tower Stats")]
     public GameObject statsPanel;
@@ -38,6 +39,8 @@ public class TowerSelectionManager : MonoBehaviour
         
         // Find if the mouse is clicking on a tower
         GameObject tower = null;
+        bool shouldUnSelect = false;
+        bool isTower = false;
 
         RaycastHit hit;
         Ray ray = camera.ScreenPointToRay(mouse);
@@ -47,16 +50,23 @@ public class TowerSelectionManager : MonoBehaviour
             if (hit.collider.gameObject.GetComponent<TowerBehaviour>() != null)
             {
                 SelectTower(hit.collider.gameObject);
+                isTower = true;
             }
             else if (hit.collider.gameObject.GetComponent<DecorationBehaviour>() != null)
             {
                 SelectDecoration(hit.collider.gameObject);
             }
             else
-                Unselect();
+                shouldUnSelect = true;
         }
         else
+            shouldUnSelect = true;
+        
+        if (shouldUnSelect)
             Unselect();
+        
+        if (shouldUnSelect || !isTower)
+            showRangeManager.UnsetRange();
     }
 
     void Update()
@@ -120,6 +130,8 @@ public class TowerSelectionManager : MonoBehaviour
         towerTargetHandler.Start();
 
         statsPanel.SetActive(true);
+
+        showRangeManager.SetRange(go);
 
         UpdateTowerStats();
     }

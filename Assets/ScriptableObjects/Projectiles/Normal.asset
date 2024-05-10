@@ -16,5 +16,8 @@ MonoBehaviour:
   impactDamage: 20
   followTarget: 1
   rotate: 0
+  angleFromGravity: 0
   impactZone: {fileID: 0}
   skipSameTypeAsSender: 0
+  sound: {fileID: 8300000, guid: fbeb5398f5430df4188d6b07438def4e, type: 3}
+  volume: 3

@@ -125,6 +125,9 @@ public class WaveManager : MonoBehaviour
     
     public IEnumerator LoadNextWave()
     {
+        if (!gameGenerator.timeStarted)
+            gameGenerator.timeStarted = true;
+        
         if (wave == waves.Count && infiniteMode)
         {
             if (waves.Count < allWaves.Count)

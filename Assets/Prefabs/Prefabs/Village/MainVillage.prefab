@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1415045085939243453}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 838981291400609581}
   - component: {fileID: 2561671811617057767}
   - component: {fileID: 9066101040668442966}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MainVillage
   m_TagString: Village Building
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 111761759517545422}
   - component: {fileID: 8092254214232873566}
   - component: {fileID: 2779624540505790645}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 3988986227941274431}
   - component: {fileID: 7363036179478996683}
   - component: {fileID: 58097449521854719}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 2311536903926414357}
   - component: {fileID: 962466280125845544}
   - component: {fileID: 9146861342314834930}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pillar (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 2496363252792784713}
   - component: {fileID: 1753335138016195588}
   - component: {fileID: 4459623535203998768}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 3982492511255163582}
   - component: {fileID: 3655652221486655425}
   - component: {fileID: 2773122816221911921}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 2057147268599607746}
   - component: {fileID: 4844841209027058872}
   - component: {fileID: 7380365361932221279}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -695,7 +695,7 @@ GameObject:
   - component: {fileID: 7445831249970403963}
   - component: {fileID: 78129532086048074}
   - component: {fileID: 9124502776092642691}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pillar (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -780,7 +780,7 @@ GameObject:
   - component: {fileID: 3024488007357333153}
   - component: {fileID: 7738220493161604782}
   - component: {fileID: 5191788102032921363}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -863,7 +863,7 @@ GameObject:
   - component: {fileID: 2603925549872755143}
   - component: {fileID: 2529764198923118335}
   - component: {fileID: 454011580948960423}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -946,7 +946,7 @@ GameObject:
   - component: {fileID: 8079279386807177693}
   - component: {fileID: 6040270516518542890}
   - component: {fileID: 4477049099030563727}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1029,7 +1029,7 @@ GameObject:
   - component: {fileID: 8257126559636747574}
   - component: {fileID: 2562429938411645963}
   - component: {fileID: 3143773294025048992}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1112,7 +1112,7 @@ GameObject:
   - component: {fileID: 3578416821454906002}
   - component: {fileID: 5803561649118563091}
   - component: {fileID: 5090144852737353522}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1195,7 +1195,7 @@ GameObject:
   - component: {fileID: 5368793399462011958}
   - component: {fileID: 8514369317513735598}
   - component: {fileID: 4929203455434867778}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: NavMeshCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1278,7 +1278,7 @@ GameObject:
   - component: {fileID: 1558008815134101282}
   - component: {fileID: 3978331199056000105}
   - component: {fileID: 5918796746324740337}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1361,7 +1361,7 @@ GameObject:
   - component: {fileID: 3257117418077534102}
   - component: {fileID: 6080822433779554644}
   - component: {fileID: 176256052250323757}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pillar (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1446,7 +1446,7 @@ GameObject:
   - component: {fileID: 130546742390438718}
   - component: {fileID: 8583155390186856714}
   - component: {fileID: 7781634396725915851}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

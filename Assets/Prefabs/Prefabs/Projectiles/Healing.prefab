@@ -970,6 +970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 9b323ce6450884d44ae9d0ecd6967def, type: 2}
+  sound: {fileID: 0}
   sender: {fileID: 0}
   target: {fileID: 0}
   targetEnemy: 1
@@ -1014,7 +1015,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0

@@ -32,6 +32,7 @@ public class GameGenerator : MonoBehaviour
     public int maxHealth = 0;
     public int health = 0;
     public float gameTime = 0f;
+    public bool timeStarted = false;
     public bool paused = false;
     [Space]
     public float defaultSpeed = 1f;
@@ -422,7 +423,9 @@ public class GameGenerator : MonoBehaviour
         
         if (!paused)
         {
-            gameTime += Time.deltaTime;
+            if (timeStarted)
+                gameTime += Time.deltaTime;
+            
             if (health > 0)
                 didFinishLoading = true;
         }

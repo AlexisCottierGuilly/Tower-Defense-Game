@@ -15,5 +15,9 @@ MonoBehaviour:
   hitRadius: 1
   impactDamage: 0
   followTarget: 0
+  rotate: 1
+  angleFromGravity: 0
   impactZone: {fileID: 8416028450855969510, guid: 75870a614e1c64f4e96430eaa7402a1e, type: 3}
   skipSameTypeAsSender: 0
+  sound: {fileID: 8300000, guid: 1bd3801deb75fbb4b89942c237a01735, type: 3}
+  volume: 2

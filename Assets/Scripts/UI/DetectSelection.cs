@@ -22,6 +22,7 @@ public enum Tower
 public class DetectSelection : MonoBehaviour
 {
     public GameGenerator gameGenerator;
+    public ShowRangeManager showRangeManager;
 
     [Header("Other")]
     public Camera mainCamera;
@@ -56,6 +57,8 @@ public class DetectSelection : MonoBehaviour
         canPlace = false;
         position = Vector2.zero;
         objectType = ObjectType.None;
+
+        showRangeManager.UnsetRange();
     }
     
     void Start()
@@ -158,7 +161,14 @@ public class DetectSelection : MonoBehaviour
         Color color = Color.green;
 
         if (!canPlace)
+        {
             color = Color.red;
+            showRangeManager.SetRange(placedObject, false);
+        }
+        else
+        {
+            showRangeManager.SetRange(placedObject, true);
+        }
         
         if (placedObject != null) //added by mic not effecient
         {
