@@ -7,4 +7,7 @@ public class VillageData : StructureData
 {
     public int maxHealth;
     public float hitRange;
+
+    [Header("Main Village Only")]
+    public bool towerOnTop = false;
 }

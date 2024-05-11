@@ -130,11 +130,15 @@ public class GameGenerator : MonoBehaviour
         return new Rect(minX, minY, maxX, maxY);
     }
 
-    public bool CanPlace(Vector2 position)
+    public bool CanPlace(Vector2 position, ObjectType type=ObjectType.Tower)
     {
         bool canPlace = true;
         List<Vector2> villageTiles = GetVillageTiles();
         List<Vector2> mainVillageTiles = GetMainVillageTiles();
+
+        if (type == ObjectType.Tower && villageGenerator.mainVillage.GetComponent<VillageBehaviour>().data.towerOnTop)
+            mainVillageTiles = new List<Vector2>();
+
         if (villageTiles.Contains(position) || mainVillageTiles.Contains(position))
             canPlace = false;
         
@@ -151,7 +155,7 @@ public class GameGenerator : MonoBehaviour
         return canPlace;
     }
 
-    public bool PlaceTower(Vector2 position, GameObject tower)
+    public bool PlaceTower(Vector2 position, GameObject tower, Vector3 positionOverride=new Vector3())
     {
         TowerBehaviour behaviour = tower.GetComponent<TowerBehaviour>();
         TowerData data = behaviour.data;
@@ -161,11 +165,18 @@ public class GameGenerator : MonoBehaviour
             GameObject tile = tiles[(int)position.x][(int)position.y];
             GameObject placement = tile.GetComponent<TileBehaviour>().placement;
             tile.GetComponent<TileBehaviour>().structure = tower;
-            tower.transform.position = new Vector3(
-                placement.transform.position.x,
-                placement.transform.position.y + tower.transform.localScale.y / 2f,
-                placement.transform.position.z
-            );
+            
+            if (positionOverride != new Vector3())
+                tower.transform.position = positionOverride;
+            else
+            {
+                tower.transform.position = new Vector3(
+                    placement.transform.position.x,
+                    placement.transform.position.y + tower.transform.localScale.y / 2f,
+                    placement.transform.position.z
+                );
+            }
+
             tower.transform.parent = towerParent.transform;
             behaviour.position = position;
             behaviour.projectileParent = projectileParent;

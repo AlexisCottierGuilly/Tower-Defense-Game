@@ -22,11 +22,11 @@ public class WaveGenerator : MonoBehaviour
 
     }
     
-    public WaveData GetRandomWave(int waveNumber)
+    public WaveData GetRandomWave(int waveNumber, bool log=true)
     {
         System.Random rndSeed = GameManager.instance.generator.waveRandomWithSeed;
 
-        int money = 75 + waveNumber * 15;
+        int money = 100 + (int)Mathf.Round(Mathf.Pow(waveNumber, 1.25f) * 7.5f);
 
         WaveData wave = new WaveData();
         wave.waveParts = new List<WavePart>();
@@ -63,7 +63,8 @@ public class WaveGenerator : MonoBehaviour
             wave.waveParts.Add(wavePart);
         }
 
-        LogWave(wave);
+        if (log)
+            LogWave(wave, waveNumber: waveNumber);
 
         return wave;
     }
@@ -142,9 +143,11 @@ public class WaveGenerator : MonoBehaviour
         return minCost;
     }
 
-    private void LogWave(WaveData wave)
+    private void LogWave(WaveData wave, int waveNumber = -1)
     {
-        string s = "Wave: \n";
+        string waveNumberString = waveNumber == -1 ? "" : " " + waveNumber.ToString();
+        
+        string s = $"Wave{waveNumberString}: \n";
 
         foreach (WavePart part in wave.waveParts)
         {

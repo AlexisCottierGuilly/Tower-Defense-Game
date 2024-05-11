@@ -22,4 +22,7 @@ public class PlayerData
     
     [Header("Unlocked Towers")]
     public List<TowerType> unlockedTowers = new List<TowerType>() { TowerType.Normal };
+
+    [Header("Other")]
+    public TowerType villageTower = TowerType.None;
 }

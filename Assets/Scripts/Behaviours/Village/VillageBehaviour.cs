@@ -6,6 +6,9 @@ public class VillageBehaviour : StructureBehaviour
 {
     public VillageData data;
     public VillageGenerator generator;
+    public GameObject towerSpawn;
+
+    private bool didRemove = false;
     
     // Start is called before the first frame update
     public override void Start()
@@ -59,9 +62,9 @@ public class VillageBehaviour : StructureBehaviour
 
     public void RemoveFromGame()
     {
-        if (gameObject != null)
+        if (!didRemove)
         {
-            // Oui... le gameObject a déjà été détruit une fois.
+            didRemove = true;
             generator.RemoveVillageStructure(gameObject);
         }
     }

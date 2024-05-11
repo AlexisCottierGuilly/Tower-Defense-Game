@@ -34,6 +34,7 @@ public class DetectSelection : MonoBehaviour
     [HideInInspector] public Vector2 position = Vector2.zero;
     [HideInInspector] public ObjectType objectType = ObjectType.None;
     private Vector3 currentRotation = new Vector3(0, 0, 0);
+    private bool overridePosition = false;
 
     public void SetStructure(GameObject structurePrefab, ObjectType objectType = ObjectType.Tower)
     {
@@ -57,6 +58,7 @@ public class DetectSelection : MonoBehaviour
         canPlace = false;
         position = Vector2.zero;
         objectType = ObjectType.None;
+        overridePosition = false;
 
         showRangeManager.UnsetRange();
     }
@@ -93,9 +95,18 @@ public class DetectSelection : MonoBehaviour
                 );
                 newObject.transform.eulerAngles = currentRotation;
 
+                Vector3 positionOverride = new Vector3();
+
+                if (overridePosition)
+                    positionOverride = new Vector3(
+                        placedObject.transform.position.x,
+                        placedObject.transform.position.y,
+                        placedObject.transform.position.z
+                    );
+
                 if (objectType == ObjectType.Tower)
                 {
-                    if (!gameGenerator.PlaceTower(position, newObject))
+                    if (!gameGenerator.PlaceTower(position, newObject, positionOverride: positionOverride))
                         Destroy(newObject);
                 }
                 else
@@ -146,9 +157,32 @@ public class DetectSelection : MonoBehaviour
                 worldPos.y += placedObject.transform.localScale.y / 2f;
                 placedObject.transform.position = worldPos;
             }
+
+            if (objectType == ObjectType.Tower)
+            {
+                VillageBehaviour village = gameGenerator.villageGenerator.mainVillage.GetComponent<VillageBehaviour>();
+                if (position == village.position && village.data.towerOnTop)
+                {
+                    if (village.towerSpawn == null)
+                        Debug.LogError("Tower spawn not found on main village");
+                    
+                    // position the tower on the mainVillage tower spawn
+                    placedObject.transform.position = new Vector3(
+                        village.towerSpawn.transform.position.x,
+                        village.towerSpawn.transform.position.y + placedObject.transform.localScale.y / 2f,
+                        village.towerSpawn.transform.position.z
+                    );
+
+                    overridePosition = true;
+                }
+                else
+                {
+                    overridePosition = false;
+                }
+            }
         }
 
-        canPlace = gameGenerator.CanPlace(position);
+        canPlace = gameGenerator.CanPlace(position, type: objectType);
         int cost = -1;
         if (objectType == ObjectType.Tower)
             cost = placedObjectPrefab.GetComponent<TowerBehaviour>().data.cost;

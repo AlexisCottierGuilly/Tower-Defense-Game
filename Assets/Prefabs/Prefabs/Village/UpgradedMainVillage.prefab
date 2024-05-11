@@ -621,6 +621,7 @@ Transform:
   - {fileID: 8257126559636747574}
   - {fileID: 2057147268599607746}
   - {fileID: 3988986227941274431}
+  - {fileID: 7960530719535564670}
   m_Father: {fileID: 1372143204177027672}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1318826244757169631
@@ -737,8 +738,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   position: {x: 0, y: 0}
-  data: {fileID: 11400000, guid: dbe6234869602f3448120c7610361c49, type: 2}
+  data: {fileID: 11400000, guid: bc65e6dca1b515e49902af73e0b6fb48, type: 2}
   generator: {fileID: 0}
+  towerSpawn: {fileID: 8858777696491655713}
 --- !u!114 &2561671811617057767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3534,3 +3536,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8858777696491655713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7960530719535564670}
+  m_Layer: 3
+  m_Name: TowerSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7960530719535564670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858777696491655713}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.725, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1415045085939243453}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -74,6 +74,31 @@ public class VillageGenerator : MonoBehaviour
         behaviour.generator = this;
         highestPointTile.GetComponent<TileBehaviour>().structure = mainVillage;
 
+        if (GameManager.instance.player.villageTower != TowerType.None)
+        {
+            if (behaviour.towerSpawn == null)
+                Debug.LogError("Tower spawn not found on main village");
+            
+            // instantiate a tower on the behaviour.towerSpawn position + 1/2 of height
+            GameObject towerPrefab = GameManager.instance.GetTowerPrefab(GameManager.instance.player.villageTower);
+            GameObject tower = Instantiate(
+                towerPrefab,
+                new Vector3(
+                    behaviour.towerSpawn.transform.position.x,
+                    behaviour.towerSpawn.transform.position.y + towerPrefab.transform.localScale.y / 2f,
+                    behaviour.towerSpawn.transform.position.z
+                ),
+                Quaternion.identity
+            );
+            TowerBehaviour towerBehaviour = tower.GetComponent<TowerBehaviour>();
+
+            towerBehaviour.position = highestPointPosition;
+            towerBehaviour.projectileParent = gameGenerator.projectileParent;
+
+            tower.transform.parent = gameGenerator.towerParent.transform;
+            gameGenerator.towers.Add(tower);
+        }
+
         maxHealth += behaviour.data.maxHealth;
 
         float cameraHeight = (mainVillage.transform.position.y + mainVillage.GetComponent<MeshRenderer>().bounds.size.y + gameGenerator.terrainGenerator.stepHeight * 10f); // *2f
@@ -208,22 +233,6 @@ public class VillageGenerator : MonoBehaviour
         Destroy(structure);
 
         gameGenerator.didModifyVillage = true;
-    }
-
-    public int GetMaximumLives()
-    {
-        int total = 0;
-
-        if (mainVillage != null)
-            total += (int)mainVillage.GetComponent<VillageBehaviour>().data.maxHealth;
-        
-        foreach (GameObject house in villageBuildings)
-        {
-            if (house != null)
-                total += (int)house.GetComponent<VillageBehaviour>().data.maxHealth;
-        }
-
-        return total;
     }
 
     public int GetRemainingLives()

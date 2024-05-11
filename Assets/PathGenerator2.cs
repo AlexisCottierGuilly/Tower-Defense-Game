@@ -145,6 +145,16 @@ public class PathGenerator2 : MonoBehaviour
         List<Vector2> ends = GeneratePathEnds();
         paths = new List<List<Vector2>>();
 
+        // TEMPORARY: NO PATHS GENERATED
+        foreach (Vector2 end in ends)
+        {
+            List<Vector2> path = new List<Vector2>();
+            path.Add(end);
+            paths.Add(path);
+        }
+
+        return;
+
         foreach (Vector2 end in ends)
         {
             Vector2 start = gameGenerator.villageGenerator.mainVillage.GetComponent<VillageBehaviour>().position;
