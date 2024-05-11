@@ -12039,7 +12039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameGenerator: {fileID: 1951690851}
-  mainVillagePrefab: {fileID: 1318826244757169631, guid: 81591eb5b4afac743aa13c8ecc3d7ec0, type: 3}
+  mainVillagePrefab: {fileID: 1318826244757169631, guid: a6aa67cdbf8238847bdb3e9054029a16, type: 3}
   healthTextPrefab: {fileID: 8504813478896472654, guid: 3611a85ff1b8e5a4c9912ecae3209bd4, type: 3}
   camera: {fileID: 549421225}
   villagePrefabs:
