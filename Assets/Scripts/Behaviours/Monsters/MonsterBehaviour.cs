@@ -7,6 +7,7 @@ public class MonsterBehaviour : MonoBehaviour
 {
     public MonsterData data;
     public int health;
+    public int maxHealthOverride = -1;
     public MonsterHealthUpdater healthScript;
     public WaveManager waveManager;
     public GameGenerator gameGenerator = null;
@@ -43,7 +44,10 @@ public class MonsterBehaviour : MonoBehaviour
         SetSpeed(data.speed);
 
         agent.stoppingDistance = 4f;
-        health = data.maxHealth;
+        if (maxHealthOverride != -1)
+            health = maxHealthOverride;
+        else
+            health = data.maxHealth;
 
         InitializeTimedSpawns();
         UpdateObjective();
@@ -58,6 +62,12 @@ public class MonsterBehaviour : MonoBehaviour
         finalSpeed *= temporarySpeedModifier;
 
         agent.speed = finalSpeed * 3.5f;
+    }
+
+    public void OverrideMaxHealth(int maxHealth)
+    {
+        maxHealthOverride = maxHealth;
+        health = (int)((float)health * ((float)maxHealthOverride / (float)data.maxHealth));
     }
 
     public void AddTemporaryModifier(float modifier)
@@ -197,13 +207,26 @@ public class MonsterBehaviour : MonoBehaviour
         }
     }
 
+    public void CapHealthToMax()
+    {
+        if (maxHealthOverride != -1)
+        {
+            if (health > maxHealthOverride)
+                health = maxHealthOverride;
+        }
+        else
+        {
+            if (health > data.maxHealth)
+                health = data.maxHealth;
+        }
+    }
+
     public void ProjectileHit(GameObject projectile)
     {
         health -= projectile.GetComponent<ProjectileBehaviour>().GetDamage();
         CheckDeath();
 
-        if (health > data.maxHealth)
-            health = data.maxHealth;
+        CapHealthToMax();
     }
 
     public void ZoneHit(GameObject zone)
@@ -213,8 +236,7 @@ public class MonsterBehaviour : MonoBehaviour
         health -= damage;
         CheckDeath();
 
-        if (health > data.maxHealth)
-            health = data.maxHealth;
+        CapHealthToMax();
     }
 
     void CheckDeath()

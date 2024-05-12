@@ -40,32 +40,40 @@ public class TowerPrefab
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+    
+    [Header("General")]
     public int gameSeed;
     public int maxGameSeed = 9_999_999;
     public Vector2 mapSize;
     public MapDifficultyTypes mapDifficulty = MapDifficultyTypes.Moyen;
     public GameState gameState = GameState.Menu;
     public GameState previousScene;
+
+    [Header("Settings")]
     public int fov = 70;
     public float volume = 0.5f;
-    [Space]
+
+    [Header("Difficulties")]
     public List<DifficultyModifier> difficultyModifiers = new List<DifficultyModifier>();
-    [Space]
+
+    [Header("Player Stats")]
     public int initialGold = 150;
     public int gold = 0;
-    [Space]
+
+    [Header("Data")]
     public SaveData save;
     public PlayerData player;
     public List<AchievementData> achievements;
-    public List<AchievementProgress> achievementProgress;
-    [Space]
-    public GameGenerator generator = null;
-    [Space]
+    [HideInInspector] public List<AchievementProgress> achievementProgress;
+
+    [Header("Audio")]
     public AudioClip clickSound;
     public AudioSource audioSource;
 
     [Header("Game Prefabs")]
     public List<TowerPrefab> towerPrefabs = new List<TowerPrefab>();
+
+    [HideInInspector] public GameGenerator generator = null;
 
     /* 
     Best seeds

@@ -179,6 +179,7 @@ public class TowerSelectionManager : MonoBehaviour
             gameGenerator.notificationManager.ShowNotification("Bro tu viens de te faire scam.");
         }
 
+        showRangeManager.UnsetRange();
         Unselect();
     }
 

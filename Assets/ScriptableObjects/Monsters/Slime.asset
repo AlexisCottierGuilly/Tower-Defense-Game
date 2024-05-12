@@ -15,11 +15,11 @@ MonoBehaviour:
   name: Slime
   spawnMessage: 
   isBoss: 0
-  maxHealth: 250
+  maxHealth: 150
   damage: 20
   attackSpeed: 0.75
   speed: 0.85
-  gold: 10
+  gold: 5
   crystals: 0
   canShoot: 0
   range: 0

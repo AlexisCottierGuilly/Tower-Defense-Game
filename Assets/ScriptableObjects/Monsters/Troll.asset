@@ -19,7 +19,7 @@ MonoBehaviour:
   damage: 50
   attackSpeed: 0.5
   speed: 0.5
-  gold: 15
+  gold: 10
   crystals: 0
   canShoot: 0
   range: 0

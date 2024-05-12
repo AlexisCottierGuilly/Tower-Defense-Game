@@ -36,6 +36,9 @@ public class WaveManager : MonoBehaviour
     public bool autoStart = false;
     [Space]
     public bool infiniteMode = false;
+    [Space]
+    public float hpMultiplier = 1f;
+    public int hpMultiplierStartWave = 10;
 
     [Header("Parents")]
     public GameObject monsterParent;
@@ -62,6 +65,7 @@ public class WaveManager : MonoBehaviour
     
     private bool playedWinWaveSound = true;
     private bool didCallGameFinished = false;
+    private bool didCallWaveFinished = false;
     
     void Start()
     {
@@ -159,7 +163,13 @@ public class WaveManager : MonoBehaviour
             waveFinished = false;
             isSpawningMonsters = true;
             playedWinWaveSound = false;
+            didCallWaveFinished = false;
             startWaveSound.Play();
+
+            if (wave >= hpMultiplierStartWave)
+            {
+                hpMultiplier = Mathf.Pow(1.1f, (float)(wave + 1 - hpMultiplierStartWave));
+            }
             
             wave++;
             WaveDidStart();
@@ -196,6 +206,8 @@ public class WaveManager : MonoBehaviour
         GameObject monster = Instantiate(monsterPrefab);
         MonsterBehaviour behaviour = monster.GetComponent<MonsterBehaviour>();
         monster.transform.localScale = behaviour.finalScale;
+
+        behaviour.OverrideMaxHealth((int)((float)behaviour.data.maxHealth * hpMultiplier));
 
         if (behaviour.data.spawnMessage != "" && !hideBossBar)
         {
@@ -305,6 +317,28 @@ public class WaveManager : MonoBehaviour
         UpdateUsedPaths();
     }
 
+    public void WaveDidFinish()
+    {
+        //int villageBonus = 5 * gameGenerator.villageGenerator.villageBuildings.Count;
+        // use an atan function to get a minimum of 5 per village and a max of 50 per village
+        
+        float minValue = 5f;
+        float maxValue = 50f;
+
+        float K = (maxValue * 2f) - (minValue * 2f);
+        float slopeSpeed = K / 2000f;  // lowering 2000 will make the price go up faster
+        float initialValue = minValue - K / 2f;
+
+        float invidualBonus = K / (1f + Mathf.Pow(2f, -slopeSpeed * (float)(wave - 1))) + initialValue;
+        Debug.Log(invidualBonus);
+
+        int villageBonus = (int)(invidualBonus * (float)gameGenerator.villageGenerator.villageBuildings.Count);
+
+        GameManager.instance.gold += villageBonus;
+
+        gameGenerator.notificationManager.ShowNotification($"+{villageBonus} or | Bonus du village");
+    }
+
     public void LoadFogColor()
     {
         Color startingColor = Color.green;
@@ -346,6 +380,12 @@ public class WaveManager : MonoBehaviour
         CleanMonsterList();
         waveFinished = WaveIsFinished();
 
+        if (waveFinished && !didCallWaveFinished && wave > 0)
+        {
+            WaveDidFinish();
+            didCallWaveFinished = true;
+        }
+        
         if (waveFinished && !playedWinWaveSound)
         {
             if (wave <= waves.Count)

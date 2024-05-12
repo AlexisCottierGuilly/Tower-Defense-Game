@@ -11,7 +11,9 @@ public class MonsterHealthUpdater : MonoBehaviour
 
     void Update()
     {
-        text.text = $"{monster.health} / {monster.data.maxHealth}";
+        int maxHealth = monster.maxHealthOverride != -1 ? monster.maxHealthOverride : monster.data.maxHealth;
+
+        text.text = $"{monster.health} / {maxHealth}";
         text.transform.LookAt(camera.transform);
 
         float deltaX = gameObject.transform.position.x - camera.transform.position.x;

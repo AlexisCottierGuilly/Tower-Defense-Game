@@ -440,7 +440,7 @@ MonoBehaviour:
     addPathReccurence: 2
     crystals: 10
     waves: 20
-  initialGold: 200
+  initialGold: 10000
   gold: 0
   save: {fileID: 11400000, guid: 8822c229f31678b43ae17bb7369bc6f9, type: 2}
   player:
@@ -458,6 +458,7 @@ MonoBehaviour:
       winsInHard: 0
       winWithAllVillage: 0
     unlockedTowers: 01000000
+    villageTower: 0
   achievements:
   - {fileID: 11400000, guid: 42ccca5ea18752b4199ae39ea47a6aea, type: 2}
   - {fileID: 11400000, guid: 909ca666317a13245bb74fce56511334, type: 2}
