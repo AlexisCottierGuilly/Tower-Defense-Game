@@ -10,13 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9e6a87393d3a0d46a2a68f3f9f6b170, type: 3}
-  m_Name: Wave1
+  m_Name: Wave 9
   m_EditorClassIdentifier: 
   waveParts:
-  - monster: 0
-    amount: 5
+  - monster: 4
+    amount: 10
     interval: 2
+  - monster: 6
+    amount: 10
+    interval: 1
   - monster: 1
+    amount: 30
+    interval: 3
+  - monster: 0
+    amount: 20
+    interval: 1
+  - monster: 7
     amount: 2
-    interval: 5
+    interval: 1
   hideBossBar: 0

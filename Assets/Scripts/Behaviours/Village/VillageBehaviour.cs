@@ -33,6 +33,9 @@ public class VillageBehaviour : StructureBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (damage > 0)
+            GameManager.instance.generator.lostLives +=damage;
+        
         health -= damage;
 
         if (health > data.maxHealth)

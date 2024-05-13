@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Troll qui Troll
   spawnMessage: Imagine troller ?
   isBoss: 1
-  maxHealth: 2500
+  maxHealth: 4000
   damage: 150
   attackSpeed: 0.5
   speed: 0.5

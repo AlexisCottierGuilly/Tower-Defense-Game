@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13110483, g: 0.09076635, b: 0.13997692, a: 1}
+  m_IndirectSpecularColor: {r: 0.13105246, g: 0.09076703, b: 0.14026171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9261,6 +9261,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3253e00ae3ee69746814c5aaa3b596b2, type: 2}
   - {fileID: 11400000, guid: a558a6328756f254b805fce928e6d4ec, type: 2}
   - {fileID: 11400000, guid: 8a8470b447e49c546a3a8da637798882, type: 2}
+  - {fileID: 11400000, guid: b2a903bb3e3dca84e952b40b97723b59, type: 2}
+  - {fileID: 11400000, guid: 6fc5fdc75c279614491422d2d395bde1, type: 2}
+  - {fileID: 11400000, guid: a42ed8309d592fc4381a46170c049a11, type: 2}
+  - {fileID: 11400000, guid: ccd89e7e7354882419e57128b1e4f0a0, type: 2}
   waves:
   - {fileID: 11400000, guid: 7f9116e445769f14db028f20dbf7c74e, type: 2}
   - {fileID: 11400000, guid: 29e3fce03d7334f4eaf90e47755ef4c0, type: 2}
@@ -12627,6 +12631,7 @@ MonoBehaviour:
   decorations: []
   didModifyVillage: 0
   didFinishLoading: 0
+  lostLives: 0
 --- !u!4 &1951690852
 Transform:
   m_ObjectHideFlags: 0

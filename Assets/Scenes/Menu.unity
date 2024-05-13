@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13167956, g: 0.090852536, b: 0.139786, a: 1}
+  m_IndirectSpecularColor: {r: 0.1317214, g: 0.090852536, b: 0.1401858, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -430,16 +430,25 @@ MonoBehaviour:
     addPathReccurence: 4
     crystals: 3
     waves: 10
+    canLoseLives: 1
   - difficulty: 1
     initialUsedPaths: 1
     addPathReccurence: 3
     crystals: 5
     waves: 15
+    canLoseLives: 1
   - difficulty: 2
     initialUsedPaths: 2
     addPathReccurence: 2
     crystals: 10
     waves: 20
+    canLoseLives: 1
+  - difficulty: 3
+    initialUsedPaths: 1
+    addPathReccurence: 4
+    crystals: 3
+    waves: 10
+    canLoseLives: 0
   initialGold: 10000
   gold: 0
   save: {fileID: 11400000, guid: 8822c229f31678b43ae17bb7369bc6f9, type: 2}
@@ -470,7 +479,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 11bd7c741f9e9a14fbcde8d2bdc2df83, type: 2}
   - {fileID: 11400000, guid: a0c3123d681e9654f8627fc6447b0ba1, type: 2}
   achievementProgress: []
-  generator: {fileID: 0}
   clickSound: {fileID: 8300000, guid: 7adc718a1ef3fd24c920157cfcf0af2f, type: 3}
   audioSource: {fileID: 1622164635}
   towerPrefabs:
@@ -492,6 +500,7 @@ MonoBehaviour:
   - tower: 3
     data: {fileID: 11400000, guid: 223e05a536cd95d4ba0908dc8507c60b, type: 2}
     icon: {fileID: 2800000, guid: e0a8342123d5a484d916bee7a833cbc4, type: 3}
+  generator: {fileID: 0}
 --- !u!4 &268031490
 Transform:
   m_ObjectHideFlags: 0

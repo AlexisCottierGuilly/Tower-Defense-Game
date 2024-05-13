@@ -7,7 +7,8 @@ public enum MapDifficultyTypes
 {
     Facile,
     Moyen,
-    Difficile
+    Difficile,
+    Hardcore
 }
 
 public class MapDifficultyHandler : MonoBehaviour
@@ -32,6 +33,9 @@ public class MapDifficultyHandler : MonoBehaviour
                 mapDifficulty = MapDifficultyTypes.Difficile;
                 break;
             case MapDifficultyTypes.Difficile:
+                mapDifficulty = MapDifficultyTypes.Hardcore;
+                break;
+            case MapDifficultyTypes.Hardcore:
                 mapDifficulty = MapDifficultyTypes.Facile;
                 break;
         }

@@ -330,7 +330,6 @@ public class WaveManager : MonoBehaviour
         float initialValue = minValue - K / 2f;
 
         float invidualBonus = K / (1f + Mathf.Pow(2f, -slopeSpeed * (float)(wave - 1))) + initialValue;
-        Debug.Log(invidualBonus);
 
         int villageBonus = (int)(invidualBonus * (float)gameGenerator.villageGenerator.villageBuildings.Count);
 

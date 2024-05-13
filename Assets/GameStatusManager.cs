@@ -16,7 +16,12 @@ public class GameStatusManager : MonoBehaviour
     
     void LateUpdate()
     {
-        if (gameGenerator.didFinishLoading && (gameGenerator.health <= 0 || gameGenerator.villageGenerator.mainVillage == null))
+        DifficultyModifier difficulty = GameManager.instance.GetDifficultyModifier();
+
+        if (gameGenerator.didFinishLoading &&
+            (gameGenerator.health <= 0 ||
+            gameGenerator.villageGenerator.mainVillage == null ||
+            (gameGenerator.lostLives > 0 && !difficulty.canLoseLives)))
         {
             defeat.SetActive(true);
             gameGenerator.PauseGame();

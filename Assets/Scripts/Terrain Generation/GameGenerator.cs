@@ -62,6 +62,7 @@ public class GameGenerator : MonoBehaviour
     
     [HideInInspector] public bool didModifyVillage = false;
     [HideInInspector] public bool didFinishLoading = false;
+    [HideInInspector] public int lostLives = 0;
     
     // Start is called before the first frame update
     void Start()
@@ -148,7 +149,7 @@ public class GameGenerator : MonoBehaviour
         
         foreach (GameObject tower in towers)
         {
-            if (tower.GetComponent<TowerBehaviour>().position == position)
+            if (tower != null && tower.GetComponent<TowerBehaviour>().position == position)
                 canPlace = false;
         }
         
