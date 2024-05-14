@@ -25,4 +25,5 @@ public class PlayerData
 
     [Header("Other")]
     public TowerType villageTower = TowerType.None;
+    public List<TowerType> villageTowers = new List<TowerType>();
 }

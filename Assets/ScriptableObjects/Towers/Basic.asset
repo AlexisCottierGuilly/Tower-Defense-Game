@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Tour de Base
   cost: 50
+  shopCost: 25
   maxRange: 20
   attackSpeed: 1
-  attackStrength: 1
   projectile: {fileID: 6195515186249223512, guid: 18b7681244ce53b4dace7071ffaba149, type: 3}
+  targetEnemy: 1
+  targetVillage: 0
   prefab: {fileID: 8235465559784961698, guid: f1f73dab64543c34eabf7d1000252afd, type: 3}

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Tour de Vies
   cost: 150
+  shopCost: 75
   maxRange: 20
   attackSpeed: 3
   projectile: {fileID: 9201598211181502813, guid: 7e3b72993936b5c409ea3c774fd422db, type: 3}

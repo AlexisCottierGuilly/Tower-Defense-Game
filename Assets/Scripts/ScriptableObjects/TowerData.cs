@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "TowerData", menuName = "Structures/TowerData")]
 public class TowerData : StructureData
 {
+    public int shopCost;
+    [Space]
     public float maxRange;
     public float attackSpeed;
     public GameObject projectile;

@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Achievements.unity
     guid: 991d794729a1e8a43b6bdc3b46f0313b
+  - enabled: 1
+    path: Assets/Scenes/Shop.unity
+    guid: 7554aa71d1fba594e9921e1ffd6b4cb3
   m_configObjects: {}

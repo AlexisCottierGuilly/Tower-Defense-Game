@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Tour Paralysante
   cost: 250
+  shopCost: 125
   maxRange: 15
   attackSpeed: 3
   projectile: {fileID: 9201598211181502813, guid: 259066234669b0741a682ac1879c4a51, type: 3}

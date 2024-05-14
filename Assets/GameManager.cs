@@ -13,7 +13,8 @@ public enum GameState
     Credits,
     PreviousScene,
     Tutoriel,
-    Achievements
+    Achievements,
+    Shop
 }
 
 

@@ -8,11 +8,14 @@ public class CameraManager : MonoBehaviour
     public float turnSpeed = 8f;
     public float minHeight = 10f;
     public float maxHeight = 85f;
+    public bool hardWalls = true;
     public GameGenerator gameGenerator;
     public Rigidbody rb;
 
     private float initialHeight;
     private float additionalHeight = 0f;
+
+    private float lastRequiredHeight = -1f;
     
     void Start()
     {
@@ -94,13 +97,55 @@ public class CameraManager : MonoBehaviour
         // space : go up
         // shift : go down
 
+        bool goingUp = false;
+
         if (Input.GetKey(KeyCode.Space))
+        {
             additionalHeight += moveSpeed / 6f * localDeltaTime;
+            goingUp = true;
+        }
         else if (Input.GetKey(KeyCode.LeftShift))
             additionalHeight -= moveSpeed / 6f * localDeltaTime;
 
         additionalHeight = Mathf.Min(maxHeight - initialHeight, additionalHeight);
-        additionalHeight = Mathf.Max(minHeight - initialHeight, additionalHeight);
+        if (!hardWalls)
+            additionalHeight = Mathf.Max(minHeight - initialHeight, additionalHeight);
+
+
+        if (!goingUp && hardWalls)
+        {
+            float requiredHeight = -1f;
+            float detectionRange = 0.5f;
+            
+            Collider[] colliders = Physics.OverlapSphere(transform.position, detectionRange);
+            foreach (Collider collider in colliders)
+            {
+                if (collider.tag == "Tile")
+                {
+                    GameObject tile = collider.gameObject;
+                    GameObject placement = tile.GetComponent<TileBehaviour>().placement;
+                    requiredHeight = placement.transform.position.y;
+                    break;
+                }
+            }
+
+            if (requiredHeight != -1f)
+            {
+                requiredHeight += detectionRange * 0.75f;
+                additionalHeight = requiredHeight - initialHeight;
+                lastRequiredHeight = requiredHeight;
+            }
+            else
+            {
+                /*if (lastRequiredHeight != -1f)
+                {
+                    additionalHeight = lastRequiredHeight - initialHeight;
+                }
+
+                lastRequiredHeight = -1f;*/
+            }
+        }
+
 
         // reset the camera height (changed with AddRelativeForce)
         transform.position = new Vector3(
