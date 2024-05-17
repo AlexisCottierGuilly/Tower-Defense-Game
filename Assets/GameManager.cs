@@ -14,7 +14,8 @@ public enum GameState
     PreviousScene,
     Tutoriel,
     Achievements,
-    Shop
+    Shop,
+    Trailer
 }
 
 
