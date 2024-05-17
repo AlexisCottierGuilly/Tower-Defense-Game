@@ -7,6 +7,7 @@ public class ShakeManager : MonoBehaviour
 {
     public string animationName = "Entrance";
     public Animator shakeAnimator;
+    public TrailerManager trailerManager;
 
     private Animator animator;
     private bool didTrigger = false;
@@ -14,6 +15,7 @@ public class ShakeManager : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        trailerManager.OnPartLoaded.AddListener(OnPartLoaded);
     }
 
     void Update()
@@ -25,5 +27,10 @@ public class ShakeManager : MonoBehaviour
             shakeAnimator.SetTrigger("Shake");
             didTrigger = true;
         }
+    }
+
+    private void OnPartLoaded()
+    {
+        didTrigger = false;
     }
 }
