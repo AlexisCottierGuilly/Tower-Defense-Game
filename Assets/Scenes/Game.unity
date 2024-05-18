@@ -3710,6 +3710,7 @@ MonoBehaviour:
   minHeight: 10
   maxHeight: 85
   hardWalls: 1
+  alwaysUseDeltaTime: 1
   gameGenerator: {fileID: 1951690851}
   rb: {fileID: 549421230}
 --- !u!54 &549421230
@@ -4137,6 +4138,7 @@ MonoBehaviour:
   quitKey: 27
   startWaveKey: 13
   toggleCinematicKey: 112
+  hideMouseKey: 109
   UIManager: {fileID: 95165627}
   waveManager: {fileID: 1348605624}
 --- !u!1 &679385358
@@ -5761,7 +5763,6 @@ MonoBehaviour:
   button: {fileID: 887626282}
   normalImage: {fileID: 848040847}
   fastImage: {fileID: 1917794206}
-  speedMultiplier: 2.5
   generator: {fileID: 1951690851}
 --- !u!114 &887626282
 MonoBehaviour:
@@ -12656,7 +12657,6 @@ MonoBehaviour:
   gameTime: 0
   timeStarted: 0
   paused: 0
-  defaultSpeed: 1
   seed: -1
   monsterPrefabs:
   - monster: 0

@@ -9,6 +9,8 @@ public class CameraManager : MonoBehaviour
     public float minHeight = 10f;
     public float maxHeight = 85f;
     public bool hardWalls = true;
+    public bool alwaysUseDeltaTime = false;
+
     public GameGenerator gameGenerator;
     public Rigidbody rb;
 
@@ -33,7 +35,8 @@ public class CameraManager : MonoBehaviour
     {
         GetComponent<Camera>().fieldOfView = GameManager.instance.fov;
         
-        float localDeltaTime = Time.unscaledDeltaTime;
+        float localDeltaTime = alwaysUseDeltaTime ? Time.deltaTime : Time.unscaledDeltaTime;
+
         // if (localDeltaTime == 0f)
         //     localDeltaTime = Time.unscaledDeltaTime;
         

@@ -562,7 +562,7 @@ MonoBehaviour:
   fov: 70
   volume: 0.5
   cinematicMode: 0
-  defaultSpeed: 1
+  defaultSpeed: 0.5
   fastSpeed: 3
   difficultyModifiers:
   - difficulty: 0
