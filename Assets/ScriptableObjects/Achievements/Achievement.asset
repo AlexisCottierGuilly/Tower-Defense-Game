@@ -15,8 +15,15 @@ MonoBehaviour:
   name: Achievements
   description: Regarder les achievements
   mesureUnit: 
+  unknown: 0
+  hidden: 1
   requirements:
     shotsOnDecorations: 0
     timesOpeningCredits: 0
     timesOpeningAchievements: 1
     timeWaitedInTutorial: 0
+    openedBoxes: 0
+    winsInEasy: 0
+    winsInMedium: 0
+    winsInHard: 0
+    winWithAllVillage: 0

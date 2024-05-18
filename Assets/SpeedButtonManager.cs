@@ -8,7 +8,6 @@ public class SpeedButtonManager : MonoBehaviour
     public Button button;
     public Image normalImage;
     public Image fastImage;
-    public float speedMultiplier = 1.5f;
     [Space]
     public GameGenerator generator;
 
@@ -19,15 +18,13 @@ public class SpeedButtonManager : MonoBehaviour
 
     public void DidClick()
     {
-        if (Time.timeScale == 1f)
+        if (Time.timeScale == GameManager.instance.defaultSpeed)
         {
-            Time.timeScale = speedMultiplier;
-            generator.defaultSpeed = speedMultiplier;
+            Time.timeScale = GameManager.instance.fastSpeed;
         }
         else if (Time.timeScale != 0f)
         {
-            Time.timeScale = 1f;
-            generator.defaultSpeed = 1f;
+            Time.timeScale = GameManager.instance.defaultSpeed;
         }
 
         UpdateGraphics();
@@ -35,7 +32,7 @@ public class SpeedButtonManager : MonoBehaviour
     
     void UpdateGraphics()
     {
-        if (Time.timeScale == 1f)
+        if (Time.timeScale == GameManager.instance.defaultSpeed)
         {
             normalImage.color = new Color(normalImage.color.r, normalImage.color.g, normalImage.color.b, 200);
             fastImage.color = new Color(fastImage.color.r, fastImage.color.g, fastImage.color.b, 0);

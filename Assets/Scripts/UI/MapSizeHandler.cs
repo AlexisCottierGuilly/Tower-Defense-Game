@@ -92,8 +92,6 @@ public class MapSizeHandler : MonoBehaviour
         UpdateText();
         GameManager.instance.mapSize = size;
 
-        Debug.Log("Map size : " + mapSize.ToString() + " " + size.ToString());
-
         /*switch (mapSize)
         {
             case MapSizeTypes.Petit:

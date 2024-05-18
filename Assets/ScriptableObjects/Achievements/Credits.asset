@@ -15,7 +15,15 @@ MonoBehaviour:
   name: "Beaucoup de cr\xE9dits"
   description: "Aller 100 fois dans les cr\xE9dits"
   mesureUnit: fois
+  unknown: 1
+  hidden: 0
   requirements:
     shotsOnDecorations: 0
     timesOpeningCredits: 100
+    timesOpeningAchievements: 0
     timeWaitedInTutorial: 0
+    openedBoxes: 0
+    winsInEasy: 0
+    winsInMedium: 0
+    winsInHard: 0
+    winWithAllVillage: 0

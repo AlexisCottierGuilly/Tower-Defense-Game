@@ -15,7 +15,15 @@ MonoBehaviour:
   name: Attendre pour apprendre
   description: Attendre 5 minutes dans le tutoriel.
   mesureUnit: s
+  unknown: 1
+  hidden: 0
   requirements:
     shotsOnDecorations: 0
     timesOpeningCredits: 0
+    timesOpeningAchievements: 0
     timeWaitedInTutorial: 300
+    openedBoxes: 0
+    winsInEasy: 0
+    winsInMedium: 0
+    winsInHard: 0
+    winWithAllVillage: 0

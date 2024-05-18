@@ -55,6 +55,7 @@ public class WaveManager : MonoBehaviour
     public GameObject bossHealthBar;
     public UnityEvent gameFinished;
     public GameObject camera;
+    public Material spawnTileMaterial;
 
     [Space]
     public bool isSpawningMonsters = false;
@@ -124,6 +125,18 @@ public class WaveManager : MonoBehaviour
         {
             gameGenerator.notificationManager.ShowNotification($"{pathsCountDifference} nouveau chemin est apparu !");
         
+        }
+
+        foreach (List<Vector2> path in usedPaths)
+        {
+            foreach (Vector2 tilePosition in path)
+            {
+                GameObject tile = gameGenerator.tiles[(int)tilePosition.x][(int)tilePosition.y];
+                Material[] mats = tile.GetComponent<Renderer>().materials;
+                mats[1] = spawnTileMaterial;
+
+                tile.GetComponent<Renderer>().materials = mats;
+            }
         }
     }
     

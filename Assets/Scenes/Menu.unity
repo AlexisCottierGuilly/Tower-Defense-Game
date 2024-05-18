@@ -558,8 +558,12 @@ MonoBehaviour:
   mapDifficulty: 0
   gameState: 0
   previousScene: 0
+  hideMouse: 1
   fov: 70
   volume: 0.5
+  cinematicMode: 0
+  defaultSpeed: 1
+  fastSpeed: 3
   difficultyModifiers:
   - difficulty: 0
     initialUsedPaths: 1

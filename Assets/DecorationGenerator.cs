@@ -49,7 +49,12 @@ public class DecorationGenerator : MonoBehaviour
         {
             foreach (GameObject tile in row)
             {
-                if (villagePositions.Contains(tile.GetComponent<TileBehaviour>().position))
+                // if is a village tile or a border (1 wide), skip
+                Vector2 position = tile.GetComponent<TileBehaviour>().position;
+                Vector2 size = gameGenerator.terrainGenerator.size;
+                bool border = (position.x == 0 || position.x == size.x - 1 || position.y == 0 || position.y == size.y - 1);
+                
+                if (villagePositions.Contains(position) || border)
                     continue;
 
                 if (tile.GetComponent<TileBehaviour>().type != TileType.Path && ShouldSpawnDecoration())

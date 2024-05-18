@@ -34,8 +34,6 @@ public class GameGenerator : MonoBehaviour
     public float gameTime = 0f;
     public bool timeStarted = false;
     public bool paused = false;
-    [Space]
-    public float defaultSpeed = 1f;
     
     [Header("Generation Settings")]
     public long seed = -1;
@@ -106,7 +104,7 @@ public class GameGenerator : MonoBehaviour
             0f
         );
 
-        Time.timeScale = defaultSpeed;
+        Time.timeScale = GameManager.instance.defaultSpeed;
     }
 
     public Rect GetBounds()
@@ -123,10 +121,10 @@ public class GameGenerator : MonoBehaviour
         float xTileSize = (5f / 3f) * terrainGenerator.tileSize;
         float yTileSize = Mathf.Sqrt(2) * terrainGenerator.tileSize;
 
-        float minX = xTileSize / 4f;
-        float minY = 0f;
-        float maxX = (terrainGenerator.size.x + 0f) * xTileSize;
-        float maxY = (terrainGenerator.size.y + 1f / 3f) * yTileSize;
+        float minX = xTileSize / 4f + xTileSize;
+        float minY = 0f + yTileSize;
+        float maxX = (terrainGenerator.size.x + 0f) * xTileSize - xTileSize * 2.5f;
+        float maxY = (terrainGenerator.size.y + 1f / 3f) * yTileSize - yTileSize * 2f;
 
         return new Rect(minX, minY, maxX, maxY);
     }
@@ -392,7 +390,7 @@ public class GameGenerator : MonoBehaviour
 
     public void ResumeGame()
     {
-        Time.timeScale = defaultSpeed;
+        Time.timeScale = GameManager.instance.defaultSpeed;
         paused = false;
     }
 

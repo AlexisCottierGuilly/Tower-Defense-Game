@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13105246, g: 0.09076703, b: 0.14026171, a: 1}
+  m_IndirectSpecularColor: {r: 0.13110483, g: 0.09076635, b: 0.13997692, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3709,6 +3709,7 @@ MonoBehaviour:
   turnSpeed: 15
   minHeight: 10
   maxHeight: 85
+  hardWalls: 1
   gameGenerator: {fileID: 1951690851}
   rb: {fileID: 549421230}
 --- !u!54 &549421230
@@ -4088,6 +4089,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599485551}
   m_CullTransparentMesh: 1
+--- !u!1 &613429027
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 613429028}
+  - component: {fileID: 613429029}
+  m_Layer: 0
+  m_Name: CinematicUpdater
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &613429028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613429027}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 882740870}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &613429029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613429027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c523bd0353feb4a9dc7e96e9304112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 949451717}
+  quitKey: 27
+  startWaveKey: 13
+  toggleCinematicKey: 112
+  UIManager: {fileID: 95165627}
+  waveManager: {fileID: 1348605624}
 --- !u!1 &679385358
 GameObject:
   m_ObjectHideFlags: 0
@@ -5571,6 +5622,9 @@ Transform:
   m_Children:
   - {fileID: 1822123417}
   - {fileID: 1491924915}
+  - {fileID: 1607406827}
+  - {fileID: 1090028512}
+  - {fileID: 613429028}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &882793681
@@ -6445,8 +6499,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1607406827}
-  - {fileID: 1090028512}
   - {fileID: 814913606}
   - {fileID: 1734584379}
   - {fileID: 1967421128}
@@ -7414,16 +7466,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1090028511}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -75.32135}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 949451721}
+  m_Father: {fileID: 882740870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -268.9114, y: 77.5881}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1090028513
@@ -9287,6 +9339,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   camera: {fileID: 549421225}
+  spawnTileMaterial: {fileID: 2100000, guid: 43d18c5c110fdec4f99a5f2bb9d8e94d, type: 2}
   isSpawningMonsters: 0
   monsters: []
 --- !u!4 &1348605625
@@ -10916,15 +10969,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607406825}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -75.32135}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 949451721}
+  m_Father: {fileID: 882740870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 529.9192, y: 200.00002}
+  m_AnchoredPosition: {x: -268.91138, y: 77.5881}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1610533914
@@ -11843,6 +11896,7 @@ MonoBehaviour:
   stepHeight: 1.5
   addSpikes: 1
   addFog: 0
+  addWalls: 1
   grassTilePrefab: {fileID: 5861721181273509266, guid: 288fcd3847bd9e440859b9f4ef16a098, type: 3}
   fogPrefab: {fileID: 7120711633847923219, guid: 5b895d94bcf33384fb32a9c38b347181, type: 3}
   terrainParent: {fileID: 904238664}

@@ -53,8 +53,12 @@ public class GameManager : MonoBehaviour
     public GameState previousScene;
 
     [Header("Settings")]
+    public bool hideMouse = false;
     public int fov = 70;
     public float volume = 0.5f;
+    public bool cinematicMode = false;
+    public float defaultSpeed = 1f;
+    public float fastSpeed = 3f;
 
     [Header("Difficulties")]
     public List<DifficultyModifier> difficultyModifiers = new List<DifficultyModifier>();
@@ -110,6 +114,8 @@ public class GameManager : MonoBehaviour
 
     public void SwitchScene(GameState sceneName, bool additive = false, bool unloadCurrent = false)
     {
+        Cursor.visible = true;
+        
         if (unloadCurrent)
         {
             SceneManager.UnloadSceneAsync(gameState.ToString());

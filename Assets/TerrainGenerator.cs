@@ -20,6 +20,7 @@ public class TerrainGenerator : MonoBehaviour
     [Space]
     public bool addSpikes = true;
     public bool addFog = false;
+    public bool addWalls = true;
 
     [Header("3D Models")]
     public GameObject grassTilePrefab;
@@ -41,10 +42,20 @@ public class TerrainGenerator : MonoBehaviour
             for (int y=0; y < size.y; y++)
             {
                 float offset = (x % 2 == 0 ? Mathf.Sqrt(0.75f) : 0f);
+                Vector2 pos = new Vector2(x, y);
+                float height = GetTileHeight(pos);
+
+                bool border = false;
+
+                if (addWalls && (pos.x == 0 || pos.x == size.x - 1 || pos.y == 0 || pos.y == size.y - 1))
+                {
+                    border = true;
+                    height = 45f;
+                }
 
                 Vector3 position = new Vector3(
                     (x_pos + offset) * tileSize,
-                    RoundTileHeight(GetTileHeight(new Vector2(x, y))) * 2f,
+                    RoundTileHeight(height) * 2f,
                     y_pos * tileSize
                 );
 
@@ -65,11 +76,18 @@ public class TerrainGenerator : MonoBehaviour
                 }
 
                 float multiplier = 100f;
+                float y_multiplier = border ? 3f : 1f;
+
                 new_tile.transform.localScale = new Vector3(
                     multiplier * tileSize,
                     multiplier * tileSize,
-                    multiplier * 2f /// 15f
+                    multiplier * 2f * y_multiplier /// 15f
                 );
+
+                if (border)
+                {
+                    new_tile.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                }
 
                 new_tile.transform.Rotate(new Vector3(-90f, 0f, 0f));
 

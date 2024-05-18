@@ -15,7 +15,15 @@ MonoBehaviour:
   name: "Un tir d\xE9cor\xE9"
   description: "Tirer 1000 fois sur des d\xE9corations."
   mesureUnit: tirs
+  unknown: 0
+  hidden: 1
   requirements:
     shotsOnDecorations: 1000
     timesOpeningCredits: 0
+    timesOpeningAchievements: 0
     timeWaitedInTutorial: 0
+    openedBoxes: 0
+    winsInEasy: 0
+    winsInMedium: 0
+    winsInHard: 0
+    winWithAllVillage: 0
