@@ -18,6 +18,8 @@ public enum TrailerType
 public class TrailerManager : MonoBehaviour
 {
     public List<TrailerPart> trailerParts = new List<TrailerPart>();
+    [Space]
+    public GameObject leaveButton;
 
     [Header("Logo")]
     public GameObject logoScreen;
@@ -41,6 +43,8 @@ public class TrailerManager : MonoBehaviour
         logoScreen.SetActive(false);
         titleScreen.SetActive(false);
         videoScreen.SetActive(false);
+
+        leaveButton.SetActive(false);
         
         if (trailerParts.Count > 0)
         {
@@ -71,7 +75,10 @@ public class TrailerManager : MonoBehaviour
         currentPartIndex++;
 
         if (currentPartIndex >= trailerParts.Count)
+        {
+            leaveButton.SetActive(true);
             return;
+        }
 
         currentPart = trailerParts[currentPartIndex];
 
