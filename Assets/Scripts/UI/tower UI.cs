@@ -40,7 +40,7 @@ public class TowerUI : MonoBehaviour
 
     GameObject AddButton(TowerPrefab prefab)
     {
-        GameObject go = Instantiate(towerButtonPlaceHolder, transform);
+        GameObject go = Instantiate(towerButtonPlaceHolder, towerButtonPlaceHolder.transform);
         go.SetActive(true);
         TowerPlaceHolder towerPlaceHolder = go.GetComponent<TowerPlaceHolder>();
         towerPlaceHolder.icon.sprite = Sprite.Create(prefab.icon, new Rect(0, 0, prefab.icon.width, prefab.icon.height), new Vector2(0.5f, 0.5f));

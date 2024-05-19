@@ -578,7 +578,7 @@ MonoBehaviour:
     waves: 15
     canLoseLives: 1
   - difficulty: 2
-    initialUsedPaths: 2
+    initialUsedPaths: 4
     addPathReccurence: 2
     crystals: 10
     waves: 20

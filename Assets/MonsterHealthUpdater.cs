@@ -36,5 +36,10 @@ public class MonsterHealthUpdater : MonoBehaviour
 
         float percentage = (float)monster.health / (float)monster.data.maxHealth;
         text.color = Color.Lerp(Color.red, Color.green, percentage);
+
+        if (GameManager.instance.cinematicMode)
+            text.enabled = false;
+        else
+            text.enabled = true;
     }
 }

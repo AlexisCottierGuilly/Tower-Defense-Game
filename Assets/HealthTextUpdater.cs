@@ -34,6 +34,10 @@ public class HealthTextUpdater : MonoBehaviour
 
         text.color = new Color(1f-(float)village.health/(float)village.data.maxHealth, (float)village.health/(float)village.data.maxHealth, 0f, 1f);
         //text.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(text.transform.position, camera.transform.position, 10000f, 0f)+new Vector3(0,0,180));
-       
+
+        if (GameManager.instance.cinematicMode)
+            text.enabled = false;
+        else
+            text.enabled = true;
     }
 }
