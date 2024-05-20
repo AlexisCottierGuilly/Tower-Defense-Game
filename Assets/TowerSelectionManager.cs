@@ -20,6 +20,7 @@ public class TowerSelectionManager : MonoBehaviour
 
     [Header("Decoration Stats")]
     public GameObject decorationStatsPanel;
+    public TextMeshProUGUI decorationTitleText;
     public TextMeshProUGUI decorationSellValueText;
 
     [Space]
@@ -114,6 +115,7 @@ public class TowerSelectionManager : MonoBehaviour
             DecorationBehaviour behaviour = selection.GetComponent<DecorationBehaviour>();
             if (behaviour != null)
             {
+                decorationTitleText.text = behaviour.name;
                 decorationSellValueText.text = behaviour.sellValue.ToString();
             }
         }
@@ -172,7 +174,7 @@ public class TowerSelectionManager : MonoBehaviour
         
         if (behaviour != null)
         {
-            int gainedGold = (int)(behaviour.data.cost * sellRate);
+            int gainedGold = (int)Mathf.Round(behaviour.data.cost * sellRate);
             GameManager.instance.gold += gainedGold;
 
             behaviour.Die();

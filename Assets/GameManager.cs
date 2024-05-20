@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
     public float defaultSpeed = 1f;
     public float fastSpeed = 3f;
     public string gameName = "Sans nom";
+    public bool loadSavedGame = false;
 
     [Header("Difficulties")]
     public List<DifficultyModifier> difficultyModifiers = new List<DifficultyModifier>();

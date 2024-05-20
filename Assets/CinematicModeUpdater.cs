@@ -30,6 +30,8 @@ public class CinematicModeUpdater : MonoBehaviour
     {
         if (Input.GetKeyDown(quitKey))
         {
+            if (GameManager.instance.generator.waveManager.waveFinished)
+                GameManager.instance.generator.savingManager.SaveGame();
             UIManager.ChangeScene("Menu");
         }
 

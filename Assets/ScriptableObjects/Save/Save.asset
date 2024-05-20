@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players:
   - name: Noob 2
-    crystals: 234
+    crystals: 109
     rewardCount: 0
     achievementStats:
-      shotsOnDecorations: 4952
+      shotsOnDecorations: 5044
       timesOpeningCredits: 1
       timesOpeningAchievements: 18
       timeWaitedInTutorial: 10.205703
@@ -27,59 +27,54 @@ MonoBehaviour:
       winsInHard: 1
       winWithAllVillage: 6
     unlockedTowers: 010000000200000005000000040000000600000003000000
-    villageTower: 2
-    villageTowers: 0100000002000000
+    villageTower: 6
+    villageTowers: 010000000200000006000000
     gameSaves:
     - saveName: Sans nom 1
-      seed: 6004234
-      gold: 8871
-      wave: 3
-      gameTime: 164.80653
-      lastOpenedTime: 6.3851807e+10
+      seed: -1
+      gold: 8225
+      wave: 1
+      gameTime: 42.945744
+      lastOpenedTime: 6.3851827e+10
+      mapDifficulty: 0
+      mapSize: {x: 24, y: 24}
       towerPlacements:
-      - towerType: 2
-        position: {x: 14, y: 11}
-        targetType: 0
-      - towerType: 2
-        position: {x: 16, y: 17}
-        targetType: 0
-      - towerType: 2
-        position: {x: 16, y: 15}
-        targetType: 0
-      - towerType: 2
-        position: {x: 15, y: 16}
-        targetType: 0
-      - towerType: 2
-        position: {x: 20, y: 18}
-        targetType: 0
-      - towerType: 2
-        position: {x: 19, y: 18}
-        targetType: 0
-      - towerType: 2
-        position: {x: 19, y: 19}
-        targetType: 0
-      - towerType: 2
-        position: {x: 19, y: 20}
-        targetType: 0
-      - towerType: 2
-        position: {x: 18, y: 18}
-        targetType: 0
-      - towerType: 2
-        position: {x: 18, y: 17}
-        targetType: 0
-      - towerType: 2
-        position: {x: 18, y: 16}
-        targetType: 0
-      - towerType: 2
-        position: {x: 12, y: 17}
+      - towerType: 6
+        position: {x: 15, y: 14}
         targetType: 0
       villagePlacements:
-      - position: {x: 8, y: 11}
+      - position: {x: 13, y: 11}
         health: 500
-      - position: {x: 15, y: 14}
+      - position: {x: 17, y: 7}
         health: 500
-      - position: {x: 16, y: 16}
+      - position: {x: 6, y: 8}
+        health: 500
+      - position: {x: 13, y: 9}
         health: 500
       mainVillagePlacement:
-        position: {x: 14, y: 11}
+        position: {x: 15, y: 14}
         health: 1000
+    - saveName: Sans nom
+      seed: -1
+      gold: 7329
+      wave: 2
+      gameTime: 174.56036
+      lastOpenedTime: 6.3851827e+10
+      mapDifficulty: 0
+      mapSize: {x: 24, y: 24}
+      towerPlacements:
+      - towerType: 6
+        position: {x: 7, y: 15}
+        targetType: 0
+      villagePlacements:
+      - position: {x: 13, y: 11}
+        health: 500
+      - position: {x: 17, y: 7}
+        health: 500
+      - position: {x: 6, y: 8}
+        health: 500
+      - position: {x: 17, y: 14}
+        health: 500
+      mainVillagePlacement:
+        position: {x: 7, y: 15}
+        health: 760

@@ -17,16 +17,5 @@ public class TileBehaviour : MonoBehaviour
     public TileType type;
     public Vector2 position;
     public bool selected = false;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool border = false;
 }

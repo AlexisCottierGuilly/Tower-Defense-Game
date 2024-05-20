@@ -689,9 +689,10 @@ MonoBehaviour:
   fov: 70
   volume: 0.5
   cinematicMode: 0
-  defaultSpeed: 0.5
+  defaultSpeed: 1
   fastSpeed: 3
   gameName: Sans nom
+  loadSavedGame: 0
   difficultyModifiers:
   - difficulty: 0
     initialUsedPaths: 1
@@ -3565,6 +3566,7 @@ GameObject:
   - component: {fileID: 1227994523}
   - component: {fileID: 1227994522}
   - component: {fileID: 1227994521}
+  - component: {fileID: 1227994525}
   m_Layer: 5
   m_Name: play
   m_TagString: Untagged
@@ -3686,6 +3688,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227994519}
   m_CullTransparentMesh: 1
+--- !u!114 &1227994525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227994519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ec44c61ef0b34a43b9d3ce0e5903a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 1656376112}
+  UIManager: {fileID: 494402432}
 --- !u!1 &1291130867
 GameObject:
   m_ObjectHideFlags: 0

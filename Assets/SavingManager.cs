@@ -6,36 +6,33 @@ public class SavingManager : MonoBehaviour
 {
     public GameGenerator gameGenerator;
 
+    private GameSave gameSave;
+
     public void SaveGame()
     {
-        // in the PlayerData class, there is a list of GameSave objects
-        // each GameSave object has a seed, a wave, a randomwithseed, a waverandomwithseed,
-        // a list of towerplacements, a list of villageplacements, and a mainvillageplacement
-
-        // the towerplacement class has a tower type, a position, and a target type
-        // the villageplacement class has a position, and a health
-
-        // first, remove all saves that has the same name
         GameManager.instance.player.gameSaves.RemoveAll(x => x.saveName == GameManager.instance.gameName);
 
-        // create a new instance of the GameSave class, and fill it with the necessary data
         GameSave gameSave = new GameSave();
 
         gameSave.saveName = GameManager.instance.gameName;
-        gameSave.seed = (int)gameGenerator.seed;
+        gameSave.seed = (int)GameManager.instance.gameSeed;
         gameSave.gold = GameManager.instance.gold;
         gameSave.wave = gameGenerator.waveManager.wave;
+
+        gameSave.mapDifficulty = GameManager.instance.mapDifficulty;
+        gameSave.mapSize = GameManager.instance.mapSize;
 
         gameSave.gameTime = gameGenerator.gameTime;
         gameSave.lastOpenedTime = (float)(System.DateTime.Now - System.DateTime.MinValue).TotalSeconds;
 
-        // create copies of the randoms
         gameSave.randomWithSeed = CreateCopy(gameGenerator.randomWithSeed);
         gameSave.waveRandomWithSeed = CreateCopy(gameGenerator.waveRandomWithSeed);
 
-        // add the tower placements to the game save
         foreach (GameObject tower in gameGenerator.towers)
         {
+            if (tower == null)
+                continue;
+
             TowerPlacement towerPlacement = new TowerPlacement();
             TowerBehaviour towerBehaviour = tower.GetComponent<TowerBehaviour>();
 
@@ -46,9 +43,11 @@ public class SavingManager : MonoBehaviour
             gameSave.towerPlacements.Add(towerPlacement);
         }
 
-        // add the village placements to the game save
         foreach (GameObject village in gameGenerator.villageGenerator.villageBuildings)
         {
+            if (village == null)
+                continue;
+            
             VillagePlacement villagePlacement = new VillagePlacement();
             VillageBehaviour villageBehaviour = village.GetComponent<VillageBehaviour>();
 
@@ -58,16 +57,15 @@ public class SavingManager : MonoBehaviour
             gameSave.villagePlacements.Add(villagePlacement);
         }
 
-        // add the main village placement to the game save
         VillagePlacement mainVillagePlacement = new VillagePlacement();
         VillageBehaviour mainVillageBehaviour = gameGenerator.villageGenerator.mainVillage.GetComponent<VillageBehaviour>();
 
         mainVillagePlacement.position = mainVillageBehaviour.position;
         mainVillagePlacement.health = (int)mainVillageBehaviour.health;
+        Debug.Log($"Main village saved health: {mainVillagePlacement.health}");
 
         gameSave.mainVillagePlacement = mainVillagePlacement;
 
-        // add the game save to the player data
         GameManager.instance.player.gameSaves.Add(gameSave);
     }
 
@@ -105,8 +103,61 @@ public class SavingManager : MonoBehaviour
         return copy;
     }
 
-    public void LoadGame()
+    public void LoadGameSettings()
     {
-        
+        gameSave = null;
+        foreach (GameSave save in GameManager.instance.player.gameSaves)
+        {
+            if (save.saveName == GameManager.instance.gameName)
+            {
+                gameSave = save;
+                break;
+            }
+        }
+
+        if (gameSave != null)
+        {
+            GameManager.instance.gameSeed = gameSave.seed;
+            GameManager.instance.gold = gameSave.gold;
+            gameGenerator.waveManager.wave = gameSave.wave;
+
+            gameGenerator.gameTime = gameSave.gameTime;
+
+            // Error : the randoms are not being saved correctly (they are null when loaded)
+            //gameGenerator.randomWithSeed = gameSave.randomWithSeed;
+            //gameGenerator.waveRandomWithSeed = gameSave.waveRandomWithSeed;
+
+            // temporary
+            gameGenerator.randomWithSeed = new System.Random((int)gameSave.seed);
+            gameGenerator.waveRandomWithSeed = new System.Random((int)gameSave.seed);
+
+            GameManager.instance.mapSize = gameSave.mapSize;
+            GameManager.instance.mapDifficulty = gameSave.mapDifficulty;
+        }
+    }
+
+    public void LoadGameBuildings()
+    {
+        LoadTowers(gameSave);
+        LoadVillages(gameSave);
+        LoadMainVillage(gameSave);
+    }
+
+    void LoadTowers(GameSave gameSave)
+    {
+        // create all the towers and remove the one on the main village if needed
+    }
+
+    void LoadVillages(GameSave gameSave)
+    {
+        // more complicated because village buildings could be destroyed and placed
+    }
+
+    void LoadMainVillage(GameSave gameSave)
+    {
+        GameObject mainVillage = gameGenerator.villageGenerator.mainVillage;
+        VillageBehaviour mainVillageBehaviour = mainVillage.GetComponent<VillageBehaviour>();
+
+        mainVillageBehaviour.health = gameSave.mainVillagePlacement.health;
     }
 }

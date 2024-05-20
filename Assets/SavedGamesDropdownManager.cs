@@ -25,6 +25,8 @@ public class SavedGamesDropdownManager : MonoBehaviour
             optionNames.Add(gameSave.saveName);
         }
 
+        optionNames.Reverse();
+        
         dropdown.AddOptions(optionNames);
     }
 

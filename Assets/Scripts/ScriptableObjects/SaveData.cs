@@ -43,6 +43,8 @@ public class GameSave
     public int wave;
     public float gameTime;
     public float lastOpenedTime;
+    public MapDifficultyTypes mapDifficulty;
+    public Vector2 mapSize;
 
     [Header("Randoms")]
     public System.Random randomWithSeed;

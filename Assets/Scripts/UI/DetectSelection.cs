@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum ObjectType
 {
@@ -28,6 +29,7 @@ public class DetectSelection : MonoBehaviour
     public Camera mainCamera;
     public GameObject placedObjectPrefab = null;
     public bool autoDeselection = true;
+    public RectTransform scrollRect;
 
     [HideInInspector] public bool canPlace = false;
     [HideInInspector] public GameObject placedObject;
@@ -86,7 +88,7 @@ public class DetectSelection : MonoBehaviour
 
         if (placedObjectPrefab != null && placedObject != null)
         {
-            if (Input.GetMouseButtonDown(0) && canPlace)
+            if (Input.GetMouseButtonDown(0) && !RectTransformUtility.RectangleContainsScreenPoint(scrollRect, Input.mousePosition) && canPlace)
             {
                 GameObject newObject = Instantiate(
                     placedObjectPrefab,
@@ -138,6 +140,7 @@ public class DetectSelection : MonoBehaviour
     void UpdatePlacementPosition()
     {
         GameObject selectedTile = null;
+        
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
@@ -150,8 +153,14 @@ public class DetectSelection : MonoBehaviour
 
         if (selectedTile != null) //added by mic not effecient
         {
-            Vector3 worldPos = selectedTile.GetComponent<TileBehaviour>().placement.transform.position;
-            position = selectedTile.GetComponent<TileBehaviour>().position;
+            TileBehaviour tileBehaviour = selectedTile.GetComponent<TileBehaviour>();
+            if (tileBehaviour.border)
+            {
+                return;
+            }
+            
+            Vector3 worldPos = tileBehaviour.placement.transform.position;
+            position = tileBehaviour.position;
             if (placedObject != null)
             {
                 worldPos.y += placedObject.transform.localScale.y / 2f;

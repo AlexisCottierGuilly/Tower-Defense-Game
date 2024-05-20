@@ -68,7 +68,7 @@ public class WaveManager : MonoBehaviour
     private bool didCallGameFinished = false;
     private bool didCallWaveFinished = false;
     
-    void Start()
+    void Awake()
     {
         gameFinished = new UnityEvent();
         LoadDifficultyWaves();

@@ -73,13 +73,16 @@ public class GameGenerator : MonoBehaviour
         seed = GameManager.instance.gameSeed;
         if (seed == -1)
             seed = Random.Range(0, GameManager.instance.maxGameSeed);
-        
-        seedText.text = seed.ToString();
-        
-        terrainGenerator.size = GameManager.instance.mapSize;
 
         randomWithSeed = new System.Random((int)seed);
         waveRandomWithSeed = new System.Random((int)seed);
+
+        if (GameManager.instance.loadSavedGame)
+            savingManager.LoadGameSettings();
+        
+        seedText.text = seed.ToString();
+
+        terrainGenerator.size = GameManager.instance.mapSize;
 
         terrainGenerator.Generate();
         villageGenerator.GenerateVillage();
@@ -90,6 +93,9 @@ public class GameGenerator : MonoBehaviour
         
         waveManager.InitializeSurfaces();
         notificationManager.ShowNotification("Bonne chance !");
+
+        if (GameManager.instance.loadSavedGame)
+            savingManager.LoadGameBuildings();
 
         maxHealth = villageGenerator.GetRemainingLives();
         health = maxHealth;

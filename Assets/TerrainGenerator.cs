@@ -66,6 +66,7 @@ public class TerrainGenerator : MonoBehaviour
                 TileBehaviour behaviour = new_tile.GetComponent<TileBehaviour>();
                 behaviour.position = new Vector2(x, y);
                 behaviour.type = TileType.Grass;
+                behaviour.border = border;
                 new_tile.transform.parent = terrainParent.transform;
 
                 if (addFog && (x == 0 || x == size.x - 1 || y == 0 || y == size.y - 1))

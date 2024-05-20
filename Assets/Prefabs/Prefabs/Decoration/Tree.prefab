@@ -329,6 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 711cef8f7cda56e4f97dde61adbb1587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Arbre
   sellValue: 25
 --- !u!1 &8116009685530726719
 GameObject:

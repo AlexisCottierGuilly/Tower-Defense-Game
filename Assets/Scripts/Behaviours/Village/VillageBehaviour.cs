@@ -11,10 +11,8 @@ public class VillageBehaviour : StructureBehaviour
     private bool didRemove = false;
     
     // Start is called before the first frame update
-    public override void Start()
+    void Awake()
     {
-        base.Start();
-
         health = data.maxHealth;
     }
 

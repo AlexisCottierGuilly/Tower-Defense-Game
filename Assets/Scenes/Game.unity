@@ -402,6 +402,7 @@ GameObject:
   - component: {fileID: 56236305}
   - component: {fileID: 56236304}
   - component: {fileID: 56236307}
+  - component: {fileID: 56236308}
   m_Layer: 5
   m_Name: leave
   m_TagString: Untagged
@@ -533,6 +534,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 509ec4725d778714aa343e1c331652e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &56236308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56236302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510ebbd1cb4d6024983281c420246711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &62410265
@@ -4551,6 +4564,7 @@ MonoBehaviour:
   mainCamera: {fileID: 549421227}
   placedObjectPrefab: {fileID: 0}
   autoDeselection: 1
+  scrollRect: {fileID: 1352811999}
   canPlace: 0
   placedObject: {fileID: 0}
   position: {x: 0, y: 0}
@@ -9430,7 +9444,6 @@ MonoBehaviour:
   - {fileID: 821537990}
   wave: 0
   allWaves:
-  - {fileID: 11400000, guid: 49413d1731655fe468ebc3f58f1d4a40, type: 2}
   - {fileID: 11400000, guid: 7f9116e445769f14db028f20dbf7c74e, type: 2}
   - {fileID: 11400000, guid: 29e3fce03d7334f4eaf90e47755ef4c0, type: 2}
   - {fileID: 11400000, guid: 55b8c47f3bf3a17428c68bca04e616ee, type: 2}
@@ -9441,6 +9454,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6fc5fdc75c279614491422d2d395bde1, type: 2}
   - {fileID: 11400000, guid: a42ed8309d592fc4381a46170c049a11, type: 2}
   - {fileID: 11400000, guid: ccd89e7e7354882419e57128b1e4f0a0, type: 2}
+  - {fileID: 11400000, guid: 49413d1731655fe468ebc3f58f1d4a40, type: 2}
   waves:
   - {fileID: 11400000, guid: 7f9116e445769f14db028f20dbf7c74e, type: 2}
   - {fileID: 11400000, guid: 29e3fce03d7334f4eaf90e47755ef4c0, type: 2}
@@ -14403,6 +14417,7 @@ MonoBehaviour:
   sellValueText: {fileID: 293126668}
   towerTargetHandler: {fileID: 948655105}
   decorationStatsPanel: {fileID: 62410265}
+  decorationTitleText: {fileID: 1850502698}
   decorationSellValueText: {fileID: 1603682817}
   sellRate: 0.3333333
 --- !u!4 &2059740939
