@@ -26,4 +26,42 @@ public class PlayerData
     [Header("Other")]
     public TowerType villageTower = TowerType.None;
     public List<TowerType> villageTowers = new List<TowerType>();
+
+    [Header("Game Saves")]
+    public List<GameSave> gameSaves = new List<GameSave>();
+}
+
+
+[System.Serializable]
+public class GameSave
+{
+    public string saveName;
+
+    [Space]
+    public int seed;
+    public int wave;
+    public System.Random randomWithSeed;
+    public System.Random waveRandomWithSeed;
+
+    [Space]
+    public List<TowerPlacement> towerPlacements = new List<TowerPlacement>();
+    public List<VillagePlacement> villagePlacements = new List<VillagePlacement>();
+    public VillagePlacement mainVillagePlacement;
+}
+
+
+[System.Serializable]
+public class TowerPlacement
+{
+    public TowerType towerType;
+    public Vector2 position;
+    public TargetType targetType;
+}
+
+
+[System.Serializable]
+public class VillagePlacement
+{
+    public Vector2 position;
+    public int health;
 }

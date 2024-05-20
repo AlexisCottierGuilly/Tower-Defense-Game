@@ -17,7 +17,7 @@ MonoBehaviour:
     crystals: 234
     rewardCount: 0
     achievementStats:
-      shotsOnDecorations: 4888
+      shotsOnDecorations: 4895
       timesOpeningCredits: 1
       timesOpeningAchievements: 18
       timeWaitedInTutorial: 10.205703
@@ -29,3 +29,35 @@ MonoBehaviour:
     unlockedTowers: 010000000200000005000000040000000600000003000000
     villageTower: 2
     villageTowers: 0100000002000000
+    gameSaves:
+    - saveName: Sans nom
+      seed: 1577367
+      wave: 1
+      towerPlacements:
+      - towerType: 2
+        position: {x: 10, y: 12}
+        targetType: 0
+      - towerType: 2
+        position: {x: 10, y: 15}
+        targetType: 0
+      - towerType: 2
+        position: {x: 11, y: 15}
+        targetType: 0
+      - towerType: 2
+        position: {x: 11, y: 16}
+        targetType: 0
+      - towerType: 2
+        position: {x: 12, y: 16}
+        targetType: 0
+      villagePlacements:
+      - position: {x: 16, y: 7}
+        health: 500
+      - position: {x: 16, y: 13}
+        health: 500
+      - position: {x: 14, y: 14}
+        health: 500
+      - position: {x: 17, y: 12}
+        health: 500
+      mainVillagePlacement:
+        position: {x: 10, y: 12}
+        health: 1000

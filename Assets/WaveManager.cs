@@ -156,7 +156,6 @@ public class WaveManager : MonoBehaviour
                 WaveData newWave = gameGenerator.waveGenerator.GetRandomWave(wave + 1);
                 waves.Add(newWave);
             }
-
         }
         
         if (wave == waves.Count)
@@ -178,6 +177,8 @@ public class WaveManager : MonoBehaviour
             playedWinWaveSound = false;
             didCallWaveFinished = false;
             startWaveSound.Play();
+
+            gameGenerator.savingManager.SaveGame();
 
             if (wave >= hpMultiplierStartWave)
             {

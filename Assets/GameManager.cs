@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
     public bool cinematicMode = false;
     public float defaultSpeed = 1f;
     public float fastSpeed = 3f;
+    public string gameName = "Sans nom";
 
     [Header("Difficulties")]
     public List<DifficultyModifier> difficultyModifiers = new List<DifficultyModifier>();
@@ -109,6 +110,7 @@ public class GameManager : MonoBehaviour
         previousScene = gameState;
         player = save.players[0];
 
+        UpdateGameName();
         LoadAchievementProgress();
     }
 
@@ -160,6 +162,37 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void UpdateGameName()
+    {
+        string currentName = gameName == "" ? "Sans nom" : gameName;
+        string unmodifiedName = currentName;
+        int i = 0;
+        while (true)
+        {
+            bool found = false;
+
+            foreach (GameSave save in player.gameSaves)
+            {
+                if (save.saveName == currentName)
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                gameName = currentName;
+                break;
+            }
+
+            i++;
+            currentName = $"{unmodifiedName} " + i;
+        }
+
+        gameName = currentName;
     }
 
     public DifficultyModifier GetDifficultyModifier()

@@ -26,6 +26,7 @@ public class GameGenerator : MonoBehaviour
     public WaveManager waveManager;
     public NotificationManager notificationManager;
     public ShootingManager shootingManager;
+    public SavingManager savingManager;
     
     [Header("Game Settings")]
     // public int gold = 0;
