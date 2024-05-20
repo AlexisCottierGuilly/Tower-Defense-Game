@@ -168,7 +168,20 @@ public class GameManager : MonoBehaviour
     {
         string currentName = gameName == "" ? "Sans nom" : gameName;
         string unmodifiedName = currentName;
+
+        // detect a number at the end of the name (if present -> set the i to that number)
+
         int i = 0;
+        string[] split = currentName.Split(' ');
+        if (split.Length > 1)
+        {
+            string last = split[split.Length - 1];
+            if (int.TryParse(last, out i))
+            {
+                unmodifiedName = currentName.Substring(0, currentName.Length - last.Length - 1);
+            }
+        }
+
         while (true)
         {
             bool found = false;

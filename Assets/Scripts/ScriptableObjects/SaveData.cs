@@ -37,13 +37,18 @@ public class GameSave
 {
     public string saveName;
 
-    [Space]
+    [Header("General")]
     public int seed;
+    public int gold;
     public int wave;
+    public float gameTime;
+    public float lastOpenedTime;
+
+    [Header("Randoms")]
     public System.Random randomWithSeed;
     public System.Random waveRandomWithSeed;
 
-    [Space]
+    [Header("Towers & Villages")]
     public List<TowerPlacement> towerPlacements = new List<TowerPlacement>();
     public List<VillagePlacement> villagePlacements = new List<VillagePlacement>();
     public VillagePlacement mainVillagePlacement;

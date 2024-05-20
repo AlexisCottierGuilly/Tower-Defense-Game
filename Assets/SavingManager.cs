@@ -20,10 +20,18 @@ public class SavingManager : MonoBehaviour
 
         // create a new instance of the GameSave class, and fill it with the necessary data
         GameSave gameSave = new GameSave();
+
         gameSave.saveName = GameManager.instance.gameName;
         gameSave.seed = (int)gameGenerator.seed;
+        gameSave.gold = GameManager.instance.gold;
         gameSave.wave = gameGenerator.waveManager.wave;
-        gameSave.randomWithSeed = gameGenerator.randomWithSeed;
+
+        gameSave.gameTime = gameGenerator.gameTime;
+        gameSave.lastOpenedTime = (float)(System.DateTime.Now - System.DateTime.MinValue).TotalSeconds;
+
+        // create copies of the randoms
+        gameSave.randomWithSeed = CreateCopy(gameGenerator.randomWithSeed);
+        gameSave.waveRandomWithSeed = CreateCopy(gameGenerator.waveRandomWithSeed);
 
         // add the tower placements to the game save
         foreach (GameObject tower in gameGenerator.towers)
@@ -72,6 +80,29 @@ public class SavingManager : MonoBehaviour
         }
 
         return TowerType.None;
+    }
+
+    System.Random CreateCopy(System.Random rng)
+    {
+        System.Random copy = new System.Random();
+        System.Reflection.FieldInfo[] fields = typeof(System.Random).GetFields(System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+        foreach (System.Reflection.FieldInfo field in fields)
+        {
+            if (field.Name == "SeedArray")
+            {
+                int[] seedArray = (int[])field.GetValue(rng);
+                int[] seedArrayCopy = new int[seedArray.Length];
+                seedArray.CopyTo(seedArrayCopy, 0);
+                field.SetValue(copy, seedArrayCopy);
+            }
+            else
+            {
+                field.SetValue(copy, field.GetValue(rng));
+            }
+        }
+
+        return copy;
     }
 
     public void LoadGame()
