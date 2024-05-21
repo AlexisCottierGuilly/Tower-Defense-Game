@@ -15,7 +15,7 @@ public class SavingManager : MonoBehaviour
         GameSave gameSave = new GameSave();
 
         gameSave.saveName = GameManager.instance.gameName;
-        gameSave.seed = (int)GameManager.instance.gameSeed;
+        gameSave.seed = (int)gameGenerator.seed;
         gameSave.gold = GameManager.instance.gold;
         gameSave.wave = gameGenerator.waveManager.wave;
 
@@ -65,6 +65,16 @@ public class SavingManager : MonoBehaviour
         Debug.Log($"Main village saved health: {mainVillagePlacement.health}");
 
         gameSave.mainVillagePlacement = mainVillagePlacement;
+
+        // save the decorations
+        foreach (GameObject decoration in gameGenerator.decorations)
+        {
+            if (decoration == null)
+                continue;
+
+            DecorationBehaviour decorationBehaviour = decoration.GetComponent<DecorationBehaviour>();
+            gameSave.acceptedDecorations.Add(decorationBehaviour.position);
+        }
 
         GameManager.instance.player.gameSaves.Add(gameSave);
     }
@@ -118,6 +128,8 @@ public class SavingManager : MonoBehaviour
         if (gameSave != null)
         {
             GameManager.instance.gameSeed = gameSave.seed;
+            gameGenerator.seed = gameSave.seed;
+
             GameManager.instance.gold = gameSave.gold;
             gameGenerator.waveManager.wave = gameSave.wave;
 
@@ -141,6 +153,7 @@ public class SavingManager : MonoBehaviour
         LoadTowers(gameSave);
         LoadVillages(gameSave);
         LoadMainVillage(gameSave);
+        LoadDeletedDecorations(gameSave);
     }
 
     void LoadTowers(GameSave gameSave)
@@ -159,5 +172,29 @@ public class SavingManager : MonoBehaviour
         VillageBehaviour mainVillageBehaviour = mainVillage.GetComponent<VillageBehaviour>();
 
         mainVillageBehaviour.health = gameSave.mainVillagePlacement.health;
+    }
+
+    void LoadDeletedDecorations(GameSave gameSave)
+    {
+        List<GameObject> toRemove = new List<GameObject>();
+
+        foreach (GameObject decoration in gameGenerator.decorations)
+        {
+            if (decoration == null)
+                continue;
+
+            DecorationBehaviour decorationBehaviour = decoration.GetComponent<DecorationBehaviour>();
+
+            if (!gameSave.acceptedDecorations.Contains(decorationBehaviour.position))
+            {
+                toRemove.Add(decoration);
+            }
+        }
+
+        foreach (GameObject decoration in toRemove)
+        {
+            gameGenerator.decorations.Remove(decoration);
+            Destroy(decoration);
+        }
     }
 }

@@ -54,6 +54,7 @@ public class GameSave
     public List<TowerPlacement> towerPlacements = new List<TowerPlacement>();
     public List<VillagePlacement> villagePlacements = new List<VillagePlacement>();
     public VillagePlacement mainVillagePlacement;
+    public List<Vector2> acceptedDecorations = new List<Vector2>();
 }
 
 

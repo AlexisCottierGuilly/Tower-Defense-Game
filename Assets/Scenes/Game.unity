@@ -12174,14 +12174,14 @@ MonoBehaviour:
   size: {x: 32, y: 32}
   scale: 1
   tileSize: 4
-  hillHeight: 1
+  hillHeight: 3.58
   hillWidth: 1
   hillSmoothness: 1
   mountains: []
   stepHeight: 1.5
   addSpikes: 1
   addFog: 0
-  addWalls: 1
+  addWalls: 0
   grassTilePrefab: {fileID: 5861721181273509266, guid: 288fcd3847bd9e440859b9f4ef16a098, type: 3}
   fogPrefab: {fileID: 7120711633847923219, guid: 5b895d94bcf33384fb32a9c38b347181, type: 3}
   terrainParent: {fileID: 904238664}

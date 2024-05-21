@@ -148,6 +148,9 @@ public class DecorationGenerator : MonoBehaviour
 
         decoration.transform.parent = decorationsParent.transform;
 
+        DecorationBehaviour decorationBehaviour = decoration.GetComponent<DecorationBehaviour>();
+        decorationBehaviour.position = tile.GetComponent<TileBehaviour>().position;
+
         gameGenerator.decorations.Add(decoration);
     }
 }
