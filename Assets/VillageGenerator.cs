@@ -111,7 +111,7 @@ public class VillageGenerator : MonoBehaviour
 
         Vector3 mainTextPosition = new Vector3(
                 mainVillage.transform.position.x,
-                mainVillage.transform.position.y + mainVillage.transform.localScale.y,
+                mainVillage.transform.position.y + mainVillage.transform.localScale.y * 1.35f,
                 mainVillage.transform.position.z
         );
             
