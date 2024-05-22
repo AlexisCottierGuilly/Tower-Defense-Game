@@ -62,7 +62,7 @@ public class ProjectileBehaviour : MonoBehaviour
     void Update()
     {
         timeFromSpawn += Time.deltaTime;
-        if (!didRegisterLanding && timeFromSpawn > 0.5f)
+        if (!didRegisterLanding && timeFromSpawn > 2.5f)
         {
             GameManager.instance.player.achievementStats.landedProjectiles += 1;
             didRegisterLanding = true;

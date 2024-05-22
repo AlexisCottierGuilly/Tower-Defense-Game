@@ -62,7 +62,6 @@ public class SavingManager : MonoBehaviour
 
         mainVillagePlacement.position = mainVillageBehaviour.position;
         mainVillagePlacement.health = (int)mainVillageBehaviour.health;
-        Debug.Log($"Main village saved health: {mainVillagePlacement.health}");
 
         gameSave.mainVillagePlacement = mainVillagePlacement;
 
@@ -131,7 +130,10 @@ public class SavingManager : MonoBehaviour
             gameGenerator.seed = gameSave.seed;
 
             GameManager.instance.gold = gameSave.gold;
+
             gameGenerator.waveManager.wave = gameSave.wave;
+            gameGenerator.waveManager.waveText.text = $"Vague {gameSave.wave}/{gameGenerator.waveManager.waves.Count}";
+            gameGenerator.waveManager.didCallWaveFinished = true;
 
             gameGenerator.gameTime = gameSave.gameTime;
 

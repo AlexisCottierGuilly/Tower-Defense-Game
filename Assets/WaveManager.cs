@@ -66,7 +66,7 @@ public class WaveManager : MonoBehaviour
     
     private bool playedWinWaveSound = true;
     private bool didCallGameFinished = false;
-    private bool didCallWaveFinished = false;
+    [HideInInspector] public bool didCallWaveFinished = false;
     
     void Awake()
     {

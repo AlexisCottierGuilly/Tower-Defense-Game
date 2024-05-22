@@ -17,64 +17,92 @@ MonoBehaviour:
     crystals: 109
     rewardCount: 0
     achievementStats:
-      shotsOnDecorations: 5044
+      shotsOnDecorations: 6276
       timesOpeningCredits: 1
-      timesOpeningAchievements: 18
+      timesOpeningAchievements: 19
       timeWaitedInTutorial: 10.205703
       openedBoxes: 64
       winsInEasy: 6
       winsInMedium: 0
       winsInHard: 1
       winWithAllVillage: 6
+      landedProjectiles: 5
     unlockedTowers: 010000000200000005000000040000000600000003000000
     villageTower: 6
     villageTowers: 010000000200000006000000
     gameSaves:
-    - saveName: Sans nom 1
-      seed: -1
-      gold: 8225
-      wave: 1
-      gameTime: 42.945744
-      lastOpenedTime: 6.3851827e+10
+    - saveName: Moche
+      seed: 2367359
+      gold: 10050
+      wave: 3
+      gameTime: 0
+      lastOpenedTime: 6.3851975e+10
       mapDifficulty: 0
       mapSize: {x: 24, y: 24}
       towerPlacements:
       - towerType: 6
-        position: {x: 15, y: 14}
+        position: {x: 16, y: 10}
         targetType: 0
       villagePlacements:
-      - position: {x: 13, y: 11}
+      - position: {x: 6, y: 10}
         health: 500
-      - position: {x: 17, y: 7}
+      - position: {x: 12, y: 15}
         health: 500
-      - position: {x: 6, y: 8}
+      - position: {x: 17, y: 16}
         health: 500
-      - position: {x: 13, y: 9}
+      - position: {x: 11, y: 14}
         health: 500
       mainVillagePlacement:
-        position: {x: 15, y: 14}
+        position: {x: 16, y: 10}
         health: 1000
-    - saveName: Sans nom
-      seed: -1
-      gold: 7329
-      wave: 2
-      gameTime: 174.56036
-      lastOpenedTime: 6.3851827e+10
-      mapDifficulty: 0
-      mapSize: {x: 24, y: 24}
-      towerPlacements:
-      - towerType: 6
-        position: {x: 7, y: 15}
-        targetType: 0
-      villagePlacements:
-      - position: {x: 13, y: 11}
-        health: 500
-      - position: {x: 17, y: 7}
-        health: 500
-      - position: {x: 6, y: 8}
-        health: 500
-      - position: {x: 17, y: 14}
-        health: 500
-      mainVillagePlacement:
-        position: {x: 7, y: 15}
-        health: 760
+      acceptedDecorations:
+      - {x: 1, y: 5}
+      - {x: 1, y: 16}
+      - {x: 1, y: 21}
+      - {x: 2, y: 3}
+      - {x: 3, y: 1}
+      - {x: 3, y: 17}
+      - {x: 4, y: 4}
+      - {x: 4, y: 10}
+      - {x: 4, y: 20}
+      - {x: 4, y: 21}
+      - {x: 6, y: 6}
+      - {x: 6, y: 12}
+      - {x: 6, y: 19}
+      - {x: 7, y: 8}
+      - {x: 7, y: 17}
+      - {x: 8, y: 10}
+      - {x: 8, y: 14}
+      - {x: 8, y: 18}
+      - {x: 8, y: 22}
+      - {x: 9, y: 4}
+      - {x: 9, y: 5}
+      - {x: 9, y: 21}
+      - {x: 10, y: 19}
+      - {x: 10, y: 20}
+      - {x: 11, y: 13}
+      - {x: 11, y: 15}
+      - {x: 12, y: 11}
+      - {x: 12, y: 19}
+      - {x: 12, y: 21}
+      - {x: 14, y: 2}
+      - {x: 15, y: 4}
+      - {x: 15, y: 6}
+      - {x: 15, y: 14}
+      - {x: 16, y: 7}
+      - {x: 16, y: 8}
+      - {x: 17, y: 3}
+      - {x: 17, y: 4}
+      - {x: 17, y: 9}
+      - {x: 17, y: 17}
+      - {x: 18, y: 2}
+      - {x: 18, y: 7}
+      - {x: 18, y: 21}
+      - {x: 19, y: 5}
+      - {x: 19, y: 18}
+      - {x: 19, y: 20}
+      - {x: 20, y: 12}
+      - {x: 21, y: 3}
+      - {x: 21, y: 13}
+      - {x: 22, y: 6}
+      - {x: 22, y: 22}
