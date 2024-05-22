@@ -182,7 +182,8 @@ public class WaveManager : MonoBehaviour
 
             if (wave >= hpMultiplierStartWave)
             {
-                hpMultiplier = Mathf.Pow(1.1f, (float)(wave + 1 - hpMultiplierStartWave));
+                float augmentation = 1.05f; //1.1f
+                hpMultiplier = Mathf.Pow(augmentation, (float)(wave + 1 - hpMultiplierStartWave));
             }
             
             wave++;

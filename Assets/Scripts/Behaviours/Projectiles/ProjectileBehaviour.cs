@@ -14,6 +14,9 @@ public class ProjectileBehaviour : MonoBehaviour
 
     private List<GameObject> decorationHits = new List<GameObject>();
     private Vector3 lastPosition;
+
+    private float timeFromSpawn;
+    private bool didRegisterLanding = false;
     
     // Start is called before the first frame update
     void Start()
@@ -58,6 +61,13 @@ public class ProjectileBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeFromSpawn += Time.deltaTime;
+        if (!didRegisterLanding && timeFromSpawn > 0.5f)
+        {
+            GameManager.instance.player.achievementStats.landedProjectiles += 1;
+            didRegisterLanding = true;
+        }
+        
         if (transform.position.y < -10f)
         {
             Destroy(gameObject);

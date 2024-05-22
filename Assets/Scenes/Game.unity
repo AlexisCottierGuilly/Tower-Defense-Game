@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13110483, g: 0.09076635, b: 0.13997692, a: 1}
+  m_IndirectSpecularColor: {r: 0.13105246, g: 0.09076703, b: 0.14026171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1848,9 +1848,9 @@ RectTransform:
   - {fileID: 1589984668}
   m_Father: {fileID: 949451721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -100, y: -260}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -300, y: 30}
   m_SizeDelta: {x: 175, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &194338898
@@ -3799,7 +3799,7 @@ MonoBehaviour:
   minHeight: 10
   maxHeight: 85
   hardWalls: 1
-  alwaysUseDeltaTime: 1
+  alwaysUseDeltaTime: 0
   gameGenerator: {fileID: 1951690851}
   rb: {fileID: 549421230}
 --- !u!54 &549421230
@@ -9464,7 +9464,7 @@ MonoBehaviour:
   autoStart: 0
   infiniteMode: 0
   hpMultiplier: 1
-  hpMultiplierStartWave: 1
+  hpMultiplierStartWave: 20
   monsterParent: {fileID: 80457012}
   startWaveSound: {fileID: 1418356138}
   winWaveSound: {fileID: 17181455}
@@ -12174,7 +12174,7 @@ MonoBehaviour:
   size: {x: 32, y: 32}
   scale: 1
   tileSize: 4
-  hillHeight: 3.58
+  hillHeight: 1
   hillWidth: 1
   hillSmoothness: 1
   mountains: []

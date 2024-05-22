@@ -23,7 +23,7 @@ public class BossHealthBar : MonoBehaviour
         }
         
         float currentHealth = (float)boss.health;
-        float maxHealth = (float)boss.data.maxHealth;
+        float maxHealth = boss.maxHealthOverride == -1 ? (float)boss.data.maxHealth : (float)boss.maxHealthOverride;
         float percentage = currentHealth / maxHealth;
         
         fillImage.color = Color.Lerp(Color.red, Color.green, percentage);

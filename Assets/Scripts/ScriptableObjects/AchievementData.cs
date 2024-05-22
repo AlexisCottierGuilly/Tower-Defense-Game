@@ -27,6 +27,7 @@ public class AchievementStats
     public int winsInMedium;
     public int winsInHard;
     public int winWithAllVillage;
+    public int landedProjectiles;
 }
 
 
