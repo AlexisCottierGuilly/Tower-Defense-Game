@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34910aa594091348835f768491aa328, type: 3}
   m_Name: Fire
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 5
   interval: 1
-  radius: 5
+  radius: 3.5
   duration: 3
   speedModifier: 1
   sound: {fileID: 8300000, guid: b19f7c787eb6e2347a8e675810027594, type: 3}

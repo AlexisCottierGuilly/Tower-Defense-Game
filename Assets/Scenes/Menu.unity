@@ -4956,14 +4956,14 @@ MonoBehaviour:
   towerWeights:
   - tower: 1
     weight: 100
-  - tower: 2
-    weight: 75
   - tower: 5
     weight: 65
   - tower: 4
     weight: 30
-  - tower: 6
+  - tower: 2
     weight: 30
+  - tower: 6
+    weight: 25
   - tower: 3
     weight: 10
 --- !u!1 &1513013914
