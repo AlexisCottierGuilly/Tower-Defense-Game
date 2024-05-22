@@ -9,6 +9,8 @@ public class GameStatusManager : MonoBehaviour
     public GameGenerator gameGenerator;
     public WaveManager waveManager;
 
+    private bool registeredDefeat = false;
+
     void Start()
     {
         waveManager.gameFinished.AddListener(GameIsFinished);
@@ -18,13 +20,20 @@ public class GameStatusManager : MonoBehaviour
     {
         DifficultyModifier difficulty = GameManager.instance.GetDifficultyModifier();
 
-        if (gameGenerator.didFinishLoading &&
+        if ((gameGenerator.didFinishLoading &&
             (gameGenerator.health <= 0 ||
             gameGenerator.villageGenerator.mainVillage == null ||
-            (gameGenerator.lostLives > 0 && !difficulty.canLoseLives)))
+            (gameGenerator.lostLives > 0 && !difficulty.canLoseLives))) ||
+            gameGenerator.forceDefeat)
         {
             defeat.SetActive(true);
             gameGenerator.PauseGame();
+
+            if (!registeredDefeat)
+            {
+                gameGenerator.savingManager.SaveGame();
+                registeredDefeat = true;
+            }
         }
         else if (waveManager.infiniteMode)
         {

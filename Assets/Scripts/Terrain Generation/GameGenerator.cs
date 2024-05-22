@@ -52,6 +52,8 @@ public class GameGenerator : MonoBehaviour
     public TextMeshProUGUI seedText;
     public float logicUpdateDelay = 1f;
     public int lostHouses = 0;
+    public bool didWinGame = false;
+    public bool forceDefeat = false;
 
     [HideInInspector] public List<List<GameObject>> tiles = new List<List<GameObject>>();
     [HideInInspector] public List<GameObject> towers = new List<GameObject>();
@@ -161,19 +163,21 @@ public class GameGenerator : MonoBehaviour
         return canPlace;
     }
 
-    public bool PlaceTower(Vector2 position, GameObject tower, Vector3 positionOverride=new Vector3())
+    public bool PlaceTower(Vector2 position, GameObject tower, Vector3 positionOverride=new Vector3(), bool cost=true)
     {
         TowerBehaviour behaviour = tower.GetComponent<TowerBehaviour>();
         TowerData data = behaviour.data;
-        
-        if (CanPlace(position) && GameManager.instance.gold >= data.cost)
+
+        if (CanPlace(position) && (GameManager.instance.gold >= data.cost || !cost))
         {
             GameObject tile = tiles[(int)position.x][(int)position.y];
             GameObject placement = tile.GetComponent<TileBehaviour>().placement;
             tile.GetComponent<TileBehaviour>().structure = tower;
             
             if (positionOverride != new Vector3())
+            {
                 tower.transform.position = positionOverride;
+            }
             else
             {
                 tower.transform.position = new Vector3(
@@ -187,7 +191,9 @@ public class GameGenerator : MonoBehaviour
             behaviour.position = position;
             behaviour.projectileParent = projectileParent;
             towers.Add(tower);
-            GameManager.instance.gold -= data.cost;
+
+            if (cost)
+                GameManager.instance.gold -= data.cost;
 
             return true;
         }
@@ -413,19 +419,25 @@ public class GameGenerator : MonoBehaviour
         crystals += GameManager.instance.GetDifficultyModifier().crystals;
 
         GameManager.instance.player.crystals += crystals;
-        GameManager.instance.player.rewardCount += 1;
 
-        switch (GameManager.instance.mapDifficulty)
+        if (!didWinGame)
         {
-            case MapDifficultyTypes.Facile:
-                GameManager.instance.player.achievementStats.winsInEasy += 1;
-                break;
-            case MapDifficultyTypes.Moyen:
-                GameManager.instance.player.achievementStats.winsInMedium += 1;
-                break;
-            case MapDifficultyTypes.Difficile:
-                GameManager.instance.player.achievementStats.winsInHard += 1;
-                break;
+            didWinGame = true;
+            
+            GameManager.instance.player.rewardCount += 1;
+
+            switch (GameManager.instance.mapDifficulty)
+            {
+                case MapDifficultyTypes.Facile:
+                    GameManager.instance.player.achievementStats.winsInEasy += 1;
+                    break;
+                case MapDifficultyTypes.Moyen:
+                    GameManager.instance.player.achievementStats.winsInMedium += 1;
+                    break;
+                case MapDifficultyTypes.Difficile:
+                    GameManager.instance.player.achievementStats.winsInHard += 1;
+                    break;
+            }
         }
 
         if (lostHouses == 0)

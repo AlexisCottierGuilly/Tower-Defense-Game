@@ -17,16 +17,16 @@ public class SavedGamesDropdownManager : MonoBehaviour
         PlayerData playerData = GameManager.instance.player;
         List<GameSave> gameSaves = playerData.gameSaves;
 
-        gameSaves.Sort((x, y) => y.lastOpenedTime.CompareTo(x.lastOpenedTime));
+        gameSaves.Sort((a, b) => a.lastOpenedTime.CompareTo(b.lastOpenedTime));
 
         List<string> optionNames = new List<string>();
         foreach (GameSave gameSave in gameSaves)
         {
             optionNames.Add(gameSave.saveName);
         }
-
-        optionNames.Reverse();
         
+        optionNames.Reverse();
+
         dropdown.AddOptions(optionNames);
     }
 

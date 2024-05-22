@@ -31,6 +31,7 @@ public class WaveManager : MonoBehaviour
     [Header("Settings")]
     public int wave = 0;
     public List<WaveData> allWaves = new List<WaveData>();
+    public List<WaveData> allWavesSave = new List<WaveData>();
     [HideInInspector] public List<WaveData> waves = new List<WaveData>();
     public bool waveFinished = true;
     public bool autoStart = false;
@@ -145,16 +146,19 @@ public class WaveManager : MonoBehaviour
         if (!gameGenerator.timeStarted)
             gameGenerator.timeStarted = true;
         
-        if (wave == waves.Count && infiniteMode)
+        if (wave >= waves.Count && infiniteMode)
         {
-            if (waves.Count < allWaves.Count)
+            while (waves.Count <= wave)
             {
-                waves.Add(allWaves[waves.Count]);
-            }
-            else
-            {
-                WaveData newWave = gameGenerator.waveGenerator.GetRandomWave(wave + 1);
-                waves.Add(newWave);
+                if (waves.Count < allWaves.Count)
+                {
+                    waves.Add(allWaves[waves.Count]);
+                }
+                else
+                {
+                    WaveData newWave = gameGenerator.waveGenerator.GetRandomWave(wave + 1);
+                    waves.Add(newWave);
+                }
             }
         }
         
@@ -167,8 +171,8 @@ public class WaveManager : MonoBehaviour
                 gameGenerator.PauseGame();
                 didCallGameFinished = true;
             }
-            
-            yield return new WaitForSeconds(0f);
+
+            yield return new WaitForSeconds(0.5f);
         }
         else
         {

@@ -9445,6 +9445,8 @@ MonoBehaviour:
   wave: 0
   allWaves:
   - {fileID: 11400000, guid: 7f9116e445769f14db028f20dbf7c74e, type: 2}
+  allWavesSave:
+  - {fileID: 11400000, guid: 7f9116e445769f14db028f20dbf7c74e, type: 2}
   - {fileID: 11400000, guid: 29e3fce03d7334f4eaf90e47755ef4c0, type: 2}
   - {fileID: 11400000, guid: 55b8c47f3bf3a17428c68bca04e616ee, type: 2}
   - {fileID: 11400000, guid: 3253e00ae3ee69746814c5aaa3b596b2, type: 2}
@@ -13036,27 +13038,44 @@ MonoBehaviour:
   - monster: 0
     cost: 3
     batchRange: {x: 3, y: 6}
+    batchAugmentationPercentage: 1.25
+    modifiedBatchRange: {x: 0, y: 0}
   - monster: 6
     cost: 4
     batchRange: {x: 1, y: 3}
+    batchAugmentationPercentage: 0.5
+    modifiedBatchRange: {x: 0, y: 0}
   - monster: 7
     cost: 6
     batchRange: {x: 1, y: 2}
+    batchAugmentationPercentage: 0.25
+    modifiedBatchRange: {x: 0, y: 0}
   - monster: 1
     cost: 10
     batchRange: {x: 1, y: 3}
+    batchAugmentationPercentage: 1
+    modifiedBatchRange: {x: 0, y: 0}
   - monster: 2
-    cost: 150
-    batchRange: {x: 1, y: 1}
-  - monster: 3
     cost: 200
     batchRange: {x: 1, y: 1}
+    batchAugmentationPercentage: 0
+    modifiedBatchRange: {x: 0, y: 0}
+  - monster: 3
+    cost: 300
+    batchRange: {x: 1, y: 1}
+    batchAugmentationPercentage: 0
+    modifiedBatchRange: {x: 0, y: 0}
   - monster: 4
     cost: 60
     batchRange: {x: 1, y: 2}
+    batchAugmentationPercentage: 0.5
+    modifiedBatchRange: {x: 0, y: 0}
   - monster: 5
     cost: 12
     batchRange: {x: 2, y: 5}
+    batchAugmentationPercentage: 1
+    modifiedBatchRange: {x: 0, y: 0}
+  batchSizeMultiplier: 1
 --- !u!1 &1962571890
 GameObject:
   m_ObjectHideFlags: 0

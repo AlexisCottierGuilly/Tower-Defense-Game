@@ -16,7 +16,7 @@ MonoBehaviour:
   cost: 150
   shopCost: 75
   maxRange: 25
-  attackSpeed: 4
+  attackSpeed: 3.5
   projectile: {fileID: 9201598211181502813, guid: 1a936eae301fb7c4b8973e1f4bee024d, type: 3}
   targetEnemy: 1
   targetVillage: 0

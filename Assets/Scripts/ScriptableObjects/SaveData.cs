@@ -45,6 +45,9 @@ public class GameSave
     public float lastOpenedTime;
     public MapDifficultyTypes mapDifficulty;
     public Vector2 mapSize;
+    public bool didWinGame = false;
+    public bool defeated = false;
+    public bool infiniteMode = false;
 
     [Header("Randoms")]
     public System.Random randomWithSeed;
@@ -64,6 +67,8 @@ public class TowerPlacement
     public TowerType towerType;
     public Vector2 position;
     public TargetType targetType;
+    [Space]
+    public TowerStats stats = new TowerStats();
 }
 
 
@@ -72,4 +77,5 @@ public class VillagePlacement
 {
     public Vector2 position;
     public int health;
+    public bool dead = false;
 }

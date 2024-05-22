@@ -146,6 +146,8 @@ public class GameManager : MonoBehaviour
             
             if (sceneName == GameState.Credits)
                 player.achievementStats.timesOpeningCredits += 1;
+            else if (sceneName == GameState.Menu)
+                gameSeed = -1;
 
             SceneManager.LoadScene(gameState.ToString(), additive ? LoadSceneMode.Additive : LoadSceneMode.Single);
         }
