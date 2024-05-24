@@ -164,7 +164,7 @@ public class WaveManager : MonoBehaviour
         
         if (wave == waves.Count)
         {
-            if (!didCallGameFinished)
+            if (!didCallGameFinished && !gameGenerator.forceDefeat)
             {
                 winGameSound.Play();
                 gameFinished.Invoke();

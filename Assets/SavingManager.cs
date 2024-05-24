@@ -29,7 +29,12 @@ public class SavingManager : MonoBehaviour
 
         gameSave.didWinGame = gameGenerator.didWinGame;
         gameSave.infiniteMode = gameGenerator.waveManager.infiniteMode;
-        gameSave.defeated = gameGenerator.health <= 0;
+        
+        DifficultyModifier difficulty = GameManager.instance.GetDifficultyModifier();
+        gameSave.defeated = (gameGenerator.health <= 0 ||
+            gameGenerator.villageGenerator.mainVillage == null ||
+            (gameGenerator.lostLives > 0 && !difficulty.canLoseLives)) ||
+                gameGenerator.forceDefeat;
 
         gameSave.randomWithSeed = CreateCopy(gameGenerator.randomWithSeed);
         gameSave.waveRandomWithSeed = CreateCopy(gameGenerator.waveRandomWithSeed);

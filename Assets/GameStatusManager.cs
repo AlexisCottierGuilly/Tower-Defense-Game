@@ -44,6 +44,7 @@ public class GameStatusManager : MonoBehaviour
 
     void GameIsFinished()
     {
+        Debug.Log("Game is finished");
         victory.SetActive(true);
         gameGenerator.PauseGame();
     }
