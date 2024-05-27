@@ -41,7 +41,14 @@ public class UI : MonoBehaviour
 
     public void Leave()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+#if UNITY_EDITOR
+        if (UnityEditor.EditorApplication.isPlaying == true)
+        {
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
+#else
         Application.Quit();
+   
+#endif
     }
 }
