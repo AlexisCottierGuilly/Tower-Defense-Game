@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13110483, g: 0.09076635, b: 0.13997692, a: 1}
+  m_IndirectSpecularColor: {r: 0.13105246, g: 0.09076703, b: 0.14026171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9445,6 +9445,17 @@ MonoBehaviour:
   wave: 0
   allWaves:
   - {fileID: 11400000, guid: 7f9116e445769f14db028f20dbf7c74e, type: 2}
+  - {fileID: 11400000, guid: 29e3fce03d7334f4eaf90e47755ef4c0, type: 2}
+  - {fileID: 11400000, guid: 55b8c47f3bf3a17428c68bca04e616ee, type: 2}
+  - {fileID: 11400000, guid: 3253e00ae3ee69746814c5aaa3b596b2, type: 2}
+  - {fileID: 11400000, guid: a558a6328756f254b805fce928e6d4ec, type: 2}
+  - {fileID: 11400000, guid: 8a8470b447e49c546a3a8da637798882, type: 2}
+  - {fileID: 11400000, guid: b2a903bb3e3dca84e952b40b97723b59, type: 2}
+  - {fileID: 11400000, guid: 6fc5fdc75c279614491422d2d395bde1, type: 2}
+  - {fileID: 11400000, guid: a42ed8309d592fc4381a46170c049a11, type: 2}
+  - {fileID: 11400000, guid: ccd89e7e7354882419e57128b1e4f0a0, type: 2}
+  - {fileID: 11400000, guid: 40a86c2bd38adc543a622b3cca65798b, type: 2}
+  - {fileID: 11400000, guid: 414ed97165c0c6047bd6dc70bd50ba1b, type: 2}
   allWavesSave:
   - {fileID: 11400000, guid: 7f9116e445769f14db028f20dbf7c74e, type: 2}
   - {fileID: 11400000, guid: 29e3fce03d7334f4eaf90e47755ef4c0, type: 2}
@@ -12970,6 +12981,8 @@ MonoBehaviour:
   seedText: {fileID: 1449424629}
   logicUpdateDelay: 1
   lostHouses: 0
+  didWinGame: 0
+  forceDefeat: 0
   towers: []
   decorations: []
   didModifyVillage: 0

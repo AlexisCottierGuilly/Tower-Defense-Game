@@ -106,10 +106,26 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
     }
 
-    void Start()
+    public void Start()
     {
         previousScene = gameState;
-        player = save.players[0];
+        
+        if (save.lastPlayerName != "")
+        {
+            foreach (PlayerData pData in save.players)
+            {
+                if (pData.name == save.lastPlayerName)
+                {
+                    player = pData;
+                    break;
+                }
+            }
+        }
+
+        if (player == null || save.lastPlayerName == "")
+            player = save.players[0];
+        
+        save.lastPlayerName = player.name;
 
         UpdateGameName();
         LoadAchievementProgress();
@@ -226,6 +242,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadAchievementProgress()
     {
+        achievementProgress = new List<AchievementProgress>();
         foreach (AchievementData achievement in achievements)
         {
             AchievementProgress progress = new AchievementProgress();

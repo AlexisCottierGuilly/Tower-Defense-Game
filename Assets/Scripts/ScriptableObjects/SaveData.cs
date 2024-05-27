@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SaveData", menuName = "Save/SaveData")]
 public class SaveData : ScriptableObject
 {
+    public string lastPlayerName = "";
     public List<PlayerData> players;
 }
 
