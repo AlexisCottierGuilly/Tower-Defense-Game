@@ -9,6 +9,7 @@ public class VillageGenerator : MonoBehaviour
 
     [Header("3D Models")]
     public GameObject mainVillagePrefab;
+    public GameObject upgradedMainVillagePrefab;
     public GameObject healthTextPrefab;
     public GameObject camera;
     public List<GameObject> villagePrefabs = new List<GameObject>();
@@ -37,6 +38,7 @@ public class VillageGenerator : MonoBehaviour
         float highestPoint = 0f;
         Vector2 highestPointPosition = new Vector2();
         GameObject highestPointTile = new GameObject();
+        GameObject villageType;
 
         for (int i=x; i < finalX; i++)
         {
@@ -55,8 +57,16 @@ public class VillageGenerator : MonoBehaviour
         gameGenerator.FlattenAround(highestPointPosition);
 
         Vector3 position = highestPointTile.GetComponent<TileBehaviour>().placement.transform.position;
+        if (GameManager.instance.player.villageTower == TowerType.None)
+        {
+            villageType = mainVillagePrefab;
+        }
+        else
+        {
+            villageType = upgradedMainVillagePrefab;
+        }
         mainVillage = GameObject.Instantiate(
-            mainVillagePrefab,
+            villageType,
             new Vector3(0f, 0f, 0f),
             Quaternion.identity
         );
