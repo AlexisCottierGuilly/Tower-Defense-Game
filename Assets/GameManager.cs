@@ -56,6 +56,8 @@ public class GameManager : MonoBehaviour
     public bool hideMouse = false;
     public int fov = 70;
     public float volume = 0.5f;
+    public float effectsVolume = 1f;
+    public float musicVolume = 1f;
     public bool cinematicMode = false;
     public float defaultSpeed = 1f;
     public float fastSpeed = 3f;

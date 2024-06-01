@@ -311,6 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeMultiplier: 1
+  isMusic: 0
 --- !u!1 &49077041
 GameObject:
   m_ObjectHideFlags: 0
@@ -5771,7 +5772,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4285b4f306660f54fae15a1e34f93601, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2e436c65eea87b14fa9410bdb6d57067, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -5779,7 +5780,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 96
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -5869,7 +5870,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d971d4d1a765c6845b38f2ecc7292848, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeMultiplier: 2
+  volumeMultiplier: 0.5
+  isMusic: 1
 --- !u!1 &882740869
 GameObject:
   m_ObjectHideFlags: 0
@@ -10112,6 +10114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeMultiplier: 1
+  isMusic: 0
 --- !u!1 &1418954253
 GameObject:
   m_ObjectHideFlags: 0
@@ -10827,6 +10830,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeMultiplier: 1
+  isMusic: 0
 --- !u!82 &1476763200
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11564,6 +11568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeMultiplier: 1.5
+  isMusic: 0
 --- !u!1 &1610549003
 GameObject:
   m_ObjectHideFlags: 0

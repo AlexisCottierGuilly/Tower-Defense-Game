@@ -7,7 +7,9 @@ using TMPro;
 public enum SliderType
 {
     FOV,
-    Volume
+    Volume,
+    EffectsVolume,
+    MusicVolume
 }
 
 public class SliderCount : MonoBehaviour
@@ -22,8 +24,12 @@ public class SliderCount : MonoBehaviour
         textMeshPro = gameObject.GetComponent<TextMeshProUGUI>();
         if (sliderType is SliderType.FOV)
             slider.value = GameManager.instance.fov;
-        else
+        else if (sliderType is SliderType.Volume)
             slider.value = GameManager.instance.volume * 100f;
+        else if (sliderType is SliderType.EffectsVolume)
+            slider.value = GameManager.instance.effectsVolume * 100f;
+        else if (sliderType is SliderType.MusicVolume)
+            slider.value = GameManager.instance.musicVolume * 100f;
     }
 
     // Update is called once per frame
@@ -36,7 +42,11 @@ public class SliderCount : MonoBehaviour
 
         if (sliderType is SliderType.FOV)
             GameManager.instance.fov = (int)slider.value;
-        else
+        else if (sliderType is SliderType.Volume)
             GameManager.instance.volume = slider.value / 100f;
+        else if (sliderType is SliderType.EffectsVolume)
+            GameManager.instance.effectsVolume = slider.value / 100f;
+        else if (sliderType is SliderType.MusicVolume)
+            GameManager.instance.musicVolume = slider.value / 100f;
     }
 }
