@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: -5
   interval: 1
-  radius: 5
+  radius: 3
   duration: 3
   speedModifier: 1
   sound: {fileID: 0}
