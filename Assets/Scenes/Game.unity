@@ -5740,6 +5740,7 @@ GameObject:
   - component: {fileID: 873697557}
   - component: {fileID: 873697558}
   - component: {fileID: 873697559}
+  - component: {fileID: 873697560}
   m_Layer: 0
   m_Name: Soundtrack
   m_TagString: Untagged
@@ -5773,10 +5774,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2e436c65eea87b14fa9410bdb6d57067, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -5872,6 +5873,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volumeMultiplier: 0.5
   isMusic: 1
+--- !u!114 &873697560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873697556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6329bb1750e1a6544bbd80fba8a2320e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundtracks:
+  - {fileID: 8300000, guid: cf2f24c1f4ee18849b7befcb5aab9142, type: 3}
+  - {fileID: 8300000, guid: ecd6d352b5ff4fc40a769c959c8dc34f, type: 3}
+  pauseBetweenTracks: 1
 --- !u!1 &882740869
 GameObject:
   m_ObjectHideFlags: 0
