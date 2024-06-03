@@ -20,6 +20,7 @@ public class TrailerManager : MonoBehaviour
     public List<TrailerPart> trailerParts = new List<TrailerPart>();
     [Space]
     public GameObject leaveButton;
+    public RenderTexture renderTexture;
 
     [Header("Logo")]
     public GameObject logoScreen;
@@ -97,6 +98,8 @@ public class TrailerManager : MonoBehaviour
                 titleText.text = part.title;
                 break;
             case TrailerType.Video:
+                ResetTexture();
+
                 videoScreen.SetActive(true);
                 videoPlayer.clip = part.video;
                 videoPlayer.Play();
@@ -117,6 +120,15 @@ public class TrailerManager : MonoBehaviour
             LoadNextPart();
         }
     
+    }
+
+    public void ResetTexture()
+    {
+        Texture2D blackTexture = new Texture2D(1, 1);
+        blackTexture.SetPixel(0, 0, Color.black);
+        blackTexture.Apply();
+
+        Graphics.Blit(blackTexture, renderTexture);
     }
 }
 

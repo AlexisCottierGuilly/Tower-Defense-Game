@@ -683,7 +683,7 @@ MonoBehaviour:
   gameSeed: -1
   maxGameSeed: 9999999
   mapSize: {x: 24, y: 24}
-  mapDifficulty: 0
+  mapDifficulty: 2
   gameState: 0
   previousScene: 0
   hideMouse: 1

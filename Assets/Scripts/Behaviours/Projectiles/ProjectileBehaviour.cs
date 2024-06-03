@@ -30,6 +30,7 @@ public class ProjectileBehaviour : MonoBehaviour
             audioSource.spatialBlend = 0.75f;
             audioSource.rolloffMode = AudioRolloffMode.Linear;
             audioSource.maxDistance = 100f;
+            audioSource.priority = 255;
 
             audioSource.clip = data.sound;
             audioSource.Play();

@@ -118,22 +118,13 @@ public class GameGenerator : MonoBehaviour
 
     public Rect GetBounds()
     {
-        /* return new Rect(
-            2 * terrainGenerator.tileSize * 2,
-            2 * terrainGenerator.tileSize * 2,
-            Mathf.Max(terrainGenerator.size.x - 3, 2) * terrainGenerator.tileSize * 2,
-            Mathf.Max(terrainGenerator.size.y - 3, 2) * terrainGenerator.tileSize * 2
-        ); */
-
-        // take into account that it is a grid made out of hexagonal tiles, so the bounds are different
-
         float xTileSize = (5f / 3f) * terrainGenerator.tileSize;
         float yTileSize = Mathf.Sqrt(2) * terrainGenerator.tileSize;
 
-        float minX = xTileSize / 4f + xTileSize;
-        float minY = 0f + yTileSize;
-        float maxX = (terrainGenerator.size.x + 0f) * xTileSize - xTileSize * 2.5f;
-        float maxY = (terrainGenerator.size.y + 1f / 3f) * yTileSize - yTileSize * 2f;
+        float minX = xTileSize / 4f; //+ xTileSize;
+        float minY = 0f; //+ yTileSize;
+        float maxX = (terrainGenerator.size.x + 0f) * xTileSize; //- xTileSize * 2.5f;
+        float maxY = (terrainGenerator.size.y + 1f / 3f) * yTileSize; //- yTileSize * 2f;
 
         return new Rect(minX, minY, maxX, maxY);
     }

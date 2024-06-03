@@ -1376,7 +1376,7 @@ MonoBehaviour:
   - type: 2
     duration: 6
     title: 
-    video: {fileID: 32900000, guid: b2a2363c2889b564988b1d9b19fc3cf4, type: 3}
+    video: {fileID: 32900000, guid: 3533a00dd1582f048b37da27efa9332a, type: 3}
   - type: 1
     duration: 2.225
     title: Une invasion
@@ -1384,7 +1384,7 @@ MonoBehaviour:
   - type: 2
     duration: 8.75
     title: 
-    video: {fileID: 32900000, guid: edd4218366ac0ca46a8ae18b4ca8d44e, type: 3}
+    video: {fileID: 32900000, guid: 91d55e8a32551474cbd591e938794fdc, type: 3}
   - type: 1
     duration: 3
     title: Des combats epiques
@@ -1400,7 +1400,7 @@ MonoBehaviour:
   - type: 2
     duration: 6
     title: 
-    video: {fileID: 32900000, guid: edd4218366ac0ca46a8ae18b4ca8d44e, type: 3}
+    video: {fileID: 32900000, guid: 1d552496ed71e8941be165f102dbf068, type: 3}
   - type: 1
     duration: 3
     title: Tentez votre chance
@@ -1410,6 +1410,7 @@ MonoBehaviour:
     title: 0
     video: {fileID: 0}
   leaveButton: {fileID: 2103896957}
+  renderTexture: {fileID: 8400000, guid: 9e717e1a4f414cb478c941e814e2abec, type: 2}
   logoScreen: {fileID: 324137601}
   titleScreen: {fileID: 1970751641}
   titleText: {fileID: 242729868}
