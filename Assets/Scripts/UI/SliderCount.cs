@@ -38,7 +38,10 @@ public class SliderCount : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
             slider.value = Mathf.Round(slider.value / 10f) * 10f;
         
-        textMeshPro.text = $"{slider.value.ToString()}%";
+        if (sliderType is SliderType.FOV)
+            textMeshPro.text = $"{slider.value.ToString()}";
+        else
+            textMeshPro.text = $"{slider.value.ToString()}%";
 
         if (sliderType is SliderType.FOV)
             GameManager.instance.fov = (int)slider.value;

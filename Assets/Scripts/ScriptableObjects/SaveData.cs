@@ -24,6 +24,9 @@ public class PlayerData
     [Header("Unlocked Towers")]
     public List<TowerType> unlockedTowers = new List<TowerType>() { TowerType.Normal };
 
+    [Header("Easter Eggs")]
+    public bool gemsInShop = false;
+
     [Header("Other")]
     public TowerType villageTower = TowerType.None;
     public List<TowerType> villageTowers = new List<TowerType>();

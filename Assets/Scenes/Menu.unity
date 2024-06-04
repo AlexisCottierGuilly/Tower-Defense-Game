@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13167956, g: 0.090852536, b: 0.139786, a: 1}
+  m_IndirectSpecularColor: {r: 0.1317214, g: 0.090852536, b: 0.1401858, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -740,6 +740,7 @@ MonoBehaviour:
       winWithAllVillage: 0
       landedProjectiles: 0
     unlockedTowers: 01000000
+    gemsInShop: 0
     villageTower: 0
     villageTowers: 
     gameSaves: []
@@ -5856,7 +5857,7 @@ MonoBehaviour:
   title: {fileID: 768815187}
   rewardPlaceholder: {fileID: 1513013914}
   rewardParent: {fileID: 1169144495}
-  crystalPercentage: 0.9
+  crystalPercentage: 0.85
   crystalIcon: {fileID: 21300000, guid: 936251c5bdac61e4bb3b645667a1c1aa, type: 3}
   towerWeights:
   - tower: 1
