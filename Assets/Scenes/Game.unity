@@ -9605,6 +9605,7 @@ MonoBehaviour:
   - {fileID: 821537990}
   wave: 0
   allWaves:
+  - {fileID: 11400000, guid: 49413d1731655fe468ebc3f58f1d4a40, type: 2}
   - {fileID: 11400000, guid: 7f9116e445769f14db028f20dbf7c74e, type: 2}
   - {fileID: 11400000, guid: 29e3fce03d7334f4eaf90e47755ef4c0, type: 2}
   - {fileID: 11400000, guid: 55b8c47f3bf3a17428c68bca04e616ee, type: 2}
