@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class KonamiCode : MonoBehaviour
 {
+    public GameObject easterEgg;
     private int position = 0;
     private bool done = false;
 
     void Start()
     {
-        
+        easterEgg.SetActive(false);
     }
 
     void Update()
@@ -21,7 +22,7 @@ public class KonamiCode : MonoBehaviour
             if (position == 10)
             {
                 done = true;
-                Debug.Log('W');
+                easterEgg.SetActive(true);
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
