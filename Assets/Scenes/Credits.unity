@@ -1214,8 +1214,9 @@ MonoBehaviour:
   m_text: "Les gardiens d\u2019Eldoria a \xE9t\xE9 cr\xE9\xE9 par la collaboration
     de deux programmeurs et designers exceptionnels:\r\n\r\nAlexis Cottier-Guilly\r\net\r\nMica\xEBl
     Brouillet\r\n\r\nDeux \xE9tudiants du Coll\xE8ge de Montr\xE9al, dans le groupe
-    501.\r\n\r\nMerci d\u2019avoir essay\xE9 ce jeu et nous esp\xE9rons que vous
-    l'avez appr\xE9ci\xE9!\r\n\r\nJeu cr\xE9\xE9 \xE0 l'aide du logiciel Unity (2022.3.9f1)\r\n"
+    501.\r\n\r\nMusique par Alexis Cottier-Guilly\n\nMerci d\u2019avoir essay\xE9
+    ce jeu et nous esp\xE9rons que vous l'avez appr\xE9ci\xE9!\r\n\r\nJeu cr\xE9\xE9
+    \xE0 l'aide du logiciel Unity (2022.3.9f1)\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bb2584cf8bc3d4f419f460ec75cb67be, type: 2}
   m_sharedMaterial: {fileID: 2091675084531310322, guid: bb2584cf8bc3d4f419f460ec75cb67be, type: 2}
@@ -1242,8 +1243,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -15,7 +15,8 @@ public enum GameState
     Tutoriel,
     Achievements,
     Shop,
-    Trailer
+    Trailer,
+    Dimension
 }
 
 

@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Trailer.unity
     guid: 4284d36e7b0b58e468f7911e8ebf0ebd
+  - enabled: 1
+    path: Assets/Scenes/Dimension.unity
+    guid: 645e3225f735b8646975d47b07d18803
   m_configObjects: {}
