@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5608812405439735900}
   - component: {fileID: 7020074126148480219}
   - component: {fileID: -436340213333378510}
+  - component: {fileID: 6081227736545967834}
   m_Layer: 0
   m_Name: FireZone
   m_TagString: Untagged
@@ -4864,7 +4865,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 255
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 100
@@ -4942,3 +4943,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6081227736545967834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8416028450855969510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d971d4d1a765c6845b38f2ecc7292848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeMultiplier: 1
+  isMusic: 0

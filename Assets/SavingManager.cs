@@ -219,7 +219,7 @@ public class SavingManager : MonoBehaviour
 
             Vector3 positionOverride = new Vector3();
 
-            if (towerPlacement.position == mainVillageBehaviour.position)
+            if (towerPlacement.position == mainVillageBehaviour.position && mainVillageBehaviour.towerSpawn != null)
             {
                 positionOverride = new Vector3(
                     mainVillageBehaviour.towerSpawn.transform.position.x,

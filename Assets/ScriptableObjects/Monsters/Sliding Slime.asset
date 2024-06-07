@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Slime Glissant
   spawnMessage: A slime a day keeps the monsters away!
   isBoss: 1
-  maxHealth: 3000
+  maxHealth: 7500
   damage: 75
   attackSpeed: 0.65
   speed: 0.4

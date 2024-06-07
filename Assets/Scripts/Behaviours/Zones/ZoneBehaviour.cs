@@ -16,9 +16,10 @@ public class ZoneBehaviour : MonoBehaviour
 
     void Start()
     {
-        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        VolumeUpdater volumeUpdater = gameObject.AddComponent<VolumeUpdater>();
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+        VolumeUpdater volumeUpdater = gameObject.GetComponent<VolumeUpdater>();
         volumeUpdater.volumeMultiplier = 1f;
+        volumeUpdater.isMusic = false;
 
         audioSource.spatialBlend = 0.75f;
         audioSource.rolloffMode = AudioRolloffMode.Linear;

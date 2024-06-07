@@ -9617,6 +9617,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ccd89e7e7354882419e57128b1e4f0a0, type: 2}
   - {fileID: 11400000, guid: 40a86c2bd38adc543a622b3cca65798b, type: 2}
   - {fileID: 11400000, guid: 414ed97165c0c6047bd6dc70bd50ba1b, type: 2}
+  - {fileID: 11400000, guid: e2c15bb9e39da7240ba5530170b00553, type: 2}
+  - {fileID: 11400000, guid: 2d52aec7ac53b8a49a202e4f9598507b, type: 2}
+  - {fileID: 11400000, guid: d02c8d17f759f254ea3bd89434122606, type: 2}
+  - {fileID: 11400000, guid: 8985ff2ede4ee184e9a73fcafae0b6e9, type: 2}
+  - {fileID: 11400000, guid: 55d1945669e82dd498b869f742cde738, type: 2}
+  - {fileID: 11400000, guid: 3be133b9206dfc0459d336aca0f479e8, type: 2}
+  - {fileID: 11400000, guid: 04549d478a3a6c1449ffbf31a892da97, type: 2}
+  - {fileID: 11400000, guid: 9e0157e6050415b44af874894b084b97, type: 2}
   allWavesSave:
   - {fileID: 11400000, guid: 7f9116e445769f14db028f20dbf7c74e, type: 2}
   - {fileID: 11400000, guid: 29e3fce03d7334f4eaf90e47755ef4c0, type: 2}
@@ -9630,6 +9638,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ccd89e7e7354882419e57128b1e4f0a0, type: 2}
   - {fileID: 11400000, guid: 40a86c2bd38adc543a622b3cca65798b, type: 2}
   - {fileID: 11400000, guid: 414ed97165c0c6047bd6dc70bd50ba1b, type: 2}
+  - {fileID: 11400000, guid: e2c15bb9e39da7240ba5530170b00553, type: 2}
+  - {fileID: 11400000, guid: 2d52aec7ac53b8a49a202e4f9598507b, type: 2}
+  - {fileID: 11400000, guid: d02c8d17f759f254ea3bd89434122606, type: 2}
+  - {fileID: 11400000, guid: 8985ff2ede4ee184e9a73fcafae0b6e9, type: 2}
+  - {fileID: 11400000, guid: 55d1945669e82dd498b869f742cde738, type: 2}
+  - {fileID: 11400000, guid: 3be133b9206dfc0459d336aca0f479e8, type: 2}
+  - {fileID: 11400000, guid: 04549d478a3a6c1449ffbf31a892da97, type: 2}
+  - {fileID: 11400000, guid: 9e0157e6050415b44af874894b084b97, type: 2}
   waves:
   - {fileID: 11400000, guid: 7f9116e445769f14db028f20dbf7c74e, type: 2}
   - {fileID: 11400000, guid: 29e3fce03d7334f4eaf90e47755ef4c0, type: 2}
