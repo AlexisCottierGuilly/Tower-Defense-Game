@@ -5565,7 +5565,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 713400597}
   m_HandleRect: {fileID: 713400596}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -9655,7 +9655,7 @@ MonoBehaviour:
   autoStart: 0
   infiniteMode: 0
   hpMultiplier: 1
-  hpMultiplierStartWave: 20
+  hpMultiplierStartWave: 10
   monsterParent: {fileID: 80457012}
   startWaveSound: {fileID: 1418356138}
   winWaveSound: {fileID: 17181455}
